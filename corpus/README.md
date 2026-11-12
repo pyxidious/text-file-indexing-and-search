@@ -1,17 +1,19 @@
-Tutti i testi di `topics.json` sono contenuti originali preparati per questo
-homework, senza download né dipendenze da corpus esterni. Le frasi descrivono
-12 temi; aperture, schede lessicali e paragrafi trasversali sono modelli di
-composizione, non output di servizi durante l'esecuzione.
+# Input dell'esperimento corrente
 
-Ogni documento riceve un'etichetta principale con assegnazione ciclica bilanciata.
-Per ciascuna query `thematic` in `queries.json` è rilevante (giudizio binario 1)
-ogni documento con `topic` uguale a quello della query. Gli altri hanno giudizio
-0 implicito. Il generatore materializza questi giudizi in `qrels.json`, senza
-consultare indici o risultati. Gli ID sono percorsi relativi dei file.
+`functional_queries.json` contiene 12 query di correttezza lessicale sui campi
+nome e contenuto, con aspettative positive e negative. I risultati esatti sono
+verificati con `irhome/oracle.py`, che legge direttamente i file.
 
-È una ground truth **sintetica**: un documento può essere tematicamente rilevante
-senza contenere esattamente le parole della query, e un testo di altro tema può
-contenere parole utili. I risultati non stimano la rilevanza giudicata da persone
-su documenti reali; template e vocabolario finiti possono rendere alcune query
-molto facili. Le query F verificano correttezza lessicale con scansione diretta;
-le query T misurano recupero tematico con etichette assegnate alla costruzione.
+Query informative e giudizi sono quelli originali di Cranfield acquisiti da
+`ir_datasets==0.5.11`. Non sono etichette tematiche e non vengono prodotti dal
+motore. La soglia binaria è `relevance >= 1`. `-1` indica un giudizio negativo;
+l'assenza di un qrel indica un documento non giudicato, non un giudizio negativo.
+
+Non si versionano documenti, query o qrels originali: la disponibilità pubblica
+non equivale a una licenza esplicita di redistribuzione. Le pagine ufficiali e
+`cranqrel.readme` sono stati consultati; non vi è una licenza esplicita per il
+corpus nelle fonti consultate. I file si acquisiscono con la procedura del README
+e si verificano tramite `config/cranfield.lock.json`. La licenza MIT del software
+ir_datasets non viene attribuita ai dati Cranfield.
+
+Il precedente materiale sintetico è isolato in `legacy/synthetic/` e non è usato.

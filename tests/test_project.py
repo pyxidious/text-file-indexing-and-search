@@ -1,13 +1,18 @@
 import csv
 import math
+import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from irhome.analyzers import ContentAnalyzer, FilenameAnalyzer
-from irhome.dataset import generate_dataset, verify_dataset
+from irhome.acquire import DEFAULT_CACHE, acquire, load_snapshot, validate_records
+from irhome.dataset import (document_filename, document_mapping, normalized_newlines,
+                            prepare_dataset, verify_dataset)
 from irhome.engine import SearchEngine, parse_query
-from irhome.experiment import summarize_timings, validate_config
+from irhome.experiment import (aggregate_metrics, annotate_results, check_functional,
+                               check_mapping, qrels_by_query, summarize_timings, validate_config)
 from irhome.io import read_json, sha256
 from irhome.metrics import retrieval_metrics
 from irhome.oracle import direct_scan
@@ -174,52 +179,63 @@ class MetricTests(unittest.TestCase):
 
 
 class DatasetTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.cache = Path(os.environ.get("IRHOME_TEST_CACHE", str(DEFAULT_CACHE)))
+        try:
+            cls.records = load_snapshot(cls.cache)
+        except FileNotFoundError:
+            raise unittest.SkipTest("Acquisire lo snapshot Cranfield per i test di integrazione offline")
+
     def test_regenerate_twice_and_compare_all_hashes(self):
         with tempfile.TemporaryDirectory() as tmp:
             a, b = Path(tmp) / "a", Path(tmp) / "b"
-            first = generate_dataset(a, 100, 42)
-            second = generate_dataset(b, 100, 42)
+            first = prepare_dataset(a, self.records, 100)
+            second = prepare_dataset(b, self.records, 100)
             self.assertEqual(first, second)
             self.assertEqual(verify_dataset(a), verify_dataset(b))
             before = sha256(a / "manifest.json")
-            generate_dataset(a, 100, 42)
+            prepare_dataset(a, self.records, 100)
             self.assertEqual(before, verify_dataset(a))
             self.assertGreater(len({p.stat().st_size for p in (a / "documents").iterdir()}), 10)
 
-    def test_ground_truth_from_labels_and_all_queries(self):
+    def test_original_ground_truth_and_all_functional_queries(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            generate_dataset(root, 36)
+            prepare_dataset(root, self.records, 1400)
             with (root / "metadata.csv").open(encoding="utf-8", newline="") as stream:
                 metadata = list(csv.DictReader(stream))
             queries, qrels = read_json(root / "queries.json"), read_json(root / "qrels.json")
-            self.assertEqual(len({r["topic"] for r in metadata}), 12)
-            self.assertGreaterEqual(sum(q["kind"] == "thematic" for q in queries), 20)
-            self.assertGreaterEqual(sum(q["kind"] == "functional" for q in queries), 10)
+            self.assertEqual(len(metadata), 1400)
+            self.assertEqual(queries, self.records["queries"])
+            self.assertEqual(qrels, self.records["qrels"])
             engine = SearchEngine.build(root / "documents")
-            for query in queries:
-                with self.subTest(query=query["id"]):
-                    if query["kind"] == "thematic":
-                        expected = {r["id"] for r in metadata if r["topic"] == query["topic"]}
-                        self.assertEqual(set(qrels[query["id"]]), expected)
-                    self.assertEqual({r["id"] for r in engine.search(query["query"])},
-                                     direct_scan(root / "documents", query["query"]))
+            mapping = document_mapping(root)
+            check_mapping(engine, mapping)
+            self.assertEqual(set(mapping.values()), {str(i) for i in range(1, 1401)})
+            self.assertGreaterEqual(len(check_functional(engine, root)), 10)
+            for original, entry in zip(self.records["documents"], read_json(root / "manifest.json")["documents"]):
+                self.assertEqual((root / entry["path"]).read_bytes(),
+                                 normalized_newlines(original["text"]).encode("utf-8"))
+                self.assertEqual(entry["title"], original["title"])
+                self.assertEqual(entry["author"], original["author"])
+                self.assertEqual(entry["bib"], original["bib"])
 
-    def test_prefix_collections_and_different_seed(self):
+    def test_prefix_collections_and_original_qrels_scope(self):
         with tempfile.TemporaryDirectory() as tmp:
-            a, b, c = (Path(tmp) / name for name in ("a", "b", "c"))
-            small = generate_dataset(a, 12, 42)
-            large = generate_dataset(b, 24, 42)
-            different = generate_dataset(c, 12, 43)
+            a, b = (Path(tmp) / name for name in ("a", "b"))
+            small = prepare_dataset(a, self.records, 12)
+            large = prepare_dataset(b, self.records, 24)
             for name, digest in small["files"].items():
                 if name.startswith("documents/"):
                     self.assertEqual(digest, large["files"][name])
-            self.assertNotEqual(small["files"], different["files"])
+            self.assertEqual([d["doc_id"] for d in small["documents"]], [str(i) for i in range(1, 13)])
+            self.assertEqual(read_json(a / "qrels.json"), read_json(b / "qrels.json"))
 
     def test_tampering_and_extra_files_detected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            generate_dataset(root, 12)
+            prepare_dataset(root, self.records, 12)
             extra = root / "documents" / "extra.txt"
             extra.write_text("extra", encoding="utf-8")
             with self.assertRaises(ValueError):
@@ -232,10 +248,75 @@ class DatasetTests(unittest.TestCase):
     def test_invalid_generation_and_configuration(self):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaises(ValueError):
-                generate_dataset(tmp, 0)
+                prepare_dataset(tmp, self.records, 0)
         with self.assertRaises(ValueError):
-            validate_config({"seed": 42, "sizes": [100], "repetitions": 4,
+            validate_config({"dataset": "cranfield", "main_size": 1400, "relevance_threshold": 1,
+                             "sizes": [100, 300, 1400], "repetitions": 4,
                              "bm25": {"k1": 1.2, "b": .75}})
+
+    def test_snapshot_counts_levels_and_query_identifiers(self):
+        validate_records(self.records)
+        qrels = self.records["qrels"]
+        self.assertEqual(len(qrels), 1837)
+        self.assertEqual(sum(row["relevance"] == -1 for row in qrels), 225)
+        self.assertEqual(sum(row["relevance"] >= 1 for row in qrels), 1612)
+        queries = self.records["queries"]
+        self.assertEqual(queries[2]["query_id"], "3")
+        self.assertEqual(queries[2]["source_query_id"], "004")
+
+    def test_offline_snapshot_never_opens_network(self):
+        with patch("socket.socket", side_effect=AssertionError("Accesso rete vietato")):
+            self.assertEqual(acquire(self.cache, offline=True), self.records)
+
+    def test_missing_offline_snapshot_fails(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(FileNotFoundError):
+                acquire(tmp, offline=True)
+
+
+class CranfieldUnitTests(unittest.TestCase):
+    def test_deterministic_filename_and_collisions(self):
+        self.assertEqual(document_filename("42", "Aéròdynamic / Properties: of WINGS!"),
+                         "0042_aerodynamic_properties_of_wings.txt")
+        self.assertNotEqual(document_filename("1", "same"), document_filename("2", "same"))
+        self.assertEqual(document_filename("42", "???"), "0042_untitled.txt")
+        self.assertLessEqual(len(document_filename("1400", "a" * 300)), 89)
+
+    def test_no_title_or_trailing_newline_added(self):
+        # Fixture unitaria minimale; non è parte della collezione sperimentale.
+        records = {"documents": [{"doc_id": "1", "title": "Title only",
+                                  "text": "Abstract\r\nunchanged\rtext", "author": "A", "bib": "B"}],
+                   "queries": [], "qrels": []}
+        with tempfile.TemporaryDirectory() as tmp:
+            manifest = prepare_dataset(tmp, records, 1)
+            path = Path(tmp) / manifest["documents"][0]["path"]
+            self.assertEqual(path.read_bytes(), b"Abstract\nunchanged\ntext")
+            verify_dataset(tmp)
+
+    def test_negative_and_unjudged_stay_distinct(self):
+        results = [{"id": name, "filename": name, "score": 1.0} for name in ("a", "b", "c")]
+        mapping = {"a": "1", "b": "2", "c": "3"}
+        rows = annotate_results(results, mapping, {"1": -1, "2": 4})
+        self.assertEqual([r["judgment"] for r in rows], [-1, 4, None])
+        self.assertEqual([r["judgment_status"] for r in rows],
+                         ["judged_nonrelevant", "judged_relevant", "unjudged"])
+        self.assertEqual([r["binary_relevance_for_metrics"] for r in rows], [0, 1, 0])
+        with self.assertRaises(KeyError):
+            annotate_results(results, {"a": "1"}, {})
+
+    def test_duplicate_judgments_rejected(self):
+        row = {"query_id": "1", "doc_id": "2", "relevance": 4}
+        with self.assertRaises(ValueError):
+            qrels_by_query([row, row])
+
+    def test_full_ap_is_not_truncated_ap(self):
+        result = retrieval_metrics([str(i) for i in range(20)], {"0", "19", "absent"})
+        self.assertAlmostEqual(result["average_precision"], (1 + 2 / 20) / 3)
+        self.assertAlmostEqual(result["ap_at_10"], 1 / 3)
+        self.assertAlmostEqual(result["f1_at_10"], 2 * .1 * (1 / 3) / (.1 + 1 / 3))
+        means = aggregate_metrics([result, retrieval_metrics([], {"r"})])
+        self.assertAlmostEqual(means["map"], result["average_precision"] / 2)
+        self.assertAlmostEqual(means["map_at_10"], result["ap_at_10"] / 2)
 
 
 if __name__ == "__main__":

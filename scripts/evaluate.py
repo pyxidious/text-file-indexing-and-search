@@ -5,6 +5,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from irhome.dataset import ROOT
+from irhome.acquire import DEFAULT_CACHE
 from irhome.experiment import evaluate_collections, prepare_collections
 from irhome.io import read_json
 
@@ -12,10 +13,12 @@ from irhome.io import read_json
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "config" / "experiment.json")
-    parser.add_argument("--output", type=Path, default=Path("artifacts/experiment"))
+    parser.add_argument("--output", type=Path, default=Path("artifacts/cranfield-experiment"))
+    parser.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
+    parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
     config = read_json(args.config)
-    samples = prepare_collections(args.output, config)
+    samples = prepare_collections(args.output, config, args.cache, args.offline)
     evaluate_collections(args.output, config, samples)
     print(f"Risultati esportati in {args.output / 'results'}")
 

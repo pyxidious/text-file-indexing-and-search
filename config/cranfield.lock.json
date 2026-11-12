@@ -1,0 +1,12 @@
+{
+  "archive_sha256": "8c48a8412e4a7e6e0dd5af99c959f8d75fdf88135602adc1a56aa22770652d64",
+  "counts": {
+    "documents": 1400,
+    "qrels": 1837,
+    "queries": 225
+  },
+  "dataset": "cranfield",
+  "ir_datasets_version": "0.5.11",
+  "records_sha256": "4853b05b7512c154782e84fd703a918e682cea832386f61d3b467e5ff0e94940",
+  "source_manifest_sha256": "59b8dbd20c31d65fa142d9b3a82ada5e6f321d0a940d8f3b1c8beabdc762c2bd"
+}

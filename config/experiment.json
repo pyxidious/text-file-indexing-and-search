@@ -1,6 +1,8 @@
 {
-  "seed": 42,
-  "sizes": [100, 300, 600],
+  "dataset": "cranfield",
+  "sizes": [100, 300, 1400],
+  "main_size": 1400,
+  "relevance_threshold": 1,
   "repetitions": 5,
   "bm25": {"k1": 1.2, "b": 0.75}
 }
