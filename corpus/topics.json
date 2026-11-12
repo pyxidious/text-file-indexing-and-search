@@ -1,0 +1,109 @@
+{
+  "topics": [
+    {"id":"database", "title":"database relazionali", "terms":["transazioni", "tabelle", "SQL", "indici", "vincoli", "persistenza"], "sentences":[
+      "Un database relazionale organizza i dati in tabelle collegate da chiavi; il progetto parte dalle domande degli utenti.",
+      "Le transazioni raggruppano modifiche che devono riuscire insieme. Un registro permette di ricostruire lo stato dopo un arresto.",
+      "La scelta degli indici riduce le letture ma aumenta il costo degli aggiornamenti: misuriamo entrambi prima di cambiare lo schema.",
+      "Una query SQL combina selezione e aggregazione; i vincoli impediscono che riferimenti incompleti entrino nelle tabelle.",
+      "Il laboratorio confronta archivi normalizzati e copie ridondanti, osservando consistenza, spazio e tempo di risposta."
+    ]},
+    {"id":"distribuiti", "title":"sistemi distribuiti", "terms":["repliche", "consenso", "nodi", "latenza", "messaggi", "partizioni"], "sentences":[
+      "Nei sistemi distribuiti più nodi cooperano attraverso messaggi e non condividono un orologio perfetto.",
+      "Una replica può rispondere con dati vecchi: il protocollo deve rendere esplicita la consistenza promessa al lettore.",
+      "Il consenso coordina decisioni tra macchine, ma la perdita di collegamenti rende necessario distinguere ritardi e guasti.",
+      "Misuriamo la latenza di una richiesta sia con tutti i nodi attivi sia durante una partizione della rete.",
+      "Le code assorbono picchi di lavoro; identificativi stabili consentono di riconoscere messaggi duplicati senza ripetere gli effetti."
+    ]},
+    {"id":"ia", "title":"intelligenza artificiale", "terms":["reti neurali", "apprendimento", "modelli", "addestramento", "inferenza", "classificazione"], "sentences":[
+      "L'intelligenza artificiale costruisce modelli che generalizzano da esempi; il campione di verifica deve restare separato.",
+      "Le reti neurali trasformano rappresentazioni attraverso strati di parametri appresi durante l'addestramento.",
+      "Nella classificazione confrontiamo errori diversi: riconoscere sempre la classe frequente può nascondere problemi sui casi rari.",
+      "L'apprendimento richiede dati descritti con cura. Una divisione riproducibile dei campioni rende il confronto interpretabile.",
+      "L'inferenza applica un modello già stimato; registriamo memoria, tempo e qualità senza confondere queste misure."
+    ]},
+    {"id":"sicurezza", "title":"sicurezza informatica", "terms":["crittografia", "autenticazione", "minacce", "permessi", "chiavi", "integrità"], "sentences":[
+      "La sicurezza informatica parte da un modello delle minacce: descriviamo risorse, attori e confini di fiducia.",
+      "La crittografia protegge messaggi con chiavi; la gestione dei segreti conta quanto la scelta dell'algoritmo.",
+      "Autenticazione e autorizzazione rispondono a domande diverse: conoscere l'identità non concede ogni permesso.",
+      "Un controllo di integrità segnala modifiche ai dati. Le copie di recupero vengono provate prima di un incidente.",
+      "Il registro degli accessi aiuta l'analisi, purché non raccolga credenziali e abbia regole chiare di conservazione."
+    ]},
+    {"id":"reti", "title":"reti di calcolatori", "terms":["pacchetti", "instradamento", "protocolli", "congestione", "TCP", "indirizzi"], "sentences":[
+      "Le reti di calcolatori trasportano pacchetti attraverso collegamenti con capacità e ritardi differenti.",
+      "L'instradamento sceglie un percorso usando informazioni locali; un cambiamento può richiedere tempo per propagarsi.",
+      "I protocolli distinguono indirizzi e porte, così più applicazioni possono comunicare sullo stesso dispositivo.",
+      "Il controllo della congestione limita le trasmissioni quando le code crescono, evitando che ogni mittente occupi tutto il canale.",
+      "Un esperimento TCP registra perdita e latenza; una media isolata non racconta le attese peggiori."
+    ]},
+    {"id":"operativi", "title":"sistemi operativi", "terms":["processi", "memoria virtuale", "scheduler", "pagine", "kernel", "sincronizzazione"], "sentences":[
+      "I sistemi operativi assegnano risorse ai processi e offrono un'interfaccia uniforme verso dispositivi diversi.",
+      "La memoria virtuale separa gli indirizzi dei programmi dalla memoria fisica e rende visibili i costi degli accessi su disco.",
+      "Lo scheduler alterna i processi pronti; un carico interattivo richiede criteri diversi da un calcolo lungo.",
+      "Il kernel protegge strutture condivise con primitive di sincronizzazione, evitando aggiornamenti concorrenti incompleti.",
+      "Una pagina mancante sospende il lavoro corrente: osserviamo il numero di fault prima di attribuire tutto alla CPU."
+    ]},
+    {"id":"software", "title":"ingegneria del software", "terms":["test automatici", "requisiti", "moduli", "versionamento", "manutenzione", "revisione"], "sentences":[
+      "L'ingegneria del software traduce requisiti in moduli con responsabilità comprensibili e verificabili.",
+      "I test automatici descrivono comportamenti osservabili; esempi al confine trovano errori che i soli casi comuni non mostrano.",
+      "Il versionamento conserva decisioni e modifiche. Una revisione piccola rende più semplice capire il motivo di un cambiamento.",
+      "La manutenzione richiede nomi chiari e dipendenze limitate; un'interfaccia stabile riduce il lavoro dei chiamanti.",
+      "Prima di ottimizzare raccogliamo misure ripetute e distinguiamo un requisito reale da una preferenza di implementazione."
+    ]},
+    {"id":"web", "title":"sviluppo web", "terms":["HTTP", "browser", "cache", "accessibilità", "richieste", "sessioni"], "sentences":[
+      "Lo sviluppo web collega browser e server attraverso richieste HTTP con metodi e codici di risposta espliciti.",
+      "Una cache evita trasferimenti ripetuti, ma deve sapere quando una rappresentazione è diventata vecchia.",
+      "L'accessibilità richiede struttura semantica e controlli utilizzabili da tastiera; il colore da solo non basta.",
+      "Le sessioni associano richieste successive a uno stato. I cookie devono avere durata e ambito coerenti con il servizio.",
+      "Confrontiamo pagine statiche e risposte dinamiche registrando dimensione dei dati e tempo necessario al caricamento."
+    ]},
+    {"id":"cloud", "title":"cloud computing", "terms":["container", "scalabilità", "orchestrazione", "istanze", "servizi", "elasticità"], "sentences":[
+      "Il cloud computing rende disponibili risorse su richiesta; la facilità di avvio non elimina la necessità di misurare i costi.",
+      "I container raccolgono applicazione e dipendenze, mentre il sistema ospite continua a gestire isolamento e risorse.",
+      "L'orchestrazione distribuisce istanze tra macchine e ricrea quelle guaste secondo una configurazione dichiarata.",
+      "La scalabilità dipende anche dai servizi condivisi: aumentare i lavoratori non risolve un archivio già saturo.",
+      "L'elasticità segue il carico con un ritardo; simuliamo picchi brevi per capire se le nuove istanze arrivano in tempo."
+    ]},
+    {"id":"algoritmi", "title":"algoritmi e strutture dati", "terms":["complessità", "grafi", "ordinamento", "alberi", "ricerca binaria", "code"], "sentences":[
+      "Algoritmi e strutture dati vanno scelti insieme: lo stesso problema cambia costo quando cambia la rappresentazione.",
+      "La complessità descrive la crescita del lavoro, mentre una misura concreta include anche costanti e memoria disponibile.",
+      "La ricerca binaria dimezza un intervallo ordinato; mantenere l'ordine può però richiedere lavoro durante gli inserimenti.",
+      "Nei grafi una visita usa code o pile per ricordare i vertici da esplorare senza ripetere quelli già incontrati.",
+      "Confrontiamo alberi e vettori su sequenze di accessi diverse, distinguendo tempo di costruzione e tempo di interrogazione."
+    ]},
+    {"id":"dati", "title":"analisi dei dati", "terms":["statistica", "campioni", "visualizzazione", "mediana", "variabilità", "pulizia"], "sentences":[
+      "L'analisi dei dati inizia controllando origine, unità di misura e valori mancanti prima di produrre un grafico.",
+      "La statistica riassume campioni con ipotesi esplicite; una correlazione osservata non dimostra da sola un rapporto causale.",
+      "La mediana resiste a osservazioni estreme, ma riportiamo anche la variabilità per non nascondere differenze importanti.",
+      "La visualizzazione confronta distribuzioni su scale leggibili; etichette e denominatori sono parte del risultato.",
+      "La pulizia conserva una traccia delle trasformazioni, così un altro studente può ricostruire le stesse tabelle."
+    ]},
+    {"id":"iot", "title":"internet delle cose", "terms":["sensori", "attuatori", "telemetria", "energia", "dispositivi", "firmware"], "sentences":[
+      "Nell'internet delle cose i sensori raccolgono osservazioni fisiche e gli attuatori modificano l'ambiente secondo regole esplicite.",
+      "La telemetria viaggia da dispositivi con poca memoria: raggruppare campioni riduce trasmissioni ma aumenta l'attesa.",
+      "Il consumo di energia dipende dal tempo di radio attiva; un protocollo efficiente deve considerare anche la batteria.",
+      "Il firmware viene aggiornato con controlli di integrità e una strategia di recupero se la connessione cade.",
+      "Prima di confrontare sensori diversi annotiamo calibrazione e intervallo di misura, evitando di confondere precisione e frequenza."
+    ]}
+  ],
+  "headings": ["introduzione", "laboratorio", "guida pratica", "studio", "esercizi", "progetto", "misure", "appunti"],
+  "openings": [
+    "Questi appunti descrivono {title} attraverso esempi di un piccolo laboratorio universitario.",
+    "Il gruppo studia {title} partendo da un servizio locale e da obiettivi misurabili.",
+    "Una guida a {title} deve collegare concetti, scelte progettuali e osservazioni sperimentali."
+  ],
+  "term_templates": [
+    "Nel quaderno annotiamo {a}, {b} e {c}, spiegando come influenzano il caso osservato.",
+    "L'esercizio confronta {a} e {b}; la discussione su {c} aiuta a interpretare i risultati.",
+    "Il rapporto dedica una scheda a {a}, una a {b} e una a {c}."
+  ],
+  "shared": [
+    "Dati, memoria e prestazioni compaiono in molti progetti: definiamo prima quali risorse contare.",
+    "La sicurezza del servizio dipende anche da configurazione, aggiornamenti e responsabilità delle persone.",
+    "Una rete lenta può condizionare database, cloud e applicazioni web nello stesso esperimento.",
+    "I test confrontano risultati attesi e osservati, conservando configurazione e casi di errore.",
+    "Un modello utile dichiara i propri limiti e non sostituisce le misure raccolte sui casi concreti.",
+    "L'analisi delle prestazioni richiede un protocollo: ripetiamo le misure e annotiamo le condizioni.",
+    "Un processo automatico legge file, invia messaggi e conserva un registro delle operazioni completate.",
+    "La ricerca di informazioni collega algoritmi, indici e valutazione della qualità dei dati."
+  ]
+}

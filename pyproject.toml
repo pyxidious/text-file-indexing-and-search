@@ -1,0 +1,9 @@
+[project]
+name = "text-file-indexing-and-search"
+version = "1.0.0"
+description = "Motore di ricerca posizionale e benchmark riproducibile, solo standard library"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.unittest]
+start-directory = "tests"

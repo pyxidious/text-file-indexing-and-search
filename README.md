@@ -19,12 +19,6 @@ python -m venv .venv
 python scripts/reproduce.py
 ```
 
-Il comando unico valida ambiente e configurazione, genera e verifica 100, 300 e
-600 documenti, costruisce e salva gli indici, esegue `unittest`, interroga gli
-indici, verifica i risultati contro la lettura diretta ed esporta metriche e
-misure. Un errore di hash, test o correttezza interrompe l'esecuzione con codice
-diverso da zero. La configurazione versionata è `config/experiment.json`.
-
 ## Comandi separati
 
 ```powershell
