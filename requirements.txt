@@ -1,1 +1,0 @@
-# Python >=3.10: solo libreria standard, nessuna dipendenza da installare.

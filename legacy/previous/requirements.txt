@@ -1,3 +1,0 @@
-# Solo acquisizione/preparazione: il motore e le metriche non importano ir_datasets.
--c requirements-lock.txt
-ir_datasets==0.5.11

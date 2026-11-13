@@ -1,6 +1,6 @@
 [project]
 name = "text-file-indexing-and-search"
 version = "4.0.0"
-description = "Homework 3: motore posizionale e ground truth lessicale autonoma"
+description = "Homework 3: ricerca posizionale AND/OR, BM25 e valutazione semantica"
 requires-python = ">=3.10"
 dependencies = []
