@@ -1,6 +1,5 @@
 {
   "classification_date": "2026-11-13",
-  "classification_timezone": "Europe/Rome",
   "corpus": {
     "identity": {
       "0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt": "4c56d085afcf4a68ed1bfb8c83106b6466d7fb2f3c143bb0ca922d26bc5194a7",
@@ -306,16 +305,21 @@
     },
     "metadata_path": "corpus/metadata.csv",
     "metadata_sha256": "d301f1bb5f1666cfa8714855acaf68483912b883da67df5ba73a8b3572a11572",
+    "metadata_use": "Solo identificazione e integrita; titoli esclusi dal riesame.",
     "root": "corpus/documents"
   },
   "counts": {
+    "annotations_compared": 40,
     "confidence": {
-      "alta": 173,
+      "alta": 175,
       "bassa": 5,
-      "media": 22
+      "media": 20
     },
+    "discrepancies_v1": 7,
+    "discrepancies_v2": 6,
+    "label_changes": 2,
     "positive_by_query": {
-      "Q01": 6,
+      "Q01": 4,
       "Q02": 2,
       "Q03": 4,
       "Q04": 7,
@@ -326,7 +330,7 @@
       "Q09": 6,
       "Q10": 12
     },
-    "review_pairs": 33
+    "review_pairs": 38
   },
   "criteria": {
     "path": "evaluation/semantic/criteria.csv",
@@ -334,198 +338,229 @@
   },
   "definitive_annotations": {
     "modified": false,
-    "note": "File preesistente con giudizi; non usato per decidere le proposte e non sovrascritto.",
     "path": "evaluation/semantic/annotations.csv",
+    "populated_labels": 40,
+    "review_status": "Provenienza e revisione umana delle etichette preesistenti non attestate.",
     "sha256_after": "ed5d9075bd4d27d238b61650758cc8516347c2478d9b43a81e7eb53badc7bd0c",
     "sha256_before": "ed5d9075bd4d27d238b61650758cc8516347c2478d9b43a81e7eb53badc7bd0c"
   },
+  "indexed_name_definition": {
+    "analyzer_sha256": "9d3fb5fc6e97d44fc3731c9f94117997128c0be79cac5e118fbfa3e2a7830aa7",
+    "decision_evidence": "Basename reale senza estensione .txt; ID e separatori conservati nella traccia, underscore leggibili come separatori; nessun completamento del testo troncato.",
+    "note": "Nessuna ricerca o regola di presenza dei termini utilizzata per attribuire etichette semantiche.",
+    "source": "irhome/analyzers.py:FilenameAnalyzer"
+  },
+  "lineage": {
+    "version1_directory": "history/v1_metadata_titles",
+    "version1_files_sha256": {
+      "calibration_labels.csv": "6705f2b176ea8c9dad7ef4f0164818b4028253123ef2feb7d0f70a48f2c46059",
+      "calibration_manifest.json": "4e9b3ea582809e3139be538facc7e9b09b749531574f2fbdaa6c16815b799f14",
+      "calibration_review.csv": "19be707b5958fa8d8384d99879f8a960e56307b9a0ffeb401296b0be63492b82"
+    },
+    "version1_limitation": "Q01-Q05 usavano anche titoli completi dei metadati: metodo non coerente con il campo nome indicizzato.",
+    "version2_correction": "Riesame esclusivo Q01-Q05 sui basename reali senza estensione .txt. Non sono state ricostruite le parti troncate."
+  },
   "method": {
-    "classifier": "Codex: lettura integrale e giudizi semantici redatti singolarmente documento per documento.",
-    "confidence": "alta: rilevanza o esclusione chiara; media: inferenza o confine da discutere; bassa: informazioni insufficienti o due letture plausibili, decisione binaria provvisoria.",
-    "content_queries": "Q06-Q10: testo integrale del file originale; nessuna integrazione esterna.",
-    "evidence": "Citazioni brevi nei reason, con eventuale normalizzazione degli a capo; verificate rispetto al campo consentito.",
-    "excluded_decision_sources": [
-      "ground truth lessicale storica",
-      "risultati del motore",
-      "ranking BM25",
-      "qrels e query ufficiali Cranfield",
-      "annotazioni definitive"
-    ],
+    "annotation_comparison": "Confronto documentale successivo alle decisioni; etichette preesistenti non usate per riclassificare, correggere o ottimizzare.",
+    "classifier": "Codex: riesame semantico individuale dei 100 giudizi nome.",
+    "content_queries": "Q06-Q10: righe della versione 1 copiate inalterate, inclusi giudizi, confidenze e motivazioni; nessuna nuova lettura o classificazione.",
     "ground_truth_frozen": false,
     "human_review_performed": false,
-    "label_assignment": "200 decisioni individuali; nessuna classificazione tramite regole lessicali.",
     "retrieval_evaluation_performed": false,
-    "review_selection": "Tutti i giudizi media/bassa e sei casi ad alta confidenza per equivalenze semantiche o confini dei criteri.",
-    "title_queries": "Q01-Q05: solo titolo completo dei metadati e nome file; nessuna evidenza dal corpo."
+    "title_queries": "Q01-Q05: esclusivamente basename reale indicizzato; esclusi titolo completo dei metadati e testo."
   },
   "model": {
     "assistant": "Codex",
     "exact_model_identifier": null,
     "note": "Identificativo esatto del modello non disponibile nella sessione."
   },
-  "output_sha256": {
-    "calibration_labels.csv": "6705f2b176ea8c9dad7ef4f0164818b4028253123ef2feb7d0f70a48f2c46059",
-    "calibration_review.csv": "19be707b5958fa8d8384d99879f8a960e56307b9a0ffeb401296b0be63492b82"
+  "output_descriptions": {
+    "annotation_comparison.csv": "Confronto con tutte le 40 etichette preesistenti.",
+    "annotation_discrepancies.csv": "Le sei discrepanze correnti da confermare manualmente; nessuna correzione applicata.",
+    "calibration_comparison.csv": "200 coppie v1/v2 con etichette, confidenze, motivazioni e flag di riesame/cambiamento.",
+    "calibration_labels.csv": "200 proposte correnti; 100 riesaminate, 100 ereditate.",
+    "calibration_review.csv": "Coda di attenzione con campi umani vuoti: incertezze, cambiamenti metodologici e discrepanze."
   },
-  "prompt": "Nel repository `pyxidious/text-file-indexing-and-search` vogliamo costruire una ground truth semantica con classificazione assistita da Codex e successiva supervisione umana.\n\nPer il momento esegui SOLTANTO una calibrazione sui primi 20 documenti del corpus, ordinati per ID stabile.\n\n### Obiettivo\n\nClassifica ciascuno dei 20 documenti rispetto alle dieci query definitive presenti in `evaluation/queries.csv`, seguendo rigorosamente i bisogni informativi e i criteri di `evaluation/semantic/criteria.csv`.\n\nNon utilizzare le annotazioni lessicali precedenti, i risultati del motore di ricerca, i ranking BM25 o i qrels ufficiali Cranfield per decidere la rilevanza.\n\n### Regole di classificazione\n\n- Per le query `nome`, valuta soltanto il titolo/nome del documento.\n- Per le query `contenuto`, leggi l'intero testo.\n- Assegna `1` se il documento e semanticamente rilevante rispetto al bisogno informativo, `0` altrimenti.\n- Non richiedere necessariamente la presenza delle parole esatte della query.\n- Una menzione incidentale non basta a stabilire la rilevanza.\n- In caso di ambiguita, segnala esplicitamente l'incertezza invece di inventare una motivazione.\n- Non usare semplici regole di presenza delle parole per generare le etichette.\n\n### Output\n\nCrea in una directory separata `evaluation/semantic/codex_proposals/`:\n\n1. `calibration_labels.csv`: 200 righe, una per coppia query-documento, con `doc_id`, `query_id`, `proposed_label`, `confidence` (alta/media/bassa), `reason`.\n2. `calibration_review.csv`: le coppie a bassa confidenza e quelle che richiedono particolare attenzione, con campi vuoti per annotazione e correzione umana.\n3. `calibration_manifest.json`: identificazione del corpus, hash dei criteri e delle query, data della classificazione, prompt e identificativo del modello se disponibile.\n\nLe motivazioni devono riferirsi al contenuto effettivo dei documenti. Per i casi difficili, riporta anche una breve evidenza testuale.\n\n### Vincoli\n\nNon modificare il motore, gli analyzer, il corpus, le query o i criteri di rilevanza.\n\nNon sovrascrivere `evaluation/semantic/annotations.csv`, che contiene le annotazioni definitive destinate alla supervisione umana.\n\nNon compilare automaticamente campi che attestano una revisione umana.\n\nNon congelare la ground truth e non calcolare metriche.\n\n### Verifiche\n\nControlla che:\n\n- Siano stati analizzati esattamente 20 documenti distinti.\n- Per ogni documento esistano esattamente 10 giudizi.\n- Siano presenti 200 coppie distinte.\n- Tutte le motivazioni siano non vuote e basate sui documenti.\n- Le proposte rimangano separate dalle annotazioni definitive.\n\nAl termine, restituisci una sintesi dei 20 documenti, dei giudizi positivi per query e dei casi incerti da discutere con noi.\n\nNon estendere la classificazione ai restanti 280 documenti finche non avremo verificato questa calibrazione.",
-  "prompt_note": "Trascrizione del prompt utente con accenti italiani normalizzati in ASCII; contenuto e vincoli conservati.",
+  "output_sha256": {
+    "annotation_comparison.csv": "3ad2a299c18bc05735e85baefaa04ea6070822d2aeec96c9b01d215bd0137b8a",
+    "annotation_discrepancies.csv": "0fa215013543553268bec17ea5b44724ec0023cf7b2c79786bf76deb640ca639",
+    "calibration_comparison.csv": "9bf7fc5a213d60c3d61d2eeb66f58b4e7145e5223f0b827031746c8137fa45eb",
+    "calibration_labels.csv": "4fb1c12df6ee9107447e319eeca1a9a2975f97d557f5eb331c164c094296cc0d",
+    "calibration_review.csv": "e0fbedd83fdefbf0e070d1505889d2f10375767c4a52f098e39aaa127aaa27ef"
+  },
+  "prompt": "Rivedi la calibrazione semantica dei primi 20 documenti nel repository `pyxidious/text-file-indexing-and-search`.\n\nAbbiamo individuato un problema metodologico: per Q01-Q05 hai utilizzato anche i titoli completi dei metadati, mentre il motore indicizza soltanto il basename effettivo dei file `.txt`, spesso troncato.\n\nProcedi cosi:\n1. Riesamina esclusivamente le classificazioni Q01-Q05 dei primi 20 documenti, giudicando la rilevanza dal nome effettivamente indicizzato, senza ricorrere al titolo completo o al contenuto.\n2. Mantieni invariati i criteri semantici e le query.\n3. Controlla in particolare Q01 dei documenti 0009 e 0058, per i quali il titolo completo contiene informazioni assenti dal filename.\n4. Conserva le precedenti proposte di calibrazione come versione storica e produci un confronto con la versione corretta.\n5. Verifica le discrepanze fra le proposte e le 40 etichette gia compilate in `evaluation/semantic/annotations.csv`, con particolare attenzione ai documenti 0009 e 0010.\n6. Non modificare automaticamente le etichette gia compilate e non attestare alcuna revisione umana.\n7. Non modificare il motore, il corpus, i criteri, le query, il benchmark o le formule delle metriche.\n8. Non classificare ancora gli altri 280 documenti.\n\nRestituisci una tabella delle etichette cambiate, con motivazioni, e una lista delle discrepanze da confermare manualmente. Mantieni la riproducibilita degli output attraverso gli hash e il manifest.",
+  "prompt_note": "Accenti italiani e trattini Unicode del prompt normalizzati in ASCII; istruzioni conservate.",
   "queries": {
     "path": "evaluation/queries.csv",
     "sha256": "53076ad336fdd6049fcb598429fd2cc310132bb4b8c45210e317dc3a1e8bd822"
   },
-  "review_fields": {
-    "corrected_label": "Eventuale correzione umana della proposta: 0 oppure 1; lasciare vuoto se non necessaria.",
-    "human_label": "Giudizio assegnato dal revisore umano: 0 oppure 1.",
-    "human_reason": "Motivazione o nota del revisore umano.",
-    "reviewed_at": "Data della revisione umana effettivamente svolta.",
-    "reviewed_by": "Identita del revisore umano effettivo."
-  },
+  "revision_date": "2026-11-13",
+  "revision_recorded_at_utc": "2026-11-13T11:49:16Z",
+  "revision_timezone": "Europe/Rome",
   "scope": {
-    "classified_documents": 20,
+    "calibration_documents": 20,
     "corpus_documents": 300,
-    "pairs": 200,
-    "queries_per_document": 10,
+    "inherited_unchanged_pairs": 100,
+    "queries_inherited_unchanged": [
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10"
+    ],
+    "queries_reassessed": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05"
+    ],
+    "reassessed_pairs": 100,
     "remaining_documents_not_classified": 280,
-    "selection": "Primi 20 doc_id in ordine lessicografico crescente; ID stabile uguale al percorso relativo POSIX nel corpus."
+    "selection": "Primi 20 doc_id in ordine lessicografico di percorso relativo POSIX.",
+    "total_pairs": 200
   },
   "selected_documents": [
     {
       "doc_id": "0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt",
+      "indexed_basename": "0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate",
       "sha256": "4c56d085afcf4a68ed1bfb8c83106b6466d7fb2f3c143bb0ca922d26bc5194a7",
-      "source_file": "corpus/documents/0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt",
-      "title": "the boundary layer in simple shear flow past a flat plate ."
+      "source_file": "corpus/documents/0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt"
     },
     {
       "doc_id": "0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt",
+      "indexed_basename": "0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for",
       "sha256": "2da834c3e086413bfa60857b12d9a1caced0a40d8919b82d42332dd401ff63a7",
-      "source_file": "corpus/documents/0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt",
-      "title": "approximate solutions of the incompressible laminar\nboundary layer equations for a plate in shear flow ."
+      "source_file": "corpus/documents/0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt"
     },
     {
       "doc_id": "0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt",
+      "indexed_basename": "0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at",
       "sha256": "9f3abf1177e9d4b5241a2a4624c25e38be077e5ea0fcccd67a5ca18acf8e1ba1",
-      "source_file": "corpus/documents/0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt",
-      "title": "transition studies and skin friction measurements on\nan insulated flat plate at a mach number of 5.8 ."
+      "source_file": "corpus/documents/0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt"
     },
     {
       "doc_id": "0010_the_theory_of_the_impact_tube_at_low_pressure.txt",
+      "indexed_basename": "0010_the_theory_of_the_impact_tube_at_low_pressure",
       "sha256": "e75be941ca3c218fcf74bdd51990b2c8497dcc3573d08e378cd6851d1462a821",
-      "source_file": "corpus/documents/0010_the_theory_of_the_impact_tube_at_low_pressure.txt",
-      "title": "the theory of the impact tube at low pressure ."
+      "source_file": "corpus/documents/0010_the_theory_of_the_impact_tube_at_low_pressure.txt"
     },
     {
       "doc_id": "0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt",
+      "indexed_basename": "0012_some_structural_and_aerelastic_considerations_of_high_speed_flight",
       "sha256": "eb1b0e3a7a54a68a0306550827dcbe92303b4359e9697750769c00eb3ec7cf18",
-      "source_file": "corpus/documents/0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt",
-      "title": "some structural and aerelastic considerations of high\nspeed flight ."
+      "source_file": "corpus/documents/0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt"
     },
     {
       "doc_id": "0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
+      "indexed_basename": "0016_transformation_of_the_compressible_turbulent_boundary_layer",
       "sha256": "ec6831e6e4c0f80c38f538304abcee35454587061a55951342d06f528e843048",
-      "source_file": "corpus/documents/0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
-      "title": "transformation of the compressible turbulent boundary\nlayer ."
+      "source_file": "corpus/documents/0016_transformation_of_the_compressible_turbulent_boundary_layer.txt"
     },
     {
       "doc_id": "0022_on_slip_flow_heat_transfer_to_a_flat_plate.txt",
+      "indexed_basename": "0022_on_slip_flow_heat_transfer_to_a_flat_plate",
       "sha256": "36e8cbad44576e6aedeb5c5384aa7e7e1efb7e0b50ea8f9a41d046c62058acf5",
-      "source_file": "corpus/documents/0022_on_slip_flow_heat_transfer_to_a_flat_plate.txt",
-      "title": "on slip-flow heat transfer to a flat plate ."
+      "source_file": "corpus/documents/0022_on_slip_flow_heat_transfer_to_a_flat_plate.txt"
     },
     {
       "doc_id": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
+      "indexed_basename": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a",
       "sha256": "696de4f838d39a414b5b70b59b4c9a5c91892850435aa2af773c80bc62f4453e",
-      "source_file": "corpus/documents/0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
-      "title": "skin-friction and heat transfer characteristics of\na laminar boundary layer on a cylinder in axial incompressible\nflow ."
+      "source_file": "corpus/documents/0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt"
     },
     {
       "doc_id": "0033_the_prospects_for_magneto_aerodynamics.txt",
+      "indexed_basename": "0033_the_prospects_for_magneto_aerodynamics",
       "sha256": "e378ac42d04bcf02dfd3e0c04d97ce0c7d68061ad49d76e54da592e31bbd240c",
-      "source_file": "corpus/documents/0033_the_prospects_for_magneto_aerodynamics.txt",
-      "title": "the prospects for magneto-aerodynamics ."
+      "source_file": "corpus/documents/0033_the_prospects_for_magneto_aerodynamics.txt"
     },
     {
       "doc_id": "0034_constant_temperature_magneto_gasdynamic_channel_flow.txt",
+      "indexed_basename": "0034_constant_temperature_magneto_gasdynamic_channel_flow",
       "sha256": "f60cb5daf320c829a1b23596862697d3941c144ff5e0540921ebb5a05282668a",
-      "source_file": "corpus/documents/0034_constant_temperature_magneto_gasdynamic_channel_flow.txt",
-      "title": "constant-temperature magneto-gasdynamic channel flow ."
+      "source_file": "corpus/documents/0034_constant_temperature_magneto_gasdynamic_channel_flow.txt"
     },
     {
       "doc_id": "0035_stagnation_point_of_a_blunt_body_in_hypersonic_flow.txt",
+      "indexed_basename": "0035_stagnation_point_of_a_blunt_body_in_hypersonic_flow",
       "sha256": "4dd97a3b09af5496a886e0a2365a585be8d98b5963c1f87277990c492579eb87",
-      "source_file": "corpus/documents/0035_stagnation_point_of_a_blunt_body_in_hypersonic_flow.txt",
-      "title": "stagnation point of a blunt body in hypersonic flow ."
+      "source_file": "corpus/documents/0035_stagnation_point_of_a_blunt_body_in_hypersonic_flow.txt"
     },
     {
       "doc_id": "0038_on_the_prediction_of_mixed_subsonic_supersonic_pressure_distributions.txt",
+      "indexed_basename": "0038_on_the_prediction_of_mixed_subsonic_supersonic_pressure_distributions",
       "sha256": "444b7abf7b6b9677b98c646f06b5b157f35bd8de03386dc90ef594be380623fa",
-      "source_file": "corpus/documents/0038_on_the_prediction_of_mixed_subsonic_supersonic_pressure_distributions.txt",
-      "title": "on the prediction of mixed subsonic/supersonic pressure\ndistributions ."
+      "source_file": "corpus/documents/0038_on_the_prediction_of_mixed_subsonic_supersonic_pressure_distributions.txt"
     },
     {
       "doc_id": "0041_on_transition_experiments_at_moderate_supersonic_speeds.txt",
+      "indexed_basename": "0041_on_transition_experiments_at_moderate_supersonic_speeds",
       "sha256": "85d9dce5cd813fbd1db2f548fd6adf37bc3714f3a5466f373372413a0af4c483",
-      "source_file": "corpus/documents/0041_on_transition_experiments_at_moderate_supersonic_speeds.txt",
-      "title": "on transition experiments at moderate supersonic speeds ."
+      "source_file": "corpus/documents/0041_on_transition_experiments_at_moderate_supersonic_speeds.txt"
     },
     {
       "doc_id": "0045_an_investigation_of_separated_flows_part_ii_flow_in_the_cavity_and_heat_transfer.txt",
+      "indexed_basename": "0045_an_investigation_of_separated_flows_part_ii_flow_in_the_cavity_and_heat_transfer",
       "sha256": "9df31c5c6d3ce79d01f84d2da124c85ee5df2e1ca785ac93acac02f84734a27b",
-      "source_file": "corpus/documents/0045_an_investigation_of_separated_flows_part_ii_flow_in_the_cavity_and_heat_transfer.txt",
-      "title": "an investigation of separated flows, part ii: flow\nin the cavity and heat transfer ."
+      "source_file": "corpus/documents/0045_an_investigation_of_separated_flows_part_ii_flow_in_the_cavity_and_heat_transfer.txt"
     },
     {
       "doc_id": "0049_temperature_and_velocity_profiles_in_the_compressible_laminar_boundary_layer_wit.txt",
+      "indexed_basename": "0049_temperature_and_velocity_profiles_in_the_compressible_laminar_boundary_layer_wit",
       "sha256": "8041ee978f24eb8b13196ac20731b380be610c8b011ec00a58e40150a4864732",
-      "source_file": "corpus/documents/0049_temperature_and_velocity_profiles_in_the_compressible_laminar_boundary_layer_wit.txt",
-      "title": "temperature and velocity profiles in the compressible\nlaminar boundary layer with arbitrary distribution\nof surface temperature ."
+      "source_file": "corpus/documents/0049_temperature_and_velocity_profiles_in_the_compressible_laminar_boundary_layer_wit.txt"
     },
     {
       "doc_id": "0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco.txt",
+      "indexed_basename": "0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco",
       "sha256": "86b4b7e2a57bfdda707136105b8c316553d6351c24af67cd67559a0184a14a2d",
-      "source_file": "corpus/documents/0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco.txt",
-      "title": "investigation of laminar boundary layer in compressible\nfluids using the crocco method ."
+      "source_file": "corpus/documents/0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco.txt"
     },
     {
       "doc_id": "0057_applicability_of_the_hypersonic_similarity_rule_to_pressure_distributions_which.txt",
+      "indexed_basename": "0057_applicability_of_the_hypersonic_similarity_rule_to_pressure_distributions_which",
       "sha256": "87980078c0b4178eebe906a139c9d3dd14607863f87a60f53f6574377f8ebf9a",
-      "source_file": "corpus/documents/0057_applicability_of_the_hypersonic_similarity_rule_to_pressure_distributions_which.txt",
-      "title": "applicability of the hypersonic similarity rule to\npressure distributions which include the effects of\nrotation for bodies of revolution at zero angle of\nattack ."
+      "source_file": "corpus/documents/0057_applicability_of_the_hypersonic_similarity_rule_to_pressure_distributions_which.txt"
     },
     {
       "doc_id": "0058_pressure_measurements_on_sharp_and_blunt_5_and_15_half_angle_cones_at_mach_numbe.txt",
+      "indexed_basename": "0058_pressure_measurements_on_sharp_and_blunt_5_and_15_half_angle_cones_at_mach_numbe",
       "sha256": "27ddeef438e11f03bc970d74312ea9a11168f50441965268d9bd360f1568a658",
-      "source_file": "corpus/documents/0058_pressure_measurements_on_sharp_and_blunt_5_and_15_half_angle_cones_at_mach_numbe.txt",
-      "title": "pressure measurements on sharp and blunt 5 and 15 half-angle\ncones at mach number 3.86 and angles of attack to\n100 ."
+      "source_file": "corpus/documents/0058_pressure_measurements_on_sharp_and_blunt_5_and_15_half_angle_cones_at_mach_numbe.txt"
     },
     {
       "doc_id": "0069_predicted_shock_envelopes_about_two_types_of_vehicles_at_large_angles_of_attack.txt",
+      "indexed_basename": "0069_predicted_shock_envelopes_about_two_types_of_vehicles_at_large_angles_of_attack",
       "sha256": "b0886314ff86eab9ebd9a4588f72b25244bef756cd621076edd5b44fefa0211d",
-      "source_file": "corpus/documents/0069_predicted_shock_envelopes_about_two_types_of_vehicles_at_large_angles_of_attack.txt",
-      "title": "predicted shock envelopes about two types of vehicles\nat large angles of attack ."
+      "source_file": "corpus/documents/0069_predicted_shock_envelopes_about_two_types_of_vehicles_at_large_angles_of_attack.txt"
     },
     {
       "doc_id": "0092_the_analysis_of_redundant_structures_by_the_use_of_high_speed_digital_computers.txt",
+      "indexed_basename": "0092_the_analysis_of_redundant_structures_by_the_use_of_high_speed_digital_computers",
       "sha256": "f1e32e73da5e0558e316961692dba6c30ac04f74e65e20a12588d5600139fe71",
-      "source_file": "corpus/documents/0092_the_analysis_of_redundant_structures_by_the_use_of_high_speed_digital_computers.txt",
-      "title": "the analysis of redundant structures by the use of\nhigh-speed digital computers ."
+      "source_file": "corpus/documents/0092_the_analysis_of_redundant_structures_by_the_use_of_high_speed_digital_computers.txt"
     }
   ],
-  "status": "codex_semantic_calibration_proposals_pending_human_supervision",
+  "status": "codex_semantic_calibration_basename_only_pending_human_supervision",
   "validation": {
-    "all_reasons_nonempty": true,
-    "all_source_quotes_match_allowed_field": true,
-    "csv_roundtrip_verified": true,
+    "all_name_quotes_match_real_basename": true,
+    "content_query_rows_unchanged": true,
     "distinct_documents": 20,
     "distinct_pairs": 200,
     "human_review_fields_empty": true,
     "judgments_per_document": 10,
+    "name_evidence_quotes_checked": 8,
     "protected_files_and_corpus_unchanged": true,
     "protected_files_sha256_before": {
       "corpus/metadata.csv": "d301f1bb5f1666cfa8714855acaf68483912b883da67df5ba73a8b3572a11572",
+      "evaluation/benchmark.json": "4599557d96b39c3384fe1798d1dc5218592d2aa06918735b434a4aab860111c1",
       "evaluation/queries.csv": "53076ad336fdd6049fcb598429fd2cc310132bb4b8c45210e317dc3a1e8bd822",
       "evaluation/semantic/annotations.csv": "ed5d9075bd4d27d238b61650758cc8516347c2478d9b43a81e7eb53badc7bd0c",
       "evaluation/semantic/criteria.csv": "91f8dbb91f80f1876761e22ed3f2f8382d0f8110088c2a3e7a4bfc13e383ae73",
       "evaluation/semantic/prepared.json": "1ea59c2a4c5c0fff4e917263431ddfb2e5efb8968a56744be5790b6c806a34e3",
+      "evaluation/timing_samples.csv": "b22dbf61a3998d6ee8eaca8adc5e1417c447e39e8d5a5af553bd5b12450b824b",
+      "evaluation/timing_summary.csv": "ab2f147a2d584c70e8b69a4a01ba16a98bd9c63d1e074d654e3f6b90feda7797",
       "irhome/__init__.py": "f8901fa2b06f8df60338f781e53eca379b7b7a808c1df931c8b9212a9c51ce1d",
       "irhome/analyzers.py": "9d3fb5fc6e97d44fc3731c9f94117997128c0be79cac5e118fbfa3e2a7830aa7",
       "irhome/benchmark.py": "9bc76057e1308b8994d45dfe93c375f3c5d11b53c2d376be5de1e65b3c863bd6",
@@ -544,8 +579,8 @@
       "scripts/search.py": "3fa1be36ac127014a0b584f58f091f7d8916798f8d11a7031e384272f6adaee3",
       "scripts/semantic_ground_truth.py": "ec2858ca2a0afc2f4b875f206d26c25621ee414f6c6627865ef594e9afc6aba7"
     },
-    "review_covers_all_medium_and_low_confidence": true,
     "semantic_quality_status": "pending_human_supervision",
-    "source_quotes_checked": 47
-  }
+    "version1_archived_byte_for_byte": true
+  },
+  "version": 2
 }
