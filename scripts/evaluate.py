@@ -13,10 +13,12 @@ def main():
     parser.add_argument("--queries", default="evaluation/queries.csv")
     parser.add_argument("--ground-truth", default="evaluation/semantic")
     parser.add_argument("--metadata", default="corpus/metadata.csv")
-    parser.add_argument("--output", default="artifacts/homework/results")
+    parser.add_argument("--output", help="Default: results per AND, results_or per OR")
+    parser.add_argument("--strategy", choices=("and", "or"), default="and",
+                        help="Matching dei termini non quotati; le phrase query restano invariate")
     args = parser.parse_args()
     try:
-        evaluate(args.documents, args.queries, args.ground_truth, args.output, args.metadata)
+        evaluate(args.documents, args.queries, args.ground_truth, args.output, args.metadata, strategy=args.strategy)
     except (ValueError, FileNotFoundError) as error:
         parser.exit(2, str(error) + "\n")
 
