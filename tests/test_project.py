@@ -1,6 +1,8 @@
 import csv
 import math
 import os
+import contextlib
+import io
 from pathlib import Path
 import tempfile
 import unittest
@@ -9,13 +11,16 @@ from unittest.mock import patch
 from irhome.analyzers import ContentAnalyzer, FilenameAnalyzer
 from irhome.acquire import DEFAULT_CACHE, acquire, load_snapshot, validate_records
 from irhome.dataset import (document_filename, document_mapping, normalized_newlines,
-                            prepare_dataset, verify_dataset)
+                            prepare_dataset, select_documents, verify_dataset)
 from irhome.engine import SearchEngine, parse_query
 from irhome.experiment import (aggregate_metrics, annotate_results, check_functional,
                                check_mapping, qrels_by_query, summarize_timings, validate_config)
 from irhome.io import read_json, sha256
 from irhome.metrics import retrieval_metrics
 from irhome.oracle import direct_scan
+from irhome.protocol import coverage_and_split
+from irhome.strategies import required_matches
+from irhome.comparison import choose_strategy
 
 
 class AnalyzerTests(unittest.TestCase):
@@ -143,6 +148,67 @@ class EngineTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 SearchEngine(k1, b)
 
+    def test_candidate_strategies_and_rounding(self):
+        query = "contenuto reti neurali profonde"
+        def ids(mode, quota):
+            return {r["id"] for r in self.engine.search(query, mode, quota)}
+        self.assertEqual(ids("and", 1), {"database_relazionali.txt"})
+        self.assertEqual(ids("msm", .7), ids("and", 1))
+        self.assertEqual(ids("msm", .5), self.ids("contenuto reti"))
+        self.assertEqual(ids("msm", .3), self.ids("contenuto reti"))
+        for mode, ratio in (("or", .5), ("or_stop", .5), ("msm", .3), ("msm", .5), ("msm", .7), ("and", 1)):
+            self.assertEqual(ids(mode, ratio), direct_scan(self.root, query, mode, ratio))
+        self.assertEqual(required_matches("msm", 100, .07), 7)
+        self.assertEqual(required_matches("msm", 1, .3), 1)
+        self.assertEqual(required_matches("msm", 2, .7), 2)
+        self.assertEqual(required_matches("msm", 0, .5), 0)
+
+    def test_stopwords_zero_terms_and_ranking(self):
+        for mode in ("or_stop", "msm", "and"):
+            self.assertEqual(self.engine.search("contenuto the of and", mode), [])
+            self.assertEqual({r["id"] for r in self.engine.search("contenuto e reti", mode)},
+                             direct_scan(self.root, "contenuto e reti", mode))
+        self.assertEqual(self.engine.search("contenuto the reti", "or_stop"), self.engine.search("contenuto reti"))
+
+    def test_english_stopwords_removed_from_scores(self):
+        (self.root / "english.txt").write_text("the the the reti", encoding="utf-8")
+        self.engine = SearchEngine.build(self.root)
+        self.assertEqual(self.engine.search("contenuto the reti", "or_stop"), self.engine.search("contenuto reti"))
+        self.assertNotEqual(self.engine.search("contenuto the reti"), self.engine.search("contenuto reti"))
+        for mode in ("or_stop", "msm", "and"):
+            self.assertEqual(self.engine.search('contenuto "di un"', mode), self.engine.search('contenuto "di un"'))
+            self.assertEqual(self.engine.search("nome sistemi distribuiti", mode), self.engine.search("nome sistemi distribuiti"))
+
+    def test_distinct_terms_and_out_of_vocabulary(self):
+        self.assertEqual(self.engine.search("contenuto reti reti", "and"), self.engine.search("contenuto reti reti"))
+        self.assertEqual(self.engine.search("contenuto reti absentxyz", "and"), [])
+        self.assertEqual(self.engine.search("contenuto reti absentxyz", "msm", .7), [])
+        self.assertEqual(self.engine.search("contenuto reti absentxyz", "msm", .5), self.engine.search("contenuto reti"))
+        for mode, ratio in (("invalid", .5), ("msm", 0), ("msm", 1.1), ("msm", float("nan"))):
+            with self.assertRaises(ValueError):
+                self.engine.search("contenuto reti", mode, ratio)
+
+    def test_search_does_not_modify_saved_indices(self):
+        path = self.root / "index.json"
+        self.engine.save(path)
+        before = path.read_bytes()
+        for mode in ("or", "or_stop", "msm", "and"):
+            self.engine.search("contenuto the reti profonde", mode)
+        self.engine.save(path)
+        self.assertEqual(before, path.read_bytes())
+
+    def test_console_limit_changes_only_display(self):
+        from scripts.search import main
+        path = self.root / "index.json"
+        self.engine.save(path)
+        for limit in (1, 10):
+            output = io.StringIO()
+            with patch("sys.argv", ["search.py", "query", str(path), "--query", "contenuto reti", "--limit", str(limit)]):
+                with contextlib.redirect_stdout(output):
+                    main()
+            self.assertIn(f"Candidati: 3 | Visualizzati: {min(limit, 3)}", output.getvalue())
+            self.assertEqual(sum("\t" in line for line in output.getvalue().splitlines()), min(limit, 3))
+
 
 class MetricTests(unittest.TestCase):
     def test_hand_calculated_metrics(self):
@@ -202,24 +268,28 @@ class DatasetTests(unittest.TestCase):
     def test_original_ground_truth_and_all_functional_queries(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            prepare_dataset(root, self.records, 1400)
+            prepare_dataset(root, self.records, 300)
             with (root / "metadata.csv").open(encoding="utf-8", newline="") as stream:
                 metadata = list(csv.DictReader(stream))
             queries, qrels = read_json(root / "queries.json"), read_json(root / "qrels.json")
-            self.assertEqual(len(metadata), 1400)
+            self.assertEqual(len(metadata), 300)
             self.assertEqual(queries, self.records["queries"])
-            self.assertEqual(qrels, self.records["qrels"])
+            selected = {r["doc_id"] for r in metadata}
+            self.assertEqual(qrels, [r for r in self.records["qrels"] if r["doc_id"] in selected])
             engine = SearchEngine.build(root / "documents")
             mapping = document_mapping(root)
             check_mapping(engine, mapping)
-            self.assertEqual(set(mapping.values()), {str(i) for i in range(1, 1401)})
+            self.assertEqual(set(mapping.values()), selected)
             self.assertGreaterEqual(len(check_functional(engine, root)), 10)
-            for original, entry in zip(self.records["documents"], read_json(root / "manifest.json")["documents"]):
+            originals = {r["doc_id"]: r for r in self.records["documents"]}
+            for entry in read_json(root / "manifest.json")["documents"]:
+                original = originals[entry["doc_id"]]
                 self.assertEqual((root / entry["path"]).read_bytes(),
                                  normalized_newlines(original["text"]).encode("utf-8"))
                 self.assertEqual(entry["title"], original["title"])
                 self.assertEqual(entry["author"], original["author"])
                 self.assertEqual(entry["bib"], original["bib"])
+                self.assertEqual(entry["size_bytes"], (root / entry["path"]).stat().st_size)
 
     def test_prefix_collections_and_original_qrels_scope(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -229,8 +299,25 @@ class DatasetTests(unittest.TestCase):
             for name, digest in small["files"].items():
                 if name.startswith("documents/"):
                     self.assertEqual(digest, large["files"][name])
-            self.assertEqual([d["doc_id"] for d in small["documents"]], [str(i) for i in range(1, 13)])
-            self.assertEqual(read_json(a / "qrels.json"), read_json(b / "qrels.json"))
+            small_ids = {d["doc_id"] for d in small["documents"]}
+            self.assertTrue(small_ids < {d["doc_id"] for d in large["documents"]})
+            self.assertEqual(read_json(a / "qrels.json"),
+                             [r for r in read_json(b / "qrels.json") if r["doc_id"] in small_ids])
+
+    def test_selection_coverage_and_split_are_label_only(self):
+        docs = select_documents(self.records["documents"], 300, 42)
+        self.assertEqual(docs, select_documents(list(reversed(self.records["documents"])), 300, 42))
+        self.assertNotEqual(docs, select_documents(self.records["documents"], 300, 43))
+        ids = {d["doc_id"] for d in docs}
+        qrels = [r for r in self.records["qrels"] if r["doc_id"] in ids]
+        coverage, split = coverage_and_split(self.records["queries"], qrels, ids)
+        self.assertEqual((coverage["eligible_queries"], coverage["excluded_queries"]), (172, 53))
+        self.assertEqual((coverage["positive_judgments"], coverage["explicit_negative_judgments"]), (352, 52))
+        self.assertEqual((len(split["development"]), len(split["test"])), (34, 138))
+        self.assertFalse(set(split["development"]) & set(split["test"]))
+        self.assertEqual(coverage["unjudged_query_document_pairs"], 225 * 300 - len(qrels))
+        self.assertEqual((coverage, split), coverage_and_split(list(reversed(self.records["queries"])),
+                                                            list(reversed(qrels)), ids))
 
     def test_tampering_and_extra_files_detected(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -275,6 +362,26 @@ class DatasetTests(unittest.TestCase):
 
 
 class CranfieldUnitTests(unittest.TestCase):
+    def test_development_selection_rule_and_ties(self):
+        specs = [{"id": "or"}, {"id": "other"}]
+        table = [{"strategy": s["id"], "f1_at_10": .2, "recall_at_10": .4, "map_at_10": .3} for s in specs]
+        self.assertEqual(choose_strategy(table, specs), specs[0])
+        table[1]["f1_at_10"] = .21
+        self.assertEqual(choose_strategy(table, specs), specs[1])
+        table[1]["f1_at_10"] = .2
+        table[1]["recall_at_10"] = .41
+        self.assertEqual(choose_strategy(table, specs), specs[1])
+
+    def test_split_excludes_only_queries_without_positive_qrel(self):
+        queries = [{"query_id": str(i)} for i in range(1, 5)]
+        qrels = [{"query_id": "1", "doc_id": "1", "relevance": 1},
+                 {"query_id": "2", "doc_id": "2", "relevance": 4},
+                 {"query_id": "3", "doc_id": "1", "relevance": -1}]
+        coverage, split = coverage_and_split(queries, qrels, {"1", "2"})
+        self.assertEqual(split["excluded"], ["3", "4"])
+        self.assertEqual(set(split["development"] + split["test"]), {"1", "2"})
+        self.assertEqual(coverage["explicit_negative_judgments"], 1)
+
     def test_deterministic_filename_and_collisions(self):
         self.assertEqual(document_filename("42", "Aéròdynamic / Properties: of WINGS!"),
                          "0042_aerodynamic_properties_of_wings.txt")

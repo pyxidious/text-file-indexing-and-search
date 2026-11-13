@@ -5,6 +5,7 @@ from pathlib import Path
 
 from .analyzers import ANALYZERS, ANALYZER_CONFIG
 from .io import read_json, write_json
+from .strategies import STOPWORDS, required_matches, validate_strategy
 
 
 def parse_query(line):
@@ -57,8 +58,15 @@ class SearchEngine:
             raise ValueError("Campo sconosciuto")
         return self.filename_index if field == "nome" else self.content_index
 
-    def search(self, line):
+    def search(self, line, strategy="or", minimum_should_match=0.5):
+        validate_strategy(strategy, minimum_should_match)
         field, terms, phrase = parse_query(line)
+        # Filename e frasi conservano esattamente la semantica originale.
+        effective_mode = strategy if field == "contenuto" and not phrase else "or"
+        if effective_mode != "or":
+            terms = [term for term in terms if term not in STOPWORDS]
+        if not terms:
+            return []  # Query composta solo da stopword: nessun fallback implicito.
         index = self.index_for(field)
         postings = [index.get(term, {}) for term in terms]
         if phrase:
@@ -76,6 +84,11 @@ class SearchEngine:
             candidates = matched
         else:
             candidates = set().union(*(set(posting) for posting in postings))
+            required = required_matches(effective_mode, len(set(terms)), minimum_should_match)
+            if required > 1:
+                # Si contano termini distinti, inclusi gli OOV nel denominatore.
+                counts = Counter(doc for term in sorted(set(terms)) for doc in index.get(term, {}))
+                candidates = {doc for doc in candidates if counts[doc] >= required}
         n = len(self.documents)
         lengths = self.lengths[field]
         avgdl = sum(lengths.values()) / n if n else 0

@@ -15,7 +15,7 @@ from irhome.io import read_json
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", type=Path, default=ROOT / "config" / "experiment.json")
-    parser.add_argument("--output", type=Path, default=Path("artifacts/cranfield-experiment"))
+    parser.add_argument("--output", type=Path, default=Path("artifacts/cranfield300"))
     parser.add_argument("--cache", type=Path, default=DEFAULT_CACHE)
     parser.add_argument("--offline", action="store_true", help="Vieta acquisizioni; richiede snapshot locale")
     args = parser.parse_args()

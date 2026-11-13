@@ -3,6 +3,7 @@ import csv
 import io
 from pathlib import Path
 import re
+import random
 import unicodedata
 
 from .io import read_json, sha256, write_json
@@ -23,12 +24,23 @@ def document_filename(doc_id, title):
     return f"{int(doc_id):04d}_{slug}.txt"
 
 
-def prepare_dataset(output, records, count=1400, source_sha256=None):
+def select_documents(documents, count=300, seed=42):
+    """Permutazione uniforme, indipendente da query, giudizi e risultati."""
+    if type(seed) is not int or type(count) is not int or not 1 <= count <= len(documents):
+        raise ValueError("Seed intero e dimensione valida richiesti")
+    ordered = sorted(documents, key=lambda d: int(d["doc_id"]))
+    if len({d["doc_id"] for d in ordered}) != len(ordered):
+        raise ValueError("ID documento duplicati")
+    random.Random(seed).shuffle(ordered)
+    return sorted(ordered[:count], key=lambda d: int(d["doc_id"]))
+
+
+def prepare_dataset(output, records, count=300, source_sha256=None, seed=42):
     if type(count) is not int or not 1 <= count <= len(records["documents"]):
         raise ValueError("Numero documenti non valido")
     output = Path(output)
     docs = output / "documents"
-    selected = sorted(records["documents"], key=lambda d: int(d["doc_id"]))[:count]
+    selected = select_documents(records["documents"], count, seed)
     ids = [doc["doc_id"] for doc in selected]
     if len(ids) != len(set(ids)):
         raise ValueError("ID documento duplicati")
@@ -50,25 +62,28 @@ def prepare_dataset(output, records, count=1400, source_sha256=None):
         content = normalized_newlines(doc["text"]).encode("utf-8")
         (output / entry["path"]).write_bytes(content)
         entry["sha256"] = sha256(output / entry["path"])
+        entry["size_bytes"] = len(content)
     buffer = io.StringIO(newline="")
-    fields = ["doc_id", "engine_id", "filename", "path", "title", "author", "bib", "sha256"]
+    fields = ["doc_id", "engine_id", "filename", "path", "title", "author", "bib", "sha256", "size_bytes"]
     writer = csv.DictWriter(buffer, fieldnames=fields, lineterminator="\n")
     writer.writeheader()
     writer.writerows(entries)
     (output / "metadata.csv").write_bytes(buffer.getvalue().encode("utf-8"))
-    # Anche nei subset conserviamo tutti i giudizi originali; non vi calcoliamo metriche IR.
+    # Lo snapshot immutato conserva tutti i giudizi; qui solo quelli dei file presenti.
     queries = sorted(records["queries"], key=lambda q: int(q["query_id"]))
-    qrels = sorted(records["qrels"], key=lambda r: (int(r["query_id"]), int(r["doc_id"]), r["iteration"]))
+    qrels = sorted((r for r in records["qrels"] if r["doc_id"] in set(ids)),
+                   key=lambda r: (int(r["query_id"]), int(r["doc_id"]), r["iteration"]))
     write_json(output / "queries.json", queries)
     write_json(output / "qrels.json", qrels)
     paths = [output / entry["path"] for entry in entries]
     paths += [output / name for name in ("metadata.csv", "queries.json", "qrels.json")]
-    manifest = {"format_version": 2, "dataset": "cranfield", "source_records_sha256": source_sha256,
-                "configuration": {"count": count, "selection": "first N by numeric original doc_id",
+    manifest = {"format_version": 3, "dataset": "cranfield", "source_records_sha256": source_sha256,
+                "configuration": {"count": count, "seed": seed,
+                                  "selection": "sort numeric IDs; Random(seed).shuffle; first N; sort selected IDs",
                                   "filename_rule": FILENAME_RULE, "encoding": "UTF-8",
                                   "content": "text only; CRLF/CR -> LF; no added trailing newline"},
                 "documents": entries, "queries_count": len(queries), "qrels_count": len(qrels),
-                "qrels_scope": "full original collection, also for performance-only subsets",
+                "selected_doc_ids": ids, "qrels_scope": "original judgments restricted to selected documents",
                 "files": {p.relative_to(output).as_posix(): sha256(p) for p in sorted(paths)}}
     write_json(output / "manifest.json", manifest)
     return manifest
@@ -77,13 +92,15 @@ def prepare_dataset(output, records, count=1400, source_sha256=None):
 def verify_dataset(output):
     output = Path(output).resolve()
     manifest = read_json(output / "manifest.json")
-    if manifest["format_version"] != 2 or manifest["dataset"] != "cranfield":
-        raise ValueError("Dataset incompatibile: atteso Cranfield formato 2")
+    if manifest["format_version"] != 3 or manifest["dataset"] != "cranfield":
+        raise ValueError("Dataset incompatibile: atteso Cranfield formato 3")
     for relative, expected in sorted(manifest["files"].items()):
         path = (output / relative).resolve()
         if output not in path.parents or sha256(path) != expected:
             raise ValueError(f"Hash o percorso non valido: {relative}")
     entries = manifest["documents"]
+    if manifest["selected_doc_ids"] != [entry["doc_id"] for entry in entries]:
+        raise ValueError("Lista degli ID selezionati incoerente")
     paths = {entry["path"] for entry in entries}
     actual = {p.relative_to(output).as_posix() for p in (output / "documents").rglob("*") if p.is_file()}
     if (actual != paths or len(paths) != manifest["configuration"]["count"] or
@@ -92,7 +109,8 @@ def verify_dataset(output):
         raise ValueError("Documenti o mapping non conformi al manifest")
     for entry in entries:
         if (entry["path"] != "documents/" + entry["engine_id"] or
-                manifest["files"].get(entry["path"]) != entry["sha256"]):
+                manifest["files"].get(entry["path"]) != entry["sha256"] or
+                (output / entry["path"]).stat().st_size != entry["size_bytes"]):
             raise ValueError("Mapping/hash documento incoerente")
     return sha256(output / "manifest.json")
 

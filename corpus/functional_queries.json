@@ -4,7 +4,7 @@
   {"id":"F03", "query":"nome \"boundary layer\"", "expect":"nonempty"},
   {"id":"F04", "query":"nome \"heat transfer\"", "expect":"nonempty"},
   {"id":"F05", "query":"contenuto wing", "expect":"nonempty"},
-  {"id":"F06", "query":"contenuto pressure velocity", "expect":"nonempty"},
+  {"id":"F06", "query":"contenuto the pressure", "expect":"nonempty"},
   {"id":"F07", "query":"contenuto \"boundary layer\"", "expect":"nonempty"},
   {"id":"F08", "query":"contenuto \"heat transfer\"", "expect":"nonempty"},
   {"id":"F09", "query":"contenuto \"of the\"", "expect":"nonempty"},

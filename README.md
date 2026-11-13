@@ -1,21 +1,19 @@
-# Homework 3 — Motore di ricerca e benchmark Cranfield
+# Homework 3 — Cranfield 300 e confronto Precision/Recall
 
-Motore Python locale per qualsiasi directory di file `.txt` UTF-8, con indici
-posizionali separati per nome e contenuto, OR, phrase query, BM25 e persistenza
-JSON. Il motore, il verificatore lessicale e le metriche usano solo standard
-library. `ir_datasets` serve esclusivamente all'acquisizione di Cranfield;
-nessun framework IR implementa ricerca, ranking o valutazione.
+Motore lessicale Python per directory di `.txt` UTF-8: due indici invertiti
+posizionali (nome/contenuto), OR, phrase query, BM25 e persistenza JSON.
+La versione 3 usa un **campione fisso di 300 documenti Cranfield**, con confronto
+di strategie sul development e valutazione finale separata sul test.
+Motore, metriche e protocollo usano standard library; `ir_datasets` serve solo
+all'acquisizione. Nessun LLM, embedding o framework di retrieval.
 
-## Ambiente e riproduzione completa
+## Installazione e comando unico
 
-Python **>=3.10**, versione di riferimento **3.10.0** in `.python-version`.
-`ir_datasets==0.5.11` è fissato in `requirements.txt`; le dipendenze transitive
-effettive dell'ambiente Windows/Python 3.10 sono fissate in
-`requirements-lock.txt`. Su altre piattaforme possono servire wheel o strumenti
-di compilazione diversi; le versioni effettivamente installate sono comunque
-registrate nell'output ambientale. Il motore si usa anche senza queste dipendenze.
-
-Dalla radice del repository, in PowerShell:
+Python **>=3.10**, riferimento **3.10.0** (`.python-version`), con
+`ir_datasets==0.5.11`. `requirements.txt` applica i vincoli transitivi effettivi
+di `requirements-lock.txt`, registrati su Windows/Python 3.10. Su altre piattaforme
+possono servire wheel o strumenti di compilazione compatibili.
+Dalla radice del clone, in PowerShell:
 
 ```powershell
 python -m venv .venv
@@ -25,273 +23,301 @@ python -m venv .venv
 ```
 
 Linux/macOS: sostituire `.venv\Scripts\python.exe` con `.venv/bin/python`.
-Non è necessario installare il progetto come pacchetto. La prima acquisizione
-richiede rete; il resto della procedura lavora su file locali. `reproduce.py`:
+Non occorre installare il progetto come pacchetto. La prima esecuzione può
+scaricare Cranfield; le successive verificano lo snapshot locale.
+`config/experiment.json` fissa seed, split, strategie, criterio di scelta,
+dimensioni 100/200/300, BM25 e almeno cinque ripetizioni dei tempi.
 
-1. verifica versione Python, configurazione e versione di `ir_datasets`;
-2. acquisisce o carica uno snapshot locale verificato;
-3. prepara i TXT e gli export di query, qrels e metadati;
-4. verifica hash, cardinalità e ripetibilità della preparazione;
-5. costruisce e salva gli indici;
-6. esegue tutti i test automatici e conserva `results/tests.log`;
-7. verifica 12 query funzionali con scansione indipendente;
-8. esegue le 225 query informative e i benchmark dei tempi;
-9. esporta ranking, metriche, misure e informazioni ambientali.
+Il comando verifica ambiente/configurazione, acquisisce o carica lo snapshot,
+prepara e verifica i TXT, costruisce gli indici, esegue `unittest`, controlla
+le query funzionali, confronta le strategie sul development, salva la scelta
+**prima** di valutare il test, esegue i benchmark ed esporta risultati CSV/JSON.
+Errori di hash, mapping, test o scelta congelata interrompono la procedura.
 
-Hash discordanti, test falliti, collisioni o mapping mancanti interrompono la
-procedura. La configurazione è `config/experiment.json`: dimensioni 100/300/1400,
-almeno 5 ripetizioni, BM25 `k1=1.2`, `b=0.75`, soglia di rilevanza 1.
-Non ci sono campionamento casuale, seed o generazione di testi.
+## Collezione originale e sottoinsieme
 
-## Provenienza e distribuzione
+Lo snapshot originale rimane immutato: 1.400 abstract scientifici inglesi,
+225 bisogni informativi e 1.837 giudizi di rilevanza. Fonti:
 
-Cranfield offre abstract scientifici inglesi, bisogni informativi reali e
-giudizi di rilevanza preesistenti: permette di valutare il recupero informativo
-senza fabbricare la ground truth dalle parole o dalle etichette dei documenti.
-La collezione completa acquisita comprende **1.400 documenti, 225 query e 1.837
-qrels**. È un benchmark piccolo e storico di dominio aeronautico; le misure
-non si generalizzano automaticamente ad altri domini o a utenti moderni.
-
-Fonti consultate:
-
-- [Scheda ufficiale ir_datasets Cranfield](https://ir-datasets.com/cranfield.html).
+- [Scheda ufficiale Cranfield](https://ir-datasets.com/cranfield.html).
 - [Distribuzione dell'Università di Glasgow](https://ir.dcs.gla.ac.uk/resources/test_collections/cran/).
-- [Release ir_datasets utilizzata](https://pypi.org/project/ir-datasets/0.5.11/).
+- [ir_datasets 0.5.11](https://pypi.org/project/ir-datasets/0.5.11/).
 
-La distribuzione pubblica e `cranqrel.readme` incluso nell'archivio non
-espongono una licenza esplicita di redistribuzione nelle fonti consultate.
-**Documenti, query, qrels e archivio non sono versionati nel repository**;
-la licenza del software ir_datasets non è una licenza dei dati. Si versionano
-la procedura e gli hash necessari a ricostruire e verificare la copia locale.
+La selezione documentale è uniforme senza reinserimento: si ordinano tutti i
+record per ID originale numerico, si applica `random.Random(42).shuffle` a una
+copia, si prendono i primi 300, poi si riordinano gli estratti per ID numerico.
+Non si consultano query, qrels, parole dei testi o punteggi del motore per
+scegliere i documenti. Non si stratifica: metadati eterogenei di autore/titolo
+aggiungerebbero complessità e decisioni arbitrarie. La lista esatta dei 300 ID
+è salvata nel manifest; Python e algoritmo sono documentati e verificati da hash.
+I campioni 100 e 200 sono prefissi della stessa permutazione, quindi annidati
+nel campione 300. Servono soltanto alla scalabilità.
 
-`irhome/acquire.py` usa `ir_datasets.load('cranfield')` e i suoi iteratori di
-documenti, query e giudizi. Il download originale è controllato dal provider;
-si ricontrolla inoltre il suo MD5 atteso
-`1730f7be572d95a5a4b56c59a7b900a5`. Lo snapshot del progetto registra SHA-256
-dell'archivio, dei record canonici e del manifest di origine, confrontati con
-`config/cranfield.lock.json` versionato. I comandi pubblici non aggiornano il
-lock automaticamente e non riscaricano dati corrotti per nascondere un errore.
+Ogni documento produce un solo TXT con **l'intero campo `doc.text` restituito
+dal provider**. Si normalizzano soltanto CRLF/CR in LF, senza `strip`, tagli,
+traduzioni, concatenazioni, titolo aggiunto o newline finale aggiunto. Il provider
+ha già interpretato i marcatori del formato originale e tolto gli spazi esterni
+dei campi; alcuni abstract contengono già il titolo, che viene preservato.
 
-## Copia locale e uso offline
+Filename: titolo NFKD, ASCII, minuscolo, sequenze diverse da `[a-z0-9]` in `_`,
+delimitatori esterni rimossi, massimo 80 caratteri di slug, fallback `untitled`;
+prefisso con ID originale a quattro cifre ed estensione `.txt`.
+Esempio: `0042_aerodynamic_properties_of_wings.txt`.
+ID diversi garantiscono unicità anche con titoli uguali o troncati.
 
-Lo snapshot congelato è in `artifacts/cranfield-source/`:
+`metadata.csv` e `manifest.json` conservano ID originale, `engine_id` (filename
+relativo alla directory indicizzata), filename, percorso `documents/...`, titolo,
+autore, bibliografia, **dimensione in byte e SHA-256**. Il manifest registra
+configurazione, ID selezionati, hash dello snapshot e di tutti gli export.
+`verify_dataset` verifica byte, insieme esatto dei file, dimensioni e mapping.
+L'indicizzatore rimane generico: solo la valutazione associa `engine_id` e
+`doc_id` Cranfield tramite manifest.
 
-- `cran.tar.gz`: archivio pubblico originale, immutato, incluso il suo readme;
-- `records.json`: tutti i campi esposti dal provider, query e giudizi ordinati;
-- `source-manifest.json`: provenienza, versione, conteggi e hash;
-- `provider/`: cache tecnica di ir_datasets, non necessaria per ripetere offline.
+## Query, qrels, copertura e split
 
-Una volta creato, lo snapshot viene solo letto e verificato: nessun
-aggiornamento o sovrascrittura automatica. Per un'altra macchina copiare i
-primi tre file nella stessa directory (o usare `--cache`), rispettando le
-condizioni d'uso dei dati, e predisporre l'ambiente software. Quindi:
+Lo snapshot conserva tutti i 225 testi e i 1.837 qrels originali. Ogni dataset
+esporta ancora tutte le 225 query, ma restringe `qrels.json` **ai soli documenti
+presenti**, senza cambiare valori o inventare giudizi. I livelli originali sono
+`-1` (negativo), `1` (minimo), `2` (utile), `3` (elevato), `4` (risposta completa).
+Per le metriche binarie è rilevante ogni grado `>=1`.
+
+Le query conservano `query_id` fornito da ir_datasets e `source_query_id` del
+marcatore `.I` nel file originale: questi ultimi non sono consecutivi. Il
+provider li riallinea in ordine di apparizione agli ID 1..225 dei qrels; entrambe
+le identità sono esportate. La ricerca usa `contenuto <testo originale>` senza
+riformulazione e mantiene BM25 `k1=1.2`, `b=0.75`.
+
+Copertura effettiva del campione con seed 42:
+
+| Quantità | Valore |
+| --- | ---: |
+| Documenti TXT | 300 |
+| Query valutabili (almeno un positivo nel campione) | 172 |
+| Query escluse: nessun positivo noto nel campione | 53 |
+| Giudizi positivi | 352 |
+| Giudizi negativi espliciti | 52 |
+| Documenti con almeno un giudizio positivo | 174 |
+| Coppie query-documento non giudicate, su 225 × 300 | 67.096 |
+| Documenti mai giudicati per alcuna delle 225 query | 104 |
+
+Distribuzione del numero di rilevanti noti per query (`rilevanti: numero query`):
+`0:53, 1:78, 2:50, 3:24, 4:10, 5:6, 6:2, 7:1, 13:1`.
+`coverage.json` conserva anche i conteggi per ogni query e documento, e gli ID
+esclusi. La mancanza di giudizio è una proprietà della **coppia query-documento**.
+
+Gli ID delle sole 172 query valutabili vengono ordinati numericamente e mescolati
+con un nuovo `random.Random(42)`, indipendente dal campionamento dei documenti.
+Il 20%, arrotondato all'intero più vicino con metà verso l'alto, dà **34 query
+development**; le restanti **138 sono test**. Gli ID esatti, esclusioni, seed e
+regola sono in `results/splits.json`. Nessuna query è scelta in base alle
+prestazioni. Le 53 escluse non entrano nelle medie, neppure per precision.
+
+## Strategie e criterio fissato prima del test
+
+Indici, posting list e posizioni non cambiano fra strategie. Sul solo contenuto
+non phrase si confrontano:
+
+1. `or`: OR originale, tutti i termini e frequenze di query originali.
+2. `or_stop`: OR dopo rimozione delle stopword **dalla query**, anche nel ranking.
+3. `msm`: stessa rimozione, con almeno `ceil(quota * termini_distinti)` presenti;
+   quote 0,30, 0,50, 0,70. Gli OOV rimangono nel denominatore.
+4. `and`: tutti i termini distinti rimasti dopo la stessa rimozione.
+
+La piccola stoplist inglese è esplicita e versionata in
+`corpus/english_stopwords.txt`: parole funzionali comuni, preparate per questo
+protocollo, senza estrazione dai risultati o dai qrels. Nessuno stemming.
+Il suo SHA-256 è registrato. Le stopword restano negli indici e nelle posizioni.
+Per filename e phrase query **tutte le strategie conservano la semantica
+originale**, incluse le stopword e l'adiacenza. Una query contenuto non phrase
+composta soltanto da stopword restituisce zero candidati nelle varianti filtrate;
+non c'è fallback. Un termine significativo richiede sempre almeno un match;
+si usano termini distinti per MSM e frequenze originali per il punteggio BM25.
+
+Criterio preregistrato nella configurazione: massimizzare **F1@10 macro sul
+development**; parità risolte per Recall@10, MAP@10 e ordine dichiarato delle
+strategie (OR originale prima). La media armonica penalizza il collasso della
+recall; non si impongono obiettivi numerici arbitrari. Solo il development
+confronta strategie. `selection.json` viene scritto prima di eseguire il test;
+una scelta diversa nella stessa destinazione viene rifiutata.
+
+## Risultati effettivamente misurati
+
+La baseline è stata misurata sul development con il motore precedente prima
+della modifica. Le 34 liste e i punteggi sono risultati identici alla modalità
+`or` attuale. Sullo stesso campione e sulle stesse 34 query:
+
+| Strategia | Candidati medi | P@10 | R@10 | F1@10 macro | MAP@10 | MAP completa |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| OR originale | 287,735 | 0,073529 | 0,424020 | 0,120054 | 0,239513 | 0,265133 |
+| OR stopword | 166,529 | 0,076471 | 0,453431 | 0,125402 | 0,255950 | 0,280309 |
+| MSM 30% | 24,529 | 0,061765 | 0,360294 | 0,101226 | 0,192933 | 0,198993 |
+| MSM 50% | 4,324 | 0,023529 | 0,102941 | 0,037130 | 0,049918 | 0,049918 |
+| MSM 70% | 0,324 | 0,005882 | 0,017157 | 0,008727 | 0,017157 | 0,017157 |
+| AND | 0,000 | 0,000000 | 0,000000 | 0,000000 | 0,000000 | 0,000000 |
+
+La baseline recupera in media il **95,912%** della collezione, con mediana
+**300** candidati. Sulla lista completa: precision **0,006126**, recall
+**0,963235**. La configurazione scelta è **OR stopword**, che migliora entrambe
+le metriche @10 e F1@10 e riduce i candidati al 55,510% medio (mediana 174,5).
+Sulla lista completa la sua precision è **0,011096** e la recall **0,892157**:
+la riduzione della recall completa è un costo reale del filtro.
+Il vantaggio di F1@10 è piccolo, circa 0,00535 assoluto; si tratta di un
+risultato descrittivo su 34 query, senza prova di significatività statistica.
+MSM e AND mostrano un risultato negativo, con perdita eccessiva di recall.
+
+Dopo il congelamento, una sola valutazione finale della configurazione scelta
+sulle **138 query test**, senza provare altre strategie sul test:
+
+| Strategia test | Candidati medi | P@10 | R@10 | F1@10 macro | MAP@10 | MAP completa |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| OR stopword | 159,609 | 0,125362 | 0,624395 | 0,198637 | 0,409281 | 0,435277 |
+
+Mediana candidati test **159,5**, frazione recuperata media **53,203%**;
+precision completa **0,014789**, recall completa **0,948476**, F1 completa
+**0,028788**. Le differenze fra development e test riflettono query differenti;
+il confronto tra strategie riguarda il development. Questi risultati descrivono
+il sottoinsieme derivato e non sono direttamente confrontabili con Cranfield 1400.
+Le riproduzioni ricalcolano lo stesso protocollo congelato per verificare gli
+hash: non costituiscono nuovi tentativi di ottimizzazione sul test.
+
+## Convenzioni metriche e limiti
+
+Con `R` rilevanti noti nel **campione** e `h` rilevanti recuperati:
+precision completa = `h / candidati`, recall completa = `h / |R|`.
+Precision@10 divide i positivi nei primi 10 per **10 fisso**, anche con meno
+risultati. Recall@10 divide per `|R|`; F1@10 è la loro media armonica per query.
+AP completa somma la precision ai ranghi rilevanti dell'intera lista e divide
+per `|R|`; AP@10 limita la somma ai primi 10 e divide per `min(10, |R|)`, come
+nella versione precedente. MAP e MAP@10 sono medie delle rispettive AP,
+distinte. La convenzione AP@10 differisce da quella con denominatore `|R|`.
+
+Le macro-medie si calcolano per query entro ciascuna fase: la media delle F1
+è distinta dalla F1 delle precision/recall medie e dalle metriche micro.
+Con positivi ma nessun risultato: tutte le metriche zero. Senza positivi:
+recall, F1 e AP non definite; il protocollo esclude queste query prima dello
+split. I risultati restituiti sono liste complete, senza troncamento a scopo IR.
+
+Un qrel `-1` è un giudizio esplicitamente negativo; assenza di qrel significa
+**non giudicato**. Per le metriche standard i non giudicati contribuiscono zero,
+ma gli export conservano `judgment: null` e stato `unjudged`, distinti da `-1`
+e `judged_nonrelevant`. Non si assume che gli annotatori abbiano giudicato
+negativamente tutti i non giudicati. Qrels incompleti possono penalizzare
+risultati realmente utili; il recall si riferisce soltanto ai rilevanti noti.
+Il dominio aeronautico storico e il piccolo development limitano la generalità.
+
+## Console: corpus 300 e limite di visualizzazione
+
+Dopo `reproduce.py`, dalla radice:
 
 ```powershell
-.venv\Scripts\python.exe scripts/acquire_cranfield.py --offline
-.venv\Scripts\python.exe scripts/reproduce.py --offline
-# Seconda esecuzione completa, con destinazione distinta
-.venv\Scripts\python.exe scripts/reproduce.py --offline --output artifacts/cranfield-repeat
-.venv\Scripts\python.exe -c "from pathlib import Path; a=Path('artifacts/cranfield-experiment/results/checksums.json'); b=Path('artifacts/cranfield-repeat/results/checksums.json'); assert a.read_bytes()==b.read_bytes(); print('Output deterministici identici')"
+# Usa n300/index.json e selection.json del protocollo corrente
+.venv\Scripts\python.exe scripts/search.py query
+# La baseline rimane disponibile
+.venv\Scripts\python.exe scripts/search.py query --strategy or --limit 10
+.venv\Scripts\python.exe scripts/search.py query --strategy msm --minimum-should-match 0.3 --limit 20
 ```
 
-In modalità offline lo snapshot è caricato senza importare il provider e senza
-tentare download; la procedura completa verifica comunque che la dipendenza
-documentata sia installata. Il test offline impedisce anche l'apertura di socket.
-Per un ambiente interamente isolato, procurarsi prima le dipendenze e le wheel
-compatibili; il flag offline riguarda l'esperimento, non il comando pip.
+Esempi di input:
 
-## Trasformazione TXT e identificativi
+```text
+nome aerodynamic
+nome "boundary layer"
+contenuto pressure velocity
+contenuto "heat transfer"
+contenuto "of the"
+esci
+```
 
-La collezione pubblica e la sua trasformazione in TXT sono distinte. I record
-sono ordinati per **ID originale numerico**, non lessicograficamente. Ogni
-documento produce un solo TXT contenente **esattamente `doc.text`**, con la sola
-conversione CRLF/CR in LF: nessun titolo aggiunto, nessun `strip`, traduzione,
-taglio o newline finale aggiunto. L'adapter ir_datasets rimuove già gli spazi
-esterni dei campi nel leggere il formato originale: il progetto conserva il
-campo integrale restituito da quella versione. Alcuni abstract contengono già
-il titolo nel testo originale; non viene rimosso né duplicato dal progetto.
+Si stampano ID relativo, filename e score; a fine risposta **Candidati** indica
+tutti i match, **Visualizzati** solo i primi `--limit` (default 10, intero positivo).
+Le metriche @10 usano i primi 10 del ranking completo, indipendentemente dal
+limite della console. Ridurre l'output non migliora la Precision@10.
+Per frasi usare virgolette sull'intero testo; input errati, nessun risultato,
+EOF e Ctrl+C sono gestiti.
 
-Il filename segue una regola esplicita: titolo NFKD, conversione ASCII,
-minuscolo, sequenze diverse da `[a-z0-9]` sostituite da `_`, eliminazione dei
-delimitatori esterni, massimo 80 caratteri di slug; fallback `untitled`.
-Si antepone l'ID numerico a quattro cifre e si aggiunge `.txt`:
-`0042_aerodynamic_properties_of_wings.txt`. L'ID garantisce unicità anche per
-titoli identici o troncati. Si verificano collisioni e conteggi effettivi.
-
-`metadata.csv` e `manifest.json` associano `doc_id` originale, `engine_id`
-(filename relativo alla directory indicizzata), filename, percorso relativo
-`documents/...`, titolo, autore, bibliografia e SHA-256 del TXT. Il manifest
-contiene inoltre configurazione, hash dello snapshot e di tutti gli export.
-`verify_dataset` verifica byte, insieme esatto dei file e coerenza del mapping.
-
-L'indicizzatore rimane generico: il collegamento a Cranfield esiste solo nella
-valutazione. Essa verifica che il mapping copra esattamente gli ID del motore
-e che ogni risultato si associ a un solo ID originale.
-
-## Query, qrels e correttezza lessicale
-
-`queries.json` contiene tutte le 225 query, con testo originale, `query_id`
-fornito da ir_datasets e **anche `source_query_id` letto dai marcatori `.I` del
-file originale**. Questi ultimi non sono consecutivi: il provider li rinumera
-1..225 in ordine di apparizione per allinearli ai qrels. Conserviamo entrambe
-le identità e usiamo solo gli ID allineati per collegare query e giudizi.
-Le query passano direttamente come `contenuto <testo originale>` attraverso
-il normale parser, analyzer e ranking del motore, senza riformulazione.
-
-`qrels.json` è la lista completa dei 1.837 record originali con query ID,
-documento ID, `relevance` e `iteration` del provider. Nessun filtro o
-ribaltamento dei livelli, nessuna conversione distruttiva in booleani:
-
-| Valore originale | Interpretazione nella scheda del provider | Conteggio |
-| --- | --- | ---: |
-| -1 | non rilevante | 225 |
-| 1 | rilevanza minima | 128 |
-| 2 | rilevanza utile | 387 |
-| 3 | rilevanza elevata | 734 |
-| 4 | risposta completa | 363 |
-
-Per le metriche binarie, `relevance >= 1` è rilevante; `-1` è giudicato non
-rilevante. I documenti senza qrel sono **non giudicati**: per il calcolo standard
-sono trattati come zero, ma il ranking conserva `judgment: null` e stato
-`unjudged`, distinti da `judged_nonrelevant` con valore `-1`. Non si afferma che
-gli annotatori abbiano giudicato negativamente tutti i documenti non elencati.
-Questa convenzione penalizza risultati potenzialmente utili ma non giudicati,
-e il recall si riferisce ai soli rilevanti noti.
-
-`corpus/functional_queries.json` definisce invece 12 controlli lessicali su
-entrambi i campi: termini singoli, OR di più termini, frasi, stopword e assenza
-di risultati. Il verificatore indipendente legge direttamente i TXT e confronta
-token o sottoliste consecutive senza usare indici, parser o analyzer del motore.
-I qrels Cranfield **non** valutano le query filename. L'esattezza lessicale
-e la rilevanza informativa sono due verifiche separate.
-
-## Metriche IR: benchmark principale su 1.400 documenti
-
-Per tutte le 225 query, con `R` insieme dei rilevanti noti e ranking dei soli
-documenti effettivamente restituiti:
-
-- `Precision@10 = rilevanti nei primi 10 / 10`, anche con meno di 10 risultati;
-- `Recall@10 = rilevanti nei primi 10 / |R|`;
-- `F1@10`: media armonica di queste due metriche per singola query;
-- precision, recall e F1 sull'intero insieme recuperato;
-- `AP = somma delle precision ai ranghi rilevanti / |R|`, su **tutta** la lista;
-- `MAP`: media delle AP delle query;
-- `AP@10`: stessa somma limitata ai primi 10, divisa per `min(10, |R|)`;
-- `MAP@10`: media delle AP@10, distinta dalla MAP completa.
-
-La convenzione AP@10 preserva quella del progetto precedente. Non è
-intercambiabile con implementazioni che usano `|R|` anche a cutoff 10.
-I rilevanti non recuperati contribuiscono zero alla somma AP. Non si aggiungono
-al ranking documenti non restituiti. Query con rilevanti e nessun risultato:
-metriche zero. Senza rilevanti: precision zero per ranking vuoto, recall,
-F1 e AP `null`, escluse dalle rispettive macro-medie; si registra quante query
-hanno rilevanti. Le macro-medie di F1 non sono la F1 delle metriche medie.
-
-I prefissi di **100 e 300 documenti** sono selezionati per ID numerico crescente
-e servono solo alle prestazioni. Gli export conservano tutti i qrels originali,
-anche quelli esterni al prefisso, ma **nessuna metrica IR viene calcolata su
-questi sottoinsiemi**. Il benchmark principale rimane la collezione completa.
-
-## Prestazioni e output
-
-Per 100/300/1400 documenti si misurano con `time.perf_counter_ns()` almeno cinque
-ripetizioni di preparazione, costruzione in memoria, salvataggio JSON,
-caricamento e ciascuna delle 225 query. Il download e la verifica dello snapshot
-non rientrano nei tempi di indicizzazione. Hash e controlli lessicali sono fuori
-dai timer di ricerca; preparazione include scrittura e costruzione del manifest.
-Le ripetizioni sono sequenziali, senza warm-up esplicito né svuotamento cache.
-Si misurano quindi condizioni potenzialmente calde, sensibili a macchina e OS.
-
-I CSV riportano campioni grezzi, mediana, min/max, deviazione standard della
-popolazione e IQR con quartili inclusivi. La dimensione dell'indice è il numero
-di byte del JSON, non la RAM o i blocchi allocati dal filesystem.
-
-In `artifacts/cranfield-experiment/`:
-
-- `n100/`, `n300/`, `n1400/`: dataset e `index.json`;
-- `n1400/ranking.json`: per ogni query, testo e i due identificativi; per ogni
-  risultato, rank, doc_id originale, engine_id, filename, score, giudizio
-  disponibile, stato del giudizio e valore binario usato nelle metriche;
-- `results/deterministic.json`: configurazione, lock, analyzer, hash dataset,
-  indici e ranking, metriche per query, aggregate e controlli funzionali;
-- `results/metrics.csv`, `aggregate_metrics.csv`, `functional_checks.json`;
-- `results/checksums.json`: hash degli output deterministici principali;
-- `results/observed.json`: Python, progetto/commit e stato Git, OS, hardware
-  disponibile, tutte le versioni dei pacchetti, configurazione e misure reali;
-- `results/timing_samples.csv`, `timing_summary.csv`: tempi per fase e query;
-- `results/performance.csv`: confronto delle dimensioni e delle mediane di
-  costruzione, persistenza e caricamento; per ricerca, mediana delle 225 mediane
-  per query, da leggere insieme ai dettagli e alla variabilità;
-- `results/tests.log`: esito effettivo dei test, con durata osservata.
-
-`.gitattributes` mantiene LF negli input testuali versionati anche su Windows.
-Tempi e ambiente sono separati dagli output deterministici. Ogni ripetizione
-controlla hash dei dataset, degli indici e stabilità dei risultati. I test
-ricostruiscono la stessa collezione in due directory e confrontano gli hash;
-verificano anche byte degli abstract e integrità degli export originali.
-Su un clone senza snapshot locale i test di integrazione Cranfield vengono
-saltati, senza download impliciti; `reproduce.py` acquisisce i dati prima dei
-test, quindi esegue anche questi controlli.
-
-## Console e comandi separati
+Il motore resta utilizzabile su qualsiasi directory:
 
 ```powershell
 .venv\Scripts\python.exe scripts/generate_dataset.py --offline
-.venv\Scripts\python.exe scripts/search.py build artifacts/cranfield-manual/dataset/documents artifacts/cranfield-manual/index.json
-.venv\Scripts\python.exe scripts/search.py query artifacts/cranfield-manual/index.json
+.venv\Scripts\python.exe scripts/search.py build artifacts/cranfield300-manual/dataset/documents artifacts/cranfield300-manual/index.json
+.venv\Scripts\python.exe scripts/search.py query artifacts/cranfield300-manual/index.json --strategy or_stop
+.venv\Scripts\python.exe scripts/search.py query artifacts/cranfield300-manual/index.json --selection artifacts/cranfield300/results/selection.json
 .venv\Scripts\python.exe -m unittest discover -s tests -v
 .venv\Scripts\python.exe scripts/evaluate.py --offline
 ```
 
-Il nome storico `generate_dataset.py` è conservato, ma ora prepara Cranfield;
-`--count` seleziona un prefisso, non genera testi. `evaluate.py` esegue il
-benchmark completo senza i test; `reproduce.py` include anche i test.
-In console:
+Un indice esplicito senza `--strategy` o `--selection` usa OR originale.
+`generate_dataset.py` conserva il nome storico, ma prepara abstract originali;
+default 300/seed 42. `evaluate.py` esegue il protocollo senza i test automatici.
 
-```text
-nome aerodynamic
-nome wing pressure
-nome "boundary layer"
-contenuto pressure velocity
-contenuto "heat transfer"
-esci
+## Snapshot, offline e integrità
+
+L'acquisizione originale resta in `artifacts/cranfield-source/`:
+`cran.tar.gz`, `records.json`, `source-manifest.json`; `provider/` è solo cache
+tecnica, non necessaria offline. Il download è verificato dal provider e dal
+MD5 atteso `1730f7be572d95a5a4b56c59a7b900a5`; i tre file congelati sono
+controllati tramite gli SHA-256 in `config/cranfield.lock.json` versionato.
+I comandi non aggiornano il lock, non sovrascrivono snapshot e non riscaricano
+silenziosamente file corrotti. Per trasferire una copia offline bastano i tre
+file e l'ambiente software già installato; `--cache` può indicare un'altra
+directory. Il flag offline riguarda l'esperimento, non l'installazione pip.
+
+```powershell
+.venv\Scripts\python.exe scripts/acquire_cranfield.py --offline
+.venv\Scripts\python.exe scripts/reproduce.py --offline --output artifacts/cranfield300-repeat
+.venv\Scripts\python.exe -c "from pathlib import Path; a=Path('artifacts/cranfield300/results/checksums.json'); b=Path('artifacts/cranfield300-repeat/results/checksums.json'); assert a.read_bytes()==b.read_bytes(); print('Output deterministici identici')"
 ```
 
-Termini senza virgolette: OR. Frasi: tutti i termini consecutivi e nell'ordine
-corretto. Le virgolette devono racchiudere tutta la frase; sintassi mista non
-supportata. Si stampano ID, filename e punteggio; input errati, query senza
-risultati, EOF e Ctrl+C sono gestiti. Per altri TXT usare la stessa console e
-`search.py build <directory> <indice.json>`, senza alcun riferimento a Cranfield.
+Tutti gli input software/configurazioni/stoplist necessari sono versionati;
+documenti, query e qrels originali non vengono redistribuiti nel repository:
+le fonti pubbliche e `cranqrel.readme` non espongono una licenza esplicita di
+redistribuzione nelle fonti consultate. La licenza di ir_datasets non viene
+attribuita ai dati. Il corpus originale resta recuperabile e verificabile.
 
-## Motore preservato e struttura
+## Benchmark, test e file prodotti
 
-`irhome/engine.py`, `analyzers.py`, `oracle.py`, `io.py` e `scripts/search.py`
-mantengono il comportamento originale; la migrazione riguarda dataset,
-acquisizione, esperimenti, metriche, script di riproduzione e relativi test.
-Le posting list restano `termine -> documento -> posizioni`, distinte nei due
-campi. Posizioni zero-based; frasi mediante intersezioni di posizioni traslate.
+Su 100/200/300 documenti si misurano almeno cinque ripetizioni con
+`perf_counter_ns()` per preparazione, costruzione in memoria, persistenza JSON,
+caricamento e ricerca. Il download è fuori dai timer. I tempi di ricerca usano
+**solo le 34 query development con la strategia già selezionata**: non riusano
+il test. Non si calcolano metriche IR sui campioni 100/200. Nessun warm-up o
+svuotamento esplicito delle cache; sono condizioni potenzialmente calde, sensibili
+a hardware, OS e carico. Si registrano campioni, mediana, min/max, deviazione
+standard della popolazione e IQR inclusivo. Dimensione indice = byte del JSON.
 
-Analyzer: NFC e `lower`, regex Unicode `[^\W_]+`, stopword e accenti preservati,
-nessuno stemming. Filename: basename, rimozione dell'estensione `.txt`, divisione
-dei delimitatori. Query e indicizzazione usano lo stesso analyzer del campo.
-Il filename deriva da un titolo ASCII, ma l'abstract inglese rimane originale.
+In `artifacts/cranfield300/`, `n100/`, `n200/`, `n300/` contengono dataset e indice.
+In `results/`:
 
-BM25 per campo con `N` documenti, inclusi i vuoti:
+- `coverage.json`, `splits.json`: copertura e ID esatti delle query;
+- `development_comparison.csv`, `development_metrics.csv`, `development_runs.json`:
+  tutte le strategie e ranking completi sul development;
+- `selection.json`: configurazione congelata, criterio, hash corpus/split/stoplist
+  e confronto usato, dichiarazione che il test non è stato usato per scegliere;
+- `test_summary.csv`, `test_metrics.csv`, `test_runs.json`: unica configurazione
+  test, rank, score, ID originali e giudizi disponibili per ogni risultato;
+- `functional_checks.json`: 12 query per ciascuna delle sei configurazioni,
+  con ID esatti dello scanner indipendente e controllo di uguaglianza;
+- `deterministic.json`, `checksums.json`: risultati e hash deterministici;
+- `observed.json`, `timing_samples.csv`, `timing_summary.csv`, `performance.csv`:
+  tempi, variabilità, byte, Python/progetto/commit/stato Git, pacchetti, OS e
+  informazioni hardware disponibili, separati dai dati deterministici;
+- `tests.log`: esito e durata effettiva di `unittest`.
 
-```text
-idf(t) = ln(1 + (N - df(t) + 0.5) / (df(t) + 0.5))
-score(d,q) = somma_t qtf(t) * idf(t) *
-             tf(t,d)*(k1+1) / (tf(t,d) + k1*(1-b+b*len(d)/avglen))
-```
+La suite conserva i test pertinenti e copre nuove strategie, conteggio distinto,
+OOV, arrotondamenti, stopword, query vuote dopo filtro, frasi/nome invariati,
+assenza di mutazioni degli indici, limite console, qrels, esclusioni, split e
+determinismo. Due preparazioni confrontano hash e byte degli abstract. Senza
+snapshot locale i test di integrazione sono saltati senza download impliciti;
+la procedura completa acquisisce i dati prima dei test e li esegue tutti.
 
-Frasi: filtro posizionale e stessa somma BM25, senza bonus. Parità: ID crescente.
-L'indice è JSON deterministico UTF-8 formato 1, senza pickle o esecuzione di
-codice al caricamento; configura analyzer e BM25 e conserva lunghezze e percorsi
-relativi. Non modificare i file senza ricostruirlo. Formato locale didattico,
-non progettato per input JSON ostili.
+`analyzers.py`, BM25, indici posizionali e formato indice 1 restano invariati;
+si estende soltanto il matching delle query. Analyzer: NFC/lower, token Unicode
+`[^\W_]+`, stopword e posizioni preservate; filename senza estensione `.txt`.
+BM25 usa statistiche del campo, frequenze di query e parità per ID crescente.
+Persistenza JSON UTF-8, chiavi ordinate/LF, senza pickle o codice eseguito al load.
+`.gitattributes` mantiene LF negli input versionati.
 
-Il materiale sintetico della versione precedente è isolato in
-`legacy/synthetic/` e non viene eseguito. I vecchi output locali
-`artifacts/experiment` e `artifacts/repeat` sono storici, non risultati attuali.
-Tutti i dati e indici ricostruibili rimangono esclusi da Git. Nessuna relazione
-universitaria viene generata: gli output costituiscono i dati per prepararla.
+I vecchi output `cranfield-experiment`, `cranfield-repeat`, `experiment`, `repeat`
+sono storici; la versione corrente usa soltanto `cranfield300`. Il materiale
+sintetico è isolato in `legacy/synthetic/`. Nessuna relazione universitaria è
+generata: CSV/JSON contengono i risultati per prepararla separatamente.

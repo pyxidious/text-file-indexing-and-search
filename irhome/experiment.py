@@ -1,4 +1,4 @@
-"""Cranfield: benchmark IR completo e misure separate sui prefissi 100/300/1400."""
+"""Preparazione Cranfield 300, statistiche e primitive del protocollo sperimentale."""
 import csv
 import io
 from importlib import metadata
@@ -12,24 +12,36 @@ from time import perf_counter_ns
 
 from . import __version__
 from .acquire import DEFAULT_CACHE, DEFAULT_LOCK, acquire, check_dependency
-from .analyzers import ANALYZER_CONFIG
-from .dataset import ROOT, document_mapping, prepare_dataset, verify_dataset
+from .dataset import ROOT, prepare_dataset, verify_dataset
 from .engine import SearchEngine
 from .io import read_json, sha256, write_json
-from .metrics import retrieval_metrics
 from .oracle import direct_scan
+from .strategies import validate_strategy
 
 FUNCTIONAL_QUERIES = ROOT / "corpus" / "functional_queries.json"
 
 
 def validate_config(config):
-    if config.get("dataset") != "cranfield" or config.get("main_size") != 1400:
-        raise ValueError("Il benchmark principale richiede Cranfield completo (1400)")
+    if config.get("dataset") != "cranfield" or config.get("main_size") != 300:
+        raise ValueError("Il benchmark principale richiede il sottoinsieme di 300 documenti")
     sizes = config["sizes"]
     if (not isinstance(sizes, list) or not sizes or
-            any(type(n) is not int or not 1 <= n <= 1400 for n in sizes) or
-            len(sizes) != len(set(sizes)) or 1400 not in sizes):
-        raise ValueError("Dimensioni distinte in 1..1400, inclusa 1400, richieste")
+            any(type(n) is not int or not 1 <= n <= 300 for n in sizes) or
+            len(sizes) != len(set(sizes)) or 300 not in sizes):
+        raise ValueError("Dimensioni distinte in 1..300, inclusa 300, richieste")
+    if type(config["seed"]) is not int or type(config["query_split_seed"]) is not int:
+        raise ValueError("Seed interi richiesti")
+    if config["development_fraction"] != 0.2:
+        raise ValueError("Protocollo fissato a development 20%")
+    expected_rule = "max development macro F1@10; ties: Recall@10, MAP@10, declared strategy order"
+    if config["selection_rule"] != expected_rule:
+        raise ValueError("Criterio di selezione diverso dal protocollo implementato")
+    if len({s["id"] for s in config["strategies"]}) != len(config["strategies"]):
+        raise ValueError("Identificativi strategia duplicati")
+    for spec in config["strategies"]:
+        validate_strategy(spec["mode"], spec["minimum_should_match"])
+    if config["strategies"][0]["mode"] != "or":
+        raise ValueError("La prima strategia deve essere la baseline OR originale")
     if config.get("relevance_threshold") != 1:
         raise ValueError("Questa configurazione richiede la soglia relevance >= 1")
     if type(config["repetitions"]) is not int or config["repetitions"] < 5:
@@ -62,7 +74,7 @@ def prepare_collections(output, config, cache=DEFAULT_CACHE, offline=False):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
     marker = output / "experiment-kind.json"
-    identity = {"dataset": "cranfield", "protocol_version": 2}
+    identity = {"dataset": "cranfield", "protocol_version": 3}
     if marker.exists() and read_json(marker) != identity:
         raise ValueError("Destinazione di un altro esperimento")
     if not marker.exists() and any(output.iterdir()):
@@ -75,7 +87,7 @@ def prepare_collections(output, config, cache=DEFAULT_CACHE, offline=False):
         previous = None
         for repetition in range(config["repetitions"]):
             start = perf_counter_ns()
-            prepare_dataset(collection / "dataset", records, size, source_sha)
+            prepare_dataset(collection / "dataset", records, size, source_sha, config["seed"])
             elapsed = perf_counter_ns() - start
             digest = verify_dataset(collection / "dataset")
             if previous is not None and digest != previous:
@@ -166,17 +178,20 @@ def annotate_results(results, mapping, judgments):
     return rows
 
 
-def check_functional(engine, dataset):
+def check_functional(engine, dataset, strategies=None):
     checks = []
-    for query in read_json(FUNCTIONAL_QUERIES):
-        result = engine.search(query["query"])
-        oracle = direct_scan(Path(dataset) / "documents", query["query"])
-        if {row["id"] for row in result} != oracle:
-            raise AssertionError(f"Scansione diretta discordante: {query['id']}")
-        if bool(oracle) != (query["expect"] == "nonempty"):
-            raise AssertionError(f"Aspettativa funzionale non soddisfatta: {query['id']}")
-        checks.append({**query, "oracle_match": True, "retrieved": len(result),
-                       "engine_ids": sorted(oracle)})
+    specs = strategies or [{"id": "or_original", "mode": "or", "minimum_should_match": 0.5}]
+    for spec in specs:
+        for query in read_json(FUNCTIONAL_QUERIES):
+            result = engine.search(query["query"], spec["mode"], spec["minimum_should_match"])
+            oracle = direct_scan(Path(dataset) / "documents", query["query"],
+                                 spec["mode"], spec["minimum_should_match"])
+            if {row["id"] for row in result} != oracle:
+                raise AssertionError(f"Scansione diretta discordante: {spec['id']}/{query['id']}")
+            if spec["mode"] == "or" and bool(oracle) != (query["expect"] == "nonempty"):
+                raise AssertionError(f"Aspettativa funzionale non soddisfatta: {query['id']}")
+            checks.append({**query, "strategy": spec["id"], "oracle_match": True,
+                           "retrieved": len(result), "engine_ids": sorted(oracle)})
     return checks
 
 
@@ -193,101 +208,5 @@ def aggregate_metrics(rows):
 
 
 def evaluate_collections(output, config, samples):
-    validate_config(config)
-    output = Path(output)
-    per_query, collections, functional = [], [], []
-    main_aggregates = None
-    for size in sorted(config["sizes"]):
-        collection = output / f"n{size}"
-        dataset = collection / "dataset"
-        dataset_hash = verify_dataset(dataset)
-        queries = read_json(dataset / "queries.json")
-        judgments_by_query = qrels_by_query(read_json(dataset / "qrels.json"))
-        mapping = document_mapping(dataset)
-        for repetition in range(config["repetitions"]):
-            start = perf_counter_ns()
-            engine = SearchEngine.load(collection / "index.json")
-            elapsed = perf_counter_ns() - start
-            sample(samples, size, "load", repetition, elapsed)
-        check_mapping(engine, mapping)
-        if {"k1": engine.k1, "b": engine.b} != config["bm25"]:
-            raise ValueError("BM25 dell'indice diverso dalla configurazione")
-        is_main = size == config["main_size"]
-        if is_main:
-            functional = check_functional(engine, dataset)
-            print(f"Correttezza lessicale: {len(functional)} query funzionali verificate", flush=True)
-        runs = {}
-        for number, query in enumerate(queries, 1):
-            line = "contenuto " + query["text"]
-            previous = None
-            for repetition in range(config["repetitions"]):
-                start = perf_counter_ns()
-                results = engine.search(line)
-                elapsed = perf_counter_ns() - start
-                sample(samples, size, "search", repetition, elapsed, query["query_id"])
-                if previous is not None and results != previous:
-                    raise AssertionError("Ranking non deterministico")
-                previous = results
-            if any(row["id"] not in mapping for row in results):
-                raise ValueError("Risultato non associabile a Cranfield")
-            if is_main:
-                judgments = judgments_by_query.get(query["query_id"], {})
-                annotated = annotate_results(results, mapping, judgments)
-                ranked_ids = [row["doc_id"] for row in annotated]
-                relevant = {doc for doc, judgment in judgments.items() if judgment >= 1}
-                per_query.append({"query_id": query["query_id"],
-                                  "source_query_id": query["source_query_id"], "text": query["text"],
-                                  "judged_relevant": len(relevant),
-                                  "judged_nonrelevant": sum(v == -1 for v in judgments.values()),
-                                  "unjudged_in_collection": 1400 - len(judgments),
-                                  "retrieved_unjudged": sum(r["judgment"] is None for r in annotated),
-                                  **retrieval_metrics(ranked_ids, relevant)})
-                runs[query["query_id"]] = {**query, "results": annotated}
-            if number % 25 == 0 or number == len(queries):
-                print(f"Query {size}: {number}/{len(queries)} (x{config['repetitions']})", flush=True)
-        record = {"size": size, "purpose": "main_ir" if is_main else "performance_only",
-                  "dataset_sha256": dataset_hash, "index_sha256": sha256(collection / "index.json"),
-                  "index_bytes": (collection / "index.json").stat().st_size}
-        if is_main:
-            main_aggregates = aggregate_metrics(per_query)
-            write_json(collection / "ranking.json", runs)
-            record["ranking_sha256"] = sha256(collection / "ranking.json")
-        collections.append(record)
-    deterministic = {"project_version": __version__, "configuration": config,
-                     "source_lock": read_json(DEFAULT_LOCK), "analyzers": ANALYZER_CONFIG,
-                     "functional_queries_sha256": sha256(FUNCTIONAL_QUERIES),
-                     "metric_convention": {"relevant": "original relevance >= 1",
-                                           "unjudged": "treated as 0 for metrics; status preserved",
-                                           "ap_denominator": "all known relevant documents",
-                                           "ap_at_10_denominator": "min(10, all known relevant documents)"},
-                     "collections": collections, "main_aggregates": main_aggregates,
-                     "per_query": per_query, "functional_checks": functional}
-    results_dir = output / "results"
-    write_json(results_dir / "deterministic.json", deterministic)
-    csv_file(results_dir / "metrics.csv", per_query)
-    csv_file(results_dir / "aggregate_metrics.csv", [main_aggregates])
-    write_json(results_dir / "functional_checks.json", functional)
-    timings = summarize_timings(samples)
-    # Mediana delle mediane delle 225 query: riepilogo compatto, non latenza di una query specifica.
-    performance = []
-    for collection in collections:
-        size = collection["size"]
-        summary = {row["phase"]: row for row in timings if row["size"] == size and not row["query_id"]}
-        query_medians = [row["median_ns"] for row in timings if row["size"] == size and row["phase"] == "search"]
-        performance.append({"size": size, "index_bytes": collection["index_bytes"],
-                            **{phase + "_median_ns": summary[phase]["median_ns"]
-                               for phase in ("index_build", "index_save", "load")},
-                            "median_of_query_medians_ns": statistics.median(query_medians)})
-    write_json(results_dir / "observed.json", {
-        "environment": environment(), "configuration": config, "analyzers": ANALYZER_CONFIG,
-        "deterministic_results_sha256": sha256(results_dir / "deterministic.json"),
-        "source_lock": read_json(DEFAULT_LOCK), "performance_comparison": performance,
-        "timing_protocol": "sequential; no cache flushing, no warm-up; download excluded; ns",
-        "samples": samples, "timing_summary": timings})
-    csv_file(results_dir / "timing_samples.csv", samples)
-    csv_file(results_dir / "timing_summary.csv", timings)
-    csv_file(results_dir / "performance.csv", performance)
-    write_json(results_dir / "checksums.json", {name: sha256(results_dir / name) for name in
-               ("deterministic.json", "metrics.csv", "aggregate_metrics.csv", "functional_checks.json")})
-    print("Metriche aggregate Cranfield completo:", main_aggregates, flush=True)
-    return deterministic
+    from .comparison import run_experiment
+    return run_experiment(output, config, samples)
