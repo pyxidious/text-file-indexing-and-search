@@ -302,10 +302,10 @@
       "1392_the_solution_of_small_displacement_stability_or_vibration_problems_concerning_a.txt": "792f2419576e1d0d3b47101ecc51263eabb52bdb030c2e2f8e82f72a284fdae6",
       "1400_the_buckling_shear_stress_of_simply_supported_infinitely_long_plates_with_transv.txt": "328988690d80cfa381cb35a94999404b71ba58a03fdee160b84bf67df4f6ebc1"
     },
-    "criteria_sha256": "80e21ec3360e6eef3f50fe09181156de9f9c23a7f83cd6f87781f6b4c43e850d",
+    "criteria_sha256": "91f8dbb91f80f1876761e22ed3f2f8382d0f8110088c2a3e7a4bfc13e383ae73",
     "documents": 300,
     "metadata_sha256": "d301f1bb5f1666cfa8714855acaf68483912b883da67df5ba73a8b3572a11572",
-    "queries_sha256": "f6078a3af28a67e14411774b36f030d620a687f5893304a793d7edb3b78ef99c"
+    "queries_sha256": "53076ad336fdd6049fcb598429fd2cc310132bb4b8c45210e317dc3a1e8bd822"
   },
   "status": "semantic_annotation_pending"
 }

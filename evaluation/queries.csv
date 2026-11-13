@@ -1,10 +1,10 @@
 query_id,field,expression,type,expected_match
-Q01,nome,flow,single,Il nome contiene il token flow
-Q02,nome,pressure,single,Il nome contiene il token pressure
+Q01,nome,supersonic flow,and,Il nome contiene entrambi i token anche separati
+Q02,nome,pressure distribution,and,Il nome contiene entrambi i token anche separati
 Q03,nome,laminar boundary,and,Il nome contiene entrambi i token anche separati
 Q04,nome,"""boundary layer""",phrase,Il nome contiene boundary seguito immediatamente da layer
 Q05,nome,magnetohydrodynamics,single,Il nome contiene esattamente magnetohydrodynamics senza stemming
-Q06,contenuto,flow,single,Il contenuto contiene il token flow
+Q06,contenuto,supersonic flow,and,Il contenuto contiene entrambi i token anche separati
 Q07,contenuto,pressure velocity,and,Il contenuto contiene entrambi i token anche separati
 Q08,contenuto,heat temperature,and,Il contenuto contiene entrambi i token anche separati
 Q09,contenuto,"""heat transfer""",phrase,Il contenuto contiene heat seguito immediatamente da transfer

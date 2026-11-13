@@ -27,30 +27,47 @@ In PowerShell si può sostituire `python` con `.venv\Scripts\python.exe`.
 
 ## Query e criteri semantici
 
-Le dieci query in `evaluation/queries.csv` restano **invariate**. Il suo campo
+Le dieci query in `evaluation/queries.csv` sono **definitive prima
+dell'annotazione umana**. Q01, Q02 e Q06 usano le sostituzioni richieste,
+tutte di tipo AND; le altre sette query sono invariate. Il campo
 storico `expected_match` descrive il matching del motore, non la rilevanza semantica.
 `evaluation/semantic/criteria.csv` associa a ogni query un bisogno informativo,
-un criterio positivo, uno negativo, una valutazione di chiarezza ed eventuali
-proposte di sostituzione. Le proposte non sono applicate.
+un criterio positivo, uno negativo e una valutazione di chiarezza.
+Le precedenti proposte per Q01, Q02 e Q06 sono state applicate; non restano
+sostituzioni in attesa. I criteri sono fissati prima di attribuire giudizi.
 
 | ID | Query | Bisogno informativo sintetico |
 | --- | --- | --- |
-| Q01 | `nome flow` | Moto dei fluidi come oggetto principale del titolo |
-| Q02 | `nome pressure` | Pressione, distribuzioni o effetti come tema del titolo |
+| Q01 | `nome supersonic flow` | Flussi supersonici come oggetto sostanziale del titolo/nome |
+| Q02 | `nome pressure distribution` | Distribuzione spaziale della pressione dal titolo/nome |
 | Q03 | `nome laminar boundary` | Strato limite laminare |
 | Q04 | `nome "boundary layer"` | Fenomeni dello strato limite |
 | Q05 | `nome magnetohydrodynamics` | Interazione fra campi magnetici e fluidi conduttori |
-| Q06 | `contenuto flow` | Analisi sostanziale del moto dei fluidi |
+| Q06 | `contenuto supersonic flow` | Analisi sostanziale dei flussi supersonici nel testo |
 | Q07 | `contenuto pressure velocity` | Relazione fra pressione e velocità |
 | Q08 | `contenuto heat temperature` | Relazione fra fenomeni termici e temperatura |
 | Q09 | `contenuto "heat transfer"` | Trasferimento di calore |
 | Q10 | `contenuto "mach number"` | Effetti della comprimibilità e del regime rispetto alla velocità del suono |
 
-Q01, Q02 e soprattutto Q06 sono ampie. Il CSV propone rispettivamente
-`nome supersonic flow`, `nome pressure distribution` e `contenuto supersonic flow`
-per restringere il bisogno. Le altre query sono utilizzabili con i criteri
-espliciti indicati. Prima dell'annotazione, il revisore deve concordare la
-versione definitiva di query e criteri; le sostituzioni richiedono approvazione.
+Per Q01 il solo titolo/nome deve indicare uno studio sostanziale di un flusso
+supersonico (velocita superiore a quella locale del suono), inclusi i flussi
+ipersonici. Non bastano un contesto di prova supersonico, un generico flusso
+comprimibile o onde d'urto senza indicazione del regime. Il testo non va usato
+per ricavare informazioni assenti dal titolo/nome.
+
+Per Q02 il solo titolo/nome deve porre al centro la distribuzione **spaziale**
+della pressione nel fluido o su una superficie: profilo, variazione lungo una
+coordinata, calcolo o misura. Sono esclusi pressione come semplice parametro,
+variazioni solo temporali, perdite totali o forze globali senza uno studio della
+distribuzione spaziale.
+
+Per Q06 il testo deve analizzare sostanzialmente struttura, proprieta o
+interazioni di un flusso supersonico o ipersonico. Sono inclusi confronti fra
+regimi quando quello supersonico e analizzato; un numero di Mach maggiore di 1
+riportato solo come condizione sperimentale non basta. La formulazione puo
+usare sinonimi o descrizioni equivalenti senza i token esatti della query.
+I criteri completi 1/0 per tutte le query sono in `criteria.csv`.
+
 Dopo la preparazione, ogni modifica agli input viene rilevata: per un nuovo
 protocollo usare una nuova directory, copiandovi i criteri aggiornati.
 
@@ -81,7 +98,7 @@ criteri. Si legge ogni documento una volta e si inseriscono dieci etichette:
 
 ```text
 1010001?00
-1 0 1 0 0 0 1 è 0 0
+1 0 1 0 0 0 1 ? 0 0
 ```
 
 `_` svuota una cella; `-` conserva il giudizio precedente. `n`/`p` navigano,
@@ -134,8 +151,14 @@ Il comando CLI richiede sempre 300 documenti; i test interni usano fixture ridot
 - `scripts/reproduce.py`: verifica corpus, prepara la matrice senza sovrascriverla,
   esegue test, persistenza e benchmark; valuta solo se esiste il freeze semantico.
 
-La ground truth lessicale precedente rimane separata e invariata in
-`evaluation/review.csv`, `evaluation/proposed_positives.csv`, `evaluation/proposed.json`.
+La ground truth lessicale precedente e archiviata separatamente in
+`evaluation/historical/lexical/`: `review.csv`, `proposed_positives.csv` e
+`proposed.json` sono conservati byte per byte, insieme alla copia delle query
+originali in `queries.csv` e a un README che li identifica come **storici**.
+Sono proposte lessicali, non giudizi semantici o metriche validate. Non vanno
+usate con le query definitive. Nessun vecchio output locale viene ricalcolato.
+La matrice semantica vuota e il manifest sono stati rigenerati per le query e
+i criteri definitivi: 300 documenti, 3.000 celle vuote, nessun freeze o giudizio.
 `irhome/ground_truth.py`, `irhome/oracle.py` e `scripts/ground_truth.py` conservano
 il vecchio scanner e il suo protocollo esclusivamente come ausilio lessicale.
 Non trasferire proposte o conferme lessicali nelle celle semantiche. Il valutatore
