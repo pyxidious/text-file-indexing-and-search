@@ -3,8 +3,8 @@ doc_id,source_file,title,Q01,Q02,Q03,Q04,Q05,Q06,Q07,Q08,Q09,Q10
 0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt,0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt,"approximate solutions of the incompressible laminar
 boundary layer equations for a plate in shear flow .",0,0,1,1,0,0,0,0,0,0
 0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt,0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt,"transition studies and skin friction measurements on
-an insulated flat plate at a mach number of 5.8 .",0,0,0,1,0,0,0,0,0,0
-0010_the_theory_of_the_impact_tube_at_low_pressure.txt,0010_the_theory_of_the_impact_tube_at_low_pressure.txt,the theory of the impact tube at low pressure .,0,0,1,1,0,0,0,0,0,0
+an insulated flat plate at a mach number of 5.8 .",0,0,0,1,0,1,0,0,0,1
+0010_the_theory_of_the_impact_tube_at_low_pressure.txt,0010_the_theory_of_the_impact_tube_at_low_pressure.txt,the theory of the impact tube at low pressure .,0,0,0,0,0,0,1,0,0,1
 0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt,0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt,"some structural and aerelastic considerations of high
 speed flight .",,,,,,,,,,
 0016_transformation_of_the_compressible_turbulent_boundary_layer.txt,0016_transformation_of_the_compressible_turbulent_boundary_layer.txt,"transformation of the compressible turbulent boundary
