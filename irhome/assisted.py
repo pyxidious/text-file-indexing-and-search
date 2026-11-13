@@ -113,6 +113,16 @@ def import_review(output="evaluation/semantic"):
     by_pair = {(r["doc_id"], r["query_id"]): r for r in provenance}
     corrections = csv_rows(proposals / "human_corrections.csv")
     correction_fields = ["doc_id", "query_id", "previous_label", "corrected_label", "reviewer", "date", "source"]
+    review_types = {}
+    approval_path = proposals / "final_supervision.json"
+    if approval_path.exists():
+        approval = read_json(approval_path)
+        for item in approval["pair_review_types"]:
+            pair = item["doc_id"], item["query_id"]
+            if pair in review_types or item["review_type"] not in (
+                    "assisted_confirmation_after_discussion", "assisted_bulk_confirmation"):
+                raise ValueError("Modalita di supervisione duplicata o non valida")
+            review_types[pair] = item["review_type"]
     seen, imported = set(), 0
     for r in review:
         pair = r["doc_id"], r["query_id"]
@@ -134,13 +144,20 @@ def import_review(output="evaluation/semantic"):
         if r["corrected_label"] != needed:
             raise ValueError("La correzione richiede corrected_label esplicito")
         old = by_doc[pair[0]][pair[1]]
+        # Non riscrivere conferme di calibrazione gia registrate con gli stessi
+        # dati. L'importazione ripetuta e idempotente e conta solo nuove decisioni.
+        if (p["human_confirmed"] == "1" and p["effective_label"] == label
+                and old == label and p["reviewer"] == r["reviewed_by"]
+                and p["confirmation_date"] == r["reviewed_at"]):
+            continue
         if old != label:
             corrections.append(dict(doc_id=pair[0], query_id=pair[1], previous_label=old,
                                     corrected_label=label, reviewer=r["reviewed_by"], date=r["reviewed_at"],
                                     source="Revisione mirata: " + r["human_reason"]))
         by_doc[pair[0]][pair[1]] = label
         p.update(effective_label=label, human_confirmed="1", reviewer=r["reviewed_by"],
-                 confirmation_date=r["reviewed_at"], review_type="targeted_assisted_confirmation")
+                 confirmation_date=r["reviewed_at"],
+                 review_type=review_types.get(pair, "targeted_assisted_confirmation"))
         imported += 1
     atomic_csv(output / "annotations.csv", matrix, list(matrix[0]))
     atomic_csv(output / "provenance.csv", provenance, list(provenance[0]))
@@ -151,6 +168,27 @@ def import_review(output="evaluation/semantic"):
     counts["human_confirmed_pairs"] = sum(r["human_confirmed"] == "1" for r in provenance)
     counts["not_individually_confirmed_pairs"] = len(provenance)-counts["human_confirmed_pairs"]
     counts["review_pending"] = sum(not r["human_label"] for r in review)
+    counts["review_confirmed"] = sum(bool(r["human_label"]) for r in review)
+    automatic = csv_rows(proposals / "complete_labels.csv")
+    query_ids = sorted({r["query_id"] for r in automatic})
+    counts["proposed_positive_by_query"] = {
+        q: sum(r["query_id"] == q and r["proposed_label"] == "1" for r in automatic) for q in query_ids}
+    counts["effective_positive_by_query"] = {q: sum(r[q] == "1" for r in matrix) for q in query_ids}
+    counts["confirmed_review_types"] = {
+        mode: sum(r["human_confirmed"] == "1" and r["review_type"] == mode for r in provenance)
+        for mode in sorted({r["review_type"] for r in provenance if r["human_confirmed"] == "1"})}
+    if approval_path.exists():
+        counts["assisted_confirmation_groups"] = {
+            "calibration": sum(r["human_confirmed"] == "1" and r["source"] == "codex_calibration_basename_v2" for r in provenance),
+            "discussed": sum(by_pair[pair]["human_confirmed"] == "1" for pair, mode in review_types.items() if mode == "assisted_confirmation_after_discussion"),
+            "bulk": sum(by_pair[pair]["human_confirmed"] == "1" for pair, mode in review_types.items() if mode == "assisted_bulk_confirmation")}
+    manifest["positive_counts_note"] = "positive_by_query e proposed_positive_by_query sono proposte originali; effective_positive_by_query descrive la matrice corrente."
+    review_manifest_path = proposals / "review_manifest.json"
+    if review_manifest_path.exists():
+        summary = read_json(review_manifest_path)
+        summary.update(status="targeted_review_completed" if counts["review_pending"] == 0 else "targeted_review_pending",
+                       pending=counts["review_pending"], confirmed_in_queue=counts["review_confirmed"])
+        write_json(review_manifest_path, summary)
     manifest["output_sha256"] = {p.name: sha256(p) for p in proposals.iterdir()
                                  if p.is_file() and p.name != "classification_manifest.json"}
     write_json(manifest_path, manifest)

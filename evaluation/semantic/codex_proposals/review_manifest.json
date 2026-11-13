@@ -6,9 +6,10 @@
     "bassa": 14,
     "media": 215
   },
+  "confirmed_in_queue": 278,
   "initial_queue_sha256": "c785a1aaf54d8fd2954ee505cbb53e12bab64947b52de2868515b990fb0c3af2",
   "notes": "Le righe gia confermate riportano conferme reali di calibrazione; tutti i nuovi campi umani restano vuoti. I controlli non modificano etichette.",
-  "pending": 253,
+  "pending": 0,
   "queue_size": 278,
   "required_pairs": [
     {
@@ -1328,5 +1329,5 @@
   ],
   "sampling": "2 positivi e 2 negativi per query, fra alta confidenza non gia in revisione o confermati; ordinamento doc_id prima del campionamento.",
   "seed": 42,
-  "status": "targeted_review_pending"
+  "status": "targeted_review_completed"
 }

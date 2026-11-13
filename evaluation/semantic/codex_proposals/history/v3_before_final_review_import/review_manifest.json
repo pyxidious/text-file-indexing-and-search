@@ -1,0 +1,1332 @@
+{
+  "already_confirmed_in_queue": 25,
+  "coherence_flags": [],
+  "confidence_counts": {
+    "alta": 2771,
+    "bassa": 14,
+    "media": 215
+  },
+  "initial_queue_sha256": "c785a1aaf54d8fd2954ee505cbb53e12bab64947b52de2868515b990fb0c3af2",
+  "notes": "Le righe gia confermate riportano conferme reali di calibrazione; tutti i nuovi campi umani restano vuoti. I controlli non modificano etichette.",
+  "pending": 253,
+  "queue_size": 278,
+  "required_pairs": [
+    {
+      "doc_id": "0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0009_transition_studies_and_skin_friction_measurements_on_an_insulated_flat_plate_at.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0010_the_theory_of_the_impact_tube_at_low_pressure.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0012_some_structural_and_aerelastic_considerations_of_high_speed_flight.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0033_the_prospects_for_magneto_aerodynamics.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0034_constant_temperature_magneto_gasdynamic_channel_flow.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0034_constant_temperature_magneto_gasdynamic_channel_flow.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0034_constant_temperature_magneto_gasdynamic_channel_flow.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0035_stagnation_point_of_a_blunt_body_in_hypersonic_flow.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0038_on_the_prediction_of_mixed_subsonic_supersonic_pressure_distributions.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0041_on_transition_experiments_at_moderate_supersonic_speeds.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0041_on_transition_experiments_at_moderate_supersonic_speeds.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0049_temperature_and_velocity_profiles_in_the_compressible_laminar_boundary_layer_wit.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0049_temperature_and_velocity_profiles_in_the_compressible_laminar_boundary_layer_wit.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco.txt",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0057_applicability_of_the_hypersonic_similarity_rule_to_pressure_distributions_which.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0058_pressure_measurements_on_sharp_and_blunt_5_and_15_half_angle_cones_at_mach_numbe.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0058_pressure_measurements_on_sharp_and_blunt_5_and_15_half_angle_cones_at_mach_numbe.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0069_predicted_shock_envelopes_about_two_types_of_vehicles_at_large_angles_of_attack.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0092_the_analysis_of_redundant_structures_by_the_use_of_high_speed_digital_computers.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0101_laminar_heat_transfer_over_blunt_nosed_bodies_at_hypersonic_flight_speeds.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0101_laminar_heat_transfer_over_blunt_nosed_bodies_at_hypersonic_flight_speeds.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0101_laminar_heat_transfer_over_blunt_nosed_bodies_at_hypersonic_flight_speeds.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0114_response_of_plates_to_a_decaying_and_convecting_randon_pressure_field.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0114_response_of_plates_to_a_decaying_and_convecting_randon_pressure_field.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0126_an_investigation_of_two_dimensional_supersonic_base_pressures.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0126_an_investigation_of_two_dimensional_supersonic_base_pressures.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0134_note_on_an_interaction_between_the_boundary_layer_and_the_inviscid_flow.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0134_note_on_an_interaction_between_the_boundary_layer_and_the_inviscid_flow.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0134_note_on_an_interaction_between_the_boundary_layer_and_the_inviscid_flow.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0135_the_calculation_of_wall_shearing_stress_from_heat_transfer_measurements_in_compr.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0135_the_calculation_of_wall_shearing_stress_from_heat_transfer_measurements_in_compr.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0154_velocity_and_temperature_distributions_in_the_turbulent_wake_behind_a_heated_bod.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0177_the_mixing_of_free_axially_symmetrical_jets_of_mach_number_1_40.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0177_the_mixing_of_free_axially_symmetrical_jets_of_mach_number_1_40.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0178_on_full_dispersed_shock_waves_in_carbon_dioxide.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0178_on_full_dispersed_shock_waves_in_carbon_dioxide.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0180_boundary_layer_over_a_flat_plate_in_presence_of_shear_flow.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0185_some_possibilities_of_using_gas_mixtures_other_than_in_aerodynamic_research.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0188_an_analysis_of_base_pressure_at_supersonic_velocities_and_comparison_with_experi.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0191_a_theory_for_the_core_of_a_leading_edge_vortex.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0193_a_study_of_inviscid_flow_about_air_foils_at_high_supersonic_speeds.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0203_calculated_velocity_distributions_and_force_derivatives_for_a_series_of_high_spe.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0208_the_hall_effect_in_the_viscous_flow_of_ionized_gas_between_parallel_plates_under.txt",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0215_the_test_performance_of_highly_loaded_turbine_stages_designed_for_high_pressure.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0221_a_theoretical_study_of_annular_supersonic_nozzles.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0236_criteria_for_thermodynamic_equilibrium_in_gas_flow.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0236_criteria_for_thermodynamic_equilibrium_in_gas_flow.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0236_criteria_for_thermodynamic_equilibrium_in_gas_flow.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0236_criteria_for_thermodynamic_equilibrium_in_gas_flow.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0238_on_a_determination_of_the_pitot_static_tube_factor_at_low_reynolds_numbers_with.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0239_design_and_calibration_at_low_speeds_of_a_static_tube_and_a_pitot_static_tube_wi.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0270_on_combined_free_and_forced_convection_laminar_magnetohydrodynamic_flow_and_heat.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0273_flow_past_slender_blunt_bodies_a_review_and_extension.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0289_a_theoretical_study_of_the_aerodynamics_of_slender_cruciform_wing_arrangements_a.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0297_compressibility_effects_in_magneto_aerodynamic_flows_past_thin_bodies.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0298_incompressible_wedge_flows_of_an_electrically_conducting_viscous_fluid_in_the_pr.txt",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0299_magnetohydrodynamic_flow_past_a_semi_infinite_plate.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0299_magnetohydrodynamic_flow_past_a_semi_infinite_plate.txt",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0311_a_method_for_predicting_the_onset_of_buffeting_and_other_separation_effects_from.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0311_a_method_for_predicting_the_onset_of_buffeting_and_other_separation_effects_from.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0316_the_occurrence_and_development_of_boundary_layer_separations_at_high_incidences.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0343_transpiration_cooling_experiments_in_a_turbulent_boundary_layer_at_m_3.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0347_boundary_layer_measurements_in_hypersonic_flow.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0355_the_injection_of_air_into_the_dissociated_hypersonic_laminar_boundary_layer.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0355_the_injection_of_air_into_the_dissociated_hypersonic_laminar_boundary_layer.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0355_the_injection_of_air_into_the_dissociated_hypersonic_laminar_boundary_layer.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0358_on_the_model_of_the_free_shock_separation_turbulent_boundary_layer.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0358_on_the_model_of_the_free_shock_separation_turbulent_boundary_layer.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0358_on_the_model_of_the_free_shock_separation_turbulent_boundary_layer.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0365_the_homogeneous_boundary_layer_at_an_axisymmetric_stagnation_point_with_large_ra.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0369_an_approximate_solution_of_the_supersonic_blunt_body_problem_for_prescribed_arbi.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0372_an_experimental_investigation_of_flow_about_simple_blunt_bodies_at_a_nominal_mac.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0374_an_investigation_of_optimum_zoom_climb_techniques.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0383_integration_of_the_boundary_layer_equations_for_a_plane_in_compressible_flow_wit.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0383_integration_of_the_boundary_layer_equations_for_a_plane_in_compressible_flow_wit.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0401_inviscid_hypersonic_airflows_with_coupled_non_equilibrium_processes.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0401_inviscid_hypersonic_airflows_with_coupled_non_equilibrium_processes.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0402_magnetohydrodynamics_shocks.txt",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0402_magnetohydrodynamics_shocks.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0403_magnetohydrodynamic_shock_waves.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0403_magnetohydrodynamic_shock_waves.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0405_tables_of_thermal_properties_of_gases.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0414_the_problem_of_resistance_in_compressible_fluids.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0429_a_description_of_the_r_a_e_high_speed_supersonic_tunnel.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0440_compilation_of_information_on_the_transonic_attachment_of_flows_at_the_leading_e.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0443_calculated_and_measured_pressure_distributions_over_the_midspan_section_of_the_n.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0443_calculated_and_measured_pressure_distributions_over_the_midspan_section_of_the_n.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0455_modified_cross_lees_mixing_theory_for_supersonic_separated_and_reattaching_flows.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0456_a_study_of_flow_fields_about_some_typical_blunt_nosed_slender_bodies.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0456_a_study_of_flow_fields_about_some_typical_blunt_nosed_slender_bodies.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0460_correlated_incompressible_and_compressible_boundary_layers.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0460_correlated_incompressible_and_compressible_boundary_layers.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0460_correlated_incompressible_and_compressible_boundary_layers.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0483_stagnation_point_shock_detachment_distance_for_flow_around_spheres_and_cylinder.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0495_on_similar_solutions_for_strong_blast_waves_and_their_application_to_steady_hype.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0495_on_similar_solutions_for_strong_blast_waves_and_their_application_to_steady_hype.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0499_a_closed_form_solution_for_the_oscillations_of_a_vehicle_entering_a_planetary_at.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0514_pressure_distributions_and_flow_patterns_on_some_conical_shapes_with_sharp_edges.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0514_pressure_distributions_and_flow_patterns_on_some_conical_shapes_with_sharp_edges.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0516_free_flight_measurements_of_the_dynamic_longitudinal_stability_characteristics_o.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0521_a_note_on_application_of_transonic_linearization_to_an_airfoil_with_a_round_lead.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0523_approximate_determination_of_position_of_the_sonic_line_for_a_blunt_body_in_hype.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0525_on_hypersonic_viscous_flow_over_an_insulated_flat_plate_with_surface_mass_transf.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0525_on_hypersonic_viscous_flow_over_an_insulated_flat_plate_with_surface_mass_transf.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0527_note_on_the_three_point_boundary_layer_problem_for_the_blasius_equations.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0527_note_on_the_three_point_boundary_layer_problem_for_the_blasius_equations.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0561_a_geometric_problem_related_to_the_optimum_distribution_of_lift_on_a_planar_wing.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0563_the_law_of_the_wake_in_the_turbulent_boundary_layer.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0563_the_law_of_the_wake_in_the_turbulent_boundary_layer.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0565_similar_solutions_for_the_compressible_boundary_layer_on_a_yawed_cylinder_with_t.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0589_some_stall_and_surge_phenomena_in_axial_flow_compressors.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0605_pressure_measurements_on_a_cone_cylinder_flare_configuration_at_small_incidences.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0605_pressure_measurements_on_a_cone_cylinder_flare_configuration_at_small_incidences.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0605_pressure_measurements_on_a_cone_cylinder_flare_configuration_at_small_incidences.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0624_cruise_performance_of_channel_flow_ground_effect_machines.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0627_flutter_analysis_of_circular_panels.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0627_flutter_analysis_of_circular_panels.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0634_effects_of_leading_edge_bluntness_on_flutter_characteristics_of_some_square_plan.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0634_effects_of_leading_edge_bluntness_on_flutter_characteristics_of_some_square_plan.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0641_reduction_of_the_clamped_plate_to_two_membrane_problems_with_an_application_to_u.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0654_on_the_propagation_and_structure_of_the_blast_wave_part_1.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0654_on_the_propagation_and_structure_of_the_blast_wave_part_1.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0655_effects_of_boundary_layer_displacement_and_leading_edge_bluntness_on_pressure_di.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0655_effects_of_boundary_layer_displacement_and_leading_edge_bluntness_on_pressure_di.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0656_departure_from_dissociation_equilibrium_in_a_hypersonic_nozzle.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0658_review_of_panel_flutter_and_effects_of_aerodynamic_noise_part_i_panel_flutter.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0661_summary_of_laminar_boundary_layer_solutions_for_wedge_type_flow_over_convection.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0663_viscous_flow_along_a_flat_plate_moving_at_high_speeds.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0691_calculation_procedure_for_thermodynamic_transport_and_flow_properties_of_the_com.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0691_calculation_procedure_for_thermodynamic_transport_and_flow_properties_of_the_com.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0691_calculation_procedure_for_thermodynamic_transport_and_flow_properties_of_the_com.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0708_aerodynamic_characteristics_of_two_winged_reentry_vehicles_at_supersonic_and_hyp.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0758_the_lower_bound_of_attainable_sonic_boom_over_pressure_and_design_methods_of_app.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0758_the_lower_bound_of_attainable_sonic_boom_over_pressure_and_design_methods_of_app.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0758_the_lower_bound_of_attainable_sonic_boom_over_pressure_and_design_methods_of_app.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0775_studies_on_two_dimensional_flows_of_compressible_fluid.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0780_the_transonic_characteristics_of_38_cambered_rectangular_wings_of_varying_aspect.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0786_the_skin_friction_on_infinite_cylinders_moving_parallell_to_their_length.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0788_an_approximate_boundary_layer_theory_for_semi_infinite_cylinders_of_arbitrary_cr.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0791_measurements_at_mach_numbers_up_to_2_8_of_the_longitudinal_characteristics_of_on.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0801_experimental_study_of_the_equivalence_of_transonic_flow_about_slender_cone_cylin.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0801_experimental_study_of_the_equivalence_of_transonic_flow_about_slender_cone_cylin.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0857_experimental_studies_of_flutter_of_buckled_rectangular_panels_at_mach_numbers_fr.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0857_experimental_studies_of_flutter_of_buckled_rectangular_panels_at_mach_numbers_fr.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0870_effect_of_rheological_behaviour_on_thermal_stresses.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0888_combinations_of_temperature_and_axial_compression_required_for_buckling_of_a_rin.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0904_calibration_of_the_standard_pitot_static_head_used_in_the_rae_low_speed_wind_tun.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0906_review_of_the_pitot_tube.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0907_cavitation_and_pressure_distribution_head_forms_at_zero_angle_of_yaw.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0912_the_axisymmetric_free_convection_temperature_field_along_a_vertical_thin_cylinde.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0915_a_buckled_plate_in_a_supersonic_stream.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0915_a_buckled_plate_in_a_supersonic_stream.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0915_a_buckled_plate_in_a_supersonic_stream.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0916_the_flow_around_oscillating_low_aspect_ratio_wings_at_transonic_speeds.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0923_methods_for_estimating_lift_interference_of_wing_body_combinations_at_supersonic.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0943_compressible_free_shear_layer_with_finite_initial_thickness.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0943_compressible_free_shear_layer_with_finite_initial_thickness.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0943_compressible_free_shear_layer_with_finite_initial_thickness.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0945_method_for_design_of_pump_impellers_using_a_high_speed_digital_computer.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0949_charts_for_equilibrium_flow_properties_of_air_in_hyper_velocity_nozzles.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0949_charts_for_equilibrium_flow_properties_of_air_in_hyper_velocity_nozzles.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0949_charts_for_equilibrium_flow_properties_of_air_in_hyper_velocity_nozzles.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0956_elastic_stability_of_simply_supported_corrugated_core_sand_wich_cylinders.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0961_compressible_two_dimensional_jet_mixing_at_constant_pressure.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0964_on_the_theory_of_discharge_coefficients_for_round_entrance_flowmeters_and_ventur.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0972_aerodynamic_interaction_effects_ahead_of_a_sonic_jet_exhausting_perpendicularly.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0972_aerodynamic_interaction_effects_ahead_of_a_sonic_jet_exhausting_perpendicularly.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0973_interaction_effects_produced_by_jet_exhausting_laterally_near_base_of_ogive_cyli.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0984_method_of_analysis_for_compressible_flow_through_mixed_flow_centrifugal_impeller.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0994_investigation_of_a_retrocket_exhausting_from_the_nose_of_a_blunt_body_into_a_sup.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0994_investigation_of_a_retrocket_exhausting_from_the_nose_of_a_blunt_body_into_a_sup.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1002_preliminary_investigations_of_spiked_bodies_at_hypersonic_speeds.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1002_preliminary_investigations_of_spiked_bodies_at_hypersonic_speeds.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1004_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1004_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1004_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1004_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "1004_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1005_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1005_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1014_principles_of_creep_buckling_weight_strength_analysis.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1019_note_on_creep_buckling_of_columns.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1020_note_on_creep_buckling_of_columns.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1027_note_on_creep_buckling_of_columns.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1034_note_on_creep_buckling_of_columns.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1034_note_on_creep_buckling_of_columns.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1038_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1038_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1043_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1082_the_flow_past_pitot_tube_at_low_reynolds_numbers_part_1_dash_the_numerical_solut.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1089_aerodynamic_characteristics_of_propeller_driven_vtol_aircraft.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1092_wing_nacelle_propeller_interference_for_wings_of_various_spans_force_and_pressur.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "1092_wing_nacelle_propeller_interference_for_wings_of_various_spans_force_and_pressur.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1101_a_sensor_for_obtaining_ablation_rates.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1106_free_flight_observation_of_a_separated_turbulent_flow_including_heat_transfer_up.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "1106_free_flight_observation_of_a_separated_turbulent_flow_including_heat_transfer_up.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1106_free_flight_observation_of_a_separated_turbulent_flow_including_heat_transfer_up.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1110_on_supersonic_flow_past_a_slightly_yawing_cone.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1110_on_supersonic_flow_past_a_slightly_yawing_cone.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1133_a_simple_extension_of_southwell_s_method_for_determining_the_elastic_general_ins.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1149_similar_temperature_boundary_layers.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1151_experiments_on_supersonic_blunt_body_flows.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1158_the_tailored_interface_hypersonic_shock_tunnel.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1158_the_tailored_interface_hypersonic_shock_tunnel.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1159_experimental_investigation_of_the_effect_of_yaw_on_rates_of_heat_transfer_to_tra.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1165_an_investigation_of_the_effect_of_downwash_from_a_vtol_aircraft_and_a_helicopter.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1166_an_investigation_to_determine_conditions_under_which_downwash_from_vtol_aircraft.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1184_three_dimensional_effects_in_viscous_wakes.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1184_three_dimensional_effects_in_viscous_wakes.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1184_three_dimensional_effects_in_viscous_wakes.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1185_an_integral_method_for_calculating_heat_and_mass_transfer_in_laminar_boundary_la.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1185_an_integral_method_for_calculating_heat_and_mass_transfer_in_laminar_boundary_la.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "1191_heat_transfer_to_a_hemisphere_cylinder_at_low_reynolds_numbers.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1191_heat_transfer_to_a_hemisphere_cylinder_at_low_reynolds_numbers.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1193_some_exact_solutions_for_cavitating_curvilinear_bodies.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1201_a_study_of_slender_shapes_of_minimum_drag_using_the_newton_busemann_pressure_coe.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1201_a_study_of_slender_shapes_of_minimum_drag_using_the_newton_busemann_pressure_coe.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1202_uniformly_valid_second_order_solution_for_supersonic_flow_over_cruciform_surface.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1203_the_propagation_of_a_nonuniform_magnetohydrodynamic_shock_wave_into_a_moving_mon.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1212_effect_of_uniformly_distributed_roughness_on_turbulent_skin_friction_drag_at_sup.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1212_effect_of_uniformly_distributed_roughness_on_turbulent_skin_friction_drag_at_sup.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "1231_hypersonic_flow_over_an_elliptic_cone_theory_and_experiment.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1234_direct_calculation_of_pressure_distribution_on_blunt_hypersonic_nose_shapes_with.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1235_a_theory_of_the_two_dimensional_laminar_bounary_layer_over_a_curved_surface.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1245_some_aspects_of_nonequilibrium_flows.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1247_the_supersonic_boom_of_a_projectile_related_to_drag_and_volume.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1254_combustion_in_the_boundary_layer_on_a_porous_surface.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1254_combustion_in_the_boundary_layer_on_a_porous_surface.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "1259_second_order_theory_for_unsteady_supersonic_flow_past_slender_pointed_bodies_of.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1264_boundary_layer_transition_and_heat_transfer_in_shock_tubes.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1264_boundary_layer_transition_and_heat_transfer_in_shock_tubes.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1265_on_the_thrust_hypothesis_for_the_jet_flap_including_jet_mixing_effects.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1266_minimum_wing_wave_drag_with_volume_constraint.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1281_turbulent_heat_transfer_on_blunt_nosed_bodies_in_two_dimensional_and_general_thr.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "1281_turbulent_heat_transfer_on_blunt_nosed_bodies_in_two_dimensional_and_general_thr.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "1282_compressible_flat_plate_boundary_layer_flow_with_an_applied_magnetic_field.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1285_experiments_at_hypersonic_speeds_on_circular_cones_at_incidence.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1285_experiments_at_hypersonic_speeds_on_circular_cones_at_incidence.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1285_experiments_at_hypersonic_speeds_on_circular_cones_at_incidence.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1292_effect_of_jet_pluming_on_the_static_stability_of_cone_cylinder_flare_configurati.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1292_effect_of_jet_pluming_on_the_static_stability_of_cone_cylinder_flare_configurati.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1299_hypersonic_viscous_shock_layer.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1299_hypersonic_viscous_shock_layer.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1299_hypersonic_viscous_shock_layer.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1303_air_pressure_on_a_cone_moving_at_high_speeds.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "1303_air_pressure_on_a_cone_moving_at_high_speeds.txt",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1307_laminar_heat_transfer_and_pressure_measurements_at_a_mach_number_of_6_on_sharp_a.txt",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "1307_laminar_heat_transfer_and_pressure_measurements_at_a_mach_number_of_6_on_sharp_a.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1307_laminar_heat_transfer_and_pressure_measurements_at_a_mach_number_of_6_on_sharp_a.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "1307_laminar_heat_transfer_and_pressure_measurements_at_a_mach_number_of_6_on_sharp_a.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1307_laminar_heat_transfer_and_pressure_measurements_at_a_mach_number_of_6_on_sharp_a.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1314_production_of_high_temperature_gases_in_shock_tubes.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1321_effects_of_a_flexible_boundary_on_hydrodynamic_stability.txt",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "1324_the_effect_on_transition_of_isolated_surface_excrescences_in_the_boundary_layer.txt",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1347_approximate_analysis_of_atmospheric_entry_corridors_and_angles.txt",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1347_approximate_analysis_of_atmospheric_entry_corridors_and_angles.txt",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "1350_effects_of_jet_billowing_on_stability_of_missile_type_bodies_at_mach_3_85.txt",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1350_effects_of_jet_billowing_on_stability_of_missile_type_bodies_at_mach_3_85.txt",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "1375_an_approximate_solution_for_the_axisymmetric_jet_of_a_laminar_compressible_fluid.txt",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1392_the_solution_of_small_displacement_stability_or_vibration_problems_concerning_a.txt",
+      "query_id": "Q05"
+    }
+  ],
+  "sample_pairs": [
+    {
+      "doc_id": "1299_hypersonic_viscous_shock_layer.txt",
+      "label": "1",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0188_an_analysis_of_base_pressure_at_supersonic_velocities_and_comparison_with_experi.txt",
+      "label": "1",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
+      "label": "0",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "1089_aerodynamic_characteristics_of_propeller_driven_vtol_aircraft.txt",
+      "label": "0",
+      "query_id": "Q01"
+    },
+    {
+      "doc_id": "0443_calculated_and_measured_pressure_distributions_over_the_midspan_section_of_the_n.txt",
+      "label": "1",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0057_applicability_of_the_hypersonic_similarity_rule_to_pressure_distributions_which.txt",
+      "label": "1",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0627_flutter_analysis_of_circular_panels.txt",
+      "label": "0",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "0374_an_investigation_of_optimum_zoom_climb_techniques.txt",
+      "label": "0",
+      "query_id": "Q02"
+    },
+    {
+      "doc_id": "1235_a_theory_of_the_two_dimensional_laminar_bounary_layer_over_a_curved_surface.txt",
+      "label": "1",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0023_skin_friction_and_heat_transfer_characteristics_of_a_laminar_boundary_layer_on_a.txt",
+      "label": "1",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0273_flow_past_slender_blunt_bodies_a_review_and_extension.txt",
+      "label": "0",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "1110_on_supersonic_flow_past_a_slightly_yawing_cone.txt",
+      "label": "0",
+      "query_id": "Q03"
+    },
+    {
+      "doc_id": "0016_transformation_of_the_compressible_turbulent_boundary_layer.txt",
+      "label": "1",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt",
+      "label": "1",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0177_the_mixing_of_free_axially_symmetrical_jets_of_mach_number_1_40.txt",
+      "label": "0",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0401_inviscid_hypersonic_airflows_with_coupled_non_equilibrium_processes.txt",
+      "label": "0",
+      "query_id": "Q04"
+    },
+    {
+      "doc_id": "0299_magnetohydrodynamic_flow_past_a_semi_infinite_plate.txt",
+      "label": "1",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0402_magnetohydrodynamics_shocks.txt",
+      "label": "1",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0050_investigation_of_laminar_boundary_layer_in_compressible_fluids_using_the_crocco.txt",
+      "label": "0",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "1392_the_solution_of_small_displacement_stability_or_vibration_problems_concerning_a.txt",
+      "label": "0",
+      "query_id": "Q05"
+    },
+    {
+      "doc_id": "0355_the_injection_of_air_into_the_dissociated_hypersonic_laminar_boundary_layer.txt",
+      "label": "1",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1285_experiments_at_hypersonic_speeds_on_circular_cones_at_incidence.txt",
+      "label": "1",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "1133_a_simple_extension_of_southwell_s_method_for_determining_the_elastic_general_ins.txt",
+      "label": "0",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0956_elastic_stability_of_simply_supported_corrugated_core_sand_wich_cylinders.txt",
+      "label": "0",
+      "query_id": "Q06"
+    },
+    {
+      "doc_id": "0563_the_law_of_the_wake_in_the_turbulent_boundary_layer.txt",
+      "label": "1",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1082_the_flow_past_pitot_tube_at_low_reynolds_numbers_part_1_dash_the_numerical_solut.txt",
+      "label": "1",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1014_principles_of_creep_buckling_weight_strength_analysis.txt",
+      "label": "0",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "0527_note_on_the_three_point_boundary_layer_problem_for_the_blasius_equations.txt",
+      "label": "0",
+      "query_id": "Q07"
+    },
+    {
+      "doc_id": "1254_combustion_in_the_boundary_layer_on_a_porous_surface.txt",
+      "label": "1",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1307_laminar_heat_transfer_and_pressure_measurements_at_a_mach_number_of_6_on_sharp_a.txt",
+      "label": "1",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0004_approximate_solutions_of_the_incompressible_laminar_boundary_layer_equations_for.txt",
+      "label": "0",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "1234_direct_calculation_of_pressure_distribution_on_blunt_hypersonic_nose_shapes_with.txt",
+      "label": "0",
+      "query_id": "Q08"
+    },
+    {
+      "doc_id": "0270_on_combined_free_and_forced_convection_laminar_magnetohydrodynamic_flow_and_heat.txt",
+      "label": "1",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "1281_turbulent_heat_transfer_on_blunt_nosed_bodies_in_two_dimensional_and_general_thr.txt",
+      "label": "1",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0708_aerodynamic_characteristics_of_two_winged_reentry_vehicles_at_supersonic_and_hyp.txt",
+      "label": "0",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0563_the_law_of_the_wake_in_the_turbulent_boundary_layer.txt",
+      "label": "0",
+      "query_id": "Q09"
+    },
+    {
+      "doc_id": "0460_correlated_incompressible_and_compressible_boundary_layers.txt",
+      "label": "1",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0236_criteria_for_thermodynamic_equilibrium_in_gas_flow.txt",
+      "label": "1",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0641_reduction_of_the_clamped_plate_to_two_membrane_problems_with_an_application_to_u.txt",
+      "label": "0",
+      "query_id": "Q10"
+    },
+    {
+      "doc_id": "0888_combinations_of_temperature_and_axial_compression_required_for_buckling_of_a_rin.txt",
+      "label": "0",
+      "query_id": "Q10"
+    }
+  ],
+  "sampling": "2 positivi e 2 negativi per query, fra alta confidenza non gia in revisione o confermati; ordinamento doc_id prima del campionamento.",
+  "seed": 42,
+  "status": "targeted_review_pending"
+}

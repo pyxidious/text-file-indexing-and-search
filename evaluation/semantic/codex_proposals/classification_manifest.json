@@ -1,5 +1,5 @@
 {
-  "annotations_sha256": "23a062ed9880fdb3ed8377f287fcc059a93e37b6a45ad8c5f1d422cc77abacce",
+  "annotations_sha256": "2dc83dd61385819e8b888559e280fc8d2cd344c626019c632ec5b8cb955d4e07",
   "anomalies_file": "anomalies.json",
   "batch_sha256": {
     "batches/021_040.json": "a5321dec35c1fdb2990c6e53562d3bdc5ee97141ad88c5a4ca778698135cd375",
@@ -18,17 +18,38 @@
     "batches/281_300.json": "01ed52ecde75a6d93df9382c9d4b381585798702024cb3fd34ccbe59a218c411"
   },
   "counts": {
+    "assisted_confirmation_groups": {
+      "bulk": 168,
+      "calibration": 45,
+      "discussed": 85
+    },
     "confidence": {
       "alta": 2771,
       "bassa": 14,
       "media": 215
     },
+    "confirmed_review_types": {
+      "assisted_bulk_confirmation": 168,
+      "assisted_confirmation_after_discussion": 123
+    },
     "documents": 300,
-    "human_confirmed_pairs": 38,
+    "effective_positive_by_query": {
+      "Q01": 49,
+      "Q02": 7,
+      "Q03": 16,
+      "Q04": 43,
+      "Q05": 10,
+      "Q06": 104,
+      "Q07": 41,
+      "Q08": 68,
+      "Q09": 52,
+      "Q10": 131
+    },
+    "human_confirmed_pairs": 291,
     "judgments": 3000,
     "new_documents": 280,
     "new_judgments": 2800,
-    "not_individually_confirmed_pairs": 2962,
+    "not_individually_confirmed_pairs": 2709,
     "positive_by_query": {
       "Q01": 49,
       "Q02": 7,
@@ -41,8 +62,21 @@
       "Q09": 52,
       "Q10": 135
     },
+    "proposed_positive_by_query": {
+      "Q01": 49,
+      "Q02": 7,
+      "Q03": 16,
+      "Q04": 43,
+      "Q05": 10,
+      "Q06": 107,
+      "Q07": 45,
+      "Q08": 72,
+      "Q09": 52,
+      "Q10": 135
+    },
     "review_already_confirmed": 25,
-    "review_pending": 253,
+    "review_confirmed": 278,
+    "review_pending": 0,
     "review_queue": 278
   },
   "date": "2026-11-13",
@@ -400,19 +434,21 @@
     "calibration_review.csv": "3719c7a9e41e82ecbfd79c9600b36d4ec4c60b328894decde7ac0c8ca51d28ef",
     "classification_prompt.txt": "92ded9a0b230c0240e28b19893a66cdf0c602181a0b74da52d8336e69973c69a",
     "complete_labels.csv": "934d00985807f0c0789f30570f5d822ce8fe73641a45ebd4c91a1ccfef559486",
-    "final_review.csv": "c785a1aaf54d8fd2954ee505cbb53e12bab64947b52de2868515b990fb0c3af2",
-    "human_corrections.csv": "33764a368754b0e14691e0565611a737b5406dcb2a7d3b16d50b2e9578bcefc2",
+    "final_review.csv": "a6a6df990c7f93c722e5cfa6ce7bd0743d131eb2d593b1ffc6a031177deb6e36",
+    "final_supervision.json": "91eb4fd282e378c636ed62acd89efa41c6085a3f071952fef0a6d1a23dfdde61",
+    "human_corrections.csv": "469535a6ed0170f54251a132766544a128cccdc794fd4e88814f440a6862e9f5",
     "progress.json": "9c1b1d2cddc527e7b419bcebdc6f7d2759aaa4500b36e1ab2c6377064a4dd51e",
-    "review_manifest.json": "fd492abced0f5f0007e11020ef48515a7817d950393139f23253a3d27285c68e",
+    "review_manifest.json": "4eb2c7df14c71957d106b47d560fefc87b06f0dbdbe0e94ca501ca837206eed5",
     "run_inputs.json": "463929c33444e69a08d108ea6ca2d425eb7c8f09add0c9d0eef669098d161047",
     "supervision.json": "bfd02cd9232fcfde00a283a2af723c877e499aad2b770ea8649dc07af974bd1f"
   },
+  "positive_counts_note": "positive_by_query e proposed_positive_by_query sono proposte originali; effective_positive_by_query descrive la matrice corrente.",
   "prompt_file": "classification_prompt.txt",
   "prompt_note": "Trascrizione operativa fedele dei vincoli del messaggio utente; spazi e accenti normalizzati. La conferma umana deriva esplicitamente dal messaggio utente.",
   "prompt_sha256": "92ded9a0b230c0240e28b19893a66cdf0c602181a0b74da52d8336e69973c69a",
   "proposals_sha256": "934d00985807f0c0789f30570f5d822ce8fe73641a45ebd4c91a1ccfef559486",
   "provenance_file": "../provenance.csv",
-  "provenance_sha256": "4230809d596e82b77b87b5e3975faf9a71c0de1b23d7b39cc388ec171cfd1479",
+  "provenance_sha256": "a255226c3c308ec908c0ae05f27ce97b953cc79d58b8c341d2a25b751ad63346",
   "status": "codex_semantic_proposed_partially_human_supervised",
   "supervision_file": "supervision.json",
   "validation": {

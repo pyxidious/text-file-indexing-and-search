@@ -1,0 +1,78 @@
+{
+  "documents": [
+    {
+      "affected_queries": [
+        "Q06",
+        "Q10"
+      ],
+      "corpus_modified": false,
+      "doc_id": "0915_a_buckled_plate_in_a_supersonic_stream.txt",
+      "note": "Testo frammentario, con coda apparentemente riferita a un altro esperimento."
+    },
+    {
+      "affected_queries": [
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10"
+      ],
+      "corpus_modified": false,
+      "doc_id": "1004_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "note": "Basename generico di misure free flight; corpo su contaminazione dell elio."
+    },
+    {
+      "affected_queries": [
+        "Q06",
+        "Q10"
+      ],
+      "corpus_modified": false,
+      "doc_id": "1005_free_flight_measurements_of_the_static_and_dynamic.txt",
+      "note": "Basename generico di misure free flight; corpo su teoria newtoniana di forze e momenti."
+    },
+    {
+      "affected_queries": [
+        "Q08"
+      ],
+      "corpus_modified": false,
+      "doc_id": "1027_note_on_creep_buckling_of_columns.txt",
+      "note": "Basename su colonne; corpo su relazione costitutiva e curve di riscaldamento rapido."
+    },
+    {
+      "affected_queries": [
+        "Q06",
+        "Q08"
+      ],
+      "corpus_modified": false,
+      "doc_id": "1034_note_on_creep_buckling_of_columns.txt",
+      "note": "Basename su colonne; corpo su guscio cilindrico sandwich sotto pressione."
+    },
+    {
+      "affected_queries": [
+        "Q06",
+        "Q08"
+      ],
+      "corpus_modified": false,
+      "doc_id": "1038_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt",
+      "note": "Basename su vibrazioni; corpo su tensioni statiche e giunzioni."
+    },
+    {
+      "affected_queries": [
+        "Q08"
+      ],
+      "corpus_modified": false,
+      "doc_id": "1043_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt",
+      "note": "Basename su vibrazioni; corpo su soluzione termoelastica di gusci."
+    },
+    {
+      "affected_queries": [
+        "Q10"
+      ],
+      "corpus_modified": false,
+      "doc_id": "0499_a_closed_form_solution_for_the_oscillations_of_a_vehicle_entering_a_planetary_at.txt",
+      "note": "Alcune frasi spezzate o ricombinate; problema matematico di imbardata comunque riconoscibile."
+    }
+  ],
+  "source_modified": false,
+  "status": "source_anomalies_for_human_attention"
+}

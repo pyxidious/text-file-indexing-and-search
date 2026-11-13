@@ -99,7 +99,7 @@ magnetic field .",0,0,0,0,1,0,0,1,1,0
 0289_a_theoretical_study_of_the_aerodynamics_of_slender_cruciform_wing_arrangements_a.txt,0289_a_theoretical_study_of_the_aerodynamics_of_slender_cruciform_wing_arrangements_a.txt,"a theoretical study of the aerodynamics of slender
 cruciform-wing arrangements and their wakes .",0,0,0,0,0,0,0,0,0,0
 0297_compressibility_effects_in_magneto_aerodynamic_flows_past_thin_bodies.txt,0297_compressibility_effects_in_magneto_aerodynamic_flows_past_thin_bodies.txt,"compressibility effects in magneto-aerodynamic flows
-past thin bodies .",0,0,0,0,1,1,1,0,0,1
+past thin bodies .",0,0,0,0,1,1,0,0,0,1
 0298_incompressible_wedge_flows_of_an_electrically_conducting_viscous_fluid_in_the_pr.txt,0298_incompressible_wedge_flows_of_an_electrically_conducting_viscous_fluid_in_the_pr.txt,"incompressible wedge flows of an electrically conducting
 viscous fluid in the presence of a magnetic field .",0,0,0,0,0,0,0,0,0,0
 0299_magnetohydrodynamic_flow_past_a_semi_infinite_plate.txt,0299_magnetohydrodynamic_flow_past_a_semi_infinite_plate.txt,magnetohydrodynamic flow past a semi-infinite plate .,0,0,0,0,1,0,0,0,0,0
@@ -114,14 +114,14 @@ gas flow .",1,0,0,0,0,1,0,1,1,1
 0342_effect_of_diffusion_fields_on_the_laminar_boundary_layer.txt,0342_effect_of_diffusion_fields_on_the_laminar_boundary_layer.txt,"effect of diffusion fields on the laminar boundary
 layer .",0,0,1,1,0,1,0,1,1,1
 0343_transpiration_cooling_experiments_in_a_turbulent_boundary_layer_at_m_3.txt,0343_transpiration_cooling_experiments_in_a_turbulent_boundary_layer_at_m_3.txt,"transpiration cooling experiments in a turbulent boundary
-layer at m=3 .",1,0,0,1,0,1,0,1,1,1
+layer at m=3 .",1,0,0,1,0,1,0,1,1,0
 0347_boundary_layer_measurements_in_hypersonic_flow.txt,0347_boundary_layer_measurements_in_hypersonic_flow.txt,boundary layer measurements in hypersonic flow .,1,0,0,1,0,1,0,1,1,1
 0355_the_injection_of_air_into_the_dissociated_hypersonic_laminar_boundary_layer.txt,0355_the_injection_of_air_into_the_dissociated_hypersonic_laminar_boundary_layer.txt,"the injection of air into the dissociated hypersonic laminar boundary
 layer .",1,0,1,1,0,1,0,0,0,1
 0357_optimum_nose_shapes_for_missiles_in_the_super_aerodynamic_region.txt,0357_optimum_nose_shapes_for_missiles_in_the_super_aerodynamic_region.txt,"optimum nose shapes for missiles in the super-aerodynamic
 region .",0,0,0,0,0,0,0,0,0,0
 0358_on_the_model_of_the_free_shock_separation_turbulent_boundary_layer.txt,0358_on_the_model_of_the_free_shock_separation_turbulent_boundary_layer.txt,"on the model of the free shock separation, turbulent
-boundary layer .",0,0,0,1,0,1,1,0,0,1
+boundary layer .",0,0,0,1,0,0,0,0,0,1
 0363_an_alternative_formulation_of_the_problem_of_flutter_in_real_fluids.txt,0363_an_alternative_formulation_of_the_problem_of_flutter_in_real_fluids.txt,"an alternative formulation of the problem of flutter
 in real fluids .",0,0,0,0,0,0,1,0,0,0
 0365_the_homogeneous_boundary_layer_at_an_axisymmetric_stagnation_point_with_large_ra.txt,0365_the_homogeneous_boundary_layer_at_an_axisymmetric_stagnation_point_with_large_ra.txt,"the homogeneous boundary layer at an axisymmetric stagnation
@@ -132,7 +132,7 @@ lyapunov .",0,0,0,0,0,0,0,0,0,0
 0369_an_approximate_solution_of_the_supersonic_blunt_body_problem_for_prescribed_arbi.txt,0369_an_approximate_solution_of_the_supersonic_blunt_body_problem_for_prescribed_arbi.txt,"an approximate solution of the supersonic blunt body
 problem for prescribed arbitrary axisymmetric shapes .",1,0,0,0,0,1,0,0,0,1
 0372_an_experimental_investigation_of_flow_about_simple_blunt_bodies_at_a_nominal_mac.txt,0372_an_experimental_investigation_of_flow_about_simple_blunt_bodies_at_a_nominal_mac.txt,"an experimental investigation of flow about simple
-blunt bodies at a nominal mach number of 5. 8.",0,0,0,0,0,1,0,0,0,1
+blunt bodies at a nominal mach number of 5. 8.",0,0,0,0,0,1,0,0,0,0
 0374_an_investigation_of_optimum_zoom_climb_techniques.txt,0374_an_investigation_of_optimum_zoom_climb_techniques.txt,an investigation of optimum zoom climb techniques .,0,0,0,0,0,0,0,0,0,0
 0382_a_note_on_the_laminar_boundary_layer_on_a_circular_cylinder_in_axial_incompressi.txt,0382_a_note_on_the_laminar_boundary_layer_on_a_circular_cylinder_in_axial_incompressi.txt,"a note on the laminar boundary layer on a circular cylinder in
 axial incompressible flow .",0,0,1,1,0,0,0,0,0,0
@@ -144,7 +144,7 @@ wall .",0,0,0,0,0,0,0,1,1,0
 0397_a_sublayer_for_fluid_injection_into_the_incompressible_turbulent_boundary_layer.txt,0397_a_sublayer_for_fluid_injection_into_the_incompressible_turbulent_boundary_layer.txt,"a sublayer for fluid injection into the incompressible
 turbulent boundary layer .",0,0,0,1,0,0,0,0,0,0
 0401_inviscid_hypersonic_airflows_with_coupled_non_equilibrium_processes.txt,0401_inviscid_hypersonic_airflows_with_coupled_non_equilibrium_processes.txt,"inviscid hypersonic airflows with coupled non-equilibrium
-processes .",1,0,0,0,0,1,0,1,0,1
+processes .",1,0,0,0,0,1,0,0,0,1
 0402_magnetohydrodynamics_shocks.txt,0402_magnetohydrodynamics_shocks.txt,magnetohydrodynamics shocks .,0,0,0,0,1,0,0,0,0,1
 0403_magnetohydrodynamic_shock_waves.txt,0403_magnetohydrodynamic_shock_waves.txt,magnetohydrodynamic shock waves .,0,0,0,0,1,0,0,0,0,1
 0405_tables_of_thermal_properties_of_gases.txt,0405_tables_of_thermal_properties_of_gases.txt,tables of thermal properties of gases .,0,0,0,0,0,0,0,0,0,0
@@ -154,7 +154,7 @@ tunnel .",0,0,0,0,0,0,0,0,0,0
 0440_compilation_of_information_on_the_transonic_attachment_of_flows_at_the_leading_e.txt,0440_compilation_of_information_on_the_transonic_attachment_of_flows_at_the_leading_e.txt,"compilation of information on the transonic attachment
 of flows at the leading edge of airfoils .",0,0,0,0,0,0,0,0,0,1
 0443_calculated_and_measured_pressure_distributions_over_the_midspan_section_of_the_n.txt,0443_calculated_and_measured_pressure_distributions_over_the_midspan_section_of_the_n.txt,"calculated and measured pressure distributions over the midspan section
-of the naca 4412 airfoil .",0,1,0,0,0,0,1,0,0,0
+of the naca 4412 airfoil .",0,1,0,0,0,0,0,0,0,0
 0449_interaction_of_a_charged_satellite_with_the_ionosphere.txt,0449_interaction_of_a_charged_satellite_with_the_ionosphere.txt,interaction of a charged satellite with the ionosphere .,0,0,0,0,0,0,0,0,0,0
 0455_modified_cross_lees_mixing_theory_for_supersonic_separated_and_reattaching_flows.txt,0455_modified_cross_lees_mixing_theory_for_supersonic_separated_and_reattaching_flows.txt,"modified cross-lees mixing theory for supersonic separated
 and reattaching flows .",1,0,0,1,0,1,0,0,0,1
@@ -174,16 +174,16 @@ entering a planetary atmosphere .",0,0,0,0,0,0,0,0,0,0
 surfaces subjected to small net and large gross heat transfer rates .",0,0,0,0,0,0,0,1,1,0
 0514_pressure_distributions_and_flow_patterns_on_some_conical_shapes_with_sharp_edges.txt,0514_pressure_distributions_and_flow_patterns_on_some_conical_shapes_with_sharp_edges.txt,"pressure distributions and flow patterns on some conical
 shapes with sharp edges and symmetrical cross-sections
-at m=4 .0.",0,1,0,0,0,1,0,0,0,1
+at m=4 .0.",0,1,0,0,0,1,0,0,0,0
 0516_free_flight_measurements_of_the_dynamic_longitudinal_stability_characteristics_o.txt,0516_free_flight_measurements_of_the_dynamic_longitudinal_stability_characteristics_o.txt,"free-flight measurements of the dynamic longitudinal
 stability characteristics of a wind tunnel interference
-model (m=0 .92 to 1. 35) .",0,0,0,0,0,1,0,0,0,1
+model (m=0 .92 to 1. 35) .",0,0,0,0,0,0,0,0,0,1
 0521_a_note_on_application_of_transonic_linearization_to_an_airfoil_with_a_round_lead.txt,0521_a_note_on_application_of_transonic_linearization_to_an_airfoil_with_a_round_lead.txt,"a note on application of transonic linearization to
 an airfoil with a round leading edge .",0,0,0,0,0,0,0,0,0,1
 0523_approximate_determination_of_position_of_the_sonic_line_for_a_blunt_body_in_hype.txt,0523_approximate_determination_of_position_of_the_sonic_line_for_a_blunt_body_in_hype.txt,"approximate determination of position of the sonic
 line for a blunt body in hypersonic flow .",0,0,0,0,0,1,0,0,0,1
 0525_on_hypersonic_viscous_flow_over_an_insulated_flat_plate_with_surface_mass_transf.txt,0525_on_hypersonic_viscous_flow_over_an_insulated_flat_plate_with_surface_mass_transf.txt,"on hypersonic viscous flow over an insulated flat plate
-with surface mass transfer .",1,0,0,0,0,1,1,0,0,1
+with surface mass transfer .",1,0,0,0,0,1,0,0,0,1
 0527_note_on_the_three_point_boundary_layer_problem_for_the_blasius_equations.txt,0527_note_on_the_three_point_boundary_layer_problem_for_the_blasius_equations.txt,"note on the three-point boundary layer problem for
 the blasius equations .",0,0,1,1,0,0,0,0,0,0
 0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt,0529_some_effects_of_injection_of_foreign_gases_in_a_decelerating_laminar_boundary_la.txt,"some effects of injection of foreign gases in a decelerating
@@ -383,18 +383,18 @@ from 90degree to 180degree .",0,0,0,0,0,1,1,0,0,1
 0994_investigation_of_a_retrocket_exhausting_from_the_nose_of_a_blunt_body_into_a_sup.txt,0994_investigation_of_a_retrocket_exhausting_from_the_nose_of_a_blunt_body_into_a_sup.txt,"investigation of a retrocket exhausting from the nose of a blunt body
 into a supersonic free stream .",0,0,0,0,0,1,1,0,0,1
 1002_preliminary_investigations_of_spiked_bodies_at_hypersonic_speeds.txt,1002_preliminary_investigations_of_spiked_bodies_at_hypersonic_speeds.txt,preliminary investigations of spiked bodies at hypersonic speeds .,1,0,0,0,0,1,0,1,1,1
-1004_free_flight_measurements_of_the_static_and_dynamic.txt,1004_free_flight_measurements_of_the_static_and_dynamic.txt,free-flight measurements of the static and dynamic .,0,0,0,0,0,0,1,1,1,1
-1005_free_flight_measurements_of_the_static_and_dynamic.txt,1005_free_flight_measurements_of_the_static_and_dynamic.txt,free-flight measurements of the static and dynamic .,0,0,0,0,0,1,0,0,0,1
+1004_free_flight_measurements_of_the_static_and_dynamic.txt,1004_free_flight_measurements_of_the_static_and_dynamic.txt,free-flight measurements of the static and dynamic .,0,0,0,0,0,0,1,0,1,1
+1005_free_flight_measurements_of_the_static_and_dynamic.txt,1005_free_flight_measurements_of_the_static_and_dynamic.txt,free-flight measurements of the static and dynamic .,0,0,0,0,0,0,0,0,0,0
 1014_principles_of_creep_buckling_weight_strength_analysis.txt,1014_principles_of_creep_buckling_weight_strength_analysis.txt,principles of creep buckling weight-strength analysis .,0,0,0,0,0,0,0,0,0,0
 1015_principles_of_creep_buckling_weight_strength_analysis.txt,1015_principles_of_creep_buckling_weight_strength_analysis.txt,principles of creep buckling weight-strength analysis .,0,0,0,0,0,0,0,0,0,0
 1017_note_on_creep_buckling_of_columns.txt,1017_note_on_creep_buckling_of_columns.txt,note on creep buckling of columns .,0,0,0,0,0,0,0,0,0,0
 1019_note_on_creep_buckling_of_columns.txt,1019_note_on_creep_buckling_of_columns.txt,note on creep buckling of columns .,0,0,0,0,0,0,0,1,0,0
 1020_note_on_creep_buckling_of_columns.txt,1020_note_on_creep_buckling_of_columns.txt,note on creep buckling of columns .,0,0,0,0,0,0,0,0,0,0
-1027_note_on_creep_buckling_of_columns.txt,1027_note_on_creep_buckling_of_columns.txt,note on creep buckling of columns .,0,0,0,0,0,0,0,1,0,0
+1027_note_on_creep_buckling_of_columns.txt,1027_note_on_creep_buckling_of_columns.txt,note on creep buckling of columns .,0,0,0,0,0,0,0,0,0,0
 1032_on_the_conservativeness_of_various_distributed_force_systems.txt,1032_on_the_conservativeness_of_various_distributed_force_systems.txt,on the conservativeness of various distributed force systems .,0,0,0,0,0,0,0,0,0,0
 1034_note_on_creep_buckling_of_columns.txt,1034_note_on_creep_buckling_of_columns.txt,note on creep buckling of columns .,0,0,0,0,0,0,0,0,0,0
 1038_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt,1038_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt,"on transverse vibrations of thin, shallow elastic shells .",0,0,0,0,0,0,0,0,0,0
-1043_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt,1043_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt,"on transverse vibrations of thin, shallow elastic shells .",0,0,0,0,0,0,0,1,0,0
+1043_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt,1043_on_transverse_vibrations_of_thin_shallow_elastic_shells.txt,"on transverse vibrations of thin, shallow elastic shells .",0,0,0,0,0,0,0,0,0,0
 1050_compressive_buckling_of_simply_supported_curved_plates_and_cylinders_of_sandwich.txt,1050_compressive_buckling_of_simply_supported_curved_plates_and_cylinders_of_sandwich.txt,"compressive buckling of simply supported curved plates
 and cylinders of sandwich construction .",0,0,0,0,0,0,0,0,0,0
 1052_recent_advances_in_the_buckling_of_thin_shells.txt,1052_recent_advances_in_the_buckling_of_thin_shells.txt,recent advances in the buckling of thin shells .,0,0,0,0,0,0,0,0,0,0
