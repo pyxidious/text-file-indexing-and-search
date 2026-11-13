@@ -5,7 +5,12 @@ posizionali (nome/contenuto), OR, phrase query, BM25 e persistenza JSON.
 La versione 3 usa un **campione fisso di 300 documenti Cranfield**, con confronto
 di strategie sul development e valutazione finale separata sul test.
 Motore, metriche e protocollo usano standard library; `ir_datasets` serve solo
-all'acquisizione. Nessun LLM, embedding o framework di retrieval.
+all'acquisizione. Il retrieval non usa LLM, embedding o framework esterni.
+
+La [pipeline silver separata](docs/silver_pipeline.md) prepara un pilota LLM
+per ampliare i giudizi senza cambiare corpus o risultati IR. Il suo report
+operativo distingue inferenza effettiva, controlli deterministici e validazione
+semantica: senza provider non vengono generate etichette o metriche simulate.
 
 ## Installazione e comando unico
 

@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["assessment", "relevance", "confidence", "explanation", "evidence"],
+  "properties": {
+    "assessment": {"type": "string", "enum": ["assessable", "unassessable"]},
+    "relevance": {"type": ["integer", "null"], "enum": [0, 1, 2, 3, 4, null]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "explanation": {"type": "string"},
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  }
+}
