@@ -1,9 +1,6 @@
 [project]
 name = "text-file-indexing-and-search"
-version = "3.0.0"
-description = "Motore posizionale standard library e benchmark riproducibile Cranfield"
+version = "4.0.0"
+description = "Homework 3: motore posizionale e ground truth lessicale autonoma"
 requires-python = ">=3.10"
 dependencies = []
-
-[project.optional-dependencies]
-dataset = ["ir_datasets==0.5.11"]

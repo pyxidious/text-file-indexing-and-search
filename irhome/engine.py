@@ -1,11 +1,10 @@
-"""Due indici posizionali, ricerca OR/phrase e ranking BM25."""
+"""Due indici posizionali, ricerca AND/phrase e ranking BM25."""
 from collections import Counter
 import math
 from pathlib import Path
 
 from .analyzers import ANALYZERS, ANALYZER_CONFIG
 from .io import read_json, write_json
-from .strategies import STOPWORDS, required_matches, validate_strategy
 
 
 def parse_query(line):
@@ -35,11 +34,16 @@ class SearchEngine:
         self.lengths = {field: {} for field in ANALYZERS}
 
     @classmethod
-    def build(cls, directory, k1=1.2, b=0.75):
+    def build(cls, directory, k1=1.2, b=0.75, *, paths=None):
         engine = cls(k1, b)
         root = Path(directory).resolve()
+        if not root.is_dir():
+            raise ValueError("Directory dei documenti inesistente")
         # L'ID è il percorso relativo POSIX: stabile senza dipendere dall'ordine o dal contenuto.
-        for path in sorted(root.rglob("*"), key=lambda p: p.relative_to(root).as_posix()):
+        sources = root.rglob("*") if paths is None else paths
+        for path in sorted(sources, key=lambda p: p.relative_to(root).as_posix()):
+            if not path.resolve().is_relative_to(root):
+                raise ValueError("Documento esterno alla directory")
             if not path.is_file() or path.suffix.lower() != ".txt":
                 continue
             doc_id = path.relative_to(root).as_posix()
@@ -58,15 +62,10 @@ class SearchEngine:
             raise ValueError("Campo sconosciuto")
         return self.filename_index if field == "nome" else self.content_index
 
-    def search(self, line, strategy="or", minimum_should_match=0.5):
-        validate_strategy(strategy, minimum_should_match)
+    def search(self, line, strategy="and"):
+        if strategy not in ("and", "or"):
+            raise ValueError("Usare and oppure or")
         field, terms, phrase = parse_query(line)
-        # Filename e frasi conservano esattamente la semantica originale.
-        effective_mode = strategy if field == "contenuto" and not phrase else "or"
-        if effective_mode != "or":
-            terms = [term for term in terms if term not in STOPWORDS]
-        if not terms:
-            return []  # Query composta solo da stopword: nessun fallback implicito.
         index = self.index_for(field)
         postings = [index.get(term, {}) for term in terms]
         if phrase:
@@ -83,12 +82,12 @@ class SearchEngine:
                     matched.add(doc)
             candidates = matched
         else:
-            candidates = set().union(*(set(posting) for posting in postings))
-            required = required_matches(effective_mode, len(set(terms)), minimum_should_match)
-            if required > 1:
-                # Si contano termini distinti, inclusi gli OOV nel denominatore.
-                counts = Counter(doc for term in sorted(set(terms)) for doc in index.get(term, {}))
-                candidates = {doc for doc in candidates if counts[doc] >= required}
+            candidates = set(postings[0])
+            for posting in postings[1:]:
+                if strategy == "and":
+                    candidates.intersection_update(posting)
+                else:
+                    candidates.update(posting)
         n = len(self.documents)
         lengths = self.lengths[field]
         avgdl = sum(lengths.values()) / n if n else 0

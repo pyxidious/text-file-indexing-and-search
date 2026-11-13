@@ -1,3 +1,2 @@
-"""Information retrieval didattico con la sola standard library."""
-
-__version__ = "3.0.0"
+"""Homework 3: ricerca lessicale e valutazione indipendente."""
+__version__ = "4.0.0"

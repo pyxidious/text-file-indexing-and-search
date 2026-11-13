@@ -1,0 +1,374 @@
+{
+  "bytes": 309724,
+  "content_starts_with_title_tokens": 299,
+  "distinct_tokens": 3993,
+  "documents": 300,
+  "identical_content_groups": [],
+  "most_frequent_bigrams": [
+    {
+      "expression": "of the",
+      "occurrences": 804
+    },
+    {
+      "expression": "in the",
+      "occurrences": 320
+    },
+    {
+      "expression": "of a",
+      "occurrences": 214
+    },
+    {
+      "expression": "to the",
+      "occurrences": 197
+    },
+    {
+      "expression": "for the",
+      "occurrences": 181
+    },
+    {
+      "expression": "boundary layer",
+      "occurrences": 174
+    },
+    {
+      "expression": "and the",
+      "occurrences": 171
+    },
+    {
+      "expression": "on the",
+      "occurrences": 160
+    },
+    {
+      "expression": "that the",
+      "occurrences": 113
+    },
+    {
+      "expression": "in a",
+      "occurrences": 104
+    },
+    {
+      "expression": "it is",
+      "occurrences": 104
+    },
+    {
+      "expression": "heat transfer",
+      "occurrences": 102
+    },
+    {
+      "expression": "with the",
+      "occurrences": 98
+    },
+    {
+      "expression": "mach number",
+      "occurrences": 92
+    },
+    {
+      "expression": "for a",
+      "occurrences": 91
+    },
+    {
+      "expression": "the results",
+      "occurrences": 87
+    },
+    {
+      "expression": "to be",
+      "occurrences": 86
+    },
+    {
+      "expression": "the flow",
+      "occurrences": 81
+    },
+    {
+      "expression": "by the",
+      "occurrences": 79
+    },
+    {
+      "expression": "has been",
+      "occurrences": 76
+    },
+    {
+      "expression": "at the",
+      "occurrences": 74
+    },
+    {
+      "expression": "the boundary",
+      "occurrences": 69
+    },
+    {
+      "expression": "can be",
+      "occurrences": 67
+    },
+    {
+      "expression": "of attack",
+      "occurrences": 65
+    },
+    {
+      "expression": "from the",
+      "occurrences": 64
+    },
+    {
+      "expression": "have been",
+      "occurrences": 63
+    },
+    {
+      "expression": "the shock",
+      "occurrences": 63
+    },
+    {
+      "expression": "effects of",
+      "occurrences": 62
+    },
+    {
+      "expression": "by a",
+      "occurrences": 60
+    },
+    {
+      "expression": "two dimensional",
+      "occurrences": 58
+    },
+    {
+      "expression": "mach numbers",
+      "occurrences": 58
+    },
+    {
+      "expression": "are presented",
+      "occurrences": 55
+    },
+    {
+      "expression": "effect of",
+      "occurrences": 55
+    },
+    {
+      "expression": "with a",
+      "occurrences": 53
+    },
+    {
+      "expression": "to a",
+      "occurrences": 51
+    },
+    {
+      "expression": "number of",
+      "occurrences": 50
+    },
+    {
+      "expression": "reynolds number",
+      "occurrences": 50
+    },
+    {
+      "expression": "on a",
+      "occurrences": 50
+    },
+    {
+      "expression": "leading edge",
+      "occurrences": 48
+    },
+    {
+      "expression": "and a",
+      "occurrences": 48
+    }
+  ],
+  "most_frequent_terms": [
+    {
+      "documents": 296,
+      "occurrences": 4090,
+      "term": "the"
+    },
+    {
+      "documents": 298,
+      "occurrences": 2705,
+      "term": "of"
+    },
+    {
+      "documents": 288,
+      "occurrences": 1346,
+      "term": "and"
+    },
+    {
+      "documents": 284,
+      "occurrences": 1336,
+      "term": "a"
+    },
+    {
+      "documents": 263,
+      "occurrences": 1011,
+      "term": "in"
+    },
+    {
+      "documents": 269,
+      "occurrences": 973,
+      "term": "to"
+    },
+    {
+      "documents": 246,
+      "occurrences": 909,
+      "term": "is"
+    },
+    {
+      "documents": 240,
+      "occurrences": 718,
+      "term": "for"
+    },
+    {
+      "documents": 211,
+      "occurrences": 506,
+      "term": "are"
+    },
+    {
+      "documents": 222,
+      "occurrences": 461,
+      "term": "with"
+    },
+    {
+      "documents": 159,
+      "occurrences": 438,
+      "term": "flow"
+    },
+    {
+      "documents": 194,
+      "occurrences": 422,
+      "term": "by"
+    },
+    {
+      "documents": 158,
+      "occurrences": 408,
+      "term": "at"
+    },
+    {
+      "documents": 189,
+      "occurrences": 372,
+      "term": "on"
+    },
+    {
+      "documents": 164,
+      "occurrences": 342,
+      "term": "that"
+    },
+    {
+      "documents": 173,
+      "occurrences": 303,
+      "term": "an"
+    },
+    {
+      "documents": 143,
+      "occurrences": 287,
+      "term": "be"
+    },
+    {
+      "documents": 117,
+      "occurrences": 282,
+      "term": "pressure"
+    },
+    {
+      "documents": 139,
+      "occurrences": 244,
+      "term": "this"
+    },
+    {
+      "documents": 92,
+      "occurrences": 242,
+      "term": "boundary"
+    },
+    {
+      "documents": 88,
+      "occurrences": 226,
+      "term": "layer"
+    },
+    {
+      "documents": 136,
+      "occurrences": 219,
+      "term": "as"
+    },
+    {
+      "documents": 132,
+      "occurrences": 218,
+      "term": "from"
+    },
+    {
+      "documents": 142,
+      "occurrences": 208,
+      "term": "results"
+    },
+    {
+      "documents": 122,
+      "occurrences": 207,
+      "term": "which"
+    },
+    {
+      "documents": 115,
+      "occurrences": 185,
+      "term": "it"
+    },
+    {
+      "documents": 51,
+      "occurrences": 183,
+      "term": "shock"
+    },
+    {
+      "documents": 96,
+      "occurrences": 177,
+      "term": "number"
+    },
+    {
+      "documents": 96,
+      "occurrences": 171,
+      "term": "theory"
+    },
+    {
+      "documents": 89,
+      "occurrences": 163,
+      "term": "mach"
+    },
+    {
+      "documents": 104,
+      "occurrences": 160,
+      "term": "two"
+    },
+    {
+      "documents": 78,
+      "occurrences": 159,
+      "term": "method"
+    },
+    {
+      "documents": 64,
+      "occurrences": 156,
+      "term": "was"
+    },
+    {
+      "documents": 52,
+      "occurrences": 149,
+      "term": "heat"
+    },
+    {
+      "documents": 84,
+      "occurrences": 146,
+      "term": "been"
+    },
+    {
+      "documents": 80,
+      "occurrences": 126,
+      "term": "given"
+    },
+    {
+      "documents": 52,
+      "occurrences": 125,
+      "term": "temperature"
+    },
+    {
+      "documents": 24,
+      "occurrences": 123,
+      "term": "jet"
+    },
+    {
+      "documents": 54,
+      "occurrences": 122,
+      "term": "surface"
+    },
+    {
+      "documents": 62,
+      "occurrences": 119,
+      "term": "were"
+    }
+  ],
+  "seed42_selected_ids_verified": true,
+  "titles_present_in_metadata": 300,
+  "tokens": 48695
+}

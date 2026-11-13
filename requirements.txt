@@ -1,3 +1,1 @@
-# Solo acquisizione/preparazione: il motore e le metriche non importano ir_datasets.
--c requirements-lock.txt
-ir_datasets==0.5.11
+# Python >=3.10: solo libreria standard, nessuna dipendenza da installare.
