@@ -1,7 +1,11 @@
 {
-  "annotations_sha256": "23a062ed9880fdb3ed8377f287fcc059a93e37b6a45ad8c5f1d422cc77abacce",
+  "annotations_sha256": "2dc83dd61385819e8b888559e280fc8d2cd344c626019c632ec5b8cb955d4e07",
   "classified_documents": 300,
   "complete_labels_sha256": "934d00985807f0c0789f30570f5d822ce8fe73641a45ebd4c91a1ccfef559486",
+  "confirmed_pairs": 291,
   "judgments": 3000,
-  "provenance_sha256": "4230809d596e82b77b87b5e3975faf9a71c0de1b23d7b39cc388ec171cfd1479"
+  "phase": "assisted_review_imported_not_frozen",
+  "provenance_sha256": "a255226c3c308ec908c0ae05f27ce97b953cc79d58b8c341d2a25b751ad63346",
+  "review_pending": 0,
+  "unconfirmed_pairs": 2709
 }

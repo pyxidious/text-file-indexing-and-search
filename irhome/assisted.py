@@ -123,6 +123,17 @@ def import_review(output="evaluation/semantic"):
                     "assisted_confirmation_after_discussion", "assisted_bulk_confirmation"):
                 raise ValueError("Modalita di supervisione duplicata o non valida")
             review_types[pair] = item["review_type"]
+    if review_types:
+        pairs_in_queue = {(r["doc_id"], r["query_id"]) for r in review}
+        if not set(review_types) <= pairs_in_queue or not set(review_types) <= set(by_pair):
+            raise ValueError("Modalita di supervisione per coppia estranea")
+        declared = (("new_discussed_pairs", "assisted_confirmation_after_discussion"),
+                    ("new_bulk_pairs", "assisted_bulk_confirmation"))
+        for key, mode in declared:
+            if key in approval and approval[key] != sum(v == mode for v in review_types.values()):
+                raise ValueError("Conteggio della modalita di supervisione incoerente")
+        if "new_approved_pairs" in approval and approval["new_approved_pairs"] != len(review_types):
+            raise ValueError("Numero delle approvazioni incoerente")
     seen, imported = set(), 0
     for r in review:
         pair = r["doc_id"], r["query_id"]
@@ -167,6 +178,7 @@ def import_review(output="evaluation/semantic"):
     counts = manifest.setdefault("counts", {})
     counts["human_confirmed_pairs"] = sum(r["human_confirmed"] == "1" for r in provenance)
     counts["not_individually_confirmed_pairs"] = len(provenance)-counts["human_confirmed_pairs"]
+    counts["unconfirmed_pairs"] = counts["not_individually_confirmed_pairs"]
     counts["review_pending"] = sum(not r["human_label"] for r in review)
     counts["review_confirmed"] = sum(bool(r["human_label"]) for r in review)
     automatic = csv_rows(proposals / "complete_labels.csv")
@@ -178,8 +190,10 @@ def import_review(output="evaluation/semantic"):
         mode: sum(r["human_confirmed"] == "1" and r["review_type"] == mode for r in provenance)
         for mode in sorted({r["review_type"] for r in provenance if r["human_confirmed"] == "1"})}
     if approval_path.exists():
+        calibration_pairs = {(r["doc_id"], r["query_id"]) for r in
+                             csv_rows(proposals / "calibration_review.csv") if r["human_label"] in ("0", "1")}
         counts["assisted_confirmation_groups"] = {
-            "calibration": sum(r["human_confirmed"] == "1" and r["source"] == "codex_calibration_basename_v2" for r in provenance),
+            "calibration": sum(pair in calibration_pairs and r["human_confirmed"] == "1" for pair, r in by_pair.items()),
             "discussed": sum(by_pair[pair]["human_confirmed"] == "1" for pair, mode in review_types.items() if mode == "assisted_confirmation_after_discussion"),
             "bulk": sum(by_pair[pair]["human_confirmed"] == "1" for pair, mode in review_types.items() if mode == "assisted_bulk_confirmation")}
     manifest["positive_counts_note"] = "positive_by_query e proposed_positive_by_query sono proposte originali; effective_positive_by_query descrive la matrice corrente."

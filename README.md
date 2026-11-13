@@ -8,13 +8,16 @@ Non si usano query o relevance judgments ufficiali Cranfield.
 
 Il corpus e ora classificato: **300 documenti, 3.000 giudizi binari**.
 Il risultato e una **ground truth semantica proposta mediante Codex e
-parzialmente supervisionata da un revisore umano**. Le sole conferme esplicite
-riguardano **38 coppie della calibrazione**, dopo discussione, non una
-classificazione originale indipendente. Fra queste sono registrate sei
-correzioni gia effettuate dall'utente. Il revisore `utente_chat` e uno pseudonimo
+parzialmente supervisionata da un revisore umano**. La revisione mirata e
+completata e importata: **291 giudizi confermati**, distinti in **38 conferme
+della calibrazione, 85 nuove conferme dopo discussione e 168 nuove conferme
+assistite in blocco**. Queste ultime non attestano una verifica individuale dei
+documenti originali; nessuna delle tre modalita e una classificazione originale
+indipendente. Sono registrate le sei correzioni storiche e le **15 nuove
+correzioni approvate**, tutte da 1 a 0. Il revisore `utente_chat` e uno pseudonimo
 dell'utente della conversazione, non un nome reale. Data: 2026-11-13, senza orari.
 
-Le altre **2.962 coppie non sono state confermate individualmente**. Non e stata
+Le altre **2.709 coppie non sono confermate**. Non e stata
 eseguita una valutazione reale e la ground truth **non e congelata**. Le query,
 i criteri, il corpus, il motore, gli analyzer, il ranking, il benchmark e le
 formule delle metriche restano invariati. La versione esatta di Codex non e
@@ -37,10 +40,13 @@ python scripts/verify_semantic_proposals.py
 python -m unittest discover -s tests -v
 ```
 
-La prossima attivita umana e il controllo di
-`evaluation/semantic/codex_proposals/final_review.csv`: **278 coppie**, di cui
-**25 gia confermate nella calibrazione e 253 pendenti**. Non modificare le
-proposte: compilare per le righe pendenti `human_label`, `human_reason`,
+La coda `evaluation/semantic/codex_proposals/final_review.csv` contiene
+**278 coppie revisionate e nessuna pendente**: le 25 conferme pregresse sono
+intatte e sono state importate le altre 253, con le sole 15 correzioni approvate.
+La ground truth e pronta per la verifica finale prima del congelamento, ancora
+non eseguito. I conteggi distinguono i positivi originali proposti da Codex da
+quelli effettivi della matrice corretta.
+Per eventuali revisioni successive, non modificare le proposte: compilare per le righe pendenti `human_label`, `human_reason`,
 `reviewed_by` e `reviewed_at` con una revisione realmente svolta. Per confermare,
 `human_label` e uguale a `proposed_label` e `corrected_label` resta vuoto.
 Per correggere, usare l'etichetta voluta in entrambi `human_label` e
@@ -62,7 +68,8 @@ python scripts/semantic_ground_truth.py import-review
 Questo comando importa solo righe con etichetta, motivo, revisore e data gia
 compilati, aggiorna matrice e provenienza e registra separatamente le correzioni.
 Non compila conferme per righe vuote e non altera `complete_labels.csv`.
-Non e stato eseguito sulla nuova coda pendente.
+Il comando e stato eseguito: 253 nuovi giudizi importati; le 25 conferme
+pregresse e le proposte automatiche originali sono rimaste invariate.
 
 In PowerShell si puo sostituire `python` con `.venv\Scripts\python.exe`.
 `prepare` resta ripetibile e conserva i giudizi esistenti. La console `annotate`
@@ -209,7 +216,8 @@ Sono proposte lessicali, non giudizi semantici o metriche validate. Non vanno
 usate con le query definitive. Nessun vecchio output locale viene ricalcolato.
 Il manifest di preparazione mantiene l identita delle query e dei criteri
 definitivi. La matrice successivamente completata non equivale a validazione
-umana completa: la provenienza distingue le 38 conferme e le proposte pendenti.
+umana completa: la provenienza distingue 291 conferme assistite e 2.709
+giudizi non confermati.
 `irhome/ground_truth.py`, `irhome/oracle.py` e `scripts/ground_truth.py` conservano
 il vecchio scanner e il suo protocollo esclusivamente come ausilio lessicale.
 Non trasferire proposte o conferme lessicali nelle celle semantiche. Il valutatore
@@ -219,9 +227,13 @@ Gli output storici in `legacy/` e `artifacts/` non sono input del nuovo protocol
 ## Tracciabilita del protocollo assistito
 
 - `calibration_labels.csv`: le 200 proposte della calibrazione corretta, invariate.
-- `calibration_review.csv`, `supervision.json`: le 38 conferme assistite effettive.
-- `annotation_discrepancies.csv`, `human_corrections.csv`: le sei correzioni
-  preesistenti confermate; eventuali future correzioni restano separate.
+- `calibration_review.csv`: le 38 conferme della calibrazione. `supervision.json`
+  e `final_supervision.json` distinguono queste dalle nuove 85 conferme discusse
+  e 168 conferme in blocco, con data, pseudonimo e coppie esplicite.
+- `annotation_discrepancies.csv`: le sei correzioni storiche confermate.
+  `human_corrections.csv` registra anche le 15 nuove correzioni approvate.
+- `history/v3_before_final_review_import/`: snapshot precedente a questa
+  registrazione e importazione, comprese le 25 righe da conservare intatte.
 - `complete_labels.csv`: tutte le 3.000 proposte originali, con confidenza e motivo.
 - `batches/*.json`: decisioni individuali dei 14 blocchi, non regole lessicali.
 - `classification_manifest.json`, `classification_prompt.txt`, `run_inputs.json`:

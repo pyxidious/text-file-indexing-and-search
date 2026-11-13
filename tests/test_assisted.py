@@ -5,7 +5,7 @@ import unittest
 from irhome.assisted import record_batch, import_review
 from irhome.assisted_freeze import STATUS as ASSISTED_STATUS
 from irhome.dataset import csv_rows, write_csv
-from irhome.io import sha256, write_json
+from irhome.io import sha256, write_json, read_json
 from irhome.semantic import prepare, freeze, load_frozen
 import test_semantic as synthetic
 
@@ -127,6 +127,62 @@ class AssistedTests(unittest.TestCase):
         self.assertEqual((self.proposals / "complete_labels.csv").read_bytes(), original)
         self.assertEqual(len(csv_rows(self.proposals / "human_corrections.csv")), 1)
         self.assertEqual(self.freeze()["status"], ASSISTED_STATUS)
+
+    def test_review_types_and_idempotence_preserve_previous_confirmations(self):
+        self.setup_protocol()
+        self.finish_review()
+        labels = csv_rows(self.proposals / "complete_labels.csv")
+        self.review.append(dict(**labels[20], human_label="1", corrected_label="", human_reason="Synthetic bulk approval, no independent reading",
+                                reviewed_by="fixture", reviewed_at="2026-11-13"))
+        self.write_review()
+        prov = csv_rows(self.out / "provenance.csv")
+        for r in prov:
+            r["source"] = "codex_calibration_basename_v2"  # Proposal origin differs from review stage.
+        prov[0].update(human_confirmed="1", reviewer="fixture", confirmation_date="2026-11-13",
+                       review_type="assisted_confirmation_after_discussion")
+        # DictWriter needs the new column also on unconfirmed rows.
+        for r in prov:
+            r.setdefault("review_type", "not_individually_confirmed")
+        write_csv(self.out / "provenance.csv", prov, list(prov[0]))
+        old_provenance = dict(prov[0])
+        old_review = dict(self.review[0])
+        modes = [dict(doc_id=self.review[1]["doc_id"], query_id="Q01", review_type="assisted_confirmation_after_discussion"),
+                 dict(doc_id=self.review[2]["doc_id"], query_id="Q01", review_type="assisted_bulk_confirmation")]
+        write_json(self.proposals / "final_supervision.json", dict(pair_review_types=modes, new_discussed_pairs=1,
+                                                                  new_bulk_pairs=1, new_approved_pairs=2))
+        self.assertEqual(import_review(self.out), 2)
+        current = csv_rows(self.out / "provenance.csv")
+        self.assertEqual(current[0], old_provenance)
+        self.assertEqual(csv_rows(self.proposals / "final_review.csv")[0], old_review)
+        self.assertEqual(current[10]["review_type"], "assisted_confirmation_after_discussion")
+        self.assertEqual(current[20]["review_type"], "assisted_bulk_confirmation")
+        counts = read_json(self.proposals / "classification_manifest.json")["counts"]
+        self.assertEqual(counts["assisted_confirmation_groups"], dict(calibration=1, discussed=1, bulk=1))
+        before = (self.out / "provenance.csv").read_bytes()
+        self.assertEqual(import_review(self.out), 0)
+        self.assertEqual((self.out / "provenance.csv").read_bytes(), before)
+
+    def test_invalid_review_type_rejected_before_import(self):
+        self.setup_protocol()
+        write_json(self.proposals / "final_supervision.json", dict(pair_review_types=[
+            dict(doc_id=self.review[1]["doc_id"], query_id="Q01", review_type="independently_verified")]))
+        before = (self.out / "annotations.csv").read_bytes()
+        with self.assertRaisesRegex(ValueError, "Modalita"):
+            import_review(self.out)
+        self.assertEqual((self.out / "annotations.csv").read_bytes(), before)
+
+    def test_final_and_proposed_positive_counts_remain_distinct(self):
+        self.setup_protocol()
+        self.review[1].update(human_label="0", corrected_label="0", human_reason="Synthetic correction",
+                              reviewed_by="fixture", reviewed_at="2026-11-13")
+        self.write_review()
+        self.assertEqual(import_review(self.out), 2)
+        m = read_json(self.proposals / "classification_manifest.json")
+        self.assertEqual(m["counts"]["proposed_positive_by_query"]["Q01"], 11)
+        self.assertEqual(m["counts"]["effective_positive_by_query"]["Q01"], 10)
+        self.assertEqual(len(csv_rows(self.proposals / "human_corrections.csv")), 1)
+        self.assertEqual(import_review(self.out), 0)
+        self.assertEqual(len(csv_rows(self.proposals / "human_corrections.csv")), 1)
 
     def test_batch_resume_and_conflict_preserve_existing_labels(self):
         output = self.out / "codex_proposals"

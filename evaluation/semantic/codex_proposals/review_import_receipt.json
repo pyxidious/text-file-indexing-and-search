@@ -1,0 +1,12 @@
+{
+  "command": "python scripts/semantic_ground_truth.py import-review",
+  "date": "2026-11-13",
+  "freeze_performed": false,
+  "metrics_calculated": false,
+  "new_corrections": 15,
+  "new_judgments_imported": 253,
+  "original_proposals_unchanged": true,
+  "total_confirmed": 291,
+  "total_unconfirmed": 2709,
+  "unchanged_previously_confirmed_queue_rows": 25
+}

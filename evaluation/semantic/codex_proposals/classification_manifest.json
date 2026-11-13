@@ -20,7 +20,7 @@
   "counts": {
     "assisted_confirmation_groups": {
       "bulk": 168,
-      "calibration": 45,
+      "calibration": 38,
       "discussed": 85
     },
     "confidence": {
@@ -45,8 +45,10 @@
       "Q09": 52,
       "Q10": 131
     },
+    "historical_approved_corrections": 6,
     "human_confirmed_pairs": 291,
     "judgments": 3000,
+    "new_approved_corrections": 15,
     "new_documents": 280,
     "new_judgments": 2800,
     "not_individually_confirmed_pairs": 2709,
@@ -77,11 +79,14 @@
     "review_already_confirmed": 25,
     "review_confirmed": 278,
     "review_pending": 0,
-    "review_queue": 278
+    "review_queue": 278,
+    "unconfirmed_pairs": 2709
   },
+  "counts_note": "human_confirmed_pairs include conferme assistite discusse e in blocco. not_individually_confirmed_pairs e un alias storico di unconfirmed_pairs, non un attestazione di lettura individuale delle altre291 coppie.",
   "date": "2026-11-13",
   "description": "Ground truth semantica proposta mediante Codex e parzialmente supervisionata da un revisore umano",
   "exact_model_identifier": null,
+  "final_supervision_file": "final_supervision.json",
   "identity": {
     "corpus": {
       "0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt": "4c56d085afcf4a68ed1bfb8c83106b6466d7fb2f3c143bb0ca922d26bc5194a7",
@@ -391,19 +396,21 @@
     "queries_sha256": "53076ad336fdd6049fcb598429fd2cc310132bb4b8c45210e317dc3a1e8bd822"
   },
   "implementation_sha256": {
-    "irhome/assisted.py": "139f096ff165634f37fd825ca334bd7e92ead49bdd242c8754321c22102ac838",
-    "irhome/assisted_freeze.py": "668522580961aa9fcafef52c4ef3dc7ffbf7a10f9577100b4de84ee861926892",
+    "irhome/assisted.py": "83719c31d611affa68b9443efee0408cba364070df6eeb3cee67375da41fb43c",
+    "irhome/assisted_freeze.py": "4904d62196ace9deeb6cb5916de498e9be9f7a1df6e70bdd316403045b8901c5",
     "irhome/evaluation.py": "8e4f8991dce93ddf3f12eb068321b137ca874f8650995bbcd1ef4967bd12c95b",
     "irhome/semantic.py": "472ee0f3bdfd562de7a567d86af7f05cd006a51c6654d50b9d4f393a7f6a90fc",
     "scripts/semantic_ground_truth.py": "142d13e244fac8c11f6c62357fb2f3306d347666f10b5fd6d77b9ef24a493c64",
-    "scripts/verify_semantic_proposals.py": "c523f5c5be07904fd3ec10510acd5f8bcaaed2f79005f2f2eaa0c28b75ab7719",
-    "tests/test_assisted.py": "74f0822876b667d323d0857ecf1405eb4cf64814a668b9aac6cc2a89991c950c"
+    "scripts/verify_semantic_proposals.py": "227f0ce591a6fe291b9578ab03495113f2c089a74b072cd0293e3bacfd15ddaa",
+    "tests/test_assisted.py": "2f5b6969ff09f94f7bb1f028789600c2ae42a5992612b27585e7864dab4843c4"
   },
   "lineage": {
     "calibration_sha256": "4fb1c12df6ee9107447e319eeca1a9a2975f97d557f5eb331c164c094296cc0d",
+    "pre_final_supervision_file": "history/v3_before_final_review_import/supervision.json",
+    "pre_final_supervision_sha256": "bfd02cd9232fcfde00a283a2af723c877e499aad2b770ea8649dc07af974bd1f",
     "previous_manifest": "history/v2_before_human_confirmation/calibration_manifest.json",
     "previous_manifest_sha256": "69e8165cbb38a6a7366835711adf3f925cd75f3f236296abcba31663167d3682",
-    "supervision_sha256": "bfd02cd9232fcfde00a283a2af723c877e499aad2b770ea8649dc07af974bd1f"
+    "supervision_sha256": "0cb7260e17a0a8c3f1ff3aa99999e05e9e25fc3ed10169d44bc650643009c73f"
   },
   "method": {
     "classification": "Decisioni semantiche individuali Codex, persistite come mask e motivazioni nei JSON dei blocchi. Nessun matching lessicale genera giudizi.",
@@ -416,7 +423,7 @@
     ],
     "full_manual_validation": false,
     "ground_truth_frozen": false,
-    "human_validation_scope": "38 coppie confermate dopo discussione, fra cui6 correzioni gia effettuate; nessuna conferma originale indipendente delle altre2962 coppie.",
+    "human_validation_scope": "38 conferme della calibrazione,85 nuove conferme assistite dopo discussione,168 conferme assistite in blocco. Nessuna classificazione originale indipendente; le168 non attestano verifica individuale dei documenti. Restano2709 coppie non confermate.",
     "name_evidence": "Solo basename reale senza estensione txt; nessuna ricostruzione delle porzioni troncate dai metadati.",
     "negative_reasons": "Per negativi chiari: sintesi fattuale specifica del documento e del campo, piu criterio escluso. Positivi e ogni incertezza hanno motivazione individuale obbligatoria.",
     "retrieval_evaluation_performed": false,
@@ -430,17 +437,18 @@
     "anomalies.json": "2836d776eb2520282a1416f6ae896f3c6e0c7dfffbac3fda071f218f33afe451",
     "calibration_comparison.csv": "9bf7fc5a213d60c3d61d2eeb66f58b4e7145e5223f0b827031746c8137fa45eb",
     "calibration_labels.csv": "4fb1c12df6ee9107447e319eeca1a9a2975f97d557f5eb331c164c094296cc0d",
-    "calibration_manifest.json": "55a5d09b40ec80ef2655d670cb3e926c69c7c92ccf38684ee1f37dac3a065117",
+    "calibration_manifest.json": "41dfb92b1be5ead7c33230db09f0a800e28ca152f6eeadfcc6437692e0d298ad",
     "calibration_review.csv": "3719c7a9e41e82ecbfd79c9600b36d4ec4c60b328894decde7ac0c8ca51d28ef",
     "classification_prompt.txt": "92ded9a0b230c0240e28b19893a66cdf0c602181a0b74da52d8336e69973c69a",
     "complete_labels.csv": "934d00985807f0c0789f30570f5d822ce8fe73641a45ebd4c91a1ccfef559486",
     "final_review.csv": "a6a6df990c7f93c722e5cfa6ce7bd0743d131eb2d593b1ffc6a031177deb6e36",
     "final_supervision.json": "91eb4fd282e378c636ed62acd89efa41c6085a3f071952fef0a6d1a23dfdde61",
     "human_corrections.csv": "469535a6ed0170f54251a132766544a128cccdc794fd4e88814f440a6862e9f5",
-    "progress.json": "9c1b1d2cddc527e7b419bcebdc6f7d2759aaa4500b36e1ab2c6377064a4dd51e",
-    "review_manifest.json": "4eb2c7df14c71957d106b47d560fefc87b06f0dbdbe0e94ca501ca837206eed5",
+    "progress.json": "a7815d9b22e71cda1505a5f797081d977ed615277df2d7a747f304fc49ace783",
+    "review_import_receipt.json": "be2901f55c9ce029a2e2724089e8a40d444a070d315ffd4930edd736947e9c1f",
+    "review_manifest.json": "836561be07cdae55793aed2c6010a3500ab394805978790ef8a1ae4aca88d953",
     "run_inputs.json": "463929c33444e69a08d108ea6ca2d425eb7c8f09add0c9d0eef669098d161047",
-    "supervision.json": "bfd02cd9232fcfde00a283a2af723c877e499aad2b770ea8649dc07af974bd1f"
+    "supervision.json": "0cb7260e17a0a8c3f1ff3aa99999e05e9e25fc3ed10169d44bc650643009c73f"
   },
   "positive_counts_note": "positive_by_query e proposed_positive_by_query sono proposte originali; effective_positive_by_query descrive la matrice corrente.",
   "prompt_file": "classification_prompt.txt",
@@ -449,10 +457,10 @@
   "proposals_sha256": "934d00985807f0c0789f30570f5d822ce8fe73641a45ebd4c91a1ccfef559486",
   "provenance_file": "../provenance.csv",
   "provenance_sha256": "a255226c3c308ec908c0ae05f27ce97b953cc79d58b8c341d2a25b751ad63346",
-  "status": "codex_semantic_proposed_partially_human_supervised",
+  "status": "codex_semantic_partially_supervised_review_imported_not_frozen",
   "supervision_file": "supervision.json",
   "validation": {
-    "automated_tests_passed": 32,
+    "automated_tests_passed": 35,
     "binary_judgments": 3000,
     "calibration_proposals_unchanged": true,
     "confirmed_historical_corrections": 6,
@@ -460,15 +468,23 @@
     "distinct_documents": 300,
     "distinct_pairs": 3000,
     "freeze_performed": false,
-    "human_confirmations": 38,
+    "human_confirmations": 291,
     "integrity_command": "python scripts/verify_semantic_proposals.py",
     "judgments_per_document": 10,
     "meaning": "Test del software e controlli di integrita; non attestano correttezza semantica o validazione umana delle proposte.",
-    "new_human_fields_empty": true,
+    "new_approved_corrections": 15,
+    "new_human_fields_empty": false,
     "original40labels_preserved": true,
+    "previous25review_rows_unchanged": true,
     "retrieval_metrics_calculated": false,
     "review_gate_verified_without_freezing": true,
-    "review_pending": 253,
-    "tests_command": "python -m unittest discover -s tests -v"
+    "review_pending": 0,
+    "supervision_groups": {
+      "bulk": 168,
+      "calibration": 38,
+      "discussed": 85
+    },
+    "tests_command": "python -m unittest discover -s tests -v",
+    "unconfirmed_pairs": 2709
   }
 }

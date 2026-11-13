@@ -555,8 +555,10 @@
     "meaning": "Utente della conversazione, non nome reale.",
     "pseudonym": true,
     "reviewer": "utente_chat",
+    "scope_note": "Solo le38 conferme della calibrazione; ulteriori conferme nella fase finale sono documentate separatamente.",
     "source_file": "supervision.json",
-    "source_sha256": "bfd02cd9232fcfde00a283a2af723c877e499aad2b770ea8649dc07af974bd1f"
+    "source_sha256": "0cb7260e17a0a8c3f1ff3aa99999e05e9e25fc3ed10169d44bc650643009c73f",
+    "source_stage": "calibration"
   },
   "validation": {
     "all_name_quotes_match_real_basename": true,

@@ -1,16 +1,46 @@
 {
-  "confirmation_source": "Messaggio utente: ha esplicitamente confermato tutte le 38 proposte correnti senza modifiche.",
+  "bulk_scope": "Conferma assistita di un prospetto complessivo; non verifica individuale dei documenti originali.",
+  "calibration_confirmed_pairs": 38,
+  "confirmation_source": "Conferma utente della calibrazione; approvazione finale delle253 coppie con15 correzioni e successivo elenco esplicito delle85 coppie discusse e168 in blocco.",
   "confirmed_existing_corrections": 6,
-  "confirmed_pairs": 38,
+  "confirmed_pairs": 291,
   "date": "2026-11-13",
   "files_sha256": {
     "annotation_discrepancies.csv": "4461467cd0d7e5b9b760b6f5cd2b393df1494e6374c1cb446b5c0477be05aee8",
     "calibration_review.csv": "3719c7a9e41e82ecbfd79c9600b36d4ec4c60b328894decde7ac0c8ca51d28ef",
-    "human_corrections.csv": "33764a368754b0e14691e0565611a737b5406dcb2a7d3b16d50b2e9578bcefc2"
+    "final_review.csv": "a6a6df990c7f93c722e5cfa6ce7bd0743d131eb2d593b1ffc6a031177deb6e36",
+    "final_supervision.json": "91eb4fd282e378c636ed62acd89efa41c6085a3f071952fef0a6d1a23dfdde61",
+    "human_corrections.csv": "469535a6ed0170f54251a132766544a128cccdc794fd4e88814f440a6862e9f5"
   },
+  "final_approval_source": "final_supervision.json",
   "full_manual_validation": false,
   "independent_original_human_classification": false,
-  "review_type": "explicit_confirmation_of_assisted_proposals_after_discussion",
+  "new_approved_corrections": 15,
+  "new_approved_pairs": 253,
+  "new_bulk_pairs": 168,
+  "new_discussed_pairs": 85,
+  "review_type": "partial_assisted_supervision",
   "reviewer": "utente_chat",
-  "reviewer_description": "Identificatore pseudonimo dell utente di questa chat; nome reale non disponibile."
+  "reviewer_description": "Identificatore pseudonimo dell utente di questa chat; nome reale non disponibile.",
+  "stages": [
+    {
+      "confirmed_pairs": 38,
+      "review_type": "assisted_confirmation_after_discussion",
+      "source": "calibration_review.csv",
+      "stage": "calibration"
+    },
+    {
+      "confirmed_pairs": 85,
+      "review_type": "assisted_confirmation_after_discussion",
+      "source": "final_supervision.json",
+      "stage": "final_discussed"
+    },
+    {
+      "confirmed_pairs": 168,
+      "review_type": "assisted_bulk_confirmation",
+      "source": "final_supervision.json",
+      "stage": "final_bulk"
+    }
+  ],
+  "unconfirmed_pairs": 2709
 }

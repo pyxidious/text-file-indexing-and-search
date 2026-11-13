@@ -69,6 +69,8 @@ def snapshot(output, rows, qs, identity):
              proposals / "final_review.csv", proposals / "review_manifest.json",
              proposals / "supervision.json", proposals / "human_corrections.csv",
              proposals / "calibration_review.csv"]
+    if (proposals / "final_supervision.json").exists():
+        paths.append(proposals / "final_supervision.json")
     hashes = {p.relative_to(output).as_posix(): sha256(p) for p in paths}
     return dict(protocol=STATUS, human_confirmed_pairs=len(confirmed),
                 unconfirmed_pairs=len(expected)-len(confirmed), total_pairs=len(expected),

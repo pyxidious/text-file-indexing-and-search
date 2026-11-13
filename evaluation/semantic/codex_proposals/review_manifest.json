@@ -1,14 +1,20 @@
 {
   "already_confirmed_in_queue": 25,
+  "already_confirmed_in_queue_note": "Le25 conferme precedenti all importazione finale, rimaste intatte. Il totale attuale della coda confermata e278.",
   "coherence_flags": [],
   "confidence_counts": {
     "alta": 2771,
     "bassa": 14,
     "media": 215
   },
+  "confirmation_date": "2026-11-13",
   "confirmed_in_queue": 278,
   "initial_queue_sha256": "c785a1aaf54d8fd2954ee505cbb53e12bab64947b52de2868515b990fb0c3af2",
-  "notes": "Le righe gia confermate riportano conferme reali di calibrazione; tutti i nuovi campi umani restano vuoti. I controlli non modificano etichette.",
+  "new_bulk": 168,
+  "new_corrections": 15,
+  "new_discussed": 85,
+  "newly_confirmed_in_queue": 253,
+  "notes": "Le25 conferme di calibrazione sono intatte; le253 approvazioni successive sono registrate come85 discusse e168 in blocco. La supervisione e assistita, non una verifica originale indipendente dei documenti.",
   "pending": 0,
   "queue_size": 278,
   "required_pairs": [
