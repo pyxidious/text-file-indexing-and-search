@@ -1,0 +1,263 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "0095",
+      "mask": "0000000110",
+      "n": "temperature e tensioni termiche di una struttura alare supersonica",
+      "t": "distribuzioni transitorie di temperatura e tensioni con conduzione fra cappello e anima",
+      "why": {
+        "Q08": "Si calcolano temperature transitorie e tensioni dovute al riscaldamento aerodinamico e alla conduzione nella struttura.",
+        "Q09": "La conduzione fra cap e web e parte esplicita del modello e modifica la temperatura calcolata."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0099",
+      "mask": "0000000000",
+      "n": "fondamenti statistici della turbolenza",
+      "t": "correlazioni di velocita, decadimento della turbolenza isotropa e attrito turbolento",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0100",
+      "mask": "0000000000",
+      "n": "isolamento vibratorio dei gruppi motore",
+      "t": "trasmissione meccanica di vibrazioni attraverso supporti flessibili di motori radiali",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q03": "media",
+        "Q04": "media",
+        "Q07": "media"
+      },
+      "id": "0101",
+      "mask": "1000011111",
+      "n": "scambio termico laminare su corpi tozzi a velocita ipersoniche",
+      "t": "equilibrio chimico e diffusione governano profili termici e scambio nei flussi ipersonici",
+      "why": {
+        "Q01": "Il basename pone al centro lo scambio termico laminare del moto ipersonico su corpi tozzi.",
+        "Q03": "Il basename dice laminar_heat_transfer ma non identifica uno strato limite; il regime laminare del solo scambio non basta senza inferenza da confermare.",
+        "Q04": "Il basename indica scambio laminare su corpi ma non nomina o identifica chiaramente lo strato limite; possibile equivalenza implicita da discutere.",
+        "Q06": "Sono analizzati due limiti fisici dello scambio nel flusso ipersonico su corpi tozzi.",
+        "Q07": "Il testo analizza come i profili di velocita siano poco sensibili al gradiente di pressione ad alta temperatura rispetto al caso moderato.",
+        "Q08": "Profili di entalpia e alta temperatura sono analizzati con equilibrio chimico e diffusione.",
+        "Q09": "Si ricavano distribuzioni del flusso termico e il rapporto fra contributi diffusivi e conduttivi.",
+        "Q10": "Il regime ipersonico ad alta temperatura determina le semplificazioni e viene confrontato con condizioni termiche moderate."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0108",
+      "mask": "0000000000",
+      "n": "proprieta della funzione ipergeometrica confluente",
+      "t": "tabelle di funzioni speciali; diffusione ed elettroni citati come applicazioni matematiche",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0113",
+      "mask": "0000000000",
+      "n": "rilevamento di segnali acustici in aria turbolenta",
+      "t": "confronto fra correlazione e filtraggio per migliorare il rapporto segnale rumore",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q02": "media",
+        "Q07": "media"
+      },
+      "id": "0114",
+      "mask": "0000000000",
+      "n": "risposta di lastre a un campo casuale di pressione convettivo",
+      "t": "risposta vibratoria delle lastre e smorzamento in relazione alla velocita di convezione del carico",
+      "why": {
+        "Q02": "Il basename indica un campo di pressione ma pone al centro la risposta della lastra, non una distribuzione spaziale studiata in se; confine da discutere.",
+        "Q07": "La velocita e quella di convezione del carico casuale e si studia la risposta strutturale, non il legame fra pressione e velocita del fluido."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "0126",
+      "mask": "1000010001",
+      "n": "pressioni di base supersoniche bidimensionali",
+      "t": "pressioni dietro cunei a Mach 2 e 3; strato di taglio e vortice di scia",
+      "why": {
+        "Q01": "Il basename identifica direttamente pressioni di base di un flusso supersonico.",
+        "Q06": "Si studiano mixing, disturbi e vortice di scia dietro cunei in regime supersonico.",
+        "Q07": "Pressioni di base e profili di velocita sono riportati, ma il riassunto non analizza una relazione esplicita fra loro.",
+        "Q10": "Le pressioni di base sono confrontate con teoria a Mach 2 e 3 e con diversi regimi viscosi; il ruolo isolato di Mach e poco esplicitato."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0127",
+      "mask": "1000010001",
+      "n": "ugelli supersonici assialsimmetrici",
+      "t": "calcolo di famiglie di ugelli mediante caratteristiche per 21 Mach di uscita",
+      "why": {
+        "Q01": "Il basename identifica ugelli che producono flusso supersonico come oggetto dello studio.",
+        "Q06": "Sono calcolate forme di ugelli per flussi supersonici con superfici soniche piane.",
+        "Q10": "Il Mach di uscita varia da 1.008 a 8.238 e determina le famiglie di contorni."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0133",
+      "mask": "0011001000",
+      "n": "effetti della curvatura sullo strato limite laminare",
+      "t": "equazioni e profili di velocita su superfici curve incomprimibili con gradiente normale di pressione",
+      "why": {
+        "Q03": "Il basename identifica esplicitamente lo strato limite laminare.",
+        "Q04": "La curvatura dello strato limite e il tema del basename.",
+        "Q07": "L inclusione del gradiente normale di pressione e delle condizioni esterne nella soluzione modifica la forma del profilo di velocita."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "0134",
+      "mask": "0001001001",
+      "n": "interazione fra strato limite e flusso non viscoso",
+      "t": "interazione fra regimi viscoso e non viscoso; gradiente assiale autoindotto e confronto con teorie ipersoniche",
+      "why": {
+        "Q04": "Il basename pone direttamente al centro l interazione dello strato limite con il flusso esterno.",
+        "Q06": "Il regime ipersonico e il contesto teorico richiamato; la nuova interazione e proposta anche a Mach inferiori senza specificare un regime supersonico studiato.",
+        "Q07": "L interazione fra strato e flusso esterno conduce a un gradiente assiale autoindotto; il legame con il moto e sostanziale ma poco sviluppato nell abstract.",
+        "Q10": "Si discute l applicabilita dell interazione a Mach inferiori a quelli delle teorie ipersoniche e le conseguenze per tali teorie."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media",
+        "Q06": "media"
+      },
+      "id": "0135",
+      "mask": "0000000111",
+      "n": "stima dello sforzo di parete da misure termiche; basename troncato a compr",
+      "t": "estensione di un sensore riscaldato da flusso incomprimibile a comprimibile usando il sottostrato laminare",
+      "why": {
+        "Q04": "Il basename descrive sforzo alla parete e misure termiche senza identificare chiaramente lo strato limite; l inferenza da soli fenomeni di parete resta dubbia.",
+        "Q06": "Il testo estende il metodo al comprimibile, ma non specifica un regime maggiore di Mach 1.",
+        "Q08": "Si analizza lo strato termico generato da un elemento riscaldato e le condizioni del suo confinamento vicino alla parete.",
+        "Q09": "La teoria usa misure di trasferimento di calore di un riscaldatore locale per ricavare lo sforzo di parete.",
+        "Q10": "Il punto centrale e estendere al flusso comprimibile una teoria originariamente incomprimibile."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0144",
+      "mask": "0000000110",
+      "n": "flusso di calore in lastre composite",
+      "t": "serie di Fourier per temperature in pareti composte schermate soggette a scambio termico",
+      "why": {
+        "Q08": "Sono ricavate le distribuzioni di temperatura nella parete refrattaria e metallica.",
+        "Q09": "Si risolve la conduzione nella parete composita con condizioni di scambio newtoniano e isolamento esterno."
+      }
+    },
+    {
+      "confidence": {
+        "Q09": "media"
+      },
+      "id": "0154",
+      "mask": "0000000110",
+      "n": "profili di velocita e temperatura in scia turbolenta di corpo riscaldato",
+      "t": "misure sperimentali delle distribuzioni di velocita e temperatura nella scia di un corpo caldo",
+      "why": {
+        "Q08": "Si misurano distribuzioni di temperatura della scia di un corpo riscaldato e si confrontano con teorie di trasporto.",
+        "Q09": "Le distribuzioni termiche della scia sono studiate nel quadro del trasporto turbolento; manca una misura esplicita del flusso termico, ma la diffusione di calore e il fenomeno studiato."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0161",
+      "mask": "1000010001",
+      "n": "flusso supersonico su famiglia di corpi tozzi simmetrici",
+      "t": "calcoli di flussi con onde staccate su sfere e paraboloidi per vari Mach",
+      "why": {
+        "Q01": "Il basename identifica direttamente il flusso supersonico sui corpi.",
+        "Q06": "Si calcolano flussi e onde di prua staccate per corpi di rivoluzione.",
+        "Q10": "Le simulazioni variano Mach da 1.2 fino a 10 e oltre, confrontando i risultati sulle geometrie."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0173",
+      "mask": "0000011001",
+      "n": "effetto di un getto sulla pressione di base di un corpo cilindrico; nome troncato prima del regime",
+      "t": "prove di getti e flusso di base supersonico con variazioni di ugelli e rapporti di pressione",
+      "why": {
+        "Q06": "L analisi riguarda struttura del getto e flusso di base in corrente a Mach 2 con confronti statici.",
+        "Q07": "Si mostrano gli effetti del Mach di progetto e della geometria del getto sulla pressione di base.",
+        "Q10": "Il Mach di progetto dell ugello e una delle variabili usate per spiegare pressioni e spinta."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0177",
+      "mask": "1000010001",
+      "n": "mixing di getti assialsimmetrici a Mach 1.40",
+      "t": "struttura degli urti nel getto, profili e allargamento confrontati con flussi lenti",
+      "why": {
+        "Q01": "Il basename conserva il valore Mach 1.40 e pone al centro il mixing del getto supersonico.",
+        "Q06": "Si analizzano sviluppo e instabilita di getti supersonici e l effetto degli urti nel nucleo.",
+        "Q07": "Le traverse Pitot danno profili di velocita, ma non e esplicitata una relazione pressione-velocita studiata in quanto tale.",
+        "Q10": "L allargamento della regione di mixing e confrontato con quello a bassa velocita e con diverse intensita degli urti."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q08": "media"
+      },
+      "id": "0178",
+      "mask": "0000010101",
+      "n": "onde d urto disperse in anidride carbonica",
+      "t": "profili di velocita degli urti e rilassamento delle energie interne confrontati con osservazioni",
+      "why": {
+        "Q06": "Si studiano profili delle onde con Mach d urto maggiore di 1; la frase sull intervallo e troncata, percio la copertura quantitativa resta incerta.",
+        "Q08": "L aggiustamento energetico dei gradi di liberta interni lungo l urto e un processo termico centrale, pur senza profili di temperatura espliciti.",
+        "Q10": "Il tipo di onda e il rilassamento sono discussi in funzione del Mach d urto e confrontati con osservazioni."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media"
+      },
+      "id": "0180",
+      "mask": "0001000000",
+      "n": "strato limite su lastra in shear flow",
+      "t": "equazioni incomprimibili e soluzioni similari per vorticita finita",
+      "why": {
+        "Q03": "Il basename identifica lo strato limite ma non ne rende chiaro il regime laminare; non integro dal testo.",
+        "Q04": "Il basename pone esplicitamente al centro lo strato limite sulla lastra."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0185",
+      "mask": "0000000001",
+      "n": "uso di miscele gassose nella ricerca aerodinamica",
+      "t": "scelta di miscele per similitudine in galleria e vantaggi a Mach e Reynolds assegnati",
+      "why": {
+        "Q08": "Le proprieta termiche delle miscele servono alla similitudine; non e analizzata una risposta a scambio o apporto di calore.",
+        "Q10": "Lo studio progetta gas sostitutivi per riprodurre caratteristiche del flusso comprimibile e dipendenze termofisiche a Mach fissato."
+      }
+    }
+  ],
+  "start": 21
+}

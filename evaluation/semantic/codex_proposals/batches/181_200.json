@@ -1,0 +1,249 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0906",
+      "mask": "0000001000",
+      "n": "rassegna del tubo di Pitot",
+      "t": "informazioni applicative per sonde d impatto e velocita e progetto di strumenti",
+      "why": {
+        "Q07": "La rassegna tratta sonde d impatto per misurare velocita tramite pressione; la relazione e implicita nella funzione dello strumento e il riassunto e breve."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0907",
+      "mask": "0100000000",
+      "n": "cavitazione e distribuzione di pressione su forme di testa a imbardata nulla",
+      "t": "misure e generalizzazione delle pressioni attorno a forme arrotondate ellissoidali e coniche",
+      "why": {
+        "Q02": "Il basename pone espressamente al centro la distribuzione spaziale di pressione.",
+        "Q07": "La cavitazione motiva le misure di pressione ma il testo non descrive una dipendenza analizzata dalla velocita."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0911",
+      "mask": "0000000000",
+      "n": "vibrazioni casuali di struttura aeronautica; eccitazione troncata",
+      "t": "tensioni e frequenze di pannelli della fusoliera eccitati da rumore del motore",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "0912",
+      "mask": "0000000110",
+      "n": "campo di temperatura di convezione libera lungo cilindro sottile",
+      "t": "teoria e misure termiche dello strato di convezione su cilindro riscaldato",
+      "why": {
+        "Q04": "Il basename descrive il campo termico di convezione sul cilindro ma non identifica lo strato limite; non integro dal corpo.",
+        "Q08": "Si misura il campo termico attorno a cilindri riscaldati e si confronta con teoria.",
+        "Q09": "I coefficienti locali di scambio per convezione naturale sono confrontati con le previsioni."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q06": "bassa",
+        "Q10": "media"
+      },
+      "id": "0915",
+      "mask": "0000000000",
+      "n": "lastra imbozzata in corrente supersonica",
+      "t": "stabilita dinamica di una pelle di missile; il testo termina con frammenti di altra descrizione di prove",
+      "why": {
+        "Q01": "Il basename riguarda la lastra imbozzata e pone il regime come contesto di stabilita strutturale, non un chiaro studio del flusso.",
+        "Q06": "Il testo frammentario considera stabilita della lastra in aria supersonica ma non rende verificabile un analisi sostanziale del flusso; proposta prudente e da riesaminare.",
+        "Q10": "Mach appare nelle condizioni finali corrotte, senza analisi descritta degli effetti di regime."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0916",
+      "mask": "0000000001",
+      "n": "flusso attorno ad ali oscillanti a velocita transoniche",
+      "t": "soluzione del potenziale non stazionario e smorzamento negativo a Mach1",
+      "why": {
+        "Q06": "Il testo tratta regime transonico e Mach1 ma non specifica un tratto supersonico analizzato.",
+        "Q10": "I termini transonici non stazionari e lo smorzamento a Mach1 sono il cuore della soluzione."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0918",
+      "mask": "1000010001",
+      "n": "ala rettangolare oscillante in flusso supersonico",
+      "t": "soluzione del potenziale e distribuzione della portanza con confronto alla teoria snella",
+      "why": {
+        "Q01": "Il basename identifica direttamente il flusso supersonico sull ala oscillante.",
+        "Q06": "Si risolvono campo potenziale e carichi dell ala nel flusso supersonico.",
+        "Q10": "La soluzione e confrontata con teoria snella e applicata a stabilita nei regimi supersonico e transonico."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "0923",
+      "mask": "1000010001",
+      "n": "interferenza di portanza ala corpo a supersonic",
+      "t": "metodi di corpo snello per interferenza e confronto su100 configurazioni",
+      "why": {
+        "Q01": "Il basename conserva supersonic e rende centrale l interferenza aerodinamica.",
+        "Q06": "Si sviluppano e verificano metodi di interferenza ala corpo supersonica.",
+        "Q10": "La teoria di corpo snello e i suoi limiti sono discussi per il regime supersonico, pur senza variazione esplicita di Mach."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0926",
+      "mask": "0000000000",
+      "n": "postbuckling di gusci sotto pressione idrostatica",
+      "t": "equilibri di gusci e geometrie dopo carico critico",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0935",
+      "mask": "0000000000",
+      "n": "buckling di gusci conici e cilindrici multistrato; coda troncata",
+      "t": "stabilita di gusci sotto carichi assialsimmetrici",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q07": "media",
+        "Q08": "media"
+      },
+      "id": "0943",
+      "mask": "0000001101",
+      "n": "strato di taglio libero comprimibile con spessore iniziale finito",
+      "t": "soluzione dei profili e conseguenze per pressione di base e scia; cenno alla cinetica termochimica",
+      "why": {
+        "Q06": "Il moto e comprimibile ma non si identifica un regime supersonico nel testo.",
+        "Q07": "Si analizzano gli effetti dei profili di velocita sulle previsioni della pressione di base, cioe un legame sostanziale.",
+        "Q08": "Viene delineato un metodo per gli effetti cinetici sui profili di temperatura e composizione; l analisi e solo riassunta ma termica.",
+        "Q10": "Le equazioni e trasformazioni dei profili sono formulate per il mixing comprimibile."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0944",
+      "mask": "0000000110",
+      "n": "conduzione nella pelle di veicolo in ingresso; coda troncata",
+      "t": "soluzione di Fourier per calore entrante in lastra durante la fase iniziale di rientro",
+      "why": {
+        "Q08": "Il modello descrive l evoluzione termica della lastra da temperatura iniziale costante con densita atmosferica crescente.",
+        "Q09": "Si risolvono espressamente equazioni di conduzione monodimensionale nella pelle."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0945",
+      "mask": "0000000000",
+      "n": "progetto di giranti mediante computer veloce",
+      "t": "equazioni di moto incomprimibile per progetto di pale con velocita e pressioni approssimate",
+      "why": {
+        "Q07": "Velocita e pressione sono elencate come grandezze calcolate sulla pala, ma il riassunto non ne esplicita la relazione; stesso confine del caso0035."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0946",
+      "mask": "0000011001",
+      "n": "getto frontale e urto di prua; regime troncato fuori dal nome",
+      "t": "getto a Mach1-10.3 in corrente Mach6 e dipendenza dello spostamento d urto da pressioni e velocita",
+      "why": {
+        "Q06": "Si studiano struttura e spostamento dell urto del flusso ipersonico sotto l effetto del getto.",
+        "Q07": "Il rapporto di pressioni necessario per spostare l urto dipende esplicitamente dal Mach di uscita del getto.",
+        "Q10": "Si quantifica la crescita dello spostamento d urto con Mach del getto e i diversi regimi di interazione."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q07": "media",
+        "Q08": "media"
+      },
+      "id": "0949",
+      "mask": "1000011101",
+      "n": "proprieta di flusso in ugelli hyper velocity",
+      "t": "carte di temperature pressioni velocita e urti normali al variare di Mach ed entalpia iniziale",
+      "why": {
+        "Q01": "Hyper_velocity nozzles nel basename rende riconoscibile il flusso a velocita estremamente elevate; equivalente specialistico del regime ipersonico da confermare.",
+        "Q06": "Le proprieta sono calcolate lungo il flusso iperveloce negli ugelli e attraverso urti normali.",
+        "Q07": "Pressione e velocita sono tabulate in funzione dello stesso Mach e delle condizioni di ristagno; il legame e reso dal modello di espansione.",
+        "Q08": "Le temperature del flusso e i rapporti termici attraverso urto sono calcolati per diverse entalpie di ristagno, non sole proprieta di gas isolati.",
+        "Q10": "Mach e la variabile delle carte di flusso e delle relazioni attraverso gli urti."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0950",
+      "mask": "0000000000",
+      "n": "tempi di creep buckling di colonne; coda troncata",
+      "t": "confronto di ipotesi di instabilita e tempi di collasso delle colonne",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0956",
+      "mask": "0000000000",
+      "n": "stabilita di cilindri sandwich a nucleo corrugato",
+      "t": "coefficienti di buckling sotto compressione pressione laterale e torsione",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0961",
+      "mask": "0000000001",
+      "n": "mixing di getto bidimensionale comprimibile a pressione costante",
+      "t": "profili e trasporto di quantita di moto con correlazione a dati lenti",
+      "why": {
+        "Q06": "Il testo non identifica un regime supersonico e verifica il modello con dati a bassa velocita.",
+        "Q10": "La formulazione e specifica per mixing comprimibile e usa trasformazioni fra piani e coordinate."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0964",
+      "mask": "0000001000",
+      "n": "coefficienti di efflusso di misuratori e venturi",
+      "t": "teoria di flussi potenziali e strato limite per coefficienti di scarico e posizione delle prese",
+      "why": {
+        "Q07": "Il coefficiente di efflusso dei misuratori lega la portata alla misura di pressione e la teoria studia gli effetti delle prese; la relazione e implicita nell applicazione."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0971",
+      "mask": "0100011001",
+      "n": "pressioni superficiali con getto sonico normale a superfici piane",
+      "t": "interferenza del getto su lastra e veicolo con Mach esterno2.92-6.4 e rapporti di pressione variabili",
+      "why": {
+        "Q02": "Il basename identifica chiaramente distribuzioni spaziali della pressione sulle superfici.",
+        "Q06": "Si studia l interazione fra getto e flusso supersonico esterno.",
+        "Q07": "Le pressioni e distribuzioni dipendono fortemente dal Mach della corrente a rapporto di pressioni fissato.",
+        "Q10": "Gli effetti del Mach esterno sono separati da quelli di Reynolds e del rapporto di pressione."
+      }
+    }
+  ],
+  "start": 181
+}

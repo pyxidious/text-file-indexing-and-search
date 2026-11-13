@@ -4,7 +4,7 @@ from pathlib import Path
 from .dataset import write_csv
 from .ground_truth import load_queries
 from .semantic import load_frozen
-from .io import sha256, write_json
+from .io import read_json, sha256, write_json
 from .metrics import macro_metrics, retrieval_metrics
 
 
@@ -13,6 +13,7 @@ def evaluate(documents="corpus/documents", queries="evaluation/queries.csv",
              metadata="corpus/metadata.csv", *, expected_documents=300):
     # Il controllo precede costruzione dell'indice, query e metriche.
     relevant = load_frozen(documents, queries, ground_truth, metadata, expected_documents=expected_documents)
+    truth_status = read_json(Path(ground_truth) / "frozen.json")["status"]
     from .engine import SearchEngine
     engine = SearchEngine.build(documents)
     rows, runs, errors = [], [], []
@@ -35,7 +36,8 @@ def evaluate(documents="corpus/documents", queries="evaluation/queries.csv",
     write_csv(output / "errors.csv", errors, ["query_id", "error", "doc_id"])
     summary = macro_metrics(rows)
     write_csv(output / "macro.csv", [summary], list(summary))
-    write_json(output / "evaluation.json", dict(status="evaluated_against_semantic_ground_truth_human_annotated",
+    write_json(output / "evaluation.json", dict(status="evaluated_against_" + truth_status,
+               ground_truth_status=truth_status,
                frozen_sha256=sha256(Path(ground_truth) / "frozen.json"),
                engine_sha256=sha256(Path(__file__).with_name("engine.py")), macro=summary))
     for row in rows:

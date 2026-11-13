@@ -1,0 +1,257 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "0188",
+      "mask": "1000011001",
+      "n": "pressione di base a velocita supersoniche",
+      "t": "teoria inviscida e semiempirica della pressione di base con effetti di Mach, Reynolds e strato limite",
+      "why": {
+        "Q01": "Il basename identifica l analisi della pressione di base nel moto supersonico.",
+        "Q06": "Si modellano flussi supersonici di base viscosi e non viscosi e interferenze sperimentali.",
+        "Q07": "La pressione di base e modellata includendo la dipendenza dal numero di Mach della corrente.",
+        "Q10": "Gli effetti del Mach sulla pressione di base sono esplicitamente inclusi nella teoria."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0191",
+      "mask": "0000000000",
+      "n": "teoria del nucleo del vortice di bordo d attacco",
+      "t": "soluzioni incomprimibili per nucleo vorticoso con componenti di velocita e pressione",
+      "why": {
+        "Q07": "Velocita e pressione compaiono fra i risultati delle soluzioni del nucleo; non e descritta la loro relazione. Come nel caso 0035, non assumo dal solo elenco che sia analizzata."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0193",
+      "mask": "1000011001",
+      "n": "moto non viscoso attorno a profili a elevate velocita supersoniche",
+      "t": "metodi urto espansione e caratteristiche per pressioni e flusso ad alto Mach con gas imperfetto",
+      "why": {
+        "Q01": "Il basename rende centrale il flusso supersonico sui profili.",
+        "Q06": "Si studiano campi di moto e distribuzioni di pressione su profili a Mach elevati.",
+        "Q07": "Accuratezza e pressioni dei metodi sono analizzate al variare di Mach e degli angoli di deviazione.",
+        "Q08": "Le temperature elevate entrano tramite proprieta caloriche del gas; non si studia scambio o apporto di calore.",
+        "Q10": "Mach e imperfezioni caloriche determinano la validita dei metodi fino al limite ipersonico."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "0203",
+      "mask": "0000000000",
+      "n": "distribuzioni di velocita e derivate di forza; nome troncato a high_spe",
+      "t": "metodo poligonale per profili bidimensionali in flussi subcritici e confronto sperimentale",
+      "why": {
+        "Q10": "Il testo si limita a flussi subcritici e non esplicita effetti di comprimibilita o variazioni di regime; non assumo che high speed basti."
+      }
+    },
+    {
+      "confidence": {
+        "Q05": "media"
+      },
+      "id": "0208",
+      "mask": "0000100000",
+      "n": "effetto Hall nel moto viscoso di gas ionizzato fra piastre; nome troncato a under",
+      "t": "soluzione MHD incomprimibile con conducibilita anisotropa e accelerazione elettromagnetica",
+      "why": {
+        "Q05": "Il riferimento all effetto Hall nel moto del gas ionizzato rende riconoscibile l interazione magnetica anche se la coda del nome e troncata."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0214",
+      "mask": "1000010001",
+      "n": "prove di schiere di compressori supersonici",
+      "t": "misure di perdite e discussione dei modi di funzionamento supersonici e transonici",
+      "why": {
+        "Q01": "Il basename identifica schiere supersoniche come oggetto dello studio fluidodinamico.",
+        "Q06": "Si analizzano funzionamento e perdite delle schiere nel regime supersonico.",
+        "Q10": "Sono confrontati i modi di operazione supersonici e transonici e la scelta del Mach di prova."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "0215",
+      "mask": "0000010000",
+      "n": "prestazioni di stadi di turbina con alto rapporto di pressione; nome non specifica regime",
+      "t": "prove su schiere e turbine per studiare prestazioni di pale a velocita del gas supersonica",
+      "why": {
+        "Q06": "Il testo studia esplicitamente prestazioni e accoppiamento di file di pale operanti con gas supersonico.",
+        "Q10": "Il regime supersonico definisce le prove ma l abstract non descrive effetti di Mach o confronti di comprimibilita separati; proposta prudente da confermare."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "0221",
+      "mask": "1000010001",
+      "n": "studio teorico di ugelli anulari supersonici",
+      "t": "progetto di flussi uniformi supersonici senza linee limite e urti in ugelli anulari",
+      "why": {
+        "Q01": "Il basename rende centrali gli ugelli supersonici.",
+        "Q06": "Sono progettati i campi di flusso supersonici e le condizioni per evitare urti negli ugelli.",
+        "Q10": "La progettazione del flusso supersonico e i vincoli su urti e linee limite dipendono dal regime comprimibile; non e un semplice Mach di prova."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0223",
+      "mask": "0000000000",
+      "n": "nota sulla teoria del tubo di Stanton",
+      "t": "critica delle teorie e previsione della funzione di calibrazione ad alti Reynolds",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q07": "media",
+        "Q08": "media"
+      },
+      "id": "0236",
+      "mask": "0000000101",
+      "n": "criteri di equilibrio termodinamico nel moto dei gas",
+      "t": "rilassamento vibrazionale, quasi equilibrio e applicazioni a dissociazione e strozzamento degli ugelli",
+      "why": {
+        "Q06": "Alta velocita e choking non specificano un flusso supersonico sostanzialmente studiato nel testo disponibile.",
+        "Q07": "Pressione e velocita sono elencate fra le deviazioni dall equilibrio; non viene esplicitata la relazione fra loro.",
+        "Q08": "Si studia come rilassamento dell energia vibrazionale e dissociazione governino l equilibrio termico del gas in moto.",
+        "Q10": "Le applicazioni allo strozzamento di Laval e al disequilibrio nei flussi veloci rendono centrale il regime comprimibile."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0238",
+      "mask": "0000001000",
+      "n": "fattore del tubo Pitot statico a bassi Reynolds; nome troncato",
+      "t": "determinazione del fattore Pitot per calibrare anemometri a bassa velocita",
+      "why": {
+        "Q07": "La determinazione del fattore Pitot serve a calibrare la misura di velocita mediante pressione; il testo e molto breve e il legame e implicito nel metodo, da confermare."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0239",
+      "mask": "0000001000",
+      "n": "progetto e calibrazione a bassa velocita di tubi statici e Pitot statici",
+      "t": "errori di pressione dovuti a naso e supporto; controlli di scala nel campo 100-230 ft sec",
+      "why": {
+        "Q07": "La calibrazione studia errori della pressione letta e ne verifica la dipendenza dalla velocita nel campo sperimentale; il nesso e metrologico."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0244",
+      "mask": "0000000000",
+      "n": "generatore di fumo per visualizzare il flusso; nome troncato prima di boundary layer",
+      "t": "sviluppo di un generatore a olio per visualizzazione, con applicazioni alla transizione",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0270",
+      "mask": "0000100110",
+      "n": "convezione libera e forzata laminare magnetoidrodinamica e calore",
+      "t": "trattazione generale della convezione in canali di fluido conduttore con campo trasversale",
+      "why": {
+        "Q05": "Magnetohydrodynamic flow nel basename identifica direttamente il bisogno magnetico.",
+        "Q08": "Il modello di convezione laminare comprende temperatura delle pareti e accoppiamento fra galleggiamento e flusso.",
+        "Q09": "La convezione termica combinata libera e forzata nel canale e il problema centrale."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0273",
+      "mask": "0000010001",
+      "n": "rassegna ed estensione del moto su corpi tozzi snelli",
+      "t": "soluzione con regione subsonica al naso e caratteristiche nella regione supersonica",
+      "why": {
+        "Q06": "La regione supersonica viene risolta con il metodo delle caratteristiche e confrontata con dati.",
+        "Q10": "Il raccordo fra regioni subsonica e supersonica e il confronto con teoria d onda d urto rendono centrale la comprimibilita."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0289",
+      "mask": "0000000000",
+      "n": "aerodinamica di ali cruciformi snelle; nome troncato",
+      "t": "pressioni, carichi e avvolgimento delle scie vorticose in teoria dei corpi snelli",
+      "why": {
+        "Q07": "Equazioni di pressione e carico e geometria dei vortici sono studiate, ma il riassunto non esplicita una relazione pressione-velocita."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0297",
+      "mask": "0000111001",
+      "n": "effetti di comprimibilita in flussi magnetoaerodinamici su corpi sottili",
+      "t": "soluzioni nell intero intervallo di Mach e rapporti fra pressione magnetica e fluidodinamica",
+      "why": {
+        "Q05": "Magneto_aerodynamic nel basename indica l interazione magnetica con il moto del fluido.",
+        "Q06": "La teoria copre l intero intervallo di Mach e distingue regimi analoghi ad Ackeret e Prandtl Glauert, includendo sostanzialmente il supersonico.",
+        "Q07": "La soluzione dipende da velocita del flusso, propagazione magnetoacustica e rapporto di pressioni magnetica e fluidodinamica.",
+        "Q10": "Gli effetti della comprimibilita e il passaggio fra regimi di propagazione sono il tema esplicito."
+      }
+    },
+    {
+      "confidence": {
+        "Q05": "media"
+      },
+      "id": "0298",
+      "mask": "0000000000",
+      "n": "moto incomprimibile a cuneo di fluido conduttore; nome troncato a in_the_pr",
+      "t": "equazioni del flusso viscoso conduttore attorno a un cuneo con campo magnetico",
+      "why": {
+        "Q05": "Il basename conserva il fluido conduttore ma non il campo magnetico, troncato fuori dal nome: conducibilita da sola non prova accoppiamento magnetico."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "0299",
+      "mask": "0000100000",
+      "n": "moto magnetoidrodinamico su lastra semi infinita",
+      "t": "soluzioni asintotiche dello strato viscoso incomprimibile con campo e corrente paralleli alla lastra",
+      "why": {
+        "Q04": "Il basename dice moto MHD su lastra ma non identifica direttamente lo strato limite; resta possibile un inferenza implicita da discutere.",
+        "Q05": "Magnetohydrodynamic flow nel basename identifica direttamente il bisogno."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media",
+        "Q10": "media"
+      },
+      "id": "0311",
+      "mask": "0001000001",
+      "n": "previsione di buffeting e altri effetti di separazione; nome troncato",
+      "t": "pressione al bordo d uscita come indicatore della separazione lenta o indotta da urti",
+      "why": {
+        "Q04": "Buffeting e separazione aerodinamica nel basename sono fenomeni dello strato limite; l identificazione e semantica e implicita, da confermare.",
+        "Q10": "Sono distinti separazione a bassa velocita e separazione indotta da urti con diversa validita della previsione."
+      }
+    }
+  ],
+  "start": 41
+}

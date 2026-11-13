@@ -1,0 +1,289 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1193",
+      "mask": "0000000000",
+      "n": "soluzioni esatte per corpi curvilinei cavitanti",
+      "t": "soluzioni singolari del campo e contorni della cavita con pressioni locali calcolabili",
+      "why": {
+        "Q07": "Le pressioni locali sono risultati calcolabili del campo, ma il testo non ne esplicita la relazione con la velocita, come nel caso0035."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1195",
+      "mask": "0000011001",
+      "n": "getti bidimensionali trasversalmente incidenti",
+      "t": "interazione di getti sottoespansi, trasformazione degli urti e recupero di pressione",
+      "why": {
+        "Q06": "Si studia la struttura degli urti nei getti supersonici sottoespansi e la sua modifica dal getto di controllo.",
+        "Q07": "La struttura d urto modifica il recupero di pressione e le grandezze assiali sono previste mediante relazione area Mach.",
+        "Q10": "La trasformazione fra urto normale e obliquo e verificata con relazioni area Mach e misure."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q07": "media"
+      },
+      "id": "1201",
+      "mask": "1000011001",
+      "n": "minimo drag con legge di pressione Newton Busemann; coda troncata",
+      "t": "ottimizzazione di forme in moto ipersonico con legge di pressione e accelerazione centripeta",
+      "why": {
+        "Q01": "La legge Newton Busemann nel basename identifica semanticamente il modello di pressione del limite ipersonico; inferenza specialistica da verificare.",
+        "Q06": "L ottimizzazione tratta esplicitamente corpi in flusso ipersonico e forme delle regioni a pressione nulla.",
+        "Q07": "La legge di pressione incorpora gli effetti dell accelerazione centripeta del flusso, collegando la pressione alla dinamica delle velocita.",
+        "Q10": "Il regime ipersonico e il modello d impatto modificato costituiscono la base dell ottimizzazione."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1202",
+      "mask": "1000010001",
+      "n": "soluzione del secondo ordine del flusso supersonico su superfici cruciformi",
+      "t": "struttura di onde, singolarita di velocita e soluzioni valide attorno al cono di Mach",
+      "why": {
+        "Q01": "Il basename identifica direttamente il flusso supersonico sulle superfici.",
+        "Q06": "Si risolve in dettaglio il campo con urti e ventagli di espansione della configurazione cruciforme.",
+        "Q07": "Il testo discute potenziali e singolarita di velocita senza esplicitare una relazione con la pressione.",
+        "Q10": "La struttura rispetto al cono di Mach e la correzione della teoria supersonica sono centrali."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "1203",
+      "mask": "0000100001",
+      "n": "propagazione di urto magnetoidrodinamico in fluido in moto; coda troncata",
+      "t": "perturbazioni d urto da variazioni di sezione e riflessioni che propagano alla velocita sonica",
+      "why": {
+        "Q05": "Il basename identifica chiaramente l onda magnetoidrodinamica.",
+        "Q06": "Il testo comprende urti gasdinamici e magnetici ma non specifica la velocita del flusso rispetto al suono; l urto in mezzo mobile non basta a determinarla.",
+        "Q10": "La teoria distingue perturbazioni e loro propagazione alla vera velocita sonica e i limiti gasdinamici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1204",
+      "mask": "0000010111",
+      "n": "smussamento rarefazione e drag; scambio e regime troncati",
+      "t": "drag e flussi termici in galleria iperveloce attraverso regimi gasdinamici e molecolari",
+      "why": {
+        "Q06": "Si studiano forme e rarefazione nel flusso ipersonico con struttura d urto e misure dirette.",
+        "Q08": "Si caratterizzano condizioni di temperatura e distribuzioni termiche delle superfici.",
+        "Q09": "Si misurano distribuzioni e tassi di scambio con vernice sensibile in regimi gasdinamico e slip.",
+        "Q10": "Si confrontano regimi ipersonici continui e rarefatti e il passaggio al limite molecolare."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q04": "media"
+      },
+      "id": "1212",
+      "mask": "0001010001",
+      "n": "rugosita e attrito turbolento at_sup troncato",
+      "t": "attrito e profili su corpo ruvido a Mach1.98-4.54 e confronto con Mach0.70",
+      "why": {
+        "Q01": "At_sup e troncato e non identifico il regime supersonico completando il nome dai metadati.",
+        "Q04": "Attrito turbolento e rugosita nel basename indicano lo strato limite di parete, pur senza nominarlo; inferenza da verificare.",
+        "Q06": "Si analizzano attrito e profili turbolenti in flusso supersonico su superficie ruvida.",
+        "Q10": "Si mostra che l effetto della comprimibilita si riduce alla densita superficiale e si confrontano dati subsonici e supersonici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1228",
+      "mask": "1011010001",
+      "n": "separazione al bordo di strati limite laminari in flusso supersonico",
+      "t": "teoria del mixing per separazione da urto e riattacco su angolo di compressione",
+      "why": {
+        "Q01": "Il basename rende esplicita la separazione in flusso supersonico.",
+        "Q03": "Il basename identifica chiaramente gli strati limite laminari.",
+        "Q04": "La separazione dello strato limite e il tema del basename.",
+        "Q06": "Si studiano interazione urto strato e regione di separazione supersonica.",
+        "Q10": "Le regioni possibili sono tabulate in funzione di Mach e angolo del raccordo."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1231",
+      "mask": "1000010001",
+      "n": "flusso ipersonico sul cono ellittico",
+      "t": "pressioni e forme d urto previste mediante caratteristiche e confrontate a Mach5.8 e incidenze diverse",
+      "why": {
+        "Q01": "Il basename identifica direttamente il flusso ipersonico.",
+        "Q06": "Si analizza il campo ipersonico e la forma d urto sul cono ellittico.",
+        "Q07": "Le pressioni sono confrontate con teorie e angoli diversi ma non si esplicita una relazione con la velocita nel testo.",
+        "Q10": "Il confronto fra approssimazioni ipersoniche e newtoniane e i limiti con l incidenza studiano il regime comprimibile."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1234",
+      "mask": "1100010001",
+      "n": "calcolo di distribuzione di pressione su nasi tozzi ipersonici",
+      "t": "estensione di metodo per campi ipersonici assialsimmetrici e verifica di pressioni e urti",
+      "why": {
+        "Q01": "Il basename rende esplicito il regime ipersonico dei nasi e delle pressioni.",
+        "Q02": "La distribuzione spaziale di pressione e l oggetto diretto del basename.",
+        "Q06": "Si calcolano campi di flusso ipersonici su forme a spigoli vivi.",
+        "Q10": "La teoria e validata per pressioni e urti nel regime ipersonico, non e una semplice condizione di prova."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1235",
+      "mask": "0011000000",
+      "n": "teoria di laminar bounary layer su superficie curva",
+      "t": "equazioni in coordinate generalizzate e confronto di profili e attrito su superfici curve",
+      "why": {
+        "Q03": "Il refuso bounary_layer nel basename resta semanticamente riconoscibile come strato limite laminare.",
+        "Q04": "Il refuso nel nome non impedisce di riconoscere lo studio dello strato limite sulla superficie curva."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "1245",
+      "mask": "0000010101",
+      "n": "aspetti del flusso in non equilibrio",
+      "t": "rilassamento vibrazionale e soluzioni analitiche del moto dietro urti e su cunei",
+      "why": {
+        "Q06": "Il testo studia lo strato dietro urti e il campo su cunei con caratteristiche; l identificazione supersonica e fisica ma non quantificata, da verificare.",
+        "Q08": "La termodinamica del gas con rilassamento vibrazionale e analizzata sostanzialmente.",
+        "Q10": "Si derivano caratteristiche e gradienti dietro gli urti in presenza di rilassamento."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1247",
+      "mask": "1000010001",
+      "n": "boom supersonico di proiettile e legame con drag e volume",
+      "t": "teoria del campo lontano e salto di pressione di prua per forme di minimo boom",
+      "why": {
+        "Q01": "Il basename identifica direttamente il fenomeno supersonico e il suo legame aerodinamico.",
+        "Q06": "La teoria del campo lontano attorno al proiettile e usata per prevedere il salto di pressione d urto.",
+        "Q07": "Mach e fissato nelle conclusioni e si studia il ruolo della forma sul boom, senza isolare un legame pressione-velocita.",
+        "Q10": "Il modello del boom e il drag d onda studiano un effetto centrale della comprimibilita supersonica."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1252",
+      "mask": "0000010101",
+      "n": "equilibrio chimico e vibrazionale dietro strong_normal_s troncato",
+      "t": "rilassamenti con densita massima dietro urto e esempio a Mach13 in ossigeno",
+      "why": {
+        "Q06": "Si analizza il gas dopo un urto forte e si verifica il comportamento su un caso Mach13.",
+        "Q08": "I diversi tempi di equilibrio vibrazionale e dissociazione modificano lo stato termodinamico e la densita.",
+        "Q10": "L urto forte a Mach13 e il congelamento dei gradi interni sono analizzati fisicamente."
+      }
+    },
+    {
+      "confidence": {
+        "Q09": "media"
+      },
+      "id": "1254",
+      "mask": "0001000110",
+      "n": "combustione nello strato limite su parete porosa",
+      "t": "fiamma diffusiva con iniezione, conservazione aerotermochimica e analogia di Reynolds",
+      "why": {
+        "Q04": "Il basename rende centrale la combustione nello strato limite.",
+        "Q08": "Si risolve la posizione della fiamma e lo stato termochimico dovuto alla reazione e iniezione.",
+        "Q09": "La fiamma diffusiva e l analogia di Reynolds generalizzata coinvolgono trasferimento termico e di massa sostanziale, pur senza tassi termici espliciti."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1259",
+      "mask": "1000011001",
+      "n": "teoria del secondo ordine per moto supersonico non stazionario su corpi snelli",
+      "t": "equazione del potenziale e pressione raffinate per spessore e forze non stazionarie",
+      "why": {
+        "Q01": "Il basename identifica direttamente il moto supersonico non stazionario.",
+        "Q06": "Si risolvono campi e forze supersoniche per oscillazioni dei corpi.",
+        "Q07": "La pressione e raffinata coerentemente con la soluzione del potenziale di velocita e integrata per le forze: accoppiamento esplicito del modello.",
+        "Q10": "Le correzioni della teoria supersonica e i loro limiti di validita sono studiati."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media",
+        "Q06": "media"
+      },
+      "id": "1264",
+      "mask": "0001000111",
+      "n": "transizione e calore nello strato limite dei tubi d urto",
+      "t": "transizione, stabilizzazione per raffreddamento e scambio al variare del Mach d urto",
+      "why": {
+        "Q03": "Il basename parla di transizione senza identificare chiaramente il regime iniziale laminare, come0041.",
+        "Q04": "Lo strato limite e esplicitamente il tema del basename.",
+        "Q06": "Si varia Mach d urto ma non e dato il Mach del gas dietro il fronte; non assumo che sia sempre supersonico.",
+        "Q08": "Si studia la stabilizzazione attribuita all aumento dei tassi di raffreddamento confrontando aria e argon.",
+        "Q09": "Si misurano tassi laminari e turbolenti di calore alle pareti.",
+        "Q10": "La transizione dipende dalla forza dell urto e viene confrontata per ampi Mach d urto."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1265",
+      "mask": "0000001000",
+      "n": "ipotesi di spinta del jet flap con effetti di mixing",
+      "t": "modello potenziale e mixing con aumento della spinta in regione di forte suzione",
+      "why": {
+        "Q07": "Il modello di mixing mostra che mescolare il getto nella regione a bassa pressione aumenta la spinta, collegando pressione e dinamica del getto."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media"
+      },
+      "id": "1266",
+      "mask": "0000010001",
+      "n": "minimo drag d onda di ala con vincolo di volume",
+      "t": "metodo numerico con teoria linearizzata supersonica per forma e resistenza ottime",
+      "why": {
+        "Q01": "Wave drag nel basename puo riguardare anche condizioni transoniche; non basta a identificare il supersonico senza il testo.",
+        "Q06": "Il metodo calcola la forma e il drag di ali con teoria del flusso supersonico.",
+        "Q10": "Il drag d onda e previsto mediante teoria comprimibile supersonica e modificato con la distribuzione di volume."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "1281",
+      "mask": "0000011111",
+      "n": "scambio turbolento su corpi tozzi in due e tre dimensioni; regime troncato",
+      "t": "strato limite tridimensionale raffreddato e trasformazioni comprimibili per analisi del calore",
+      "why": {
+        "Q04": "Il basename indica scambio turbolento sui corpi senza identificare esplicitamente lo strato limite; stesso confine del caso0101.",
+        "Q06": "Il testo tratta gli strati sui corpi in moto ipersonico e le approssimazioni del flusso esterno.",
+        "Q07": "Si mostra che su pareti molto fredde il crossflow e trascurabile anche per grandi gradienti trasversali di pressione.",
+        "Q08": "Il raffreddamento intenso e le temperature di parete determinano la validita della trasformazione.",
+        "Q09": "La teoria e applicata e verificata per lo scambio turbolento sui corpi.",
+        "Q10": "Si estende una correlazione fra strati comprimibili e incomprimibili e ne studiano i limiti."
+      }
+    }
+  ],
+  "start": 261
+}

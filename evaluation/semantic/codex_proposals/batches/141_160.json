@@ -1,0 +1,214 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "0720",
+      "mask": "0000000000",
+      "n": "strutture sandwich in ambiente acustico severo",
+      "t": "fatica del legame e tensioni del pannello da pressioni acustiche casuali",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0722",
+      "mask": "0000000000",
+      "n": "eccitazione casuale di impennaggio da rumore di getto",
+      "t": "risonanze strutturali e tensioni indotte da rumore discreto e casuale",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0734",
+      "mask": "0000000000",
+      "n": "flessione di lastra incastrata semicircolare caricata",
+      "t": "soluzione biharmonica e approssimazioni di serie per deformazione del settore",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0735",
+      "mask": "0000000000",
+      "n": "flessione di piastre settoriali incastrate",
+      "t": "sovrapposizione di soluzioni elastiche sotto carico uniforme",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0739",
+      "mask": "0000000000",
+      "n": "buckling di gusci cilindrici sotto compressione assiale",
+      "t": "grandi deformazioni non lineari e sensibilita alle imperfezioni del guscio",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0740",
+      "mask": "0000000000",
+      "n": "comportamento del guscio cilindrico oltre il carico critico",
+      "t": "postbuckling elastico e riduzione della rigidezza e del carico sostenibile",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0743",
+      "mask": "0000000000",
+      "n": "sviluppi delle teorie non lineari del buckling cilindrico",
+      "t": "stabilita di gusci isotropi e ortotropi compressi e pressurizzati",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q06": "media",
+        "Q10": "media"
+      },
+      "id": "0758",
+      "mask": "1000010001",
+      "n": "limite inferiore della sovrapressione di sonic boom e progetto",
+      "t": "limite del boom e disposizione di volume e superfici portanti per avvicinarlo",
+      "why": {
+        "Q01": "Sonic boom nel basename identifica un effetto specifico del volo supersonico e il suo controllo aerodinamico; inferenza semantica da confermare.",
+        "Q06": "La teoria del boom e applicata alla forma aerodinamica e distribuzione della portanza, quindi al campo supersonico lontano; non e un dato acustico isolato.",
+        "Q10": "Il fenomeno di compressione supersonica e il limite di sovrapressione guidano le condizioni di progetto."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0761",
+      "mask": "0000000000",
+      "n": "buckling di sandwich sotto pressione normale",
+      "t": "pressione critica di una sfera sandwich elastica con diversi materiali",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0763",
+      "mask": "0000000000",
+      "n": "pressione interna e buckling di gusci cilindrici",
+      "t": "equazione di Donnell e tensione critica di gusci in flessione pressurizzati",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0764",
+      "mask": "0000000000",
+      "n": "vibrazioni respiratorie di guscio contenente liquido",
+      "t": "frequenze e modi strutturali con massa aggiunta incomprimibile e sloshing",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0775",
+      "mask": "0000010001",
+      "n": "moti bidimensionali di fluido comprimibile",
+      "t": "confronto dei metodi per campi interamente subsonici o supersonici",
+      "why": {
+        "Q06": "Il testo discute la soluzione del campo interamente supersonico tramite caratteristiche insieme al caso subsonico; trattazione breve da verificare.",
+        "Q10": "Il confronto fra campi subsonici, supersonici e incomprimibili e il contenuto sostanziale del testo."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0780",
+      "mask": "0000010001",
+      "n": "caratteristiche transoniche di38 ali rettangolari incurvate; coda troncata",
+      "t": "prove di portanza resistenza e momento da Mach0.6 a1.12 per geometrie diverse",
+      "why": {
+        "Q06": "Le caratteristiche aerodinamiche sono studiate anche oltre Mach1 e confrontate nell intervallo; il tratto supersonico e limitato ma sostanziale.",
+        "Q10": "Si studiano le caratteristiche delle geometrie nell intervallo che attraversa il regime sonico."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0781",
+      "mask": "0000000001",
+      "n": "kernel subsonico nel metodo di coefficienti aeroelastici; coda troncata",
+      "t": "coefficienti di superficie portante comprimibile e risposta flessibile a diversi Mach subsonici",
+      "why": {
+        "Q10": "Il modello comprimibile e verificato su risposte e flutter per diversi Mach subsonici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0784",
+      "mask": "0011000110",
+      "n": "trasferimento termico nello strato limite laminare sul cilindro",
+      "t": "soluzioni a distanze piccole e grandi e influenza di curvatura e Prandtl sullo scambio",
+      "why": {
+        "Q03": "Il basename identifica espressamente lo strato limite laminare.",
+        "Q04": "Lo strato limite e l oggetto del trasferimento termico nel basename.",
+        "Q08": "Si modellano parete isoterma e differenza di temperatura con il flusso per ottenere la risposta termica.",
+        "Q09": "Si calcola la distribuzione locale dello scambio e si confronta con la lastra."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "0786",
+      "mask": "0000000000",
+      "n": "attrito su cilindri infiniti che si muovono assialmente",
+      "t": "forza viscosa non stazionaria su sezioni diverse e raccordo fra tempi piccoli e grandi",
+      "why": {
+        "Q04": "L attrito del moto assiale nel basename puo riguardare lo strato limite, ma non lo identifica come tema senza ricorrere al testo."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media"
+      },
+      "id": "0788",
+      "mask": "0001000000",
+      "n": "teoria approssimata dello strato limite su cilindri semi infiniti",
+      "t": "metodo Pohlhausen per attrito e spostamento su sezioni arbitrarie",
+      "why": {
+        "Q03": "Il basename nomina lo strato limite ma non il suo regime laminare; il metodo nel testo non integra il nome.",
+        "Q04": "Il basename identifica direttamente una teoria dello strato limite."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media"
+      },
+      "id": "0791",
+      "mask": "1000010001",
+      "n": "caratteristiche longitudinali a Mach fino a2.8; oggetto troncato",
+      "t": "misure su ali ogee a2 Mach subsonici e8 supersonici con resistenza di pressione",
+      "why": {
+        "Q01": "Il basename conserva l intervallo fino a Mach2.8 e indica caratteristiche aerodinamiche longitudinali; l oggetto troncato rende l inferenza da confermare.",
+        "Q06": "Si studiano caratteristiche di ali e resistenza nel campo supersonico fino a Mach2.8.",
+        "Q10": "Il confronto comprende due regimi subsonici e otto valori supersonici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0793",
+      "mask": "1000010001",
+      "n": "campo di moto su ala a freccia fra Mach0.6 e1.6",
+      "t": "sviluppo di urti vortici e separazione con Mach e incidenza",
+      "why": {
+        "Q01": "Il basename conserva il campo di Mach che include il supersonico e studia il campo di moto.",
+        "Q06": "Si analizza il passaggio da separazione di bordo subsonica a campo supersonico con separazione da urto.",
+        "Q10": "E descritta la trasformazione del campo di moto con Mach e lo spostamento degli urti."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0797",
+      "mask": "0000010001",
+      "n": "modifiche del bordo d entrata e flusso su ala; regime troncato",
+      "t": "prove da Mach0.60 a1.20 con profili del bordo e separazione da urti",
+      "why": {
+        "Q06": "Si studiano formazione e spostamento degli urti e campi di moto anche supersonici sull ala.",
+        "Q10": "Gli effetti delle modifiche sulla comparsa degli urti e sull attaccamento sono analizzati al variare di Mach."
+      }
+    }
+  ],
+  "start": 141
+}

@@ -1,0 +1,263 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {
+        "Q03": "media"
+      },
+      "id": "1282",
+      "mask": "0001110111",
+      "n": "strato limite comprimibile su lastra con campo magnetico",
+      "t": "soluzioni laminari con dissociazione ionizzazione e riduzione di attrito e calore per campo magnetico",
+      "why": {
+        "Q03": "Il basename conserva lo strato limite comprimibile ma non il regime laminare; non lo completo con il corpo.",
+        "Q04": "Lo strato limite sulla lastra e esplicito nel basename.",
+        "Q05": "Il campo magnetico applicato al flusso comprimibile rende riconoscibile l accoppiamento MHD nel nome.",
+        "Q06": "Le soluzioni arrivano a17500msec e analizzano il flusso ad altissima velocita con dissociazione e ionizzazione.",
+        "Q08": "Si studia il comportamento termico accoppiato alle proprieta del gas e al campo magnetico.",
+        "Q09": "La riduzione del trasferimento termico al crescere del campo e un risultato principale.",
+        "Q10": "L isteresi dipende da Mach e viene confrontata fra Couette e lastra comprimibile."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "1285",
+      "mask": "1000010001",
+      "n": "esperimenti ipersonici su coni circolari a incidenza",
+      "t": "misure di pressione su cinque coni e confronto con teorie a diversi angoli",
+      "why": {
+        "Q01": "Il basename identifica lo studio aerodinamico dei coni a velocita ipersoniche.",
+        "Q06": "Si studiano distribuzioni di pressione e validita delle teorie del flusso ipersonico sui coni.",
+        "Q07": "Il testo descrive pressioni e angoli ma non una relazione esplicita con la velocita.",
+        "Q10": "Le teorie sono verificate nel regime ipersonico su un intervallo di condizioni e angoli, non una misura strutturale incidentale."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "1292",
+      "mask": "0000010001",
+      "n": "pluming del getto e stabilita di corpi cono cilindro flare; regime troncato",
+      "t": "interferenza del getto a Mach9.65 e spostamenti del centro di pressione con ugelli diversi",
+      "why": {
+        "Q06": "La crescita del pennacchio e la sua interferenza con il flusso ipersonico sono analizzate con pressioni e geometrie.",
+        "Q07": "Si riportano rapporti di pressione e Mach di progetto diversi, ma non e descritta una relazione isolata pressione-velocita.",
+        "Q10": "Si confrontano ugelli progettati per Mach3.74 e4.60 e l effetto dell espansione nel flusso ipersonico; il ruolo autonomo di Mach e meno esplicito."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q10": "media"
+      },
+      "id": "1299",
+      "mask": "1000010001",
+      "n": "shock layer viscoso ipersonico",
+      "t": "nota breve sui regimi di interazione gassosa di veicoli portanti ipersonici",
+      "why": {
+        "Q01": "Il basename identifica direttamente lo strato d urto viscoso ipersonico.",
+        "Q06": "La nota presenta risultati sui regimi di interazione del flusso ipersonico, ma il breve testo non ne dettaglia il contenuto.",
+        "Q10": "I regimi di interazione nel volo ipersonico sono il tema dichiarato, con dettaglio limitato."
+      }
+    },
+    {
+      "confidence": {
+        "Q02": "bassa",
+        "Q07": "media"
+      },
+      "id": "1303",
+      "mask": "0000011001",
+      "n": "pressione sul cono ad alta velocita senza regime specificato",
+      "t": "soluzione conica supersonica di pressione velocita e densita e cambiamento di onda alla soglia1.46",
+      "why": {
+        "Q02": "Air_pressure_on_a_cone non identifica inequivocabilmente una distribuzione spaziale nel solo nome; come0058 richiede conferma.",
+        "Q06": "Si risolve il flusso sul cono che si muove piu velocemente del suono e si confronta l urto con foto.",
+        "Q07": "La soluzione lega stati di pressione e velocita sulle superfici coniche e ne verifica la validita alla soglia di velocita; la relazione e nel modello conico.",
+        "Q10": "Il cambiamento della natura dell onda a1.46 volte la velocita del suono e confrontato con la teoria."
+      }
+    },
+    {
+      "confidence": {
+        "Q02": "bassa",
+        "Q03": "media",
+        "Q04": "media",
+        "Q10": "media"
+      },
+      "id": "1307",
+      "mask": "1000010111",
+      "n": "scambio laminare e misure di pressione a Mach6; geometria troncata",
+      "t": "coni laminari con pressioni e flussi termici circumferenziali confrontati con modelli",
+      "why": {
+        "Q01": "Il basename conserva Mach6 e rende centrali proprieta fluidodinamiche e termiche nel regime ipersonico.",
+        "Q02": "Il basename dice pressure_measurements ma non indica distribuzione spaziale; non integro dai dati circumferenziali del corpo.",
+        "Q03": "Laminar_heat_transfer nel basename non identifica chiaramente lo strato limite laminare senza inferenza, come0101.",
+        "Q04": "Il basename descrive misure termiche e di pressione ma non identifica direttamente lo strato limite.",
+        "Q06": "Si studiano campo conico e urto di prua nel flusso a Mach6.",
+        "Q08": "Si analizzano riscaldamento e sua distribuzione per incidenza, smussamento ed effetti di base.",
+        "Q09": "Si misurano e prevedono distribuzioni circumferenziali dello scambio.",
+        "Q10": "Le teorie newtoniane e di flusso imbardato sono verificate nel regime ipersonico; Mach e fisso e la rilevanza riguarda il modello fisico."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "1314",
+      "mask": "0000000101",
+      "n": "produzione di gas ad alta temperatura in tubi d urto",
+      "t": "calcoli aerodinamici e termodinamici di urti forti e gas fino a18000K",
+      "why": {
+        "Q06": "Il testo tratta produzione degli urti e gas caldi senza specificare il Mach del flusso del gas; Mach d urto non basta.",
+        "Q08": "La produzione di alte temperature per compressione d urto e oggetto di calcoli e verifiche.",
+        "Q10": "Si confrontano forze degli urti sperimentali e teoriche e loro conseguenze termodinamiche."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "1321",
+      "mask": "0000000000",
+      "n": "stabilita idrodinamica con confine flessibile",
+      "t": "stabilita Tollmien Schlichting e rivestimenti elastici per prevenire la transizione",
+      "why": {
+        "Q04": "Il basename parla genericamente di confine flessibile e stabilita idrodinamica, senza rendere riconoscibile lo strato limite; non completo dal testo."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media"
+      },
+      "id": "1324",
+      "mask": "0001000000",
+      "n": "transizione da protuberanze isolate nello strato limite",
+      "t": "disturbi da escrescenze e altezze critiche per transizione su lastre e profili subsonici",
+      "why": {
+        "Q03": "Il basename nomina transizione e strato limite ma non specifica il regime iniziale laminare, come1264; inferenza da discutere.",
+        "Q04": "Lo strato limite e direttamente il tema del basename."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1328",
+      "mask": "0000010111",
+      "n": "forze aerodinamiche da aggiunta di calore alle superfici; coda troncata",
+      "t": "equivalenza fra sorgenti termiche massa e forze e confronto di efficienze subsoniche e supersoniche",
+      "why": {
+        "Q06": "Si calcolano campi di moto su corpi a velocita supersoniche per aggiunta di calore.",
+        "Q08": "L apporto termico e modellato per prevedere la risposta del flusso e la produzione di forze.",
+        "Q09": "Si studia il trasferimento di energia termica dalla superficie al flusso mediante sorgenti esterne.",
+        "Q10": "L efficienza e confrontata fra subsonico e supersonico e ne e analizzata la dipendenza da Mach."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1330",
+      "mask": "0000000000",
+      "n": "trasformate di Fourier nella teoria dei moti non stazionari",
+      "t": "relazioni fra funzioni di Wagner Theodorsen e Kussner e crescita della portanza",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1340",
+      "mask": "0000000000",
+      "n": "controllo della rigidezza di un modello alare pieno",
+      "t": "foratura e riempimento morbido per regolare rigidezza flessionale e torsionale",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q08": "media",
+        "Q09": "media"
+      },
+      "id": "1347",
+      "mask": "0000000110",
+      "n": "corridoi e angoli di ingresso atmosferico",
+      "t": "traiettorie di ingresso con vincoli termodinamici da radiazione dei gas caldi e strato laminare",
+      "why": {
+        "Q08": "I limiti termici da radiazione del gas riducono il corridoio e l angolo di attacco accettabili; la trattazione e di vincolo, da confermare.",
+        "Q09": "Il trasferimento radiativo dal gas caldo e considerato per limitare l ingresso, non soltanto nominato; manca dettaglio del flusso radiativo."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q10": "media"
+      },
+      "id": "1350",
+      "mask": "1000010000",
+      "n": "billowing del getto e stabilita di corpi a Mach3.85",
+      "t": "separazione indotta dal getto, pressioni e momenti a Mach3.85 con rapporti di pressione variabili",
+      "why": {
+        "Q01": "Il basename conserva Mach3.85 e rende centrale l interferenza del getto, fenomeno del moto supersonico.",
+        "Q06": "Si analizza la separazione del flusso supersonico indotta dal pennacchio mediante immagini e forze.",
+        "Q10": "Mach3.85 e condizione fissa; sono variati rapporti di pressione e angoli senza effetti di Mach esplicitamente studiati."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1369",
+      "mask": "0000000000",
+      "n": "moto stazionario di sfera e soluzione di Oseen",
+      "t": "validita della resistenza di Stokes per sfere lente e stima di dimensioni di goccioline",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "1375",
+      "mask": "0000000001",
+      "n": "getto laminare assialsimmetrico di fluido comprimibile",
+      "t": "metodo Oseen modificato per il campo di velocita del getto e confronto con soluzione esatta",
+      "why": {
+        "Q06": "Il testo specifica comprimibilita ma non un regime supersonico.",
+        "Q09": "L equazione del calore e un analogia matematica del problema di velocita, non uno studio di trasferimento termico.",
+        "Q10": "La soluzione e sviluppata per il getto di gas comprimibile con trasformazione di von Mises."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1376",
+      "mask": "0000000000",
+      "n": "applicazioni fisiche della funzione P",
+      "t": "funzione matematica per integrazioni cilindriche e scattering multiplo",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1384",
+      "mask": "0011000000",
+      "n": "calcolo dello strato limite laminare sul cilindro ellittico; coda troncata",
+      "t": "nuovo metodo di integrazione Prandtl vicino alla separazione e confronto con Pohlhausen",
+      "why": {
+        "Q03": "Il basename identifica espressamente lo strato limite laminare.",
+        "Q04": "Il calcolo dello strato limite e il tema del basename."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1392",
+      "mask": "0000000000",
+      "n": "problemi di spostamento stabilita e vibrazione; coda troncata",
+      "t": "metodo energetico per pannelli rettangolari irrigiditi e convergenza delle equazioni",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1400",
+      "mask": "0000000000",
+      "n": "buckling a taglio di piastre lunghe con irrigidimenti; coda troncata",
+      "t": "effetto di rigidezza flessionale e torsionale degli irrigidimenti sul taglio critico",
+      "why": {}
+    }
+  ],
+  "start": 281
+}

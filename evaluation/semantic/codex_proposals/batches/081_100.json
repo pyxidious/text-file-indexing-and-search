@@ -1,0 +1,267 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "0397",
+      "mask": "0001000000",
+      "n": "iniezione nello strato limite turbolento incomprimibile",
+      "t": "modello di sottostrato e riduzione dell attrito con iniezione verificata tramite profili",
+      "why": {
+        "Q04": "Il basename rende esplicito lo strato limite turbolento."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0401",
+      "mask": "1000010101",
+      "n": "flussi ipersonici non viscosi con processi di non equilibrio",
+      "t": "soluzioni di cinetica chimica accoppiata e shock layer su naso quasi sferico a diverse velocita",
+      "why": {
+        "Q01": "Il basename identifica direttamente flussi ipersonici e processi accoppiati.",
+        "Q06": "Si risolve il flusso ipersonico sul naso con espansione e reazioni non in equilibrio.",
+        "Q08": "Si analizzano processi energetici di dissociazione ricombinazione e ionizzazione ad alta entalpia; il criterio termico e applicato alla trasformazione interna, non a scambio alla parete.",
+        "Q10": "Le velocita diverse e l espansione dello strato d urto modificano il congelamento delle concentrazioni e la similitudine."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0402",
+      "mask": "0000100001",
+      "n": "urti magnetoidrodinamici",
+      "t": "trattamento di moto e campi con urti piani e limite di onde sonore",
+      "why": {
+        "Q05": "Il basename identifica esplicitamente la magnetoidrodinamica.",
+        "Q06": "Gli urti MHD e il limite sonoro sono studiati senza identificare un regime gasdinamico supersonico; non equiparo automaticamente urto magnetico e flusso maggiore di Mach1.",
+        "Q10": "Il limite degli urti deboli e la degenerazione in onde sonore sono oggetto della teoria."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q10": "media"
+      },
+      "id": "0403",
+      "mask": "0000100001",
+      "n": "onde d urto magnetoidrodinamiche",
+      "t": "interpretazione delle equazioni d urto e amplificazione magnetica nelle nubi interstellari",
+      "why": {
+        "Q05": "Il basename identifica direttamente onde magnetoidrodinamiche.",
+        "Q06": "Il testo studia urti in mezzo conduttore ma non specifica il regime rispetto alla velocita acustica ordinaria.",
+        "Q10": "Si analizzano gli effetti compressivi degli urti e il loro accoppiamento con il campo magnetico."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0405",
+      "mask": "0000000000",
+      "n": "tabelle delle proprieta termiche dei gas",
+      "t": "raccolta di proprieta termodinamiche e di trasporto di otto gas",
+      "why": {
+        "Q08": "Le tabelle forniscono proprieta ma il breve testo non descrive un analisi di scambio di calore o risposta termica."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0414",
+      "mask": "0000000001",
+      "n": "resistenza in fluidi comprimibili",
+      "t": "resistenza di corpi con equazione di stato del gas perfetto e ipotesi sulle capacita termiche",
+      "why": {
+        "Q06": "Il testo considera moto comprimibile senza identificare un regime supersonico.",
+        "Q10": "La formulazione della resistenza e specifica per fluidi comprimibili e ne definisce il modello termodinamico."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media"
+      },
+      "id": "0429",
+      "mask": "0000000000",
+      "n": "descrizione di una galleria supersonica",
+      "t": "descrizione dell impianto, filosofia di progetto e problemi di sviluppo",
+      "why": {
+        "Q01": "Il basename descrive l impianto supersonico, non un analisi riconoscibile del flusso; da confermare il confine fra infrastruttura e bisogno fluidodinamico."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "0440",
+      "mask": "0000000001",
+      "n": "informazioni sull attaccamento transonico dei flussi al bordo d entrata; coda troncata",
+      "t": "fotografie di 37 profili e variazione dell attaccamento con aumento del Mach subsonico",
+      "why": {
+        "Q04": "L attaccamento nel basename puo coinvolgere lo strato limite, ma il nome non lo identifica come oggetto; non integro dal testo.",
+        "Q10": "L aumento del Mach subsonico determina il passaggio da flusso separato ad attaccato ed e il tema dell analisi."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0443",
+      "mask": "0100001000",
+      "n": "pressioni calcolate e misurate su sezione mediana; geometria troncata",
+      "t": "misure a54 orifizi e teoria modificata mediante circolazione e forma efficace del profilo",
+      "why": {
+        "Q02": "Il basename pone esplicitamente al centro distribuzioni di pressione spaziali su una sezione.",
+        "Q07": "Si confrontano le pressioni con la teoria del moto potenziale e si modifica la circolazione e la forma per riprodurre il campo di pressione."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0449",
+      "mask": "0000000000",
+      "n": "interazione di satellite carico e ionosfera",
+      "t": "densita ionica e charge drag con effetti magnetici esplicitamente esclusi",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "0455",
+      "mask": "1001010001",
+      "n": "teoria di mixing per flussi supersonici separati e riattaccanti",
+      "t": "modello semiempirico Crocco Lees con trasporto viscoso e interazione urto strato laminare",
+      "why": {
+        "Q01": "Il basename identifica direttamente i flussi supersonici separati e riattaccanti.",
+        "Q04": "Separazione e riattacco del flusso nel basename sono riconducibili semanticamente allo strato limite; l inferenza resta da verificare.",
+        "Q06": "La teoria calcola flussi laminari supersonici fino a separazione e riattacco con confronto sperimentale.",
+        "Q10": "La correlazione integra dati lenti e supersonici e viene verificata nell interazione con urti."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q08": "media"
+      },
+      "id": "0456",
+      "mask": "0000011001",
+      "n": "campi di flusso su corpi tozzi snelli",
+      "t": "campi non viscosi con strato d urto, pressioni e dissociazione in13 condizioni",
+      "why": {
+        "Q06": "L analisi degli strati d urto su corpi e delle condizioni con dissociazione indica un flusso ad alta velocita supersonica; manca un valore esplicito, quindi l inferenza va confermata.",
+        "Q07": "Le distribuzioni di pressione e le forme d urto sono interpretate separando gli effetti del Mach di volo.",
+        "Q08": "La termodinamica e la dissociazione modificano il campo di moto; non e descritta una risposta termica a scambio o apporto di calore.",
+        "Q10": "Gli effetti del Mach e della dissociazione sono variabili esplicite dei tredici casi confrontati."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media",
+        "Q08": "media"
+      },
+      "id": "0460",
+      "mask": "0001000001",
+      "n": "correlazione di strati limite incomprimibili e comprimibili",
+      "t": "trasformazione delle equazioni con parete isolata e applicazione alla separazione in corrente rallentata",
+      "why": {
+        "Q03": "Il basename non specifica il regime laminare degli strati correlati; non lo completo tramite il metodo.",
+        "Q04": "Il basename identifica direttamente lo studio degli strati limite.",
+        "Q08": "Isolamento e viscosita proporzionale alla temperatura sono ipotesi della trasformazione, non un analisi di apporto di calore.",
+        "Q10": "La trasformazione e il trasferimento di risultati fra teoria incomprimibile e comprimibile sono il tema centrale."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0480",
+      "mask": "0000000110",
+      "n": "temperatura adiabatica di parete con raffreddamento da gas combustibile",
+      "t": "influenza della combustione del refrigerante sulla portata necessaria a mantenere la temperatura di parete",
+      "why": {
+        "Q08": "Si discute il legame fra combustione del refrigerante e temperatura da mantenere alla parete.",
+        "Q09": "Il raffreddamento per traspirazione e l effetto della combustione sul fabbisogno di refrigerante sono lo scambio termico studiato."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0483",
+      "mask": "0000010001",
+      "n": "distanza di distacco dell urto al ristagno di sfere e cilindri",
+      "t": "relazione analitica fra distanza d urto e Mach della corrente libera",
+      "why": {
+        "Q06": "La relazione del distacco dell urto di prua su sfere e cilindri con Mach implica il regime supersonico fisicamente studiato; il testo e molto breve.",
+        "Q10": "Mach e esplicitamente la variabile della relazione per la distanza di distacco."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q07": "bassa"
+      },
+      "id": "0495",
+      "mask": "0000010001",
+      "n": "soluzioni di onde esplosive e applicazione a steady_hype troncato",
+      "t": "soluzioni newtoniane e approssimazioni dei profili e delle pressioni in moto ipersonico",
+      "why": {
+        "Q01": "Il frammento hype nel basename non va completato automaticamente in hypersonic; le sole onde esplosive non identificano un flusso supersonico.",
+        "Q06": "Il testo applica le soluzioni ai corpi in flusso ipersonico mediante equivalenza.",
+        "Q07": "Pressione, temperatura e velocita sono elencate come profili risolti senza spiegare una relazione pressione-velocita; stesso confine del caso0035.",
+        "Q10": "L approssimazione newtoniana e i suoi miglioramenti sono analizzati nel regime di Mach molto elevato."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0499",
+      "mask": "0000000000",
+      "n": "oscillazioni di un veicolo in ingresso atmosferico; coda troncata",
+      "t": "soluzione matematica del moto di imbardata con coefficienti aerodinamici assunti costanti rispetto a Mach",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0509",
+      "mask": "0000000110",
+      "n": "approssimazione di temperature e sublimazione superficiale; coda troncata",
+      "t": "materiale riscaldato per conduzione che sublima alla superficie",
+      "why": {
+        "Q08": "Il metodo collega conduzione, temperatura superficiale e velocita di sublimazione.",
+        "Q09": "Si studia il bilancio del calore condotto alla superficie sottoposta a forte riscaldamento."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "0514",
+      "mask": "0100010001",
+      "n": "distribuzioni di pressione e flussi su forme coniche a spigoli vivi",
+      "t": "prove a Mach4 con teorie approssimate e influenza della separazione sulla pressione di risucchio",
+      "why": {
+        "Q02": "Il basename indica espressamente distribuzioni di pressione sulle forme coniche.",
+        "Q06": "Il testo analizza campi di flusso e separazione di bordo su corpi a Mach4.",
+        "Q07": "Si spiegano pressioni e separazione ma non viene isolata una relazione con la velocita; Mach e fisso.",
+        "Q10": "Si discute che a Mach4 la separazione influenzi ancora la pressione e si verificano teorie specifiche del regime; da confermare il confine con sola condizione di prova."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0516",
+      "mask": "0000010001",
+      "n": "misure in volo di stabilita dinamica longitudinale; nome troncato prima del regime",
+      "t": "coefficienti aerodinamici e derivate dinamiche misurati da Mach0.92 a1.35",
+      "why": {
+        "Q06": "Le misure caratterizzano la risposta aerodinamica del modello anche nel tratto supersonico; il focus e sui coefficienti globali, caso da confermare.",
+        "Q10": "Le caratteristiche sono determinate sull intervallo che attraversa il regime sonico e confrontate con prove transoniche."
+      }
+    }
+  ],
+  "start": 81
+}

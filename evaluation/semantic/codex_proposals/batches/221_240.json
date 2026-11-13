@@ -1,0 +1,209 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "1052",
+      "mask": "0000000000",
+      "n": "progressi nel buckling dei gusci sottili",
+      "t": "rassegna di temi di stabilita dei gusci e di un simposio",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1055",
+      "mask": "0000000000",
+      "n": "flessione e buckling non lineare di piastre circolari",
+      "t": "equazioni di von Karman e strati di bordo matematici della soluzione elastica, non fluidi",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1056",
+      "mask": "0000000100",
+      "n": "grandi deflessioni di lastre sotto carichi termici e meccanici; coda troncata",
+      "t": "teoria non lineare e soluzioni di lastre con temperature variabili nello spessore",
+      "why": {
+        "Q08": "Si analizza la risposta delle lastre a temperature e carichi meccanici arbitrari, con risultati per ampi intervalli termici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1063",
+      "mask": "0000000000",
+      "n": "soluzioni Navier Stokes mediante computer veloce",
+      "t": "formule alle differenze finite e metodi iterativi per ottenere soluzioni stazionarie",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1067",
+      "mask": "0000000000",
+      "n": "stabilita plastica di piastre ortotrope e gusci; coda troncata",
+      "t": "equazione di equilibrio e soluzioni di buckling sotto compressione pressione e torsione",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1068",
+      "mask": "0000000000",
+      "n": "instabilita di gusci sotto pressione idrostatica",
+      "t": "confronto delle teorie di flessione e formula del carico critico",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1070",
+      "mask": "0000000000",
+      "n": "buckling di gusci conici ortotropi irrigiditi",
+      "t": "equazioni di stabilita e analogie con gusci cilindrici pressurizzati",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1072",
+      "mask": "0000000110",
+      "n": "accensione e combustione in mixing laminare",
+      "t": "correnti fredda combustibile e calda con conduzione diffusione e cinetica di Arrhenius",
+      "why": {
+        "Q08": "La temperatura delle correnti e il calore della reazione determinano accensione e sviluppo della fiamma.",
+        "Q09": "Conduzione e diffusione termica fra le correnti sono processi centrali del modello di combustione."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1073",
+      "mask": "0000000110",
+      "n": "metodo numerico per equazioni differenziali parziali; tipo troncato",
+      "t": "confronto di tre metodi per conduzione non lineare con calore generato da reazione chimica",
+      "why": {
+        "Q08": "Il modello accoppia generazione chimica del calore e sua evoluzione nel mezzo.",
+        "Q09": "Si risolve e confronta numericamente l equazione del flusso di calore con sorgente."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1078",
+      "mask": "0000000000",
+      "n": "flusso viscoso stazionario su cilindro; valori Reynolds troncati",
+      "t": "soluzioni complete incomprimibili a Reynolds40 e44 e sviluppo della scia",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1082",
+      "mask": "0000001000",
+      "n": "flusso attorno al Pitot a bassi Reynolds; soluzione troncata",
+      "t": "Navier Stokes assialsimmetrico e correzioni Pitot da viscosita e dimensione dell orifizio",
+      "why": {
+        "Q07": "Il coefficiente mette esplicitamente in relazione pressione misurata, pressione statica e velocita indisturbata, studiandone le correzioni."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1089",
+      "mask": "0000000000",
+      "n": "aerodinamica di velivoli VTOL a elica",
+      "t": "confronto fra ala inclinabile e getto deflesso per perdite e stallo durante transizione di assetto",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q02": "bassa",
+        "Q07": "media"
+      },
+      "id": "1092",
+      "mask": "0000000000",
+      "n": "interferenza ala gondola elica con force_and_pressur troncato",
+      "t": "misure della distribuzione di pressione e influenza laterale del propulsore al variare dell apertura",
+      "why": {
+        "Q02": "Il basename termina prima di pressure distribution; force_and_pressur non identifica da solo una distribuzione spaziale. Il contenuto non deve completare il nome.",
+        "Q07": "Si studia l estensione laterale delle pressioni del propulsore e i carichi, senza analizzare una relazione con la velocita."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1096",
+      "mask": "0000000110",
+      "n": "calori effettivi di ablazione di materiali",
+      "t": "prove termiche di materiali in getti supersonici a temperature di ristagno2000-11000F",
+      "why": {
+        "Q08": "Si caratterizza il consumo energetico di ablazione dei materiali sotto forte riscaldamento.",
+        "Q09": "Il calore effettivo di ablazione e ricavato dalle prove di esposizione ai getti caldi."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "1101",
+      "mask": "0000000000",
+      "n": "sensore per velocita di ablazione",
+      "t": "sviluppo e verifica di sensore capacitivo confrontato con misure fotografiche in getto caldo",
+      "why": {
+        "Q08": "Temperature e ablazione definiscono l ambiente di calibrazione del sensore; non e descritta una relazione studiata fra calore e risposta termica del materiale."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media",
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "1106",
+      "mask": "0001011111",
+      "n": "flusso turbolento separato e scambio termico fino a up troncato",
+      "t": "separazione su corpo smussato fino a Mach8.5 con pressioni e decremento del riscaldamento",
+      "why": {
+        "Q04": "Il basename rende centrale il flusso turbolento separato e il suo scambio, fenomeni dello strato limite; identificazione implicita da confermare.",
+        "Q06": "Si analizza la separazione ipersonica e l effetto del flusso di taglio indotto dallo smussamento.",
+        "Q07": "Il testo spiega l aumento e le differenze dei picchi di pressione mediante il flusso di taglio, un legame con la struttura delle velocita.",
+        "Q08": "Il riscaldamento della regione separata e confrontato con quello del flusso attaccato.",
+        "Q09": "Si misura e interpreta la riduzione del trasferimento termico nella regione separata.",
+        "Q10": "La fisica ipersonica del corpo smussato e dello strato separato determina i confronti con le teorie, pur senza dipendenza da Mach isolata."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "1110",
+      "mask": "1000010001",
+      "n": "flusso supersonico su cono poco imbardato",
+      "t": "perturbazione del campo con piccolo angolo di imbardata e verifica sperimentale",
+      "why": {
+        "Q01": "Il basename identifica esplicitamente il flusso supersonico sul cono.",
+        "Q06": "Si risolve la perturbazione del flusso supersonico non simmetrico sul cono.",
+        "Q10": "La teoria e specifica del campo supersonico non irrotazionale e non isentropico; non e un valore di prova incidentale."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1115",
+      "mask": "0000000001",
+      "n": "forze aerodinamiche a varie incidenze; nome troncato",
+      "t": "smorzamento di ali oscillanti a Mach0.35 e0.7 e instabilita in stallo",
+      "why": {
+        "Q10": "Si mostra che aumentare Mach anticipa l incidenza di smorzamento negativo."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1125",
+      "mask": "0000000000",
+      "n": "collasso di gusci cilindrici sotto pressione esterna",
+      "t": "confronto di formule di instabilita e pressioni critiche di recipienti",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1129",
+      "mask": "0000000000",
+      "n": "instabilita di guscio cilindrico irrigidito sotto hydrost troncato",
+      "t": "equazioni di guscio ortotropo equivalente e carico critico idrostatico",
+      "why": {}
+    }
+  ],
+  "start": 221
+}

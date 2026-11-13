@@ -6,24 +6,69 @@ persistenza JSON. Il motore, le formule delle metriche e il benchmark dei tempi
 sono conservati. Solo libreria standard Python >=3.10, nessuna nuova dipendenza.
 Non si usano query o relevance judgments ufficiali Cranfield.
 
-La valutazione corrente richiede una **ground truth semantica annotata da un
-revisore umano su tutto il corpus**. Stato iniziale: **0/3.000 giudizi completati**,
-300 righe con dieci etichette vuote. Nessuna annotazione umana è dichiarata e
-nessuna metrica reale è stata calcolata. I test usano solo giudizi sintetici.
+Il corpus e ora classificato: **300 documenti, 3.000 giudizi binari**.
+Il risultato e una **ground truth semantica proposta mediante Codex e
+parzialmente supervisionata da un revisore umano**. Le sole conferme esplicite
+riguardano **38 coppie della calibrazione**, dopo discussione, non una
+classificazione originale indipendente. Fra queste sono registrate sei
+correzioni gia effettuate dall'utente. Il revisore `utente_chat` e uno pseudonimo
+dell'utente della conversazione, non un nome reale. Data: 2026-11-13, senza orari.
+
+Le altre **2.962 coppie non sono state confermate individualmente**. Non e stata
+eseguita una valutazione reale e la ground truth **non e congelata**. Le query,
+i criteri, il corpus, il motore, gli analyzer, il ranking, il benchmark e le
+formule delle metriche restano invariati. La versione esatta di Codex non e
+stata resa disponibile nella sessione.
+
+Le proposte complete sono in `evaluation/semantic/codex_proposals/complete_labels.csv`;
+la matrice e in `evaluation/semantic/annotations.csv`; la provenienza per tutte
+le coppie e in `evaluation/semantic/provenance.csv`. Le 40 etichette gia compilate
+coincidevano con la calibrazione corretta e sono state conservate all'importazione.
+Le 2.800 nuove proposte sono state redatte dopo lettura integrale dei restanti
+280 file, in 14 blocchi da 20, salvati in `codex_proposals/batches/`.
 
 ## Avvio
 
 Dalla radice del repository:
 
 ```sh
-python scripts/semantic_ground_truth.py prepare
-python scripts/semantic_ground_truth.py annotate
 python scripts/semantic_ground_truth.py status
+python scripts/verify_semantic_proposals.py
 python -m unittest discover -s tests -v
 ```
 
-In PowerShell si può sostituire `python` con `.venv\Scripts\python.exe`.
-`prepare` è ripetibile e conserva tutte le annotazioni già inserite.
+La prossima attivita umana e il controllo di
+`evaluation/semantic/codex_proposals/final_review.csv`: **278 coppie**, di cui
+**25 gia confermate nella calibrazione e 253 pendenti**. Non modificare le
+proposte: compilare per le righe pendenti `human_label`, `human_reason`,
+`reviewed_by` e `reviewed_at` con una revisione realmente svolta. Per confermare,
+`human_label` e uguale a `proposed_label` e `corrected_label` resta vuoto.
+Per correggere, usare l'etichetta voluta in entrambi `human_label` e
+`corrected_label` e motivare il cambiamento.
+
+La coda comprende tutte le confidenze basse/medie, un campione di alta confidenza
+con seed 42 (due positivi e due negativi per query), e casi affetti da anomalie
+del testo o del nome. `review_manifest.json` registra selezione, coppie e seed;
+`anomalies.json` descrive otto documenti con testo frammentario o tema discordante
+dal basename. I controlli di coerenza Q03=>Q04 e Q01=>Q06 non hanno prodotto
+segnalazioni: non sono classificatori e non modificano giudizi.
+
+Dopo aver compilato giudizi umani reali, l'importazione esplicita e:
+
+```sh
+python scripts/semantic_ground_truth.py import-review
+```
+
+Questo comando importa solo righe con etichetta, motivo, revisore e data gia
+compilati, aggiorna matrice e provenienza e registra separatamente le correzioni.
+Non compila conferme per righe vuote e non altera `complete_labels.csv`.
+Non e stato eseguito sulla nuova coda pendente.
+
+In PowerShell si puo sostituire `python` con `.venv\Scripts\python.exe`.
+`prepare` resta ripetibile e conserva i giudizi esistenti. La console `annotate`
+rimane disponibile; nel protocollo assistito preferire la coda per mantenere
+allineate annotazioni e provenienza. Eventuali modifiche manuali incoerenti
+vengono rifiutate dal freeze.
 
 ## Query e criteri semantici
 
@@ -38,8 +83,8 @@ sostituzioni in attesa. I criteri sono fissati prima di attribuire giudizi.
 
 | ID | Query | Bisogno informativo sintetico |
 | --- | --- | --- |
-| Q01 | `nome supersonic flow` | Flussi supersonici come oggetto sostanziale del titolo/nome |
-| Q02 | `nome pressure distribution` | Distribuzione spaziale della pressione dal titolo/nome |
+| Q01 | `nome supersonic flow` | Flussi supersonici come oggetto sostanziale del basename |
+| Q02 | `nome pressure distribution` | Distribuzione spaziale della pressione dal basename |
 | Q03 | `nome laminar boundary` | Strato limite laminare |
 | Q04 | `nome "boundary layer"` | Fenomeni dello strato limite |
 | Q05 | `nome magnetohydrodynamics` | Interazione fra campi magnetici e fluidi conduttori |
@@ -49,13 +94,13 @@ sostituzioni in attesa. I criteri sono fissati prima di attribuire giudizi.
 | Q09 | `contenuto "heat transfer"` | Trasferimento di calore |
 | Q10 | `contenuto "mach number"` | Effetti della comprimibilità e del regime rispetto alla velocità del suono |
 
-Per Q01 il solo titolo/nome deve indicare uno studio sostanziale di un flusso
+Per Q01 il solo basename deve indicare uno studio sostanziale di un flusso
 supersonico (velocita superiore a quella locale del suono), inclusi i flussi
 ipersonici. Non bastano un contesto di prova supersonico, un generico flusso
 comprimibile o onde d'urto senza indicazione del regime. Il testo non va usato
-per ricavare informazioni assenti dal titolo/nome.
+per ricavare informazioni assenti dal basename.
 
-Per Q02 il solo titolo/nome deve porre al centro la distribuzione **spaziale**
+Per Q02 il solo basename deve porre al centro la distribuzione **spaziale**
 della pressione nel fluido o su una superficie: profilo, variazione lungo una
 coordinata, calcolo o misura. Sono esclusi pressione come semplice parametro,
 variazioni solo temporali, perdite totali o forze globali senza uno studio della
@@ -73,7 +118,7 @@ protocollo usare una nuova directory, copiandovi i criteri aggiornati.
 
 **La presenza esatta dei termini non decide la rilevanza.** Un documento può
 essere rilevante con sinonimi e negativo pur contenendo tutte le parole della
-query. Per `nome` giudicare **solo nome e titolo**, ignorando il testo anche se
+query. Per `nome` giudicare **solo il basename effettivo senza estensione**, ignorando il testo anche se
 visualizzato dalla console; per `contenuto` giudicare il testo integrale.
 Una menzione incidentale non basta. Non consultare ranking o risultati del
 motore per attribuire etichette; non usare i giudizi per ottimizzare ranking o
@@ -88,11 +133,13 @@ si risolve rispetto a `corpus/documents/`. Titoli completi e identità originali
 provengono da `corpus/metadata.csv`.
 
 Etichette ammesse: `1` rilevante, `0` non rilevante, cella vuota non valutata,
-`?` dubbio da risolvere. Nessuna etichetta è precompilata. è possibile modificare
+`?` dubbio da risolvere. La matrice corrente contiene proposte Codex. Per correzioni usare la coda e
+import-review per aggiornare la provenienza; resta possibile modificare
 il CSV con un editor o foglio elettronico, conservando intestazioni, ID, titoli,
 righe e formato CSV UTF-8 (virgola come separatore). Non modificare il CSV mentre
 è aperta una sessione di annotazione in console: riavviarla dopo le modifiche.
 
+Il titolo dei metadati e solo informativo e non e evidenza per Q01-Q05.
 La console mostra nome, titolo, testo integrale e tutti i dieci bisogni con i
 criteri. Si legge ogni documento una volta e si inseriscono dieci etichette:
 
@@ -111,10 +158,11 @@ matrice completa si può riaprire la console e correggere giudizi prima del free
 
 ## Congelamento e valutazione
 
-Solo dopo che un essere umano ha completato tutte le 3.000 coppie:
+Solo dopo la revisione mirata conclusiva e l importazione esplicita dei suoi
+giudizi sara possibile congelare il protocollo assistito (non eseguito ora):
 
 ```sh
-python scripts/semantic_ground_truth.py freeze --reviewer "Nome reale" --approval-note "Revisione semantica completa delle 3000 coppie"
+python scripts/semantic_ground_truth.py freeze --reviewer "utente_chat" --approval-note "Revisione mirata completata del protocollo assistito"
 python scripts/evaluate.py
 ```
 
@@ -124,7 +172,9 @@ corpus e metadati rispetto a `prepared.json`. Rifiuta celle vuote o dubbie.
 Genera `positives_Q01.csv` ... `positives_Q10.csv` (anche senza positivi),
 oltre a `final_positives.csv` con tutte le coppie query/documento positive
 (una query senza positivi è rappresentata dal suo insieme vuoto) e `frozen.json`
-con stato `semantic_ground_truth_human_annotated`, revisore, nota e hash degli
+con stato `semantic_ground_truth_codex_assisted_partially_supervised`,
+conteggi espliciti di confermati/non confermati e `full_manual_validation=false`.
+Conserva hash di provenienza, proposte, manifest e coda, oltre a revisore, nota e hash degli
 input, annotazioni, manifest di preparazione e positivi definitivi.
 
 Il programma non certifica l'identità del revisore: il nome e la nota devono
@@ -157,13 +207,39 @@ La ground truth lessicale precedente e archiviata separatamente in
 originali in `queries.csv` e a un README che li identifica come **storici**.
 Sono proposte lessicali, non giudizi semantici o metriche validate. Non vanno
 usate con le query definitive. Nessun vecchio output locale viene ricalcolato.
-La matrice semantica vuota e il manifest sono stati rigenerati per le query e
-i criteri definitivi: 300 documenti, 3.000 celle vuote, nessun freeze o giudizio.
+Il manifest di preparazione mantiene l identita delle query e dei criteri
+definitivi. La matrice successivamente completata non equivale a validazione
+umana completa: la provenienza distingue le 38 conferme e le proposte pendenti.
 `irhome/ground_truth.py`, `irhome/oracle.py` e `scripts/ground_truth.py` conservano
 il vecchio scanner e il suo protocollo esclusivamente come ausilio lessicale.
 Non trasferire proposte o conferme lessicali nelle celle semantiche. Il valutatore
 corrente accetta esclusivamente il freeze semantico, mai quello lessicale.
 Gli output storici in `legacy/` e `artifacts/` non sono input del nuovo protocollo.
+
+## Tracciabilita del protocollo assistito
+
+- `calibration_labels.csv`: le 200 proposte della calibrazione corretta, invariate.
+- `calibration_review.csv`, `supervision.json`: le 38 conferme assistite effettive.
+- `annotation_discrepancies.csv`, `human_corrections.csv`: le sei correzioni
+  preesistenti confermate; eventuali future correzioni restano separate.
+- `complete_labels.csv`: tutte le 3.000 proposte originali, con confidenza e motivo.
+- `batches/*.json`: decisioni individuali dei 14 blocchi, non regole lessicali.
+- `classification_manifest.json`, `classification_prompt.txt`, `run_inputs.json`:
+  protocollo, istruzioni, identita e hash degli input/output e dei blocchi.
+- `history/v2_before_human_confirmation/`: copia precedente alla registrazione
+  delle conferme e matrice con le 40 etichette presenti prima dell'importazione.
+- `provenance.csv` nella directory semantica: fonte della proposta, etichetta
+  effettiva, eventuale etichetta preesistente e conferma umana per ogni coppia.
+
+I negativi chiari sono motivati con una sintesi fattuale del campo esaminato e
+il bisogno non soddisfatto; positivi e ogni incertezza hanno motivazioni
+individuali. Non si sono utilizzati matching del motore, ranking o qrels.
+Il freeze assistito rifiuta provenienza mancante, incoerente o duplicata,
+proposte alterate e coda ancora pendente. I relativi file entrano negli hash
+verificati anche al caricamento. La presenza del manifest assistito impedisce
+il ripiego silenzioso sul vecchio stato di annotazione interamente umana.
+Il protocollo manuale originario resta utilizzabile in directory separate prive
+di proposte e provenienza Codex.
 
 ## Corpus, motore e riproducibilità
 

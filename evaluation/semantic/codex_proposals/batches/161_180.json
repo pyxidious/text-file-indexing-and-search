@@ -1,0 +1,200 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "0799",
+      "mask": "0000010001",
+      "n": "interferenza della galleria su prove bidimensionali; nome troncato",
+      "t": "bloccaggio, choking e distorsioni di flussi separati e localmente supersonici",
+      "why": {
+        "Q06": "Si discutono esempi di distorsioni del flusso locale supersonico dovute alle pareti, parte sostanziale dell interferenza.",
+        "Q10": "Interferenza e sviluppo della separazione sono analizzati con Mach crescente e con il limite di choking."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q07": "media"
+      },
+      "id": "0801",
+      "mask": "0000001001",
+      "n": "equivalenza transonica di corpi cono cilindro; nome troncato",
+      "t": "verifica dell equivalenza fra corpi ellittici e circolari e dei carichi sonici",
+      "why": {
+        "Q06": "Il campo di Mach e troncato dopo0.92 e non e esplicitato un tratto supersonico analizzato; transonico da solo non lo garantisce.",
+        "Q07": "La previsione dei carichi usa le pressioni sul corpo equivalente e la teoria del moto transonico; il legame con velocita e attraverso il regime.",
+        "Q10": "Si verifica l equivalenza su un intervallo di Mach e il carico a velocita sonica."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0819",
+      "mask": "0000000000",
+      "n": "tensioni plastiche presso foro circolare caricato",
+      "t": "soluzioni numeriche di plasticita a deformazione e incrementale intorno a foro",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0821",
+      "mask": "0000000000",
+      "n": "teoria inelastica della colonna",
+      "t": "flessione e incremento del carico assiale con moduli tangente e ridotto",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0823",
+      "mask": "0000000000",
+      "n": "buckling torsionale plastico di cilindri e imperfezioni",
+      "t": "soluzioni energetiche e non lineari della resistenza torsionale",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0829",
+      "mask": "0000000000",
+      "n": "stabilita di tubi sottili in torsione",
+      "t": "carico critico e confronto di deformazioni e coppie di rottura sperimentali",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0832",
+      "mask": "0000000000",
+      "n": "accelerazione di convergenza dei processi iterativi",
+      "t": "tecnica matematica di accelerazione e induzione della convergenza",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0843",
+      "mask": "0000000000",
+      "n": "analisi semplificata della stabilita elastica dei gusci",
+      "t": "soluzioni Donnell per carichi e vincoli di gusci cilindrici",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0844",
+      "mask": "0000000000",
+      "n": "vibrazioni flessionali di gusci cilindrici con appoggi; nome troncato",
+      "t": "equazione delle frequenze e modi di vibrazione dei cilindri sottili",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0852",
+      "mask": "0000000000",
+      "n": "tensioni e spostamenti di gusci non circolari; nome troncato",
+      "t": "serie della teoria dei gusci ovali caricati lateralmente",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q10": "media"
+      },
+      "id": "0857",
+      "mask": "0000000001",
+      "n": "flutter di pannelli imbozzati a mach_numbers_fr; valori troncati",
+      "t": "prove di flutter a Mach1.2-3 con differenziale di pressione e geometria del pannello",
+      "why": {
+        "Q06": "Le prove studiano stabilita e carico del pannello senza analizzare struttura o proprieta del flusso: il regime supersonico e contesto.",
+        "Q10": "I parametri e il limite di flutter sono investigati su un intervallo di Mach1.2-3 e non a un solo valore."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0858",
+      "mask": "0000000100",
+      "n": "effetti di tensioni termiche a Mach3; oggetto finale troncato",
+      "t": "temperatura della pelle e postbuckling modificano la suscettibilita al flutter dei pannelli",
+      "why": {
+        "Q08": "Il testo analizza come temperatura e dilatazione termica vincolata cambino tensioni e flutter; la risposta termostrutturale e centrale."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0862",
+      "mask": "0000000000",
+      "n": "cambiamento della forma di buckling in strutture elastiche",
+      "t": "modello di stabilita nei diversi modi di deformazione delle piastre",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0870",
+      "mask": "0000000100",
+      "n": "reologia e tensioni termiche",
+      "t": "effetti viscoelastici plastici e incrudimento sul rilassamento di tensioni da riscaldamento",
+      "why": {
+        "Q08": "L effetto del comportamento reologico sulla risposta a tensioni termiche e studiato sostanzialmente; il fenomeno termostrutturale e centrale anche senza flusso termico esplicito."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0873",
+      "mask": "0000000110",
+      "n": "termodinamica lagrangiana del calore con moto di fluidi",
+      "t": "generalizzazione variazionale dei processi irreversibili alla convezione laminare e turbolenta",
+      "why": {
+        "Q08": "La teoria descrive l evoluzione del calore in sistemi complessi di solidi e fluidi in movimento.",
+        "Q09": "Il trasferimento convettivo e formulato mediante funzioni associate e produzione di entropia."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0879",
+      "mask": "0000000000",
+      "n": "prove di modelli di flutter a velocita transoniche",
+      "t": "tecniche di costruzione e prova di modelli in impianto transonico",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0887",
+      "mask": "0000000100",
+      "n": "buckling termico di gusci con temperatura assiale; coda troncata",
+      "t": "tensioni e instabilita da distribuzione di temperatura e paratia piu fredda",
+      "why": {
+        "Q08": "Si studiano tensioni e buckling prodotti dalla distribuzione assiale di temperatura e dalla discontinuita termica alla paratia."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0888",
+      "mask": "0000000100",
+      "n": "temperatura e compressione necessarie al buckling di cilindro irrigidito; coda troncata",
+      "t": "temperatura critica di cilindro uniformemente riscaldato con dilatazione vincolata dagli anelli",
+      "why": {
+        "Q08": "Si calcola la temperatura di buckling e il suo legame con riscaldamento e compressione applicata."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0902",
+      "mask": "0000000000",
+      "n": "ricerche sul flusso di ali delta snelle; coda troncata",
+      "t": "vortici di bordo e ritardi delle forze in moto non stazionario",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0904",
+      "mask": "0000001000",
+      "n": "calibrazione della testa Pitot statica per gallerie a bassa velocita",
+      "t": "verifica metrologica della pressione statica letta dalla testa rispetto a riferimenti",
+      "why": {
+        "Q07": "La calibrazione Pitot statica corregge le pressioni usate per caratterizzare la velocita della corrente; qui e implicito nel metodo piu che sviluppato nel testo."
+      }
+    }
+  ],
+  "start": 161
+}

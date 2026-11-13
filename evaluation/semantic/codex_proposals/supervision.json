@@ -1,0 +1,16 @@
+{
+  "confirmation_source": "Messaggio utente: ha esplicitamente confermato tutte le 38 proposte correnti senza modifiche.",
+  "confirmed_existing_corrections": 6,
+  "confirmed_pairs": 38,
+  "date": "2026-11-13",
+  "files_sha256": {
+    "annotation_discrepancies.csv": "4461467cd0d7e5b9b760b6f5cd2b393df1494e6374c1cb446b5c0477be05aee8",
+    "calibration_review.csv": "3719c7a9e41e82ecbfd79c9600b36d4ec4c60b328894decde7ac0c8ca51d28ef",
+    "human_corrections.csv": "33764a368754b0e14691e0565611a737b5406dcb2a7d3b16d50b2e9578bcefc2"
+  },
+  "full_manual_validation": false,
+  "independent_original_human_classification": false,
+  "review_type": "explicit_confirmation_of_assisted_proposals_after_discussion",
+  "reviewer": "utente_chat",
+  "reviewer_description": "Identificatore pseudonimo dell utente di questa chat; nome reale non disponibile."
+}

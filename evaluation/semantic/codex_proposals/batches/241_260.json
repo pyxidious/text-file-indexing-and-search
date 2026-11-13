@@ -1,0 +1,242 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "1133",
+      "mask": "0000000000",
+      "n": "estensione del metodo Southwell per instabilita; coda troncata",
+      "t": "pressione critica idrostatica dei cilindri irrigiditi",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1136",
+      "mask": "0000000000",
+      "n": "progetto di fondi torisferici e toriconici di recipienti",
+      "t": "pressione limite di plasticizzazione della zona di raccordo e fattori geometrici",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1137",
+      "mask": "0000000000",
+      "n": "teoria dei gusci toroidali elastici sottili",
+      "t": "soluzioni asintotiche di piccole deformazioni assialsimmetriche e giunti caricati",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1139",
+      "mask": "0000001000",
+      "n": "velocita d ingresso e flusso di gas rarefatto in tubo",
+      "t": "moto molecolare con velocita di massa e impatto sulla misura di pressione da satellite",
+      "why": {
+        "Q07": "Si studia come la velocita d ingresso delle molecole nel tubo alteri la misura di pressione e densita della sonda."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1140",
+      "mask": "1000010001",
+      "n": "distanza dell urto su corpi sferici ad alti Mach",
+      "t": "formula del distacco d urto che usa il rapporto di calori specifici a valle",
+      "why": {
+        "Q01": "Alti numeri di Mach associati allo standoff dell urto rendono riconoscibile il regime supersonico nel basename.",
+        "Q06": "Si modella la distanza dell urto su corpi in regime ad alto Mach.",
+        "Q10": "La formulazione e specifica del regime ad alto Mach e tratta il rapporto di calori a valle dell urto."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1145",
+      "mask": "0000000000",
+      "n": "buckling di cilindri stabilizzati da nucleo con carichi esterni",
+      "t": "carichi di stabilita per pressione uniforme lineare o a fascia su guscio con nucleo elastico",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1148",
+      "mask": "0000000000",
+      "n": "moto di Knudsen in capillare circolare",
+      "t": "stima di errore e reinvestigazione della soluzione integrale di Clausing",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q03": "media"
+      },
+      "id": "1149",
+      "mask": "0001000110",
+      "n": "strati limite termici similari",
+      "t": "condizioni di similitudine con temperature di parete variabili e riscaldamento viscoso",
+      "why": {
+        "Q03": "Il basename identifica strati termici ma non il regime laminare; non uso le ipotesi del corpo per integrarlo.",
+        "Q04": "Il basename pone al centro gli strati limite di temperatura.",
+        "Q08": "Si analizzano distribuzioni termiche per pareti isoterme o variabili e presenza di riscaldamento viscoso.",
+        "Q09": "Si ricavano gradienti di temperatura alla parete per diversi Prandtl e condizioni di scambio."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "bassa"
+      },
+      "id": "1151",
+      "mask": "1000010001",
+      "n": "esperimenti su flussi supersonici di corpo tozzo",
+      "t": "campi e urti su sfere dischi e coni a Mach1.8-5 con linea sonica e pressioni",
+      "why": {
+        "Q01": "Il basename identifica direttamente i flussi supersonici sui corpi.",
+        "Q06": "Si misurano struttura d urto linea sonica e campo di moto e si confrontano con teoria.",
+        "Q07": "Pressioni e gradienti di velocita sono elencati fra le misure senza esplicitarne la relazione; stesso dubbio del caso0035.",
+        "Q10": "La validazione copre Mach1.8-5 e include la posizione della linea sonica."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q08": "media"
+      },
+      "id": "1158",
+      "mask": "0000010111",
+      "n": "galleria d urto ipersonica tailored interface",
+      "t": "fenomeni gasdinamici per produrre flussi ipersonici caldi e prove termiche su emisfero cilindro",
+      "why": {
+        "Q01": "Il basename identifica l impianto e la sua tecnica, non direttamente uno studio del flusso; come per0429 la distinzione va confermata.",
+        "Q06": "Il corpo discute fenomeni gasdinamici del tunnel e ne mostra l applicazione riuscita a flussi ipersonici.",
+        "Q08": "Si studiano condizioni di alta temperatura di ristagno e risultati termici del modello.",
+        "Q09": "Le prove di trasferimento di calore sul modello sono presentate e confrontate con teoria.",
+        "Q10": "La produzione di flusso ad alto Mach e i fenomeni d urto associati costituiscono il tema sostanziale."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "1159",
+      "mask": "0000010110",
+      "n": "effetti dell imbardata sul trasferimento termico; oggetto e regime troncati",
+      "t": "flusso ipersonico shock compresso a6500ftsec e misure di scambio su cilindri a Mach11",
+      "why": {
+        "Q06": "Si descrivono generazione del flusso ipersonico e studio degli effetti dell imbardata sullo scambio dei cilindri.",
+        "Q08": "La compressione d urto genera alte temperature e si misurano gli effetti termici sui cilindri.",
+        "Q09": "I tassi di trasferimento termico ai cilindri sono misurati in prove dedicate.",
+        "Q10": "Mach11 e condizione fissa; il testo non descrive variazioni di Mach o confronti di comprimibilita."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1163",
+      "mask": "0000000000",
+      "n": "prove di forze e controllo su modello; configurazione troncata",
+      "t": "dati di stabilita di VTOL ad ala inclinabile in volo normale e transizione di assetto",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1165",
+      "mask": "0000000000",
+      "n": "downwash di VTOL ed elicottero",
+      "t": "campo di pressione dinamica a terra e dipendenza da peso spinta e diametro",
+      "why": {
+        "Q07": "La pressione dinamica caratterizza il downwash ma la relazione con la velocita non e sviluppata; si studiano peso e geometria."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "1166",
+      "mask": "0000000000",
+      "n": "condizioni del downwash di VTOL; effetto troncato",
+      "t": "soglie di pressione dinamica per erosione di terreno sabbia e acqua",
+      "why": {
+        "Q07": "La pressione dinamica predice erosione e dipende dall altezza; non si analizza esplicitamente il legame pressione-velocita."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1176",
+      "mask": "0000000000",
+      "n": "prove di flessione di cilindri irrigiditi",
+      "t": "venticinque prove a rottura con curve di progetto per buckling locale",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1178",
+      "mask": "0000000100",
+      "n": "buckling di cilindri sotto flessione e nonunifor troncato",
+      "t": "riscaldamento rapido non uniforme e correlazione delle tensioni termiche con il carico critico",
+      "why": {
+        "Q08": "Si analizzano le tensioni generate da riscaldamento non uniforme e il loro effetto sul buckling."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1179",
+      "mask": "1000010001",
+      "n": "teoria di flussi ipersonici asimmetrici su corpi tozzi",
+      "t": "metodo inverso da forma d urto a geometria e campo di moto per Mach1.85-infinito",
+      "why": {
+        "Q01": "Il basename identifica direttamente flussi ipersonici sui corpi.",
+        "Q06": "Si risolvono campi ipersonici simmetrici e asimmetrici con confronti fra metodi.",
+        "Q10": "Le soluzioni variano Mach fino al limite infinito e il rapporto di calori specifici."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q08": "media",
+        "Q10": "media"
+      },
+      "id": "1184",
+      "mask": "0000000001",
+      "n": "effetti tridimensionali nelle scie viscose",
+      "t": "modello generale comprimibile e soluzioni di mixing a pressione uniforme",
+      "why": {
+        "Q06": "Si ammette comprimibilita ma non si specifica un regime supersonico analizzato.",
+        "Q08": "Gli integrali energetici sono parte generale delle equazioni; non sono descritti scambio termico o profili di temperatura analizzati.",
+        "Q10": "Il modello e le soluzioni ammettono esplicitamente comprimibilita in scie e getti tridimensionali."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media",
+        "Q04": "media"
+      },
+      "id": "1185",
+      "mask": "0011000110",
+      "n": "metodo di calore e massa nello strato laminare boundary_la troncato",
+      "t": "relazioni integrali fra temperatura di superficie e tasso termico con iniezione di elio e aria",
+      "why": {
+        "Q03": "Laminar_boundary_la nel basename rende riconoscibile lo strato limite laminare pur troncato, come nel caso0529.",
+        "Q04": "Il frammento laminar_boundary_la identifica il tema dello strato limite; grado di troncatura da confermare.",
+        "Q08": "La temperatura superficiale e legata al trasferimento di calore in presenza di iniezione.",
+        "Q09": "Il metodo calcola esplicitamente trasferimento simultaneo di calore e massa."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "1191",
+      "mask": "0000010111",
+      "n": "scambio su emisfero cilindro a bassi Reynolds",
+      "t": "flusso raro supersonico Mach2-6 con calore recupero e pressioni su modelli freddi e non freddi",
+      "why": {
+        "Q06": "Si studiano condizioni e scambio del flusso supersonico rarefatto su modelli.",
+        "Q07": "Le pressioni sono confrontate con teoria newtoniana ma non e isolata una relazione con velocita nel riassunto.",
+        "Q08": "Si confrontano modelli raffreddati e non e fattori di recupero termico.",
+        "Q09": "Sono misurati flussi termici locali e scostamenti dalla teoria continua.",
+        "Q10": "La verifica copre Mach2-6 e modelli del regime supersonico rarefatto, pur con enfasi maggiore su Reynolds."
+      }
+    }
+  ],
+  "start": 241
+}

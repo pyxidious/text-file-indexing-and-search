@@ -120,7 +120,7 @@ def annotate(documents="corpus/documents", queries="evaluation/queries.csv", out
             c = criteria[q["query_id"]]
             print_fn(f"{q['query_id']} [{q['field']}] {q['expression']}: {c['information_need']}\n"
                      f"  1: {c['relevant']}\n  0: {c['not_relevant']}")
-        print_fn("Per nome giudicare SOLO titolo/nome; per contenuto usare il testo. Nessun vincolo di termini esatti.")
+        print_fn("Per nome giudicare SOLO il basename senza estensione, mai il titolo dei metadati; per contenuto usare il testo. Nessun vincolo di termini esatti.")
         print_fn("Attuali: " + " ".join(r[k] or "_" for k in qids))
         try:
             answer = input_fn("10 etichette (01?_ compatte o separate; _=vuoto, -=mantieni); n/p; g NUMERO o ID; q: ").strip()
@@ -164,6 +164,12 @@ def freeze(documents="corpus/documents", queries="evaluation/queries.csv", outpu
                                        expected_documents=expected_documents)
     rows = checked_rows(output, entries, qs, complete=True)
     output = Path(output)
+    protocol_status, supervision, provenance_hashes = STATUS, None, {}
+    if ((output / "provenance.csv").exists() or
+            (output / "codex_proposals/classification_manifest.json").exists()):
+        from .assisted_freeze import snapshot, STATUS as ASSISTED_STATUS
+        supervision, provenance_hashes = snapshot(output, rows, qs, identity)
+        protocol_status = ASSISTED_STATUS
     positives = [dict(query_id=q["query_id"], doc_id=r["doc_id"])
                  for q in qs for r in sorted(rows, key=lambda r: r["doc_id"]) if r[q["query_id"]] == "1"]
     atomic_csv(output / "final_positives.csv", positives, ["query_id", "doc_id"])
@@ -172,7 +178,8 @@ def freeze(documents="corpus/documents", queries="evaluation/queries.csv", outpu
         path = output / f"positives_{q['query_id']}.csv"
         atomic_csv(path, [r for r in positives if r["query_id"] == q["query_id"]], ["query_id", "doc_id"])
         per_query[path.name] = sha256(path)
-    frozen = dict(status=STATUS, identity=identity, reviewer=reviewer, approval_note=approval_note,
+    frozen = dict(status=protocol_status, identity=identity, reviewer=reviewer, approval_note=approval_note,
+                  supervision=supervision, provenance_sha256=provenance_hashes,
                   per_query_positives_sha256=per_query,
                   checks=len(rows)*len(qs), annotations_sha256=sha256(output / "annotations.csv"),
                   prepared_sha256=sha256(output / "prepared.json"),
@@ -188,13 +195,22 @@ def load_frozen(documents, queries="evaluation/queries.csv", output=DEFAULT_OUTP
         raise ValueError("Ground truth semantica non congelata: completare annotazioni e freeze")
     frozen = read_json(output / "frozen.json")
     entries, qs, _, identity = inputs(documents, queries, output, metadata, expected_documents)
-    if (frozen["status"] != STATUS or frozen["identity"] != identity
+    from .assisted_freeze import STATUS as ASSISTED_STATUS
+    if (frozen["status"] not in (STATUS, ASSISTED_STATUS) or frozen["identity"] != identity
             or read_json(output / "prepared.json")["identity"] != identity
             or any(frozen[key + "_sha256"] != sha256(output / filename) for key, filename in
                    (("annotations", "annotations.csv"), ("prepared", "prepared.json"),
                     ("final_positives", "final_positives.csv")))):
         raise ValueError("Ground truth o input modificati dopo il congelamento")
     rows = checked_rows(output, entries, qs, complete=True)
+    if frozen["status"] == ASSISTED_STATUS:
+        from .assisted_freeze import snapshot
+        supervision, hashes = snapshot(output, rows, qs, identity)
+        if supervision != frozen["supervision"] or hashes != frozen["provenance_sha256"]:
+            raise ValueError("Provenienza modificata dopo il congelamento")
+    elif ((output / "provenance.csv").exists() or
+            (output / "codex_proposals/classification_manifest.json").exists()):
+        raise ValueError("Protocollo assistito non dichiarato nel congelamento")
     relevant = {q["query_id"]: {r["doc_id"] for r in rows if r[q["query_id"]] == "1"} for q in qs}
     expected = [dict(query_id=q["query_id"], doc_id=d) for q in qs for d in sorted(relevant[q["query_id"]])]
     per_query = frozen["per_query_positives_sha256"]

@@ -1,0 +1,261 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {},
+      "id": "0315",
+      "mask": "0000000001",
+      "n": "effetti di scala subsonici e transonici e fissaggio della transizione; coda troncata",
+      "t": "differenze di separazione fra strati laminari e turbolenti e tecniche di transizione artificiale",
+      "why": {
+        "Q10": "La discussione tratta differenze di separazione e interpretazione sperimentale nei regimi alto subsonico e transonico."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0316",
+      "mask": "0001000001",
+      "n": "insorgenza e sviluppo della separazione dello strato limite ad alte incidenze",
+      "t": "dipendenza dell insorgenza della separazione da Mach e forma dei profili",
+      "why": {
+        "Q04": "Il basename mette direttamente al centro la separazione dello strato limite.",
+        "Q06": "Il testo dice high speeds e variazione con Mach ma non rende riconoscibile un flusso supersonico sostanzialmente studiato.",
+        "Q10": "Si descrive esplicitamente come gli effetti della separazione varino con Mach."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0329",
+      "mask": "1000010111",
+      "n": "caratteristiche aerodinamiche in gas rarefatto ipersonico",
+      "t": "regimi viscosi e merged layer; calcoli di flusso, entalpia e scambio al ristagno di sfere e cilindri",
+      "why": {
+        "Q01": "Il basename identifica esplicitamente il flusso ipersonico rarefatto.",
+        "Q06": "Si risolvono e confrontano regimi dello shock layer ipersonico con rarefazione crescente.",
+        "Q08": "Sono confrontati sfere raffreddate e isolate e variazioni di entalpia nello strato d urto.",
+        "Q09": "Si calcolano tassi di scambio al ristagno e la conduzione entra nelle condizioni di conservazione.",
+        "Q10": "La teoria analizza il regime ipersonico e il raccordo con descrizioni continue e rarefatte."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0342",
+      "mask": "0011010111",
+      "n": "effetto dei campi di diffusione sullo strato limite laminare",
+      "t": "diffusione di elio e controllo del riscaldamento aerodinamico a Mach 8 e 12",
+      "why": {
+        "Q03": "Il basename indica chiaramente lo strato limite laminare.",
+        "Q04": "I campi di diffusione sono studiati per il loro effetto sullo strato limite nel basename.",
+        "Q06": "La teoria e applicata a flussi ipersonici a Mach 8 e 12 con diffusione di elio.",
+        "Q08": "Il modello include proprieta dipendenti dalla temperatura e gradienti termici per ridurre il riscaldamento.",
+        "Q09": "I risultati mostrano annullamento o inversione del flusso di calore con diffusione di elio.",
+        "Q10": "Il diverso effetto a Mach 8 e 12 e un risultato analizzato, non una semplice condizione di prova."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "0343",
+      "mask": "1001010111",
+      "n": "raffreddamento per traspirazione nello strato limite turbolento a M3",
+      "t": "misure di recupero e scambio con aria ed elio attraverso parete porosa",
+      "why": {
+        "Q01": "Il basename conserva m_3 e studia lo strato limite raffreddato nel regime supersonico.",
+        "Q04": "Il basename identifica direttamente lo strato limite turbolento.",
+        "Q06": "Si studia la risposta dello strato limite a Mach 3 alla traspirazione dei refrigeranti.",
+        "Q08": "La traspirazione modifica il comportamento termico e il fattore di recupero.",
+        "Q09": "Si misurano coefficienti di scambio e riduzione rispetto alla parete non raffreddata.",
+        "Q10": "I coefficienti sono confrontati con la teoria comprimibile e con teoria di film; il ruolo separato di Mach fisso e meno esplicito."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0347",
+      "mask": "1001010111",
+      "n": "misure dello strato limite nel flusso ipersonico",
+      "t": "formazione dello strato, attrito e scambio in ugello; confronto con Mach inferiori",
+      "why": {
+        "Q01": "Il basename identifica misure del moto ipersonico nello strato limite.",
+        "Q04": "Lo strato limite e il tema esplicito del basename.",
+        "Q06": "Il testo presenta dati sulla formazione dello strato ipersonico in presenza di gradiente favorevole.",
+        "Q07": "Il gradiente di pressione e condizione delle prove e problema per ricerche future; non e descritta una relazione con la velocita analizzata qui.",
+        "Q08": "Si variano i tassi di scambio e si confrontano gli effetti termici sullo strato.",
+        "Q09": "Sono misurati scambio termico e coefficienti di attrito per diversi tassi di calore.",
+        "Q10": "Il confronto esplicito con dati a Mach inferiori e teorie fino a Mach nove studia gli effetti di regime."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media",
+        "Q10": "media"
+      },
+      "id": "0355",
+      "mask": "1011010001",
+      "n": "iniezione di aria nello strato limite laminare ipersonico dissociato",
+      "t": "modello a miscela binaria per trasferimento di massa e diffusione nello strato dissociato",
+      "why": {
+        "Q01": "Il basename rende centrale lo strato limite ipersonico.",
+        "Q03": "Il basename specifica esplicitamente il regime laminare dello strato.",
+        "Q04": "Lo strato limite e l oggetto dell iniezione indicata nel basename.",
+        "Q06": "La teoria tratta l iniezione molecolare nello strato limite ipersonico dissociato.",
+        "Q08": "Si studiano specie e diffusione di massa, ma il testo non sviluppa effetti sul calore o sulla temperatura.",
+        "Q10": "La dissociazione nello strato ipersonico determina la formulazione della miscela e delle equazioni; manca un confronto numerico di Mach."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0357",
+      "mask": "0000000000",
+      "n": "forme ottimali dei nasi di missili nella regione super aerodinamica",
+      "t": "teoria cinetica delle collisioni e forme di minimo drag in regime molecolare",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "0358",
+      "mask": "0001011001",
+      "n": "modello della separazione libera da urto nello strato limite turbolento",
+      "t": "modello di interazione urto strato e stima dell aumento di pressione applicata a ugello sovraespanso",
+      "why": {
+        "Q04": "Il basename pone esplicitamente al centro lo strato limite turbolento separato.",
+        "Q06": "Il modello tratta interazione con urto e separazione in ugello sovraespanso; il regime supersonico e inferito dalla fisica del flusso interno, da confermare.",
+        "Q07": "L aumento di pressione viene previsto dal modello di separazione e ridirezionamento del flusso; il legame con la velocita e implicito nel modello.",
+        "Q10": "L interazione con l urto determina il modello e la previsione della separazione; e sostanziale la comprimibilita."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0363",
+      "mask": "0000001000",
+      "n": "formulazione del flutter in fluidi reali",
+      "t": "correzione del potenziale mediante circolazione misurata, pressioni e spessore di spostamento",
+      "why": {
+        "Q07": "Il testo collega circolazione e campo di moto alla pressione e al momento e discute la chiusura imponendo pressioni coerenti al bordo d uscita."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0365",
+      "mask": "0001000000",
+      "n": "strato limite omogeneo al ristagno assialsimmetrico; coda troncata",
+      "t": "soluzioni con forte iniezione e strato interno isotermo e regione esterna sottile",
+      "why": {
+        "Q04": "Il basename rende centrale lo strato limite al punto di ristagno.",
+        "Q08": "L isotermia e una proprieta delle soluzioni con iniezione; il testo non descrive uno studio di scambio o apporto di calore."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0367",
+      "mask": "0000000000",
+      "n": "analisi e progetto di controllo con Lyapunov",
+      "t": "stabilita matematica, transitori, ottimizzazione e servomeccanismi",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0368",
+      "mask": "0000000000",
+      "n": "problemi di controllo polare dei missili",
+      "t": "dinamica di rollio e beccheggio e progettazione dei controlli tridimensionali",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0369",
+      "mask": "1000010001",
+      "n": "soluzione approssimata del problema supersonico di corpo tozzo; coda troncata",
+      "t": "metodo integrale per pressione e urto con relazioni di curvatura e gradienti al ristagno",
+      "why": {
+        "Q01": "Il basename identifica direttamente il problema supersonico del corpo tozzo.",
+        "Q06": "La soluzione e sviluppata e validata per corpi in volo supersonico e ipersonico.",
+        "Q07": "Sono date pressioni e relazioni fra gradiente di velocita e curvatura, ma non una relazione esplicita pressione-velocita nel riassunto.",
+        "Q10": "Le correlazioni e i confronti sperimentali sono sviluppati in funzione di Mach per piu forme."
+      }
+    },
+    {
+      "confidence": {
+        "Q10": "media"
+      },
+      "id": "0372",
+      "mask": "0000010001",
+      "n": "flusso su corpi tozzi a nominal_mac; valore di Mach troncato",
+      "t": "prove di flusso ipersonico a Mach5.8 con confronto delle pressioni con teoria newtoniana",
+      "why": {
+        "Q06": "Si analizzano caratteristiche del flusso e distribuzioni di pressione ipersoniche sui corpi.",
+        "Q10": "La verifica del modello newtoniano delle pressioni riguarda la fisica ipersonica; Mach e fisso, ma il modello e specifico del regime."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0374",
+      "mask": "0000000000",
+      "n": "tecniche ottimali di salita zoom",
+      "t": "calcolo variazionale delle traiettorie con discontinuita della spinta e confronto delle tecniche di pilotaggio",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0382",
+      "mask": "0011000000",
+      "n": "strato limite laminare sul cilindro con moto assiale incompressi troncato",
+      "t": "correzione di una formula del rapporto fra spessori di spostamento su cilindro e lastra",
+      "why": {
+        "Q03": "Il basename conserva l indicazione esplicita di strato limite laminare.",
+        "Q04": "Il basename pone al centro lo strato limite sul cilindro."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media",
+        "Q06": "media"
+      },
+      "id": "0383",
+      "mask": "0001000111",
+      "n": "equazioni dello strato limite su piano in moto comprimibile; coda troncata",
+      "t": "integrazione con gradiente di pressione nullo e proprieta termodipendenti; temperature di parete variabili",
+      "why": {
+        "Q03": "Il basename specifica strato limite comprimibile ma non il regime laminare; non lo ricostruisco dalle equazioni del testo.",
+        "Q04": "Lo strato limite e esplicitamente l oggetto delle equazioni nel basename.",
+        "Q06": "Il testo tratta comprimibilita senza specificare un regime supersonico.",
+        "Q08": "Si calcolano profili di temperatura per pareti piu calde o poco piu fredde della corrente.",
+        "Q09": "La soluzione include scambio di calore e dipendenza delle proprieta dalla temperatura.",
+        "Q10": "Le equazioni e i profili sono sviluppati specificamente per il moto viscoso comprimibile."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0386",
+      "mask": "0000000000",
+      "n": "moto tipo Couette con parete porosa",
+      "t": "flusso fra lastra fissa e mobile inclinata con aspirazione o soffiamento uniforme",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0387",
+      "mask": "0000000110",
+      "n": "scambio termico di flusso laminare in anello a parete porosa",
+      "t": "profili termici e scambio di moto incomprimibile sviluppato con diverse iniezioni",
+      "why": {
+        "Q08": "Si determinano profili di temperatura per pareti porose isoterme e diverse iniezioni.",
+        "Q09": "Si calcolano i tassi di trasferimento di calore nel canale anulare."
+      }
+    }
+  ],
+  "start": 61
+}

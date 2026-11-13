@@ -1,0 +1,260 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0521",
+      "mask": "0000000001",
+      "n": "linearizzazione transonica su profilo a bordo arrotondato",
+      "t": "fallimento delle teorie linearizzate vicino al naso e posizione del punto sonico",
+      "why": {
+        "Q06": "Le teorie subsoniche e supersoniche sono richiamate per motivare il problema transonico; non si presenta un analisi supersonica distinta.",
+        "Q10": "La posizione del punto sonico e i limiti delle teorie nei diversi regimi sono il problema centrale."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media"
+      },
+      "id": "0523",
+      "mask": "0000010001",
+      "n": "linea sonica del corpo tozzo in hype troncato",
+      "t": "metodo geometrico per la linea sonica nello strato d urto ipersonico",
+      "why": {
+        "Q01": "Il frammento hype non e un identificazione completa del regime e non viene ricostruito dai metadati; la linea sonica da sola non basta.",
+        "Q06": "Il testo sviluppa un metodo per la linea sonica nel flusso ipersonico su corpo tozzo.",
+        "Q10": "La linea sonica e il raccordo fra zone dello strato d urto sono l oggetto del metodo."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media",
+        "Q07": "media"
+      },
+      "id": "0525",
+      "mask": "1000011001",
+      "n": "moto viscoso ipersonico su lastra isolata con trasferimento di massa",
+      "t": "strato laminare con interazione forte e debole, pressione indotta e attrito",
+      "why": {
+        "Q01": "Il basename identifica direttamente il moto viscoso ipersonico sulla lastra.",
+        "Q04": "Moto viscoso su lastra puo sottintendere lo strato limite ma il basename non lo identifica esplicitamente; applico l esclusione prudente del caso0022.",
+        "Q06": "Si analizza il moto ipersonico viscoso con iniezione e interazione del flusso esterno.",
+        "Q07": "Le approssimazioni di moto esterno e strato viscoso producono pressione indotta e variazione fra interazione forte e debole.",
+        "Q10": "Il raccordo fra regimi di interazione ipersonica e parte sostanziale dell analisi."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media"
+      },
+      "id": "0527",
+      "mask": "0011000000",
+      "n": "problema a tre punti dello strato limite con equazione di Blasius",
+      "t": "miglioramento numerico della soluzione Blasius e applicazioni al mixing laminare",
+      "why": {
+        "Q03": "Blasius nel basename identifica semanticamente il classico strato limite laminare pur senza il termine laminar; inferenza specialistica da confermare.",
+        "Q04": "Il basename nomina espressamente il problema dello strato limite."
+      }
+    },
+    {
+      "confidence": {
+        "Q03": "media",
+        "Q04": "media",
+        "Q07": "media",
+        "Q09": "media",
+        "Q10": "media"
+      },
+      "id": "0529",
+      "mask": "0011010100",
+      "n": "iniezione di gas in flusso decelerante con laminar_boundary_la troncato",
+      "t": "prove supersoniche con elio azoto argon e distribuzioni di pressione temperatura e recupero",
+      "why": {
+        "Q03": "Il frammento laminar_boundary_la nel contesto del flusso decelerante rende riconoscibile lo strato limite laminare; il grado di troncatura va verificato.",
+        "Q04": "Il frammento boundary_la con laminar rende riconoscibile lo strato limite nel basename, pur troncato.",
+        "Q06": "Si studia l effetto della diffusione nello strato laminare supersonico in tubo.",
+        "Q07": "Pressioni e temperature sono misurate lungo il tubo, ma non e descritta una relazione con la velocita.",
+        "Q08": "La ricerca determina come l iniezione di gas modifichi distribuzioni di temperatura e fattore di recupero.",
+        "Q09": "Sono descritti temperatura e recupero, non calcoli o misure di scambio termico: il criterio Q09 potrebbe essere piu ampio, da discutere.",
+        "Q10": "Il regime supersonico e quello delle prove, ma non si descrive un analisi di effetti di Mach o confronti di comprimibilita."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0532",
+      "mask": "0000000000",
+      "n": "stabilita beccheggio imbardata con Lyapunov",
+      "t": "applicazione matematica del secondo metodo di Lyapunov alla stabilita del missile",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0536",
+      "mask": "1000010001",
+      "n": "transizione nelle scie viscose ipersoniche",
+      "t": "transizione di scie di sfere osservata con radiazione diagnostica e variazioni di gas e pressione",
+      "why": {
+        "Q01": "Il basename rende centrale la transizione del moto ipersonico in scia.",
+        "Q06": "Si studiano transizione e struttura delle scie ipersoniche al variare di condizioni e gas.",
+        "Q10": "Si distingue la causa aerodinamica da quella radiativa e si discute un effetto di Mach locale sulla transizione."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0551",
+      "mask": "0000000000",
+      "n": "lastra a sbalzo caricata risolta per differenze finite",
+      "t": "schemi numerici per carichi trasversali e condizioni ai bordi della lastra",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0559",
+      "mask": "0000000110",
+      "n": "scambio termico al ristagno anteriore di corpi tozzi",
+      "t": "relazioni esatte dello strato laminare con proprieta variabili e raffreddamento per traspirazione",
+      "why": {
+        "Q08": "Le soluzioni includono proprieta termodipendenti e raffreddamento per traspirazione per calcolare la risposta termica.",
+        "Q09": "Il calcolo del trasferimento termico al ristagno e lo scopo esplicito del testo."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0561",
+      "mask": "0000000000",
+      "n": "problema geometrico di distribuzione ottima della portanza su ala; regime assente dal nome",
+      "t": "ricostruzione geometrica da sezioni con applicazione matematica al minimo drag supersonico",
+      "why": {
+        "Q06": "Il moto supersonico e l applicazione motivante; il testo risolve un problema geometrico assumendo noti i valori integrati di portanza senza analizzare il flusso."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0563",
+      "mask": "0001001000",
+      "n": "legge della scia nello strato limite turbolento",
+      "t": "rappresentazione universale dei profili e interpretazione vettoriale di parete e scia",
+      "why": {
+        "Q04": "Lo strato limite turbolento e il tema del basename.",
+        "Q07": "La componente di scia del campo medio di velocita e collegata alla direzione del gradiente di pressione."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0565",
+      "mask": "0001011111",
+      "n": "soluzioni similari dello strato limite comprimibile su cilindro imbardato; coda troncata",
+      "t": "soluzioni numeriche con pressione Mach angolo e temperatura di parete variabili",
+      "why": {
+        "Q04": "Il basename rende esplicito lo strato limite comprimibile.",
+        "Q06": "Si studia il flusso sul cilindro a grandi Mach e si quantifica il maggiore fabbisogno di refrigerante.",
+        "Q07": "Il modello studia effetti di gradiente di pressione e Mach sul flusso chordwise, con nesso implicito nei risultati di attrito.",
+        "Q08": "Si confrontano leggi viscosita temperatura, pareti molto raffreddate e temperatura di parete.",
+        "Q09": "Sono ricavati parametri di scambio e quantita di refrigerante necessarie.",
+        "Q10": "Si quantificano gli effetti crescenti di comprimibilita a Mach e angoli elevati rispetto alle equazioni incomprimibili."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0566",
+      "mask": "0000010111",
+      "n": "scambio locale e resistenza di pressione di corpo imbardato; nome troncato",
+      "t": "misure su cilindro a Mach3.9 e confronto degli effetti dell imbardata in condizioni diverse",
+      "why": {
+        "Q06": "Il flusso supersonico sul cilindro e analizzato tramite distribuzioni e variazioni con imbardata.",
+        "Q08": "Si studiano fattori di recupero e influenza delle temperature sulle caratteristiche termiche.",
+        "Q09": "Si misurano coefficienti locali e medi di trasferimento termico e la loro riduzione con imbardata.",
+        "Q10": "Si confronta il calo dello scambio con dati a Mach molto diversi, valutando l influenza del parametro."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0572",
+      "mask": "0001010111",
+      "n": "spostamento dello strato limite e smussamento del bordo ad alta temperatu troncato",
+      "t": "teoria di shock layer e misure termiche su lastra ipersonica fredda a Mach12",
+      "why": {
+        "Q04": "Lo spostamento dello strato limite e esplicito nel basename.",
+        "Q06": "Si analizza interazione viscosa e smussamento nel flusso ipersonico con teoria ed esperimenti.",
+        "Q08": "Si confrontano condizioni di parete fredda e temperature di ristagno fino a4000K.",
+        "Q09": "Sono misurate distribuzioni di scambio e tassi laminari per verificare le correlazioni.",
+        "Q10": "La similitudine ipersonica con urti forti e verificata con teorie e condizioni termodinamiche diverse."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0577",
+      "mask": "1000010001",
+      "n": "similitudine ipersonica",
+      "t": "equivalenza fra flusso ipersonico tridimensionale e bidimensionale non stazionario",
+      "why": {
+        "Q01": "Il basename identifica direttamente una proprieta del regime ipersonico.",
+        "Q06": "L equivalenza e sviluppata per il campo di flusso ipersonico attorno a corpi snelli.",
+        "Q10": "Il prodotto di Mach e rapporto di snellezza e il parametro fondamentale discusso."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0579",
+      "mask": "0000000110",
+      "n": "nuovi metodi di analisi del flusso termico",
+      "t": "metodo lagrangiano con campi associati e applicazione al riscaldamento di lastre",
+      "why": {
+        "Q08": "Temperatura e contenuto termico sono variabili dei metodi e degli esempi di riscaldamento.",
+        "Q09": "I metodi variazionali sono sviluppati e verificati per conduzione in lastre omogenee e composite."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0588",
+      "mask": "0000000000",
+      "n": "compressore con file di pale in stallo",
+      "t": "stage stacking e discontinuita delle prestazioni a velocita di rotazione parziali",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0589",
+      "mask": "0000000000",
+      "n": "stallo e surge di compressori assiali",
+      "t": "stallo rotante, fluttuazioni e ciclo limite del compressore",
+      "why": {
+        "Q07": "La caduta di pressione allo stallo e le fluttuazioni sono discusse, ma non e esplicitata una relazione con la velocita del fluido; velocita del compressore non equivale a tale relazione."
+      }
+    },
+    {
+      "confidence": {
+        "Q02": "bassa",
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "0605",
+      "mask": "0000011001",
+      "n": "misure di pressione su configurazione cono cilindro flare; Mach fuori dal basename",
+      "t": "pressioni sulle diverse parti del corpo a Mach6.8 confrontate con teorie di coni imbardati",
+      "why": {
+        "Q02": "Come nel caso0058, misure di pressione su una configurazione non identificano inequivocabilmente nel solo basename una distribuzione spaziale; proposta prudente da confermare.",
+        "Q06": "Si studia il campo di pressione del flusso ipersonico sulla configurazione.",
+        "Q07": "La verifica delle pressioni usa teorie del flusso a Mach6.8 e incidenze diverse; il legame con la velocita e attraverso il modello di impatto.",
+        "Q10": "L extrapolazione delle teorie a Mach6.8 e il confronto con teoria d impatto rendono il regime ipersonico sostanziale."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0619",
+      "mask": "0000000000",
+      "n": "densita atmosferica da orbite satellitari",
+      "t": "stima di densita con rotazione atmosferica e variazioni geografiche stagionali e diurne",
+      "why": {}
+    }
+  ],
+  "start": 101
+}

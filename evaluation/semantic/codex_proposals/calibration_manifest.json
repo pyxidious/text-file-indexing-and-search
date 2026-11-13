@@ -309,14 +309,17 @@
     "root": "corpus/documents"
   },
   "counts": {
+    "annotation_discrepancies_resolved_by_user": 6,
     "annotations_compared": 40,
     "confidence": {
       "alta": 175,
       "bassa": 5,
       "media": 20
     },
+    "current_unresolved_annotation_discrepancies": 0,
     "discrepancies_v1": 7,
     "discrepancies_v2": 6,
+    "human_confirmed_pairs": 38,
     "label_changes": 2,
     "positive_by_query": {
       "Q01": 4,
@@ -375,18 +378,18 @@
     "note": "Identificativo esatto del modello non disponibile nella sessione."
   },
   "output_descriptions": {
-    "annotation_comparison.csv": "Confronto con tutte le 40 etichette preesistenti.",
+    "annotation_comparison.csv": "Confronto corrente delle40 etichette preesistenti, tutte coincidenti con le proposte; copia preconferma in history/v2_before_human_confirmation.",
     "annotation_discrepancies.csv": "Le sei discrepanze correnti da confermare manualmente; nessuna correzione applicata.",
     "calibration_comparison.csv": "200 coppie v1/v2 con etichette, confidenze, motivazioni e flag di riesame/cambiamento.",
     "calibration_labels.csv": "200 proposte correnti; 100 riesaminate, 100 ereditate.",
     "calibration_review.csv": "Coda di attenzione con campi umani vuoti: incertezze, cambiamenti metodologici e discrepanze."
   },
   "output_sha256": {
-    "annotation_comparison.csv": "3ad2a299c18bc05735e85baefaa04ea6070822d2aeec96c9b01d215bd0137b8a",
-    "annotation_discrepancies.csv": "0fa215013543553268bec17ea5b44724ec0023cf7b2c79786bf76deb640ca639",
+    "annotation_comparison.csv": "c1f0d4cae5d0bc2aa660a1a332ec79e5dd91a9c5f8f5548165674c7ad95d7ad1",
+    "annotation_discrepancies.csv": "4461467cd0d7e5b9b760b6f5cd2b393df1494e6374c1cb446b5c0477be05aee8",
     "calibration_comparison.csv": "9bf7fc5a213d60c3d61d2eeb66f58b4e7145e5223f0b827031746c8137fa45eb",
     "calibration_labels.csv": "4fb1c12df6ee9107447e319eeca1a9a2975f97d557f5eb331c164c094296cc0d",
-    "calibration_review.csv": "e0fbedd83fdefbf0e070d1505889d2f10375767c4a52f098e39aaa127aaa27ef"
+    "calibration_review.csv": "3719c7a9e41e82ecbfd79c9600b36d4ec4c60b328894decde7ac0c8ca51d28ef"
   },
   "prompt": "Rivedi la calibrazione semantica dei primi 20 documenti nel repository `pyxidious/text-file-indexing-and-search`.\n\nAbbiamo individuato un problema metodologico: per Q01-Q05 hai utilizzato anche i titoli completi dei metadati, mentre il motore indicizza soltanto il basename effettivo dei file `.txt`, spesso troncato.\n\nProcedi cosi:\n1. Riesamina esclusivamente le classificazioni Q01-Q05 dei primi 20 documenti, giudicando la rilevanza dal nome effettivamente indicizzato, senza ricorrere al titolo completo o al contenuto.\n2. Mantieni invariati i criteri semantici e le query.\n3. Controlla in particolare Q01 dei documenti 0009 e 0058, per i quali il titolo completo contiene informazioni assenti dal filename.\n4. Conserva le precedenti proposte di calibrazione come versione storica e produci un confronto con la versione corretta.\n5. Verifica le discrepanze fra le proposte e le 40 etichette gia compilate in `evaluation/semantic/annotations.csv`, con particolare attenzione ai documenti 0009 e 0010.\n6. Non modificare automaticamente le etichette gia compilate e non attestare alcuna revisione umana.\n7. Non modificare il motore, il corpus, i criteri, le query, il benchmark o le formule delle metriche.\n8. Non classificare ancora gli altri 280 documenti.\n\nRestituisci una tabella delle etichette cambiate, con motivazioni, e una lista delle discrepanze da confermare manualmente. Mantieni la riproducibilita degli output attraverso gli hash e il manifest.",
   "prompt_note": "Accenti italiani e trattini Unicode del prompt normalizzati in ASCII; istruzioni conservate.",
@@ -542,13 +545,26 @@
       "source_file": "corpus/documents/0092_the_analysis_of_redundant_structures_by_the_use_of_high_speed_digital_computers.txt"
     }
   ],
-  "status": "codex_semantic_calibration_basename_only_pending_human_supervision",
+  "status": "codex_calibration_partially_human_supervised",
+  "supervision": {
+    "confirmed_pairs": 38,
+    "date": "2026-11-13",
+    "existing_corrections_confirmed": 6,
+    "full_manual_validation": false,
+    "independent_original_classification": false,
+    "meaning": "Utente della conversazione, non nome reale.",
+    "pseudonym": true,
+    "reviewer": "utente_chat",
+    "source_file": "supervision.json",
+    "source_sha256": "bfd02cd9232fcfde00a283a2af723c877e499aad2b770ea8649dc07af974bd1f"
+  },
   "validation": {
     "all_name_quotes_match_real_basename": true,
     "content_query_rows_unchanged": true,
     "distinct_documents": 20,
     "distinct_pairs": 200,
-    "human_review_fields_empty": true,
+    "human_review_fields_empty": false,
+    "human_review_fields_note": "Solo le38 conferme reali richieste dall utente; data senza orario. Confronti precedenti conservati come storico.",
     "judgments_per_document": 10,
     "name_evidence_quotes_checked": 8,
     "protected_files_and_corpus_unchanged": true,
@@ -582,5 +598,5 @@
     "semantic_quality_status": "pending_human_supervision",
     "version1_archived_byte_for_byte": true
   },
-  "version": 2
+  "version": 3
 }

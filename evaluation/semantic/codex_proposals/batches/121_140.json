@@ -1,0 +1,255 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0624",
+      "mask": "0000001000",
+      "n": "prestazioni di crociera di macchine a effetto suolo con channel flow",
+      "t": "modello di getti di tenuta e portata e incremento di pressione del ventilatore per minimo consumo",
+      "why": {
+        "Q07": "Si calcolano portata e aumento di pressione necessari e l angolo del getto in funzione della velocita di crociera; la relazione e mediata dal modello del sistema."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0627",
+      "mask": "0000010001",
+      "n": "flutter di pannelli circolari",
+      "t": "teoria del pistone per carico aerodinamico di moto supersonico e convergenza modale",
+      "why": {
+        "Q06": "Il modello predice il carico del flusso supersonico sul pannello vibrante: la componente fluidodinamica e sostanziale pur nel problema strutturale.",
+        "Q10": "La teoria del pistone tratta esplicitamente la risposta comprimibile del flusso al moto del pannello."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q10": "media"
+      },
+      "id": "0634",
+      "mask": "0000010001",
+      "n": "smussamento del bordo e flutter di ali; regime fuori dal basename",
+      "t": "prove a Mach15.4 e confronto con modelli aerodinamici newtoniano e pistone",
+      "why": {
+        "Q06": "Si confrontano modelli di carico del flusso ipersonico con i dati di flutter; da confermare il confine fra flusso studiato e sola prova strutturale.",
+        "Q10": "La validita delle teorie newtoniana e del pistone e esaminata nel regime ipersonico delle prove."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0640",
+      "mask": "0000000000",
+      "n": "strutture resistenti alla fatica da rumore dei getti",
+      "t": "fatica vibratoria di pelli irrigidite e necessita di prove strutturali",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0641",
+      "mask": "0000000000",
+      "n": "riduzione di lastre incastrate a problemi di membrana",
+      "t": "metodi variazionali per curvatura e deformazione di settori caricati",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q07": "bassa"
+      },
+      "id": "0654",
+      "mask": "0000010001",
+      "n": "propagazione e struttura di onde esplosive",
+      "t": "approssimazioni numeriche e WKB dei profili dietro il fronte d urto",
+      "why": {
+        "Q06": "Si analizza la struttura del moto dietro onde esplosive, cioe un fronte supersonico; il regime non e quantificato nel testo.",
+        "Q07": "Velocita, pressione e densita sono elencate come distribuzioni evolutive senza una relazione reciproca esplicitata: stesso dubbio del caso0035.",
+        "Q10": "Propagazione e struttura del fronte d urto sono l oggetto delle approssimazioni."
+      }
+    },
+    {
+      "confidence": {
+        "Q02": "bassa",
+        "Q07": "media"
+      },
+      "id": "0655",
+      "mask": "0001011111",
+      "n": "spostamento dello strato limite e smussamento su pressure_di troncato",
+      "t": "gradienti indotti che modificano attrito e scambio su superfici ipersoniche",
+      "why": {
+        "Q02": "Pressure_di e troncato: il nome suggerisce distribuzioni ma non le identifica in modo completo; confermare se il frammento sia sufficiente per Q02.",
+        "Q04": "Lo spostamento dello strato limite e un tema esplicito del basename.",
+        "Q06": "Si studiano gli effetti viscosi e del bordo smussato sul flusso ipersonico.",
+        "Q07": "I gradienti di pressione indotti alterano attrito del flusso e scambio e sono previsti nel modello; il legame con la velocita e implicito.",
+        "Q08": "Si analizza l influenza dei gradienti e del bordo sul comportamento termico superficiale.",
+        "Q09": "Sono proposti metodi per prevedere il trasferimento di calore sulle superfici.",
+        "Q10": "L interazione viscosa e lo smussamento sono analizzati nel regime ipersonico."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "0656",
+      "mask": "1000010101",
+      "n": "disequilibrio della dissociazione in ugello ipersonico",
+      "t": "soluzioni del flusso reagente, congelamento della dissociazione e conseguenze sullo strato d urto",
+      "why": {
+        "Q01": "Il basename identifica direttamente un problema del flusso nell ugello ipersonico.",
+        "Q06": "Si risolvono le equazioni di moto e cinetica del gas nell espansione ipersonica.",
+        "Q08": "La dissociazione e il congelamento dell energia chimica governano il disequilibrio del gas; l interpretazione termica va confermata.",
+        "Q10": "Si analizzano conseguenze del congelamento su urto normale e distanza d urto in gallerie ipersoniche."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0658",
+      "mask": "0000010001",
+      "n": "rassegna del flutter di pannelli e rumore aerodinamico",
+      "t": "interazione fra forze aerodinamiche e pannelli e differenze di instabilita fra subsonico e supersonico",
+      "why": {
+        "Q06": "La rassegna analizza i modelli di interazione fra forze del flusso e oscillazioni supersoniche; il focus strutturale rende il confine da controllare.",
+        "Q10": "Il testo contrappone esplicitamente la limitata rilevanza subsonica all instabilita nel campo supersonico."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0661",
+      "mask": "0011001110",
+      "n": "soluzioni laminari dello strato limite a cuneo con convezione; nome troncato",
+      "t": "soluzioni a piccoli Mach per gradienti di pressione e raffreddamento di pareti porose",
+      "why": {
+        "Q03": "Il basename specifica lo strato limite laminare.",
+        "Q04": "Il basename pone al centro le soluzioni dello strato limite.",
+        "Q07": "Le soluzioni del flusso a cuneo variano i gradienti della corrente e ne ricavano attrito e spessori; la relazione con velocita e implicita nel modello.",
+        "Q08": "Si confrontano grandi e piccole differenze termiche e pareti a temperatura costante o variabile.",
+        "Q09": "Si tabulano parametri di scambio e si quantifica l effetto della portata refrigerante."
+      }
+    },
+    {
+      "confidence": {
+        "Q04": "media"
+      },
+      "id": "0663",
+      "mask": "0000011001",
+      "n": "moto viscoso lungo lastra ad alta velocita",
+      "t": "soluzioni combinate di strato limite e onde semplici per campi di pressione e velocita supersonici",
+      "why": {
+        "Q04": "Il basename dice moto viscoso su lastra senza identificare lo strato limite; non lo completo dal testo.",
+        "Q06": "Si rappresenta il flusso viscoso supersonico e la pressione indotta sulla lastra.",
+        "Q07": "La combinazione fra strato limite e onde semplici lega i campi di velocita e pressione e ne produce una soluzione coerente.",
+        "Q10": "La correlazione e analizzata per Mach diversi e segue la similitudine ipersonica ad alti Mach."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0667",
+      "mask": "1000010111",
+      "n": "teoria dello shock layer ipersonico al ristagno a bassi Reynolds",
+      "t": "relazioni d urto modificate dalla conduzione e raffreddamento superficiale con calo di temperatura e stand off",
+      "why": {
+        "Q01": "Il basename rende esplicito lo shock layer ipersonico.",
+        "Q06": "Si studiano regimi del flusso ipersonico al ristagno a diversi effetti di trasporto.",
+        "Q08": "Si quantifica la riduzione di temperatura dietro l urto quando la superficie e fortemente raffreddata.",
+        "Q09": "La conduzione modifica le relazioni d urto e si ricavano i tassi termici superficiali.",
+        "Q10": "Il modello collega il regime continuo ipersonico ai limiti molecolari mediante relazioni d urto."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0669",
+      "mask": "0000000001",
+      "n": "moto potenziale subsonico su sfera in condotto",
+      "t": "soluzione del moto comprimibile subsonico in dominio confinato",
+      "why": {
+        "Q10": "La soluzione estende gli sviluppi in potenze di Mach al caso della sfera nel condotto."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0678",
+      "mask": "0000000000",
+      "n": "effetti di piastre terminali su ali a freccia",
+      "t": "variazioni di portanza resistenza e carichi da endplates e vortici di estremita",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "0682",
+      "mask": "1000010001",
+      "n": "portanza di ali svergolate e incurvate in flusso supersonico",
+      "t": "teoria conica e soluzioni del potenziale per downwash su ali delta",
+      "why": {
+        "Q01": "Il basename identifica direttamente la portanza nel flusso supersonico.",
+        "Q06": "Si risolve il campo potenziale di flussi supersonici su ali con bordo subsonico.",
+        "Q10": "La distinzione di bordo subsonico e flusso supersonico determina la formulazione conica e le soluzioni."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q08": "media",
+        "Q10": "media"
+      },
+      "id": "0691",
+      "mask": "0000010101",
+      "n": "procedura per proprieta termodinamiche e di trasporto; coda troncata",
+      "t": "calcoli di prodotti dissociati della combustione e procedure per ugelli supersonici",
+      "why": {
+        "Q06": "L appendice sviluppa equazioni e procedure per contorni e proprieta del flusso supersonico reagente, non una semplice menzione.",
+        "Q08": "Si calcolano composizione e proprieta termodinamiche dei prodotti della combustione a diverse condizioni; da confermare se il calcolo delle proprieta basta al comportamento termico.",
+        "Q10": "Le procedure accoppiano gas dissociato e flusso comprimibile negli ugelli supersonici; il dettaglio e riassunto solo brevemente."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0701",
+      "mask": "0000000001",
+      "n": "portanza indiciale di profilo in moto verticale; regime fuori dal nome",
+      "t": "risposta non stazionaria a Mach0.7 e differenze da soluzione incomprimibile",
+      "why": {
+        "Q10": "Si confrontano risposte comprimibili e incomprimibili e si discute la correzione Prandtl Glauert."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0702",
+      "mask": "0000000001",
+      "n": "funzioni di portanza e momento indiciali; nome troncato",
+      "t": "funzioni transitorie e di raffica determinate per Mach0.5,0.6,0.7",
+      "why": {
+        "Q10": "Le funzioni aerodinamiche sono calcolate e confrontate per piu numeri di Mach subsonici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0708",
+      "mask": "1000010001",
+      "n": "caratteristiche di veicoli alati da rientro a velocita supersoniche; hyp troncato",
+      "t": "prestazioni stabilita e controllo confrontati a Mach1.62,2.91,6.8,9.6",
+      "why": {
+        "Q01": "Il basename conserva supersonic come regime delle caratteristiche aerodinamiche studiate.",
+        "Q06": "Le caratteristiche aerodinamiche del moto sui veicoli sono studiate nel campo supersonico e ipersonico.",
+        "Q10": "Sono confrontati dati su quattro Mach che coprono regimi supersonici e ipersonici."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0718",
+      "mask": "0000000000",
+      "n": "mezzi ed esempi di ricerca aeronautica ONERA",
+      "t": "introduzione istituzionale ai programmi aeronautici francesi senza analisi dei fenomeni richiesti",
+      "why": {}
+    }
+  ],
+  "start": 121
+}

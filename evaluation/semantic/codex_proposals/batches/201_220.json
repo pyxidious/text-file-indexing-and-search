@@ -1,0 +1,239 @@
+{
+  "documents": 20,
+  "method": "decisioni semantiche individuali Codex, non etichette lessicali",
+  "records": [
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "0972",
+      "mask": "0000010000",
+      "n": "interazione a monte di getto sonico normale; regime esterno troncato",
+      "t": "pressioni e separazione davanti a getto sonico in corrente Mach6 con rapporti di pressione variabili",
+      "why": {
+        "Q06": "Si studiano interazione e separazione ipersonica davanti al getto con confronto con un gradino.",
+        "Q07": "Si variano rapporti di pressione e larghezza della fessura, ma non e descritta una relazione pressione-velocita del fluido.",
+        "Q10": "Mach6 e una condizione fissa e il testo non isola effetti di Mach o confronti fra regimi."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media"
+      },
+      "id": "0973",
+      "mask": "0000010001",
+      "n": "getto laterale presso base di corpo ogivale; coda troncata",
+      "t": "forze di interazione con corrente supersonica e dipendenza da rapporti di pressione e diametri",
+      "why": {
+        "Q06": "Si analizza l interazione del getto laterale con la corrente supersonica.",
+        "Q07": "L indipendenza della forza dal Mach non esplicita una relazione fra pressione e velocita; il testo tratta principalmente correlazioni di forze.",
+        "Q10": "L indipendenza degli effetti dal Mach della corrente e un risultato esplicitamente investigato."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0980",
+      "mask": "0000000110",
+      "n": "temperatura transitoria di pareti spesse; condizioni troncate",
+      "t": "metodo diretto e inverso fra storia termica e flusso di calore nella parete",
+      "why": {
+        "Q08": "Si calcola la temperatura transitoria con temperatura adiabatica e coefficienti di scambio variabili.",
+        "Q09": "Si risolvono flusso di calore nella parete e problema inverso per ricostruirne la storia."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media"
+      },
+      "id": "0984",
+      "mask": "0000001001",
+      "n": "moto comprimibile in giranti centrifughe a flusso misto",
+      "t": "gradienti di pressione tangenziali e velocita meridionali; verifica di choking all ingresso",
+      "why": {
+        "Q06": "Il testo verifica choking ma non identifica una regione supersonica sostanzialmente studiata.",
+        "Q07": "Le forze derivate dai gradienti di pressione sono incluse nell analisi che produce forti gradienti di velocita lungo mozzo e carter.",
+        "Q10": "La formulazione tratta comprimibilita e verifica il flusso strozzato all ingresso."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "0993",
+      "mask": "0000011001",
+      "n": "estensione dei campi di interferenza dei getti; corpo troncato",
+      "t": "getti sonici e supersonici contro corrente Mach2.91 con pressione sul corpo e struttura d urto",
+      "why": {
+        "Q06": "Si studiano campi d interferenza e urti dei getti contro la corrente supersonica.",
+        "Q07": "La pressione sul corpo dipende esplicitamente dal Mach di uscita del getto e dal rapporto di pressioni.",
+        "Q10": "Si separano gli effetti di Mach del getto, pressioni, Reynolds e geometria."
+      }
+    },
+    {
+      "confidence": {
+        "Q01": "media",
+        "Q07": "media"
+      },
+      "id": "0994",
+      "mask": "0000011001",
+      "n": "retrorazzo da corpo tozzo in sup troncato",
+      "t": "getto controcorrente e pressioni e drag a Mach1.60,2.00,2.85",
+      "why": {
+        "Q01": "Il frammento sup non rende completo il regime nel basename e non va integrato dai metadati; il solo retrorazzo non garantisce il regime.",
+        "Q06": "Si studiano campo instabile e distribuzione di pressione del getto opposto alla corrente supersonica.",
+        "Q07": "Pressione e resistenza sono confrontate per Mach diversi e intensita del getto, collegandole alle condizioni del moto.",
+        "Q10": "Le variazioni del flusso sono studiate per tre Mach supersonici e un intervallo di spinte."
+      }
+    },
+    {
+      "confidence": {
+        "Q07": "media",
+        "Q10": "media"
+      },
+      "id": "1002",
+      "mask": "1000010111",
+      "n": "corpi con spike a velocita ipersoniche",
+      "t": "prove a Mach14 su forme e lunghezze di spike con pressione e flussi termici",
+      "why": {
+        "Q01": "Il basename identifica il moto ipersonico sui corpi con spike.",
+        "Q06": "Si esamina il campo di moto su corpi tozzi con spike in flusso ipersonico.",
+        "Q07": "Pressione e calore sono confrontati con e senza spike a Mach fisso, senza esplicitare una relazione pressione-velocita.",
+        "Q08": "La geometria e valutata per ridurre il riscaldamento della superficie.",
+        "Q09": "Si misurano riduzioni del tasso di scambio con spike rispetto all emisfero.",
+        "Q10": "Il confronto e interpretato come soluzione al problema fisico del volo ipersonico, non sola condizione di prova; il confine va verificato."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q08": "media",
+        "Q09": "media"
+      },
+      "id": "1004",
+      "mask": "0000001111",
+      "n": "free flight measurements of the static and dynamic senza oggetto specificato",
+      "t": "contaminazione dell elio con aria e errori di pressione Mach temperatura e scambio su cono",
+      "why": {
+        "Q06": "Il corpo del documento tratta una galleria a elio ma non fornisce valori che rendano verificabile il regime supersonico.",
+        "Q07": "L errore in Mach e calcolato dalle pressioni mediante l equazione Pitot di Rayleigh e correlato alla contaminazione.",
+        "Q08": "Si studia l effetto della composizione sulle misure di temperatura del cono; e una caratterizzazione metrologica termica da confermare.",
+        "Q09": "Si investigano le misure di trasferimento termico e la loro alterazione da contaminazione; non e una menzione incidentale.",
+        "Q10": "Il rapporto fra errori di pressione e Mach indicato e uno dei risultati quantitativi."
+      }
+    },
+    {
+      "confidence": {
+        "Q06": "media",
+        "Q10": "media"
+      },
+      "id": "1005",
+      "mask": "0000010001",
+      "n": "free flight measurements of the static and dynamic senza oggetto specificato",
+      "t": "equazioni newtoniane per forze e momenti su corpi arbitrari in manovra",
+      "why": {
+        "Q06": "La teoria d impatto newtoniana rappresenta il limite fisico del flusso ipersonico; il testo non nomina il regime e l inferenza specialistica va verificata.",
+        "Q10": "Il modello aerodinamico e quello newtoniano di impatto, limite comprimibile ad alto Mach, pur senza confronto esplicito fra Mach."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1014",
+      "mask": "0000000000",
+      "n": "principi di creep buckling e peso resistenza",
+      "t": "teorie di stabilita viscosa di colonne e piastre compresse",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1015",
+      "mask": "0000000000",
+      "n": "principi di creep buckling e peso resistenza",
+      "t": "teoria per deflessioni nel tempo di colonne con materiali soggetti a creep",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1017",
+      "mask": "0000000000",
+      "n": "nota su creep buckling di colonne",
+      "t": "ruolo delle imperfezioni iniziali nel collasso ritardato rispetto al buckling statico",
+      "why": {}
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "1019",
+      "mask": "0000000100",
+      "n": "nota su creep buckling di colonne",
+      "t": "capacita portante dipendente dal tempo, imperfezioni e temperature di esposizione",
+      "why": {
+        "Q08": "Le prove studiano la variazione di capacita con la temperatura di esposizione e il tempo: risposta termomeccanica sostanziale ma non un bilancio di calore."
+      }
+    },
+    {
+      "confidence": {
+        "Q08": "media"
+      },
+      "id": "1020",
+      "mask": "0000000000",
+      "n": "nota su creep buckling di colonne",
+      "t": "prove a600F con carichi e deviazioni iniziali variabili e formula del tempo critico",
+      "why": {
+        "Q08": "La temperatura600F e una condizione fissa delle prove e degli estensimetri; non si analizza l effetto del calore o della temperatura."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1027",
+      "mask": "0000000100",
+      "n": "nota su creep buckling di colonne",
+      "t": "relazione costitutiva fra tensione velocita di deformazione e temperatura con applicazioni a riscaldamento rapido",
+      "why": {
+        "Q08": "La relazione include dilatazione termica e prevede curve di riscaldamento rapido oltre a creep e rottura, verificandole sull alluminio."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1032",
+      "mask": "0000000000",
+      "n": "conservativita dei sistemi di forze distribuite",
+      "t": "limiti dei metodi statici per carichi non conservativi e instabilita delle colonne",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1034",
+      "mask": "0000000000",
+      "n": "nota su creep buckling di colonne",
+      "t": "nel corpo si studia collasso nel tempo di guscio sandwich sotto pressione esterna uniforme",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1038",
+      "mask": "0000000000",
+      "n": "vibrazioni trasversali di gusci elastici",
+      "t": "nel corpo si determinano tensioni e deformazioni statiche e discontinuita alle giunzioni dei gusci",
+      "why": {}
+    },
+    {
+      "confidence": {},
+      "id": "1043",
+      "mask": "0000000100",
+      "n": "vibrazioni trasversali di gusci elastici",
+      "t": "nel corpo analisi numerica di tensioni e deformazioni di gusci sotto distribuzioni di pressione e temperatura",
+      "why": {
+        "Q08": "La soluzione termoelastica include temperature variabili lungo il meridiano e nello spessore per prevedere tensioni e spostamenti."
+      }
+    },
+    {
+      "confidence": {},
+      "id": "1050",
+      "mask": "0000000000",
+      "n": "buckling in compressione di sandwich curvi e cilindrici",
+      "t": "teoria ortotropa dei pannelli curvi con deformazioni di taglio",
+      "why": {}
+    }
+  ],
+  "start": 201
+}
