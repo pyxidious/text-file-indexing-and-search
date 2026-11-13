@@ -11,11 +11,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--documents", default="corpus/documents")
     parser.add_argument("--queries", default="evaluation/queries.csv")
-    parser.add_argument("--ground-truth", default="evaluation")
+    parser.add_argument("--ground-truth", default="evaluation/semantic")
+    parser.add_argument("--metadata", default="corpus/metadata.csv")
     parser.add_argument("--output", default="artifacts/homework/results")
     args = parser.parse_args()
     try:
-        evaluate(args.documents, args.queries, args.ground_truth, args.output)
+        evaluate(args.documents, args.queries, args.ground_truth, args.output, args.metadata)
     except (ValueError, FileNotFoundError) as error:
         parser.exit(2, str(error) + "\n")
 

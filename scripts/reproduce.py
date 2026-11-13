@@ -1,4 +1,4 @@
-"""Verifica corpus, propone giudizi, esegue test e benchmark; rispetta la revisione."""
+"""Verifica corpus, prepara la matrice semantica, esegue test e benchmark."""
 from pathlib import Path
 import subprocess
 import sys
@@ -8,23 +8,23 @@ from irhome.benchmark import benchmark
 from irhome.dataset import analyze, verify_corpus
 from irhome.engine import SearchEngine
 from irhome.evaluation import evaluate
-from irhome.ground_truth import propose
+from irhome.semantic import prepare
 
 
 def main():
     verify_corpus()
     stats = analyze()
     print(f"Corpus verificato: {stats['documents']} documenti; {stats['tokens']} token", flush=True)
-    if not Path("evaluation/frozen.json").exists():
-        propose("corpus/documents")
+    if not Path("evaluation/semantic/frozen.json").exists():
+        prepare("corpus/documents")
     subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v"], check=True)
     engine = SearchEngine.build("corpus/documents")
     engine.save("artifacts/homework/index.json")
     benchmark()
-    if Path("evaluation/frozen.json").exists():
+    if Path("evaluation/semantic/frozen.json").exists():
         evaluate()
     else:
-        print("Ground truth proposta: completare review.csv e freeze. Nessuna metrica sul corpus calcolata.")
+        print("Ground truth semantica pendente: completare evaluation/semantic/annotations.csv e freeze. Nessuna metrica sul corpus calcolata.")
 
 
 if __name__ == "__main__":

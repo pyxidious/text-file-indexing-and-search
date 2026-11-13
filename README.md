@@ -1,117 +1,169 @@
-# Homework 3 — Indicizzazione, ricerca e valutazione lessicale
+# Homework 3 - Ground truth semantica e valutazione
 
-Motore Python per tutti i `.txt` di una directory, con indici posizionali separati
-per **nome** e **contenuto**, console, phrase query e ranking BM25. Il corpus
-conservato contiene **300 documenti Cranfield**. Solo libreria standard Python
-**>=3.10**; nessuna installazione di pacchetti, download o servizio esterno.
+Motore Python per **300 documenti Cranfield**, con analyzer separati per nome e
+contenuto, indici posizionali, parser, AND e phrase query, ranking BM25 e
+persistenza JSON. Il motore, le formule delle metriche e il benchmark dei tempi
+sono conservati. Solo libreria standard Python >=3.10, nessuna nuova dipendenza.
+Non si usano query o relevance judgments ufficiali Cranfield.
 
-La nuova ground truth è **lessicale binaria e indipendente dal motore**.
-Non usa query o relevance judgments ufficiali Cranfield. Sono disponibili
-3.000 giudizi proposti automaticamente; **la revisione umana non è stata effettuata**.
-Le metriche del corpus non vengono calcolate finché i giudizi non sono validati
-e congelati. Questo README documenta il progetto, non è la relazione universitaria.
+La valutazione corrente richiede una **ground truth semantica annotata da un
+revisore umano su tutto il corpus**. Stato iniziale: **0/3.000 giudizi completati**,
+300 righe con dieci etichette vuote. Nessuna annotazione umana è dichiarata e
+nessuna metrica reale è stata calcolata. I test usano solo giudizi sintetici.
 
-## Esecuzione
+## Avvio
 
-Dalla radice del repository, su Windows, Linux o macOS:
+Dalla radice del repository:
 
 ```sh
-python scripts/reproduce.py
-python scripts/search.py query
+python scripts/semantic_ground_truth.py prepare
+python scripts/semantic_ground_truth.py annotate
+python scripts/semantic_ground_truth.py status
+python -m unittest discover -s tests -v
 ```
 
-`reproduce.py` verifica gli hash dei documenti, calcola le statistiche, prepara
-le proposte senza sovrascrivere revisioni, esegue i test, costruisce l'indice e
-misura tre ripetizioni di indicizzazione. Esegue anche la valutazione **solo se**
-esiste una ground truth validata e congelata. Senza validazione stampa lo stato
-pendente e termina dopo le operazioni riproducibili già possibili.
+In PowerShell si può sostituire `python` con `.venv\Scripts\python.exe`.
+`prepare` è ripetibile e conserva tutte le annotazioni già inserite.
 
-Comandi separati:
+## Query e criteri semantici
+
+Le dieci query in `evaluation/queries.csv` restano **invariate**. Il suo campo
+storico `expected_match` descrive il matching del motore, non la rilevanza semantica.
+`evaluation/semantic/criteria.csv` associa a ogni query un bisogno informativo,
+un criterio positivo, uno negativo, una valutazione di chiarezza ed eventuali
+proposte di sostituzione. Le proposte non sono applicate.
+
+| ID | Query | Bisogno informativo sintetico |
+| --- | --- | --- |
+| Q01 | `nome flow` | Moto dei fluidi come oggetto principale del titolo |
+| Q02 | `nome pressure` | Pressione, distribuzioni o effetti come tema del titolo |
+| Q03 | `nome laminar boundary` | Strato limite laminare |
+| Q04 | `nome "boundary layer"` | Fenomeni dello strato limite |
+| Q05 | `nome magnetohydrodynamics` | Interazione fra campi magnetici e fluidi conduttori |
+| Q06 | `contenuto flow` | Analisi sostanziale del moto dei fluidi |
+| Q07 | `contenuto pressure velocity` | Relazione fra pressione e velocità |
+| Q08 | `contenuto heat temperature` | Relazione fra fenomeni termici e temperatura |
+| Q09 | `contenuto "heat transfer"` | Trasferimento di calore |
+| Q10 | `contenuto "mach number"` | Effetti della comprimibilità e del regime rispetto alla velocità del suono |
+
+Q01, Q02 e soprattutto Q06 sono ampie. Il CSV propone rispettivamente
+`nome supersonic flow`, `nome pressure distribution` e `contenuto supersonic flow`
+per restringere il bisogno. Le altre query sono utilizzabili con i criteri
+espliciti indicati. Prima dell'annotazione, il revisore deve concordare la
+versione definitiva di query e criteri; le sostituzioni richiedono approvazione.
+Dopo la preparazione, ogni modifica agli input viene rilevata: per un nuovo
+protocollo usare una nuova directory, copiandovi i criteri aggiornati.
+
+**La presenza esatta dei termini non decide la rilevanza.** Un documento può
+essere rilevante con sinonimi e negativo pur contenendo tutte le parole della
+query. Per `nome` giudicare **solo nome e titolo**, ignorando il testo anche se
+visualizzato dalla console; per `contenuto` giudicare il testo integrale.
+Una menzione incidentale non basta. Non consultare ranking o risultati del
+motore per attribuire etichette; non usare i giudizi per ottimizzare ranking o
+motore prima della valutazione indipendente.
+
+## Annotazione umana
+
+`evaluation/semantic/annotations.csv` contiene una riga per documento e le
+colonne `doc_id`, `source_file`, `title`, `Q01` ... `Q10`. L'ID stabile è il percorso
+relativo nel corpus, uguale agli ID restituiti dal motore; il riferimento al file
+si risolve rispetto a `corpus/documents/`. Titoli completi e identità originali
+provengono da `corpus/metadata.csv`.
+
+Etichette ammesse: `1` rilevante, `0` non rilevante, cella vuota non valutata,
+`?` dubbio da risolvere. Nessuna etichetta è precompilata. è possibile modificare
+il CSV con un editor o foglio elettronico, conservando intestazioni, ID, titoli,
+righe e formato CSV UTF-8 (virgola come separatore). Non modificare il CSV mentre
+è aperta una sessione di annotazione in console: riavviarla dopo le modifiche.
+
+La console mostra nome, titolo, testo integrale e tutti i dieci bisogni con i
+criteri. Si legge ogni documento una volta e si inseriscono dieci etichette:
+
+```text
+1010001?00
+1 0 1 0 0 0 1 è 0 0
+```
+
+`_` svuota una cella; `-` conserva il giudizio precedente. `n`/`p` navigano,
+`g 42` va alla riga 42, `g ID` va a un percorso relativo preciso, `q` esce.
+Ogni inserimento valido salva atomicamente l'intera matrice prima di passare
+al documento successivo. EOF e Ctrl+C conservano i documenti già confermati.
+Al riavvio si riparte dal primo documento con celle vuote o dubbie. Anche a
+matrice completa si può riaprire la console e correggere giudizi prima del freeze.
+`status` conta completati, mancanti e dubbi ed elenca i documenti con `?` irrisolti.
+
+## Congelamento e valutazione
+
+Solo dopo che un essere umano ha completato tutte le 3.000 coppie:
+
+```sh
+python scripts/semantic_ground_truth.py freeze --reviewer "Nome reale" --approval-note "Revisione semantica completa delle 3000 coppie"
+python scripts/evaluate.py
+```
+
+Il freeze verifica i 300 documenti e i loro hash rispetto ai metadati, la matrice
+completa senza duplicati, etichette esclusivamente 0/1, identità di query, criteri,
+corpus e metadati rispetto a `prepared.json`. Rifiuta celle vuote o dubbie.
+Genera `positives_Q01.csv` ... `positives_Q10.csv` (anche senza positivi),
+oltre a `final_positives.csv` con tutte le coppie query/documento positive
+(una query senza positivi è rappresentata dal suo insieme vuoto) e `frozen.json`
+con stato `semantic_ground_truth_human_annotated`, revisore, nota e hash degli
+input, annotazioni, manifest di preparazione e positivi definitivi.
+
+Il programma non certifica l'identità del revisore: il nome e la nota devono
+corrispondere alla revisione realmente svolta. Nessun comando simula approvazioni.
+Non si può sovrascrivere un freeze o annotare tramite console dopo il congelamento.
+Le modifiche manuali successive vengono rilevate dagli hash e bloccano la
+valutazione prima della costruzione dell'indice. Questo è un controllo di
+integrità locale, non una firma crittografica contro alterazioni intenzionali.
+Per correggere un protocollo congelato creare una nuova directory e ripetere
+preparazione/revisione, conservando la vecchia versione.
+
+I comandi supportano `--documents`, `--queries`, `--metadata` e `--output`.
+Una directory alternativa deve contenere `criteria.csv`; per valutarla usare
+`python scripts/evaluate.py --ground-truth evaluation/nuova-revisione`.
+Il comando CLI richiede sempre 300 documenti; i test interni usano fixture ridotte.
+
+## File e protocollo lessicale precedente
+
+- `irhome/semantic.py`: preparazione, validazione, console, freeze e caricamento.
+- `scripts/semantic_ground_truth.py`: comandi del protocollo semantico.
+- `irhome/evaluation.py`, `scripts/evaluate.py`: valutazione semantica e FP/FN.
+- `evaluation/semantic/`: criteri, matrice e manifest iniziale; dopo revisione anche freeze e positivi.
+- `tests/test_semantic.py`: test sintetici del workflow e della valutazione.
+- `scripts/reproduce.py`: verifica corpus, prepara la matrice senza sovrascriverla,
+  esegue test, persistenza e benchmark; valuta solo se esiste il freeze semantico.
+
+La ground truth lessicale precedente rimane separata e invariata in
+`evaluation/review.csv`, `evaluation/proposed_positives.csv`, `evaluation/proposed.json`.
+`irhome/ground_truth.py`, `irhome/oracle.py` e `scripts/ground_truth.py` conservano
+il vecchio scanner e il suo protocollo esclusivamente come ausilio lessicale.
+Non trasferire proposte o conferme lessicali nelle celle semantiche. Il valutatore
+corrente accetta esclusivamente il freeze semantico, mai quello lessicale.
+Gli output storici in `legacy/` e `artifacts/` non sono input del nuovo protocollo.
+
+## Corpus, motore e riproducibilità
+
+I 300 TXT attuali e `corpus/metadata.csv` restano invariati: 309.724 byte.
+Provenienza e trasformazioni sono descritte in [corpus/README.md](corpus/README.md).
+Le statistiche lessicali restano in `evaluation/dataset_analysis.json`.
+BM25 usa `k1=1.2`, `b=0.75`, ordinamento per score decrescente e ID a parità.
+Il formato JSON di persistenza rimane quello esistente.
 
 ```sh
 python scripts/search.py build
 python scripts/search.py query --query "contenuto pressure velocity"
-python scripts/ground_truth.py propose
 python scripts/benchmark.py
-python -m unittest discover -s tests -v
+python scripts/reproduce.py
 ```
 
-In PowerShell, per usare l'ambiente locale già presente, sostituire `python` con
-`.venv\Scripts\python.exe`. I comandi non richiedono quell'ambiente specifico.
-Su una directory diversa: `python scripts/search.py build percorso/txt artifacts/custom.json`
-e `python scripts/search.py query artifacts/custom.json`.
-
-## Architettura e refactoring
-
-Il motore preesistente è stato conservato: indici invertiti posizionali, analyzer,
-formula BM25 (`k1=1.2`, `b=0.75`), ordinamento per score decrescente e ID a parità,
-salvataggio/caricamento JSON formato 1. Il matching predefinito è stato ridotto
-ad AND coerente in entrambi i campi, senza filtri sulle stopword. OR rimane
-disponibile esplicitamente nella console con `--strategy or`.
-
-Confronti di strategie, split development/test, acquisizione con export di qrels,
-metriche AP/MAP e pipeline LLM sono conservati in `legacy/previous/` e non sono
-importati o eseguiti dal progetto corrente. Il dettaglio dell'ispezione e dei
-componenti unificati è in [docs/refactoring.md](docs/refactoring.md).
-
-```text
-corpus/
-  documents/              300 TXT invariati
-  metadata.csv            ID Cranfield, filename, titolo, SHA-256, byte
-  README.md               provenienza e trasformazioni verificabili
-irhome/
-  engine.py               indicizzazione, parsing, ricerca e BM25
-  analyzers.py, io.py      analyzer e serializzazione esistenti
-  dataset.py              inventario, verifica hash e statistiche
-  oracle.py               scanner lessicale autonomo
-  ground_truth.py         proposta, revisione, congelamento
-  metrics.py              TP/FP/FN, P/R/F1, @10 e macro
-  evaluation.py           confronto ranking completo / ground truth
-  benchmark.py            tempi di costruzione
-scripts/
-  search.py, ground_truth.py, evaluate.py, benchmark.py, reproduce.py
-tests/test_homework.py
-evaluation/
-  queries.csv
-  review.csv              tutte le 3.000 coppie, revisione pendente
-  proposed_positives.csv, proposed.json
-  dataset_analysis.json
-  timing_samples.csv, timing_summary.csv, benchmark.json
-docs/refactoring.md
-legacy/                   materiale storico escluso
-artifacts/homework/        indice e, dopo validazione, risultati (ignorati da Git)
-```
-
-`final_positives.csv` e `frozen.json` verranno creati in `evaluation/` soltanto
-dopo una revisione umana completa. Nessun file finale vuoto viene spacciato
-per ground truth validata. Le altre directory in `artifacts/` sono vecchi output
-locali e non sono input del protocollo corrente.
-
-## Dataset
-
-La directory canonica è `corpus/documents/`: **300 file, 309.724 byte,
-48.695 token, 3.993 token distinti**, nessun duplicato a contenuto identico
-(confronto SHA-256). Non è una verifica di somiglianza semantica fra abstract.
-Testi scientifici in inglese su aerodinamica, strato limite, onde d'urto,
-trasferimento di calore, stabilità e strutture; includono numeri, trattini,
-interruzioni di riga e imperfezioni testuali originali.
-
-I filename hanno già forma `0003_the_boundary_layer_in_simple_shear_flow_past_a_flat_plate.txt`:
-ID originale a quattro cifre e slug del titolo. Non sono stati rinominati.
-Tutti i 300 metadati contengono un titolo; 299 testi iniziano con gli stessi
-token del titolo, mentre il documento 1369 presenta una variante testuale
-(`oseens s` nel testo rispetto a `oseen s` nel titolo). Non è stata corretta.
-
-Le frequenze sono conteggi sul testo normalizzato, indipendenti dal motore:
-`the` 4.090, `of` 2.705, `flow` 438, `pressure` 282, `boundary` 242, `layer` 226.
-Bigrammi ricorrenti: `boundary layer` 174, `heat transfer` 102,
-`mach number` 92. Conteggi completi dei primi 40 termini e bigrammi in
-`evaluation/dataset_analysis.json`; le occorrenze non sono conteggi di documenti.
-
-La provenienza Cranfield, il campionamento verificato e i limiti di ciò che è
-ricostruibile sono descritti in [corpus/README.md](corpus/README.md).
-I file sono stati copiati byte per byte dal corpus locale corrente, verificando
-gli hash del suo manifest; nessun contenuto è stato modificato.
+La suite verifica analyzer, parser, AND, phrase, BM25/persistenza, formule delle
+metriche e scanner storico. I test semantici verificano etichette ammesse,
+salvataggio/ripresa/modifica, blocco del freeze incompleto, integrità degli input
+e del congelamento, valutazione completa oltre dieci risultati, FP e FN anche
+con rilevanza espressa senza il termine cercato, output riproducibili byte per byte.
+La recall finale misura i positivi semantici annotati su tutti i 300 documenti;
+la sua validità dipende dalla completezza e coerenza della revisione umana.
 
 ## Analyzer e sintassi
 
@@ -145,77 +197,6 @@ BM25 ordina soltanto i documenti che soddisfano il matching. La console visualiz
 La valutazione non applica quel limite. Query malformate, zero risultati,
 EOF e Ctrl+C sono gestiti dalla console.
 
-## Dieci query originali e giudizi proposti
-
-Le query sono state fissate studiando titoli, testi e distribuzioni lessicali,
-prima di eseguire query sul motore del corpus. Le espressioni comuni coprono
-insiemi ampi; il termine specialistico osservato nel titolo del documento 402
-fornisce un caso raro. Non sono state selezionate confrontando ranking o metriche.
-Campo, espressione, tipo e criterio atteso sono in `evaluation/queries.csv`.
-
-| ID | Query | Tipo | Positivi proposti |
-| --- | --- | --- | ---: |
-| Q01 | `nome flow` | Termine | 54 |
-| Q02 | `nome pressure` | Termine | 26 |
-| Q03 | `nome laminar boundary` | AND | 14 |
-| Q04 | `nome "boundary layer"` | Frase | 32 |
-| Q05 | `nome magnetohydrodynamics` | Termine | 1 |
-| Q06 | `contenuto flow` | Termine | 159 |
-| Q07 | `contenuto pressure velocity` | AND | 27 |
-| Q08 | `contenuto heat temperature` | AND | 26 |
-| Q09 | `contenuto "heat transfer"` | Frase | 41 |
-| Q10 | `contenuto "mach number"` | Frase | 63 |
-
-## Ground truth indipendente e revisione
-
-`python scripts/ground_truth.py propose` scandisce tutti i TXT direttamente
-dal filesystem e verifica tutte le **10 × 300 = 3.000 coppie**. Lo scanner
-reimplementa normalizzazione e matching senza importare motore, analyzer,
-parser o metriche. Non legge indici, risultati, score, query ufficiali o qrels.
-La rilevanza lessicale è esattamente presenza del termine, presenza di tutti
-i termini AND, oppure presenza della sequenza consecutiva per le frasi.
-
-`proposed_positives.csv` contiene tutti i positivi proposti. `review.csv` contiene
-ogni coppia, query, ID stabile (percorso relativo del documento), filename,
-etichetta automatica, estratto normalizzato e termini presenti. Per un AND
-con termini distanti l'estratto può mostrarne soltanto alcuni: consultare tutto
-il TXT. Anche un negativo può contenere singoli termini della query.
-L'ID originale Cranfield è recuperabile da `corpus/metadata.csv` e dal prefisso
-del filename; nessun giudizio Cranfield è associato alle nuove query.
-
-Procedura per il revisore umano, prima di interrogare il motore sulle dieci query:
-
-1. Esaminare positivi, negativi e casi dubbi rispetto alla definizione lessicale;
-   consultare i TXT quando l'estratto non basta. Non usare il ranking come guida.
-2. Impostare `reviewed=1` per ogni coppia verificata. Lasciare `manual_label`
-   vuoto per confermare, oppure inserire `0`/`1`; una modifica richiede `reason`.
-   Usare motivazioni lessicali: non sostituire il criterio con una valutazione semantica.
-3. Dopo la revisione completa, eseguire con un'identità reale e una nota reale:
-
-```sh
-python scripts/ground_truth.py freeze --reviewer "Nome del revisore" --approval-note "Revisione lessicale completa delle 3000 coppie"
-python scripts/evaluate.py
-```
-
-Il congelamento rifiuta coppie mancanti/duplicate, revisioni incomplete,
-etichette non valide o correzioni senza motivazione. Produce il CSV separato
-`final_positives.csv` e `frozen.json`, con identità di corpus/query/scanner,
-hash di giudizi e revisione, revisore e nota. Non sovrascrive un congelamento
-esistente. Il valutatore controlla gli hash **prima di interrogare il motore**;
-modifiche successive richiedono una nuova revisione in una nuova directory.
-Per un nuovo esperimento usare `--output evaluation/nuova-revisione` nello scanner
-e `--ground-truth evaluation/nuova-revisione` nel valutatore.
-
-Attualmente tutti i campi di revisione sono vuoti: **nessuna validazione umana
-è dichiarata**. Le metriche finali restano da eseguire dopo tale passaggio.
-I test simulano il processo esclusivamente su documenti artificiali temporanei.
-
-Questa ground truth misura la **correttezza lessicale**, non l'utilità semantica
-o la rilevanza tematica esaustiva. Un documento può essere semanticamente utile
-senza usare i token richiesti; qui sarebbe negativo secondo la definizione.
-La recall misura tutti i positivi lessicali del corpus, grazie alla scansione
-esaustiva; non la recall dei bisogni informativi originari di Cranfield.
-
 ## Metriche
 
 Su tutti i risultati: TP = recuperati rilevanti, FP = recuperati non rilevanti,
@@ -233,8 +214,8 @@ valori non definiti della rispettiva metrica e riportano il numero di query
 incluse. Non si calcolano AP, MAP, MRR o nDCG.
 
 Dopo la validazione, `artifacts/homework/results/` conterrà `metrics.csv`
-(una riga per query), `results.csv` (tutti i risultati, rank e score), `macro.csv`
-e `evaluation.json` (hash del congelamento e motore). Anche il terminale
+(una riga per query), `results.csv` (tutti i risultati, rank e score), `macro.csv`,
+`errors.csv` (FP/FN con query e ID documento) ed `evaluation.json` (hash del congelamento e motore). Anche il terminale
 mostrerà conteggi e metriche. Prima del freeze il comando fallisce senza
 generare metriche o interrogare il motore.
 

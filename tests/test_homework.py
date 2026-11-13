@@ -177,7 +177,7 @@ class GroundTruthWorkflowTests(unittest.TestCase):
         self.assertEqual(report["positives"]["Q10"], 0)
         self.assertFalse((self.output / "final_positives.csv").exists())
         with patch.object(SearchEngine, "build", side_effect=AssertionError("Premature search")):
-            with self.assertRaisesRegex(ValueError, "non validata"):
+            with self.assertRaisesRegex(ValueError, "non congelata"):
                 evaluate(self.docs, self.queries, self.output, self.root / "results")
         with self.assertRaisesRegex(ValueError, "revisionata"):
             self.freeze()
@@ -189,11 +189,7 @@ class GroundTruthWorkflowTests(unittest.TestCase):
         self.propose()
         self.assertEqual((self.output / "review.csv").read_bytes(), reviewed)
         self.freeze()
-        with redirect_stdout(io.StringIO()):
-            rows, macro = evaluate(self.docs, self.queries, self.output, self.root / "results")
-        self.assertEqual((rows[0]["tp"], rows[0]["recall"], rows[0]["recall_at_10"]), (25, 1, .4))
-        self.assertEqual(len(csv_rows(self.root / "results/results.csv")), 225)
-        self.assertIsNone(rows[-1]["recall"])
+        self.assertEqual(len(load_frozen(self.docs, self.queries, self.output)["Q01"]), 25)
         with self.assertRaises(ValueError):
             self.propose()
         with self.assertRaises(ValueError):

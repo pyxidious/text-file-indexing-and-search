@@ -1,3 +1,5 @@
+> Nota: questo documento descrive il refactoring lessicale precedente. Il protocollo di valutazione corrente è semantico; vedere il README e `evaluation/semantic/criteria.csv`.
+
 # Ispezione e refactoring
 
 L'ispezione precedente alle modifiche ha identificato Python >=3.10, nessun

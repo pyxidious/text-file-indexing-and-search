@@ -1,4 +1,4 @@
-"""Scansione autonoma e congelamento dopo revisione umana."""
+"""Protocollo LESSICALE storico; per la valutazione usare semantic_ground_truth.py."""
 import argparse
 from pathlib import Path
 import sys
